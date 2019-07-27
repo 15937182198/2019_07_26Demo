@@ -52,30 +52,30 @@
             <!-- 右侧导航 -->
             <ul class="layui-nav larry-header-item">
                 <li class="layui-nav-item">
-                    账户名：广州丹奇日化
+                    账户名：${pageContext.session.getAttribute("username")}
                 </li>
-                <li class="layui-nav-item first">
-                    <a href="javascript:;">
-                        <cite>默认站点</cite>
-                        <span class="layui-nav-more"></span>
-                    </a>
-                    <dl class="layui-nav-child">
-                        <dd>
-                            <a href="">站点1</a>
-                        </dd>
-                        <dd>
-                            <a href="">站点2</a>
-                        </dd>
+                <%--<li class="layui-nav-item first">--%>
+                    <%--<a href="javascript:;">--%>
+                        <%--<cite>默认站点</cite>--%>
+                        <%--<span class="layui-nav-more"></span>--%>
+                    <%--</a>--%>
+                    <%--<dl class="layui-nav-child">--%>
+                        <%--<dd>--%>
+                            <%--<a href="">站点1</a>--%>
+                        <%--</dd>--%>
+                        <%--<dd>--%>
+                            <%--<a href="">站点2</a>--%>
+                        <%--</dd>--%>
 
-                    </dl>
-                </li>
+                    <%--</dl>--%>
+                <%--</li>--%>
+                <%--<li class="layui-nav-item">--%>
+                    <%--<a href="javascript:;" id="lock">--%>
+                        <%--<i class="iconfont icon-diannao1"></i>--%>
+                        <%--锁屏</a>--%>
+                <%--</li>--%>
                 <li class="layui-nav-item">
-                    <a href="javascript:;" id="lock">
-                        <i class="iconfont icon-diannao1"></i>
-                        锁屏</a>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="${pageContext.request.contextPath}/login.html">
+                    <a href="/logout">
                         <i class="iconfont icon-exit"></i>
                         退出</a>
                 </li>

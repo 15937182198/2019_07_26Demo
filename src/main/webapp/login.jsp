@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="common/layui/css/layui.css" media="all">
     <link rel="stylesheet" type="text/css" href="css/login.css" media="all">
 </head>
+<%--style="overflow: hidden"--%>
 <body>
 <div class="layui-canvs"></div>
 <div class="layui-layout layui-layout-login">
@@ -27,9 +28,9 @@
         <strong>管理系统后台</strong>
         <em>Management System</em>
     </h1>
-    <form autocomplete="on" action="/login" method="post">
+    <form autocomplete="on" action="login" method="post">
         <div class="layui-user-icon larry-login">
-            <input name="account" type="text" placeholder="账号"  class="login_txtbx" autofocus required/>
+            <input name="username" type="text" placeholder="账号"  class="login_txtbx" autofocus required/>
         </div>
         <div class="layui-pwd-icon larry-login">
             <input name="password" type="password" placeholder="密码"  class="login_txtbx" autofocus required/>

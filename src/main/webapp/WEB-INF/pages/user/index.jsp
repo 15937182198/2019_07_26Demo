@@ -57,11 +57,16 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">登录<span class="caret"></span></a>
+                            <a href="/logout" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">退出</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">个人中心<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">我的信息</a></li>
                                 <li><a href="#">修改密码</a></li>
-                                <li><a href="#">余额：0.00</a></li>
+                                <li><a href="#">积分：${pageContext.session.getAttribute("account").accountMoney}</a></li>
                             </ul>
                         </li>
                     </ul>
