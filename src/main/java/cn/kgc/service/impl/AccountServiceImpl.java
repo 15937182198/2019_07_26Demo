@@ -3,6 +3,7 @@ package cn.kgc.service.impl;
 import cn.kgc.dao.AccountDao;
 import cn.kgc.dao.JurDao;
 import cn.kgc.pojo.Account;
+import cn.kgc.pojo.Deal;
 import cn.kgc.pojo.Jurisdiction;
 import cn.kgc.service.AccountService;
 import org.springframework.security.core.GrantedAuthority;
@@ -39,6 +40,7 @@ public class AccountServiceImpl implements AccountService {
                 SimpleGrantedAuthority role_user = new SimpleGrantedAuthority(jurisdiction.getJurName());
                 authorities.add(role_user);
             }
+
             //创建临时角色
             return new User(account.getAccountName(),account.getAccountPassword(),authorities);
         }

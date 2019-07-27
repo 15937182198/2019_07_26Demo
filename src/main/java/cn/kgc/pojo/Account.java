@@ -63,4 +63,59 @@ public class Account  implements Serializable {
    	@Column(name = "jur" )
 	private Integer jur;
 
+	public Integer getAccountId() {
+		return accountId;
+	}
+
+	public void setAccountId(Integer accountId) {
+		this.accountId = accountId;
+	}
+
+	public String getAccountName() {
+		return accountName;
+	}
+
+	public void setAccountName(String accountName) {
+		this.accountName = accountName;
+	}
+
+	public String getAccountPassword() {
+		return accountPassword;
+	}
+
+	public void setAccountPassword(String accountPassword) {
+		this.accountPassword = accountPassword;
+	}
+
+	public Double getAccountMoney() {
+		return accountMoney;
+	}
+
+	public void setAccountMoney(Double accountMoney) {
+		this.accountMoney = accountMoney;
+	}
+
+	public Date getAccountCreateDate() {
+		return accountCreateDate;
+	}
+
+	public void setAccountCreateDate(Date accountCreateDate) {
+		this.accountCreateDate = accountCreateDate;
+	}
+
+	public Integer getAccountLead() {
+		return accountLead;
+	}
+
+	public void setAccountLead(Integer accountLead) {
+		this.accountLead = accountLead;
+	}
+
+	public Integer getJur() {
+		return jur;
+	}
+
+	public void setJur(Integer jur) {
+		this.jur = jur;
+	}
 }

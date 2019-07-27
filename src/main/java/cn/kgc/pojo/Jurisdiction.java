@@ -32,4 +32,19 @@ public class Jurisdiction  implements Serializable {
    	@Column(name = "jurName" )
 	private String jurName;
 
+	public Integer getJurId() {
+		return jurId;
+	}
+
+	public void setJurId(Integer jurId) {
+		this.jurId = jurId;
+	}
+
+	public String getJurName() {
+		return jurName;
+	}
+
+	public void setJurName(String jurName) {
+		this.jurName = jurName;
+	}
 }
