@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-user的首页
+user的首页 <br>
 <a href="/logout">注销</a>
 </body>
 </html>

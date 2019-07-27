@@ -10,18 +10,11 @@
 <html>
 <head>
     <title>Title</title>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js"></script>
-    <script>
-        $(function () {
-            $("#form").submit();
-        });
-    </script>
 </head>
 <body>
-
 <sec:authentication property="principal.username" scope="session" var="username"/>
-<form action="loginController/login" method="post" id="form">
-    <input type="hidden" name="accountName" value="${sessionScope.username}">
-</form>
 </body>
+<script>
+    window.location.href="loginController/login";
+</script>
 </html>
