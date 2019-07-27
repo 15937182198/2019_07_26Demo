@@ -2,27 +2,45 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:security="http://www.springframework.org/schema/security"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
-
-    <!--    配置拦截的规则
-            auto-config 使用自带页面
-            use-expressions 是否使用spel表达式
-    -->
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+    <!--不拦截静态资源-->
+    <security:http pattern="/css/**" security="none"/>
+    <security:http pattern="/js/**" security="none"/>
+    <security:http pattern="/img/**" security="none"/>
+    <security:http pattern="/plugins/**" security="none"/>
+    <!--不拦截登录   不拦截error -->
+    <security:http pattern="/login.jsp" security="none"/>
+    <security:http pattern="/error.jsp" security="none"/>
+    <security:http pattern="/favicon.ico" security="none"/>
+    <!--拦截规则-->
     <security:http auto-config="true" use-expressions="false">
-        <!--        配置拦截地址-->
         <security:intercept-url pattern="/**" access="ROLE_USER"/>
+        <security:intercept-url pattern="/**" access="ROLE_ADMIN"/>
+        <security:intercept-url pattern="/**" access="ROLE_ROOT"/>
+        <!--页面跳转
+            1、
+        -->
+        <security:form-login
+                login-page="/login.jsp"
+                login-processing-url="/login"
+                default-target-url="/index.jsp"
+                authentication-failure-url="/login.jsp"
+        />
+
+        <!--关闭跨域请求-->
+        <security:csrf disabled="true"/>
+        <!--退出-->
+        <security:logout invalidate-session="true" logout-url="/logout" logout-success-url="/login.jsp"/>
     </security:http>
-    <!--    配置认证信息-->
+    <!--自带账户密码-->
     <security:authentication-manager>
-        <security:authentication-provider >
-            <!--&lt;!&ndash;指定加密工具&ndash;&gt;-->
-            <!--<security:password-encoder ref="passwordEncoder"/>-->
-            <security:user-service>
-                <!--临时账户密码-->
-                <security:user name="admin" password="{noop}admin" authorities="ROLE_USER"/>
-            </security:user-service>
+        <security:authentication-provider user-service-ref="accountService">
+            <!--指定加密工具-->
+            <security:password-encoder ref="passwordEncoder"/>
         </security:authentication-provider>
     </security:authentication-manager>
 
-    <bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" id="passwordEncoder"/>
+    <!---->
+    <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 </beans>
