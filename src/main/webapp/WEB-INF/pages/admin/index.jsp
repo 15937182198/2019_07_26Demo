@@ -115,6 +115,18 @@
                             </a>
                         </dd>
                         <dd>
+                            <a href="javascript:;" data-url="changepwd.html">
+                                <i class="iconfont icon-iconfuzhi01" data-icon='icon-iconfuzhi01'></i>
+                                <span>新增用户</span>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" data-url="changepwd.html">
+                                <i class="iconfont icon-iconfuzhi01" data-icon='icon-iconfuzhi01'></i>
+                                <span>新增管理员</span>
+                            </a>
+                        </dd>
+                        <dd>
                             <a href="javascript:;" data-url="myloginfo.html">
                                 <i class="iconfont icon-piliangicon" data-icon='icon-piliangicon'></i>
                                 <span>日志信息</span>

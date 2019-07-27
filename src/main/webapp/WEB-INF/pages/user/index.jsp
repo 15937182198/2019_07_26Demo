@@ -66,6 +66,7 @@
                             <ul class="dropdown-menu">
                                 <li><a href="#">我的信息</a></li>
                                 <li><a href="#">修改密码</a></li>
+                                <li><a href="#">新增用户</a></li>
                                 <li><a href="#">积分：${pageContext.session.getAttribute("account").accountMoney}</a></li>
                             </ul>
                         </li>

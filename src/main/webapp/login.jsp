@@ -20,8 +20,8 @@
     <link rel="stylesheet" type="text/css" href="common/layui/css/layui.css" media="all">
     <link rel="stylesheet" type="text/css" href="css/login.css" media="all">
 </head>
-<%--style="overflow: hidden"--%>
-<body>
+
+<body style="overflow: hidden">
 <div class="layui-canvs"></div>
 <div class="layui-layout layui-layout-login">
     <h1>
