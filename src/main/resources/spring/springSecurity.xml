@@ -25,7 +25,6 @@
         <security:intercept-url pattern="/**" access="ROLE_ADMIN"/>
         <security:intercept-url pattern="/**" access="ROLE_ROOT"/>
         <!--页面跳转
-            1、
         -->
         <security:form-login
                 login-page="/login.jsp"

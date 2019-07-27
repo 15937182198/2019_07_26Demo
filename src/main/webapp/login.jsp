@@ -27,7 +27,7 @@
         <strong>管理系统后台</strong>
         <em>Management System</em>
     </h1>
-    <form autocomplete="on">
+    <form autocomplete="on" action="/login" method="post">
         <div class="layui-user-icon larry-login">
             <input name="account" type="text" placeholder="账号"  class="login_txtbx" autofocus required/>
         </div>
@@ -35,7 +35,7 @@
             <input name="password" type="password" placeholder="密码"  class="login_txtbx" autofocus required/>
         </div>
         <div class="layui-submit larry-login">
-            <input type="button" value="立即登陆" class="submit_btn"/>
+            <input type="submit" value="立即登陆" class="submit_btn"/>
         </div>
     </form>
     <div class="layui-login-text">
@@ -65,7 +65,7 @@
                 alert("密码必须为数字或字母，只能为8~12位！");
                 return;
             }
-            location.href="index.html";
+            // location.href="index.";
         });
     });
 </script>
