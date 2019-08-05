@@ -10,11 +10,6 @@ import lombok.ToString;
 import org.springframework.stereotype.Repository;
 import java.util.Date;
 
-/**
- * @Description  
- * @Author  MaJinZhong
- * @Date 2019/08/03 15:35 
- */
 
 @Repository
 @Setter
@@ -78,7 +73,6 @@ public class Account  implements Serializable {
 	 */
    	@Column(name = "accountJNumber" )
 	private Integer accountJNumber;
-
 
 	public Integer getAccountId() {
 		return accountId;

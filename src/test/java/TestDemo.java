@@ -26,6 +26,6 @@ public class TestDemo{						//“Test07”需与文件名相同
             System.out.println();
 
         }
-        System.out.println(x);
+        System.out.println(x-1);
     }
 }
