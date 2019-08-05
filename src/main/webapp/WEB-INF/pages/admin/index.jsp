@@ -30,7 +30,7 @@
         <div class="layui-main">
             <!-- logo区域 -->
             <div class="admin-logo-box">
-                <a class="logo" href="http://www.kuxuebao.net" title="logo">后台管理系统</a>
+                <a class="logo" title="logo">后台管理系统</a>
                 <div class="larry-side-menu" style="background: #23262E;">
                     <i class="fa fa-bars" aria-hidden="true" ></i>
                 </div>
@@ -357,7 +357,8 @@
             </ul>
             <div class="layui-tab-content" style="min-height: 150px; ">
                 <div class="layui-tab-item layui-show">
-                    <iframe class="larry-iframe" data-id='0' src="${pageContext.request.contextPath}/main.html"></iframe>
+                    <iframe class="larry-iframe" data-id='0' src="main.jsp"></iframe>
+
                 </div>
             </div>
         </div>

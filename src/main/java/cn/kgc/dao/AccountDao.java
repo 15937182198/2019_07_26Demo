@@ -1,6 +1,7 @@
 package cn.kgc.dao;
 
 import cn.kgc.pojo.Account;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
@@ -56,4 +57,12 @@ public interface AccountDao {
      */
     @Select("select * from where accountJNumber=#{accountJNumber}")
     Account findAccountByAccountJNumber(Integer accountJNumber);
+
+    /**
+     * 保存账户的方法
+     * @param account 需要保存的账户
+     * @return 保存受影响的行数
+     */
+    @Insert("insert into account values (null,#{accountName},#{accountPassword},null,#{accountCreateDate},#{referrer},#{accountLead},#{jur},accountJNumber);")
+    Integer saveAccount(Account account);
 }
