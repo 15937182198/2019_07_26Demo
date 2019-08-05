@@ -9,7 +9,8 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <html>
 <head>
-    <title>Title</title>
+    <title>&nbsp;</title>
+
 </head>
 <body>
 <sec:authentication property="principal.username" scope="session" var="username"/>

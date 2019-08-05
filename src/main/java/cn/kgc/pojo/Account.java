@@ -10,7 +10,11 @@ import lombok.ToString;
 import org.springframework.stereotype.Repository;
 import java.util.Date;
 
-
+/**
+ * @Description  
+ * @Author  MaJinZhong
+ * @Date 2019/08/03 15:35 
+ */
 
 @Repository
 @Setter
@@ -52,6 +56,12 @@ public class Account  implements Serializable {
 	private Date accountCreateDate;
 
 	/**
+	 * 推荐人id
+	 */
+   	@Column(name = "referrer" )
+	private Integer referrer;
+
+	/**
 	 * 用户上级编号
 	 */
    	@Column(name = "accountLead" )
@@ -62,6 +72,13 @@ public class Account  implements Serializable {
 	 */
    	@Column(name = "jur" )
 	private Integer jur;
+
+	/**
+	 * 该用户在金字塔的坐标
+	 */
+   	@Column(name = "accountJNumber" )
+	private Integer accountJNumber;
+
 
 	public Integer getAccountId() {
 		return accountId;
@@ -103,6 +120,14 @@ public class Account  implements Serializable {
 		this.accountCreateDate = accountCreateDate;
 	}
 
+	public Integer getReferrer() {
+		return referrer;
+	}
+
+	public void setReferrer(Integer referrer) {
+		this.referrer = referrer;
+	}
+
 	public Integer getAccountLead() {
 		return accountLead;
 	}
@@ -117,5 +142,13 @@ public class Account  implements Serializable {
 
 	public void setJur(Integer jur) {
 		this.jur = jur;
+	}
+
+	public Integer getAccountJNumber() {
+		return accountJNumber;
+	}
+
+	public void setAccountJNumber(Integer accountJNumber) {
+		this.accountJNumber = accountJNumber;
 	}
 }

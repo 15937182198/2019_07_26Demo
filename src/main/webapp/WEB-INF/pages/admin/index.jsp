@@ -23,7 +23,7 @@
 
 
 </head>
-<body>
+<body style="overflow: hidden">
 <div class="layui-layout layui-layout-admin" id="layui_layout">
     <!-- 顶部区域 -->
     <div class="layui-header header header-demo">

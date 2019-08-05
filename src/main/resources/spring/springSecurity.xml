@@ -30,7 +30,6 @@
                 login-page="/login.jsp"
                 login-processing-url="/login"
                 authentication-success-forward-url="/index.jsp"
-                authentication-failure-forward-url="/login.jsp"
         />
 
         <!--关闭跨域请求-->

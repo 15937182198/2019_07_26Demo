@@ -26,7 +26,6 @@
 <div class="layui-layout layui-layout-login">
     <h1>
         <strong>管理系统后台</strong>
-        <em>Management System</em>
     </h1>
     <form autocomplete="on" action="login" method="post">
         <div class="layui-user-icon larry-login">
@@ -51,11 +50,12 @@
     $(function(){
         $(".layui-canvs").jParticle({
             background: "#141414",
-            color: "#E6E6E6"
+            color: "#E6E6E6",
+            height:100%
         });
         //登录链接测试，使用时可删除
         $(".submit_btn").click(function(){
-            var username=$("input[name='account']").val();
+            var username=$("input[name='username']").val();
             var password=$("input[name='password']").val();
             var re = new RegExp(/^[a-zA-Z0-9]{4,8}$/);       // ^表示开始  $表示结束
             if (!re.test(username)){
