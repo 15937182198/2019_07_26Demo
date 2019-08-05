@@ -28,7 +28,7 @@ public class loginController {
         //根据用户权限跳转不同页面
         ModelAndView modelAndView=new ModelAndView();
         if (account.getJur()!=3){
-            modelAndView.setViewName("/admin/index");
+            modelAndView.setViewName("/admin/main");
         }else {
             modelAndView.setViewName("/user/index");
         }

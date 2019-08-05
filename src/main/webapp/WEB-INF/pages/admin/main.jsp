@@ -22,153 +22,178 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css" media="all">
 </head>
 <body>
-<section class="larry-wrapper">
-    <!-- overview -->
-    <div class="row state-overview">
-        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
-            <section class="panel">
-                <div class="symbol userblue layui-anim layui-anim-rotate"> <i class="iconpx-users"></i>
-                </div>
-                <div class="value">
-                    <a href="#">
-                        <h1 id="count1">10</h1>
-                    </a>
-                    <p>用户总量</p>
-                </div>
-            </section>
-        </div>
-        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
-            <section class="panel">
-                <div class="symbol commred layui-anim layui-anim-rotate"> <i class="iconpx-user-add"></i>
-                </div>
-                <div class="value">
-                    <a href="#">
-                        <h1 id="count2">1</h1>
-                    </a>
-                    <p>今日注册用户</p>
-                </div>
-            </section>
-        </div>
-        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
-            <section class="panel">
-                <div class="symbol articlegreen layui-anim layui-anim-rotate">
-                    <i class="iconpx-file-word-o"></i>
-                </div>
-                <div class="value">
-                    <a href="#">
-                        <h1 id="count3">50</h1>
-                    </a>
-                    <p>一天推荐人数>=6</p>
-                </div>
-            </section>
-        </div>
-        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
-            <section class="panel">
-                <div class="symbol rsswet layui-anim layui-anim-rotate">
-                    <i class="iconpx-check-circle"></i>
-                </div>
-                <div class="value">
-                    <a href="#">
-                        <h1 id="count4">998</h1>
-                    </a>
-                    <p>今天收益总额的2%</p>
-                </div>
-            </section>
+<jsp:include page="index.jsp" flush="true"/>
+<div class="layui-body" id="larry-body" style="bottom: 0;border-left: solid 2px #2299ee; margin-top: 50px;">
+    <div class="layui-tab layui-tab-card larry-tab-box" id="larry-tab" lay-filter="demo" lay-allowclose="true">
+        <div class="go-left key-press pressKey" id="titleLeft" title="滚动至最右侧"><i class="larry-icon larry-weibiaoti6-copy"></i> </div>
+        <ul class="layui-tab-title">
+            <li class="layui-this" id="admin-home"><i class="iconfont icon-diannao1"></i><em>后台首页</em></li>
+        </ul>
+        <div class="go-right key-press pressKey" id="titleRight" title="滚动至最左侧"><i class="larry-icon larry-right"></i></div>
+        <ul class="layui-nav closeBox">
+            <li class="layui-nav-item">
+                <a href="javascript:;"><i class="iconfont icon-caozuo"></i> 页面操作</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:;" class="refresh refreshThis"><i class="layui-icon">&#x1002;</i> 刷新当前</a></dd>
+                    <dd><a href="javascript:;" class="closePageOther"><i class="iconfont icon-prohibit"></i> 关闭其他</a></dd>
+                    <dd><a href="javascript:;" class="closePageAll"><i class="iconfont icon-guanbi"></i> 关闭全部</a></dd>
+                </dl>
+            </li>
+        </ul>
+        <div class="layui-tab-content" style="min-height: 150px; ">
+            <div class="layui-tab-item layui-show">
+                <section class="larry-wrapper">
+                    <!-- overview -->
+                    <div class="row state-overview">
+                        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+                            <section class="panel">
+                                <div class="symbol userblue layui-anim layui-anim-rotate"> <i class="iconpx-users"></i>
+                                </div>
+                                <div class="value">
+                                    <a href="#">
+                                        <h1 id="count1">10</h1>
+                                    </a>
+                                    <p>用户总量</p>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+                            <section class="panel">
+                                <div class="symbol commred layui-anim layui-anim-rotate"> <i class="iconpx-user-add"></i>
+                                </div>
+                                <div class="value">
+                                    <a href="#">
+                                        <h1 id="count2">1</h1>
+                                    </a>
+                                    <p>今日注册用户</p>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+                            <section class="panel">
+                                <div class="symbol articlegreen layui-anim layui-anim-rotate">
+                                    <i class="iconpx-file-word-o"></i>
+                                </div>
+                                <div class="value">
+                                    <a href="#">
+                                        <h1 id="count3">50人</h1>
+                                    </a>
+                                    <p>一天推荐人数>=6</p>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+                            <section class="panel">
+                                <div class="symbol rsswet layui-anim layui-anim-rotate">
+                                    <i class="iconpx-check-circle"></i>
+                                </div>
+                                <div class="value">
+                                    <a href="#">
+                                        <h1 id="count4">998</h1>
+                                    </a>
+                                    <p>今天收益总额的2%</p>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <!-- overview end -->
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <section class="panel">
+                                <header class="panel-heading bm0">
+                                    <span class='span-title'>系统概览</span>
+                                    <span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
+                                </header>
+                                <div class="panel-body" >
+                                    <table class="table table-hover personal-task">
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <strong>版本信息</strong>：测试版 版本名称：后台管理  版本号:1.0
+
+                                            </td>
+                                            <td>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>开发作者</strong>： 0.0
+
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>网站域名</strong>：未定义
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>网站目录</strong>：未定义
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>服务器IP</strong>：未定义
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>服务器环境</strong>：未定义
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>数据库版本</strong>： 未定义
+
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>最大上传限制</strong>： 未定义
+
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>当前登录用户</strong>： <span class="current_user">未定义</span>
+
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </section>
+
+                        </div>
+                        <div class="col-lg-6">
+                            <!-- 网站信息统计｛SEO数据统计｝ -->
+                            <section class="panel">
+                                <header class="panel-heading bm0">
+                                    <span class='span-title'>网站信息统计｛SEO数据统计｝</span>
+                                    <span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
+                                </header>
+                                <div class="panel-body laery-seo-box">
+                                    <div class="larry-seo-stats" id="larry-seo-stats"></div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
         </div>
     </div>
-    <!-- overview end -->
-    <div class="row">
-        <div class="col-lg-6">
-            <section class="panel">
-                <header class="panel-heading bm0">
-                    <span class='span-title'>系统概览</span>
-                    <span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
-                </header>
-                <div class="panel-body" >
-                    <table class="table table-hover personal-task">
-                        <tbody>
-                        <tr>
-                            <td>
-                                <strong>版本信息</strong>：测试版 版本名称：后台管理  版本号:1.0
+</div>
 
-                            </td>
-                            <td>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <strong>开发作者</strong>： 0.0
-
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <strong>网站域名</strong>：未定义
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <strong>网站目录</strong>：未定义
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <strong>服务器IP</strong>：未定义
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <strong>服务器环境</strong>：未定义
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <strong>数据库版本</strong>： 未定义
-
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <strong>最大上传限制</strong>： 未定义
-
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <strong>当前登录用户</strong>： <span class="current_user">未定义</span>
-
-                            </td>
-                            <td></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-        </div>
-        <div class="col-lg-6">
-            <!-- 网站信息统计｛SEO数据统计｝ -->
-            <section class="panel">
-                <header class="panel-heading bm0">
-                    <span class='span-title'>网站信息统计｛SEO数据统计｝</span>
-                    <span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
-                </header>
-                <div class="panel-body laery-seo-box">
-                    <div class="larry-seo-stats" id="larry-seo-stats"></div>
-                </div>
-            </section>
-        </div>
-    </div>
-
-</section>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/common/layui/layui.js"></script>
 <script type="text/javascript">
