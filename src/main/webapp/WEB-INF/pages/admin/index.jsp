@@ -9,7 +9,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>LarryCMS后台管理</title>
+    <title>后台管理</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -35,44 +35,13 @@
                     <i class="fa fa-bars" aria-hidden="true" ></i>
                 </div>
             </div>
-            <!-- 顶级菜单区域 -->
-            <div class="layui-larry-menu">
-                <ul class="layui-nav clearfix">
-                    <%--<li class="layui-nav-item layui-this">--%>
-                        <%--<a href="javascirpt:;"><i class="iconfont icon-wangzhanguanli"></i>内容管理</a>--%>
-                    <%--</li>--%>
-                    <%--<li class="layui-nav-item">--%>
-                        <%--<a href="javascirpt:;"><i class="iconfont icon-weixin3"></i>微信公众</a>--%>
-                    <%--</li>--%>
-                    <%--<li class="layui-nav-item">--%>
-                        <%--<a href="javascirpt:;"><i class="iconfont icon-ht_expand"></i>扩展模块</a>--%>
-                    <%--</li>--%>
-                </ul>
-            </div>
+
+
             <!-- 右侧导航 -->
             <ul class="layui-nav larry-header-item">
-                <li class="layui-nav-item"><a href="">账户名：${pageContext.session.getAttribute("username")}</a>
+                <li class="layui-nav-item">
+                    账户名：${pageContext.session.getAttribute("username")}
                 </li>
-                <%--<li class="layui-nav-item first">--%>
-                    <%--<a href="javascript:;">--%>
-                        <%--<cite>默认站点</cite>--%>
-                        <%--<span class="layui-nav-more"></span>--%>
-                    <%--</a>--%>
-                    <%--<dl class="layui-nav-child">--%>
-                        <%--<dd>--%>
-                            <%--<a href="">站点1</a>--%>
-                        <%--</dd>--%>
-                        <%--<dd>--%>
-                            <%--<a href="">站点2</a>--%>
-                        <%--</dd>--%>
-
-                    <%--</dl>--%>
-                <%--</li>--%>
-                <%--<li class="layui-nav-item">--%>
-                    <%--<a href="javascript:;" id="lock">--%>
-                        <%--<i class="iconfont icon-diannao1"></i>--%>
-                        <%--锁屏</a>--%>
-                <%--</li>--%>
                 <li class="layui-nav-item">
                     <a href="/logout">
                         <i class="iconfont icon-exit"></i>
@@ -88,7 +57,7 @@
             <!-- 左侧菜单 -->
             <ul class="layui-nav layui-nav-tree">
                 <li class="layui-nav-item layui-this">
-                    <a href="javascript:;" data-url="main.html">
+                    <a href="javascript:;" data-url="main.html" style="margin-top: 10px">
                         <i class="iconfont icon-home1" data-icon='icon-home1'></i>
                         <span>后台首页</span>
                     </a>
@@ -97,14 +66,14 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">
                         <i class="iconfont icon-jiaoseguanli" ></i>
-                        <span>我的面板</span>
+                        <span>用户管理</span>
                         <em class="layui-nav-more"></em>
                     </a>
                     <dl class="layui-nav-child">
                         <dd>
                             <a href="javascript:;" data-url="personInfo.html">
                                 <i class="iconfont icon-geren1" data-icon='icon-geren1'></i>
-                                <span>个人信息</span>
+                                <span>用户信息</span>
                             </a>
                         </dd>
                         <dd>
@@ -137,201 +106,31 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">
                         <i class="iconfont icon-jiaoseguanli2" ></i>
-                        <span>表格表单</span>
+                        <span>店铺管理</span>
                         <em class="layui-nav-more"></em>
                     </a>
                     <dl class="layui-nav-child">
                         <dd>
                             <a href="javascript:;" data-url="table.html">
                                 <i class="iconfont icon-yonghu1" data-icon='icon-yonghu1'></i>
-                                <span>有线条表格</span>
+                                <span>店铺信息</span>
                             </a>
                         </dd>
                         <dd>
                             <a href="javascript:;"  data-url="table_1.html">
                                 <i class="iconfont icon-jiaoseguanli4" data-icon='icon-jiaoseguanli4'></i>
-                                <span>无线条输入增加内容框</span>
+                                <span>用的上就用</span>
                             </a>
                         </dd>
                         <dd>
                             <a href="javascript:;" data-url="myloginfo.html">
                                 <i class="iconfont icon-quanxian2" data-icon='icon-quanxian2'></i>
-                                <span>无线条表格</span>
-                            </a>
-                        </dd>
-                    </dl>
-                </li>
-                <!-- 内容管理 -->
-                <li class="layui-nav-item">
-                    <a href="javascript:;">
-                        <i class="iconfont icon-wenzhang1" ></i>
-                        <span>内容管理</span>
-                        <em class="layui-nav-more"></em>
-                    </a>
-                    <dl class="layui-nav-child">
-                        <dd>
-                            <a href="javascript:;" data-url="404.html">
-                                <i class="iconfont icon-lanmuguanli" data-icon='icon-lanmuguanli'></i>
-                                <span>404页面</span>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;">
-                                <i class="iconfont icon-wenzhang2" data-icon='icon-wenzhang2'></i>
-                                <span>所有档案列表</span>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;">
-                                <i class="iconfont icon-icon1" data-icon='icon-icon1'></i>
-                                <span>待审核的档案</span>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;">
-                                <i class="iconfont icon-word" data-icon='icon-word'></i>
-                                <span>我发布的文档</span>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;">
-                                <i class="iconfont icon-pinglun1" data-icon='icon-pinglun1'></i>
-                                <span>评论管理</span>
-                            </a>
-                        </dd>
-
-                        <dd>
-                            <a href="javascript:;">
-                                <i class="iconfont icon-tags1" data-icon='icon-tags1'></i>
-                                <span>TAGS管理</span>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;">
-                                <i class="iconfont icon-huishouzhan1" data-icon='icon-huishouzhan1'></i>
-                                <span>内容回收站</span>
+                                <span>用不上就删</span>
                             </a>
                         </dd>
                     </dl>
                 </li>
 
-                <!-- 会员管理 -->
-                <li class="layui-nav-item">
-                    <a href="javascript:;">
-                        <i class="iconfont icon-m-members" ></i>
-                        <span>单页面</span>
-                        <em class="layui-nav-more"></em>
-                    </a>
-                    <dl class="layui-nav-child">
-                        <dd>
-                            <a href="javascript:;" data-url="404.html">
-                                <i class="iconfont icon-zhuti"  data-icon='icon-zhuti'></i>
-                                <span>404提示页面</span>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" data-url="tab.html">
-                                <i class="iconfont icon-zhuti"  data-icon='icon-zhuti'></i>
-                                <span>选项卡页面</span>
-                            </a>
-                        </dd>
-                    </dl>
-                </li>
-
-                <li class="layui-nav-item">
-                    <a href="javascript:;">
-                        <i class="iconfont icon-shengchengbaogao" ></i>
-                        <span>网站维护</span>
-                        <em class="layui-nav-more"></em>
-                    </a>
-                    <dl class="layui-nav-child">
-                        <dd>
-                            <a href="javascript:;">
-                                <i class="iconfont icon-zhuti"  data-icon='icon-zhuti'></i>
-                                <span>网站主题</span>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a href="">
-                                <i class="iconfont icon-database" data-icon='icon-database'></i>
-                                <span>数据库管理</span>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a href="">
-                                <i class="iconfont icon-shengchengbaogao" data-icon='icon-shengchengbaogao'></i>
-                                <span>生成页面</span>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a href="">
-                                <i class="iconfont icon-qingchuhuancun" data-icon='icon-qingchuhuancun'></i>
-                                <span>更新缓存</span>
-                            </a>
-                        </dd>
-
-                    </dl>
-                </li>
-
-                <!-- 系统设置 -->
-                <li class="layui-nav-item">
-                    <a href="javascript:;">
-                        <i class="iconfont icon-xitong" ></i>
-                        <span>系统设置</span>
-                        <em class="layui-nav-more"></em>
-                    </a>
-                    <dl class="layui-nav-child">
-                        <dd>
-                            <a href="javascript:;">
-                                <i class="iconfont icon-zhandianpeizhi" data-icon='icon-zhandianpeizhi'></i>
-                                <span>基本参数设置</span>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;">
-                                <i class="iconfont icon-zhandianguanli1" data-icon='icon-zhandianguanli1'></i>
-                                <span>多站点管理</span>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;">
-                                <i class="iconfont icon-anquanshezhi" data-icon='icon-anquanshezhi'></i>
-                                <span>安全设置</span>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;">
-                                <i class="iconfont icon-sms" data-icon='icon-sms'></i>
-                                <span>短信接口设置</span>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;">
-                                <i class="iconfont icon-iconfuzhi01" data-icon='icon-iconfuzhi01'></i>
-                                <span>系统日志管理</span>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;">
-                                <i class='iconfont icon-SQLServershujuku' data-icon='icon-SQLServershujuku'></i>
-                                <span>SQL命令行工具</span>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;">
-                                <i class='iconfont icon-xinxicaiji' data-icon='icon-xinxicaiji'></i>
-                                <span>防采集管理</span>
-                            </a>
-                        </dd>
-                    </dl>
-                </li>
-                <!-- 友链设置 -->
-                <li class="layui-nav-item">
-                    <a href="javascript:;">
-                        <i class="iconfont icon-youqinglianjie"  data-icon='icon-youqinglianjie'></i>
-                        <span>友情链接</span>
-                    </a>
-                </li>
             </ul>
         </div>
     </div>
@@ -357,39 +156,17 @@
             </ul>
             <div class="layui-tab-content" style="min-height: 150px; ">
                 <div class="layui-tab-item layui-show">
-                    <iframe class="larry-iframe" data-id='0' src="${pageContext.request.contextPath}/main.html"></iframe>
+                    <%--<iframe class="larry-iframe" data-id='0' src="${pageContext.request.contextPath}/WEB-INF/pages/admin/main.jsp"></iframe>--%>
+                    <jsp:include page="main.jsp" flush="true"/>
                 </div>
             </div>
         </div>
     </div>
     <!-- 底部区域 -->
-    <div class="layui-footer layui-larry-foot" id="larry-footer">
-        <div class="layui-mian">
-            <p class="p-admin">
-                <span>2017 &copy;</span>
-                广州普金计算机科技股份有限公司,版权所有
-            </p>
-        </div>
-    </div>
 </div>
 <!-- 加载js文件-->
 <script type="text/javascript" src="${pageContext.request.contextPath}/common/layui/layui.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/larry.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/index.js"></script>
-<!-- 锁屏 -->
-<div class="lock-screen" style="display: none;">
-    <div id="locker" class="lock-wrapper">
-        <div id="time"></div>
-        <div class="lock-box center">
-            <img src="${pageContext.request.contextPath}/images/userimg.jpg" alt="">
-            <h1>admin</h1>
-            <duv class="form-group col-lg-12">
-                <input type="password" placeholder='锁屏状态，请输入密码解锁' id="lock_password" class="form-control lock-input" autofocus name="lock_password">
-                <button id="unlock" class="btn btn-lock">解锁</button>
-            </duv>
-        </div>
-    </div>
-</div>
-
 </body>
 </html>
