@@ -31,28 +31,27 @@
             <!-- logo区域 -->
             <div class="admin-logo-box">
                 <a class="logo" href="http://www.kuxuebao.net" title="logo">后台管理系统</a>
-                <div class="larry-side-menu">
-                    <i class="fa fa-bars" aria-hidden="true"></i>
+                <div class="larry-side-menu" style="background: #23262E;">
+                    <i class="fa fa-bars" aria-hidden="true" ></i>
                 </div>
             </div>
             <!-- 顶级菜单区域 -->
             <div class="layui-larry-menu">
                 <ul class="layui-nav clearfix">
-                    <li class="layui-nav-item layui-this">
-                        <a href="javascirpt:;"><i class="iconfont icon-wangzhanguanli"></i>内容管理</a>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascirpt:;"><i class="iconfont icon-weixin3"></i>微信公众</a>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascirpt:;"><i class="iconfont icon-ht_expand"></i>扩展模块</a>
-                    </li>
+                    <%--<li class="layui-nav-item layui-this">--%>
+                        <%--<a href="javascirpt:;"><i class="iconfont icon-wangzhanguanli"></i>内容管理</a>--%>
+                    <%--</li>--%>
+                    <%--<li class="layui-nav-item">--%>
+                        <%--<a href="javascirpt:;"><i class="iconfont icon-weixin3"></i>微信公众</a>--%>
+                    <%--</li>--%>
+                    <%--<li class="layui-nav-item">--%>
+                        <%--<a href="javascirpt:;"><i class="iconfont icon-ht_expand"></i>扩展模块</a>--%>
+                    <%--</li>--%>
                 </ul>
             </div>
             <!-- 右侧导航 -->
             <ul class="layui-nav larry-header-item">
-                <li class="layui-nav-item">
-                    账户名：${pageContext.session.getAttribute("username")}
+                <li class="layui-nav-item"><a href="">账户名：${pageContext.session.getAttribute("username")}</a>
                 </li>
                 <%--<li class="layui-nav-item first">--%>
                     <%--<a href="javascript:;">--%>
