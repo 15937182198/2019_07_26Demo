@@ -9,7 +9,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>LarryBlogCMS-Home</title>
+    <title>Home</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -58,7 +58,7 @@
                     <a href="#">
                         <h1 id="count3">50</h1>
                     </a>
-                    <p>文章总数</p>
+                    <p>一天推荐人数>=6</p>
                 </div>
             </section>
         </div>
@@ -69,9 +69,9 @@
                 </div>
                 <div class="value">
                     <a href="#">
-                        <h1 id="count4">0</h1>
+                        <h1 id="count4">998</h1>
                     </a>
-                    <p>待审文章总数</p>
+                    <p>今天收益总额的2%</p>
                 </div>
             </section>
         </div>
@@ -89,7 +89,7 @@
                         <tbody>
                         <tr>
                             <td>
-                                <strong>版本信息</strong>： 版本名称：<a href="http://www.larrycms.com">LarryCMS</a> 版本号: V01_UTF8_0.10
+                                <strong>版本信息</strong>：测试版 版本名称：后台管理  版本号:1.0
 
                             </td>
                             <td>
@@ -98,7 +98,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <strong>开发作者</strong>： Larry
+                                <strong>开发作者</strong>： 0.0
 
                             </td>
                             <td></td>
@@ -152,6 +152,9 @@
                     </table>
                 </div>
             </section>
+
+        </div>
+        <div class="col-lg-6">
             <!-- 网站信息统计｛SEO数据统计｝ -->
             <section class="panel">
                 <header class="panel-heading bm0">
@@ -160,94 +163,6 @@
                 </header>
                 <div class="panel-body laery-seo-box">
                     <div class="larry-seo-stats" id="larry-seo-stats"></div>
-                </div>
-            </section>
-        </div>
-        <div class="col-lg-6">
-            <!-- 快捷操作 -->
-            <section class="panel">
-                <header class="panel-heading bm0">
-                    <span class='span-title'>快捷操作</span>
-                    <span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
-                </header>
-                <div class="panel-body">
-                    <table class="table table-hover personal-task shortcut">
-                        <tr>
-                            <td>
-                                <div class="c1">1</div>
-                                <div class="c2">2</div>
-                                <br>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </section>
-            <!-- 系统公告 -->
-            <section class="panel">
-                <header class="panel-heading bm0">
-                    <span class='span-title'>系统公告</span>
-                    <span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
-                </header>
-                <div class="panel-body">
-                    <table class="table table-hover personal-task shortcut">
-                        <tr>
-                            <td>
-                                <div class="c1">1</div>
-                                <div class="c2">2</div>
-                                <br>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </section>
-
-            <!-- 最新文章 -->
-            <section class="panel">
-                <header class="panel-heading bm0">
-                    <span class='span-title'>最新文章</span>
-                    <span class="badge" style="background-color:#FF3333;"> new </span>
-                    <span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
-                </header>
-                <div class="panel-body">
-                    <table class="table table-hover personal-task">
-                        <tbody>
-                        <tr>
-                            <td>原创</td>
-                            <td>
-                                <a href="#" target="_blank">汪涵率众特工入侵地球 20160408</a>
-                            </td>
-                            <td class="col-md-5">阅读量：1350 &nbsp;&nbsp;&nbsp;&nbsp; 2016-04-11</td>
-                        </tr>
-                        <tr>
-                            <td>原创</td>
-                            <td>
-                                <a href="#" target="_blank">汪涵率众特工入侵地球 20160408</a>
-                            </td>
-                            <td class="col-md-5">阅读量：1350 &nbsp;&nbsp;&nbsp;&nbsp; 2016-04-11</td>
-                        </tr>
-                        <tr>
-                            <td>原创</td>
-                            <td>
-                                <a href="#" target="_blank">汪涵率众特工入侵地球 20160408</a>
-                            </td>
-                            <td class="col-md-5">阅读量：1350 &nbsp;&nbsp;&nbsp;&nbsp; 2016-04-11</td>
-                        </tr>
-                        <tr>
-                            <td>原创</td>
-                            <td>
-                                <a href="#" target="_blank">汪涵率众特工入侵地球 20160408</a>
-                            </td>
-                            <td class="col-md-5">阅读量：1350 &nbsp;&nbsp;&nbsp;&nbsp; 2016-04-11</td>
-                        </tr>
-                        <tr>
-                            <td>原创</td>
-                            <td>
-                                <a href="#" target="_blank">汪涵率众特工入侵地球 20160408</a>
-                            </td>
-                            <td class="col-md-5">阅读量：1350 &nbsp;&nbsp;&nbsp;&nbsp; 2016-04-11</td>
-                        </tr>
-                        </tbody>
-                    </table>
                 </div>
             </section>
         </div>
