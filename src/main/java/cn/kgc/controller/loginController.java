@@ -55,4 +55,5 @@ public class loginController {
         modelAndView.setViewName("/admin/newsAdd");
         return modelAndView;
     }
+
 }

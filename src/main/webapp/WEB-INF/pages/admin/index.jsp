@@ -71,27 +71,21 @@
                     </a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" data-url="personInfo.jsp">
+                            <a href="${pageContext.request.contextPath}/loginController/userInfor" data-url="table.jsp">
                                 <i class="iconfont icon-geren1" data-icon='icon-geren1'></i>
                                 <span>用户信息</span>
                             </a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="changepwd.jsp">
+                            <a href="${pageContext.request.contextPath}/loginController/userInforUpdate" data-url="changepwd.jsp">
                                 <i class="iconfont icon-iconfuzhi01" data-icon='icon-iconfuzhi01'></i>
-                                <span>修改密码</span>
+                                <span>修改信息</span>
                             </a>
                         </dd>
                         <dd>
                             <a href="javascript:;" data-url="changepwd.html">
                                 <i class="iconfont icon-iconfuzhi01" data-icon='icon-iconfuzhi01'></i>
                                 <span>新增用户</span>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" data-url="changepwd.jsp">
-                                <i class="iconfont icon-iconfuzhi01" data-icon='icon-iconfuzhi01'></i>
-                                <span>新增管理员</span>
                             </a>
                         </dd>
                     </dl>
@@ -105,7 +99,7 @@
                     </a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" data-url="table.jsp">
+                            <a href="${pageContext.request.contextPath}/loginController/userInfor" data-url="table.jsp">
                                 <i class="iconfont icon-yonghu1" data-icon='icon-yonghu1'></i>
                                 <span>店铺信息</span>
                             </a>
