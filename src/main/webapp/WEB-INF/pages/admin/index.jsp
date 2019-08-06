@@ -20,9 +20,18 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/common/layui/css/layui.css" media="all">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/common/global.css" media="all">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminstyle.css" media="all">
+    <style type="text/css">
+        .one{
+            margin-top: 25px;
+        }
+        .margintop{
+            margin-top: 70px;
+        }
 
-
+    </style>
 </head>
+
+
 <body style="overflow: hidden">
 <div class="layui-layout layui-layout-admin" id="layui_layout">
     <!-- 顶部区域 -->

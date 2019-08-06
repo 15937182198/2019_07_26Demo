@@ -65,4 +65,44 @@ public class loginController {
         modelAndView.setViewName("/admin/addUser");
         return modelAndView;
     }
+    /**
+     * 普通用户购买账号页面跳转
+     * @return
+     */
+    @RequestMapping("/userAdd")
+    public ModelAndView userAdd(){
+        ModelAndView modelAndView =new ModelAndView();
+        modelAndView.setViewName("/user/userAdd");
+        return modelAndView;
+    }
+    /**
+     * 普通用户修改账号页面跳转
+     * @return
+     */
+    @RequestMapping("/UpdateUser")
+    public ModelAndView updateUser(){
+        ModelAndView modelAndView =new ModelAndView();
+        modelAndView.setViewName("/user/updatPwd");
+        return modelAndView;
+    }
+    /**
+     * 普通用户积分交易账号页面跳转
+     * @return
+     */
+    @RequestMapping("/userjiaoyi")
+    public ModelAndView userjiaoyi(){
+        ModelAndView modelAndView =new ModelAndView();
+        modelAndView.setViewName("/user/jiaoyi");
+        return modelAndView;
+    }
+    /**
+     * 普通用户积分交易账号页面跳转
+     * @return
+     */
+    @RequestMapping("/usershouye")
+    public ModelAndView usershouye(){
+        ModelAndView modelAndView =new ModelAndView();
+        modelAndView.setViewName("/user/index");
+        return modelAndView;
+    }
 }
