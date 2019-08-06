@@ -71,6 +71,8 @@ public class AccountServiceImpl implements AccountService {
      */
     @Override
     public boolean saveAccount(Account account, Integer referrer, Integer jur) {
+        //设置基本积分
+        account.setAccountMoney((double) 1000);
         //设置密码
         account.setAccountPassword(passwordEncoder.encode(account.getAccountPassword()));
         //后台给账户设定创建时间

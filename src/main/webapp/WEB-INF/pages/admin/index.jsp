@@ -56,8 +56,8 @@
 
             <!-- 左侧菜单 -->
             <ul class="layui-nav layui-nav-tree">
-                <li class="layui-nav-item layui-this">
-                    <a href="javascript:;" data-url="main.jsp" style="margin-top: 10px">
+                <li class="layui-nav-item layui-this" >
+                    <a href="javascript:;" data-url="main.jsp">
                         <i class="iconfont icon-home1" data-icon='icon-home1'></i>
                         <span>后台首页</span>
                     </a>
