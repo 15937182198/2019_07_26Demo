@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>添加信息</title>
+    <title>修改用户</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -20,71 +20,73 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/common/bootstrap/css/bootstrap.css" media="all">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/common/global.css" media="all">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/personal.css" media="all">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminstyle.css" media="all">
+    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 </head>
 <body class="childrenBody">
-<form class="layui-form">
-    <div class="layui-form-item">
-        <label class="layui-form-label">文章标题</label>
-        <div class="layui-input-block">
-            <input class="layui-input newsName" lay-verify="required" placeholder="请输入文章标题" type="text">
+<jsp:include page="index.jsp" flush="true"/>
+<div class="layui-body" id="larry-body" style="bottom: 0;border-left: solid 2px #2299ee; margin-top: 50px;">
+    <div class="layui-tab layui-tab-card larry-tab-box" id="larry-tab" lay-filter="demo" lay-allowclose="true">
+        <div class="go-left key-press pressKey" id="titleLeft" title="滚动至最右侧"><i class="larry-icon larry-weibiaoti6-copy"></i> </div>
+        <ul class="layui-tab-title">
+            <li class="layui-this" id="admin-home"><i class="iconfont icon-diannao1"></i><em>后台首页</em></li>
+        </ul>
+        <div class="go-right key-press pressKey" id="titleRight" title="滚动至最左侧"><i class="larry-icon larry-right"></i></div>
+        <ul class="layui-nav closeBox">
+            <li class="layui-nav-item">
+                <a href="javascript:;"><i class="iconfont icon-caozuo"></i> 页面操作</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:;" class="refresh refreshThis"><i class="layui-icon">&#x1002;</i> 刷新当前</a></dd>
+                    <dd><a href="javascript:;" class="closePageOther"><i class="iconfont icon-prohibit"></i> 关闭其他</a></dd>
+                    <dd><a href="javascript:;" class="closePageAll"><i class="iconfont icon-guanbi"></i> 关闭全部</a></dd>
+                </dl>
+            </li>
+        </ul>
+        <div class="layui-tab-content" style="min-height: 150px; margin-top: 25px;">
+            <div class="layui-tab-item layui-show">
+<form class="form-horizontal ">
+    <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">用户名：</label>
+        <div class="col-xs-4">
+            <input type="email" class="form-control" name="" id="inputEmail3" placeholder="用户名">
         </div>
     </div>
-    <div class="layui-form-item">
-        <div class="layui-inline">
-            <label class="layui-form-label">自定义属性</label>
-            <div class="layui-input-block">
-                <input name="tuijian" class="tuijian" title="推荐" type="checkbox"><div class="layui-unselect layui-form-checkbox" lay-skin=""><span>推荐</span><i class="layui-icon"></i></div>
-                <input name="shenhe" class="newsStatus" title="审核" type="checkbox"><div class="layui-unselect layui-form-checkbox" lay-skin=""><span>审核</span><i class="layui-icon"></i></div>
-                <input name="show" class="isShow" title="展示" type="checkbox"><div class="layui-unselect layui-form-checkbox" lay-skin=""><span>展示</span><i class="layui-icon"></i></div>
-            </div>
-        </div>
-        <div class="layui-inline">
-            <label class="layui-form-label">文章作者</label>
-            <div class="layui-input-inline">
-                <input class="layui-input newsAuthor" lay-verify="required" placeholder="请输入文章作者" type="text">
-            </div>
-        </div>
-        <div class="layui-inline">
-            <label class="layui-form-label">发布时间</label>
-            <div class="layui-input-inline">
-                <input class="layui-input newsTime" lay-verify="required|date" onClick="layui.laydate({elem:this})" type="text">
-            </div>
-        </div>
-        <div class="layui-inline">
-            <label class="layui-form-label">浏览权限</label>
-            <div class="layui-input-inline">
-                <select name="browseLook" class="newsLook" lay-filter="browseLook">
-                    <option value="0">开放浏览</option>
-                    <option value="1">会员浏览</option>
-                </select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input placeholder="开放浏览" value="开放浏览" readonly="" class="layui-input layui-unselect" type="text"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="0" class="layui-this">开放浏览</dd><dd lay-value="1" class="">会员浏览</dd></dl></div>
-            </div>
+    <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">密码：</label>
+        <div class="col-xs-4">
+            <input type="password" class="form-control" name="" id="inputPassword3" placeholder="密码">
         </div>
     </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">关键字</label>
-        <div class="layui-input-block">
-            <input class="layui-input" placeholder="请输入文章关键字" type="text">
+    <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">积分余额：</label>
+        <div class="col-xs-4">
+            <input type="password" class="form-control" id="" name="" placeholder="积分余额">
         </div>
     </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">内容摘要</label>
-        <div class="layui-input-block">
-            <textarea placeholder="请输入内容摘要" class="layui-textarea"></textarea>
+    <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">创建时间：</label>
+        <div class="col-xs-4">
+            <input type="password" class="form-control" name="" placeholder="创建时间" readonly>
         </div>
     </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">文章内容</label>
-        <div class="layui-input-block">
-            <textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="news_content"></textarea><div class="layui-layedit"><div class="layui-unselect layui-layedit-tool"><i class="layui-icon layedit-tool-b" title="加粗" lay-command="Bold" layedit-event="b" "=""></i><i class="layui-icon layedit-tool-i" title="斜体" lay-command="italic" layedit-event="i" "=""></i><i class="layui-icon layedit-tool-u" title="下划线" lay-command="underline" layedit-event="u" "=""></i><i class="layui-icon layedit-tool-d" title="删除线" lay-command="strikeThrough" layedit-event="d" "=""></i><span class="layedit-tool-mid"></span><i class="layui-icon layedit-tool-left" title="左对齐" lay-command="justifyLeft" layedit-event="left" "=""></i><i class="layui-icon layedit-tool-center" title="居中对齐" lay-command="justifyCenter" layedit-event="center" "=""></i><i class="layui-icon layedit-tool-right" title="右对齐" lay-command="justifyRight" layedit-event="right" "=""></i><span class="layedit-tool-mid"></span><i class="layui-icon layedit-tool-link" title="插入链接" layedit-event="link" "=""></i><i class="layui-icon layedit-tool-unlink layui-disabled" title="清除链接" lay-command="unlink" layedit-event="unlink" "=""></i><i class="layui-icon layedit-tool-face" title="表情" layedit-event="face" "=""></i><i class="layui-icon layedit-tool-image" title="图片" layedit-event="image"><input name="file" type="file"></i></div><div class="layui-layedit-iframe"><iframe id="LAY_layedit_1" name="LAY_layedit_1" textarea="news_content" style="height: 280px;" frameborder="0"></iframe></div></div>
+    <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">推荐人：</label>
+        <div class="col-xs-4">
+            <input type="password" class="form-control" name="" placeholder="推荐人" readonly>
         </div>
     </div>
-    <div class="layui-form-item">
-        <div class="layui-input-block">
-            <button class="layui-btn" lay-submit="" lay-filter="addNews">立即提交</button>
-            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">确认修改</button>
         </div>
     </div>
 </form>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript" src="${pageContext.request.contextPath}/common/layui/layui.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/newsadd.js"></script>
 

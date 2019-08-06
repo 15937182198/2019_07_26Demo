@@ -1,6 +1,7 @@
 package cn.kgc.controller;
 
 import cn.kgc.dao.AccountDao;
+import cn.kgc.pojo.Account;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,6 +32,27 @@ public class loginController {
         }else {
             modelAndView.setViewName("/user/index");
         }
+        return modelAndView;
+    }
+
+    /**
+     * 用户信息页面跳转
+     * @return
+     */
+    @RequestMapping("/userInfor")
+    public ModelAndView userInfor(){
+        ModelAndView modelAndView =new ModelAndView();
+        modelAndView.setViewName("/admin/table");
+        return modelAndView;
+    }
+    /**
+     * 修改用户信息页面跳转
+     * @return
+     */
+    @RequestMapping("/userInforUpdate")
+    public ModelAndView userInforUpdate(){
+        ModelAndView modelAndView =new ModelAndView();
+        modelAndView.setViewName("/admin/newsAdd");
         return modelAndView;
     }
 }
