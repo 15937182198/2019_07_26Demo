@@ -3,6 +3,9 @@ package cn.kgc.service;
 import cn.kgc.pojo.Account;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import javax.xml.crypto.Data;
+import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 public interface AccountService extends UserDetailsService {
@@ -37,4 +40,29 @@ public interface AccountService extends UserDetailsService {
      */
     boolean saveAccount(Account account);
 
+    /**
+     * 查询所有管理员
+     * @return 所有管理员账号
+     */
+    List<Account> findAdmin();
+
+    /**
+     * 查询所有用户
+     * @return 所有用户
+     */
+    List<Account> findAccount();
+
+    /**
+     * 根据时间查询注册用户
+     * @param date 查询时间
+     * @return 查询到的用户总数
+     */
+    List<Account> findAccountByDate(Date date);
+
+    /**
+     * 根据账户id查询推荐人数
+     * @param accountId 查询的账户id
+     * @return 该账户id推荐的人数
+     */
+    List<Account> findAccountByReferrer(Integer accountId);
 }

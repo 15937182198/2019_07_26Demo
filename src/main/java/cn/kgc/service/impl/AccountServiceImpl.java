@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -120,5 +121,31 @@ public class AccountServiceImpl implements AccountService {
         }else {
             return false;
         }
+    }
+
+
+    @Override
+    public List<Account> findAdmin() {
+        return accountDao.findAdmin();
+    }
+
+    @Override
+    public List<Account> findAccount() {
+        return accountDao.findAccount();
+    }
+
+    /**
+     * 根据时间查询注册用户
+     * @param date 查询时间
+     * @return 查询到的用户
+     */
+    @Override
+    public List<Account> findAccountByDate(Date date) {
+        return accountDao.findAccountByDate(date);
+    }
+
+    @Override
+    public List<Account> findAccountByReferrer(Integer accountId) {
+        return accountDao.findAccountByReferrer(accountId);
     }
 }

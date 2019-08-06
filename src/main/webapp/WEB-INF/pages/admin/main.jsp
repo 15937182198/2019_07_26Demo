@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/common/bootstrap/css/bootstrap.css" media="all">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/common/global.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css" media="all">
+
 </head>
 <body>
 <jsp:include page="index.jsp" flush="true"/>
@@ -36,7 +37,7 @@
                                 </div>
                                 <div class="value">
                                     <a href="#">
-                                        <h1 id="count1">10</h1>
+                                        <p id="count1">13</p>
                                     </a>
                                     <p>用户总量</p>
                                 </div>
@@ -48,7 +49,7 @@
                                 </div>
                                 <div class="value">
                                     <a href="#">
-                                        <h1 id="count2">1</h1>
+                                        <h1 id="count2"></h1>
                                     </a>
                                     <p>今日注册用户</p>
                                 </div>
@@ -61,9 +62,9 @@
                                 </div>
                                 <div class="value">
                                     <a href="#">
-                                        <h1 id="count3">50人</h1>
+                                        <h1 id="count3"></h1>
                                     </a>
-                                    <p>一天推荐人数>=6</p>
+                                    <p>推荐人数超过6的用户数</p>
                                 </div>
                             </section>
                         </div>
@@ -74,9 +75,9 @@
                                 </div>
                                 <div class="value">
                                     <a href="#">
-                                        <h1 id="count4">998</h1>
+                                        <h1 id="count4">1000</h1>
                                     </a>
-                                    <p>今天收益总额的2%</p>
+                                    <p>今日收益</p>
                                 </div>
                             </section>
                         </div>
@@ -111,20 +112,7 @@
                             </section>
 
                         </div>
-                        <div class="col-lg-6">
-                            <!-- 网站信息统计｛SEO数据统计｝ -->
-                            <section class="panel">
-                                <header class="panel-heading bm0">
-                                    <span class='span-title'>网站信息统计</span>
-                                    <span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
-                                </header>
-                                <div class="panel-body laery-seo-box">
-                                    <div class="larry-seo-stats" id="larry-seo-stats"></div>
-                                </div>
-                            </section>
-                        </div>
                     </div>
-
                 </section>
             </div>
         </div>
@@ -152,7 +140,43 @@
 
     });
 </script>
+
 <script type="text/javascript" src="${pageContext.request.contextPath}/jsplug/echarts.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/main.js"></script>
+<script src="../../../js/jquery-3.2.1.min.js"></script>
+<script>
+    $(function () {
+        var count1 = $("#count1");
+        var count2=$("#count2");
+        var count3=$("#count3");
+        var count4 = $("#count4");
+        $.ajax({
+            url:"../account/findAccountNumber",
+            "type"		:"post",
+            "dataType"	:"JSON",
+            "success"	:function (data) {
+                count1.html(data);
+            }
+        });
+        $.ajax({
+            url:"../account/findAccountByDate",
+            "type"		:"post",
+            "dataType"	:"JSON",
+            "success"	:function (data) {
+                count2.html(data);
+                count4.html(data*1000);
+            }
+        });
+        $.ajax({
+            url:"../account/findAccountByReferrer",
+            "type"		:"post",
+            "dataType"	:"JSON",
+            "success"	:function (data) {
+                count3.html(data);
+            }
+        });
+
+    });
+</script>
 </body>
 </html>

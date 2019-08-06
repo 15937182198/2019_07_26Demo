@@ -35,8 +35,6 @@
                     <i class="fa fa-bars" aria-hidden="true" ></i>
                 </div>
             </div>
-
-
             <!-- 右侧导航 -->
             <ul class="layui-nav larry-header-item">
                 <li class="layui-nav-item">

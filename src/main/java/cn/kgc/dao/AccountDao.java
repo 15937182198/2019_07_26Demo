@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
+import javax.xml.crypto.Data;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -40,7 +42,7 @@ public interface AccountDao {
      * 根据id查询他推荐的所有人
      * @return 当前id下的所有推荐人
      */
-    @Select("select * from where referrer=#{accountId}")
+    @Select("select * from account where referrer=#{accountId}")
     List<Account> findAccountByReferrer(Integer accountId);
 
     /**
@@ -65,4 +67,26 @@ public interface AccountDao {
      */
     @Insert("insert into account values (null,#{accountName},#{accountPassword},null,#{accountCreateDate},#{referrer},#{accountLead},#{jur},accountJNumber);")
     Integer saveAccount(Account account);
+
+    /**
+     * 查询所有管理员
+     * @return 所有管理员
+     */
+    @Select("select * from account where jur!=3")
+    List<Account> findAdmin();
+
+    /**
+     * 查询所有用户
+     * @return 所有用户
+     */
+    @Select("select * from account where jur=3 ")
+    List<Account> findAccount();
+
+    /**
+     * 根据时间查询用户
+     * @param date 当前时间
+     * @return 查询到的用户
+     */
+    @Select("select * from account where accountCreateDate=#{date}")
+    List<Account> findAccountByDate(Date date);
 }

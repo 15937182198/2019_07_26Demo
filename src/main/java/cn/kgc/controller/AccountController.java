@@ -3,10 +3,14 @@ package cn.kgc.controller;
 import cn.kgc.pojo.Account;
 import cn.kgc.service.AccountService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.xml.crypto.Data;
+import java.util.Date;
+import java.util.List;
 
 /**
  * 账户相关的controller
@@ -53,4 +57,33 @@ public class AccountController {
         return accountService.saveAccount(account);
     }
 
+    /**
+     * 查询所有用户总数
+     * @return 用户总数
+     */
+    @RequestMapping("/findAccountNumber")
+    public @ResponseBody String findAccountNumber(){
+        return  accountService.findAccount().size()+"";
+    }
+    /**
+     * 查询一天用户注册的总数
+     * @return 当日用户注册总数
+     */
+    @RequestMapping("/findAccountByDate")
+    public @ResponseBody String findAccountByDate(){
+        return accountService.findAccountByDate(new Date()).size()+"";
+    }
+
+    @RequestMapping("/findAccountByReferrer")
+    public @ResponseBody String findAccountByReferrer(){
+        List<Account> account = accountService.findAccount();
+        int i=0;
+        for (Account account1 : account) {
+            List<Account> list=accountService.findAccountByReferrer(account1.getAccountId());
+            if (list.size()>=6){
+                i++;
+            }
+        }
+        return i+"";
+    }
 }
