@@ -55,5 +55,14 @@ public class loginController {
         modelAndView.setViewName("/admin/newsAdd");
         return modelAndView;
     }
-
+    /**
+     * 添加用户信息页面跳转
+     * @return
+     */
+    @RequestMapping("/userInforAdd")
+    public ModelAndView userInforAdd(){
+        ModelAndView modelAndView =new ModelAndView();
+        modelAndView.setViewName("/admin/addUser");
+        return modelAndView;
+    }
 }

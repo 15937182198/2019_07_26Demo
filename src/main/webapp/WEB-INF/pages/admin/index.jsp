@@ -83,9 +83,9 @@
                             </a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="changepwd.html">
+                            <a href="${pageContext.request.contextPath}/loginController/userInforAdd" data-url="changepwd.html">
                                 <i class="iconfont icon-iconfuzhi01" data-icon='icon-iconfuzhi01'></i>
-                                <span>新增用户</span>
+                                <span>添加用户</span>
                             </a>
                         </dd>
                     </dl>
@@ -107,13 +107,13 @@
                         <dd>
                             <a href="javascript:;"  data-url="table_1.jsp">
                                 <i class="iconfont icon-jiaoseguanli4" data-icon='icon-jiaoseguanli4'></i>
-                                <span>用的上就用</span>
+                                <span>修改信息</span>
                             </a>
                         </dd>
                         <dd>
                             <a href="javascript:;" data-url="myloginfo.jsp">
                                 <i class="iconfont icon-quanxian2" data-icon='icon-quanxian2'></i>
-                                <span>用不上就删</span>
+                                <span>添加店铺</span>
                             </a>
                         </dd>
                     </dl>
