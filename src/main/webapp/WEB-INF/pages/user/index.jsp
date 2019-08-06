@@ -28,7 +28,7 @@
     <!--[endif]-->
 </head>
 <body>
-<jsp:include page="main.jsp"/>
+<jsp:include page="main.jsp" flush="true"/>
 <%--<%@include file="main.jsp"%>--%>
 <div class="container">        <!--0-start-->
     <div class="row"><!--0-2start-->

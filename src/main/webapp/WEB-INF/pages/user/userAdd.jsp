@@ -29,76 +29,51 @@
 </head>
 <body>
 <jsp:include page="main.jsp" flush="true"/>
-<div class="container">
+<div class="container" style="background-color: #dff0d8;padding-left: 300px;margin-top: 20px; padding-top: 15px;">
     <p class="text-left"><h2><span class="glyphicon glyphicon-user" aria-hidden="true"> </span> 购买账号</h2></p>
-    <div class="row">
-        <table class="table">
-            <!-- On cells (`td` or `th`) -->
-            <tr>
-                <td class="active">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">用户名：</label>
-                            <div class="col-xs-4">
-                                <input type="text" class="form-control" id="inputEmail3" placeholder="用户名" >
-                            </div>
-                        </div>
-                    </form>
-                </td>
-            </tr>
-        </table>
-    </div>
 
-    <div class="row">
-        <table class="table">
-            <!-- On cells (`td` or `th`) -->
-            <tr>
-                <td class="success">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">密码：</label>
-                            <div class="col-xs-4">
-                                <input type="password" class="form-control" id="inputEmail3" placeholder="密码" >
-                            </div>
-                        </div>
-                    </form>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="row">
-        <table class="table">
-            <!-- On cells (`td` or `th`) -->
-            <tr>
-                <td class="warning">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">积分减少：</label>
-                            <div class="col-xs-4">
-                                <input type="text" class="form-control" id="inputEmail3" value="1000" readonly="readonly">
-                            </div>
-                        </div>
-                    </form>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="row">
-        <table class="table">
-            <!-- On cells (`td` or `th`) -->
-            <tr>
-                <td class="warning">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <div class="col-xs-4">
-                                <button type="submit" class="btn btn-default" style="margin-left: 320px;">确定</button>
-                            </div>
-                        </div>
-                    </form>
-                </td>
-            </tr>
-        </table>
-    </div>
+    <form class="form-horizontal">
+        <div class="form-group" style="margin-left: 15px;margin-top: 30px;">
+            <label for="inputEmail3" class="col-sm-2 control-label">用户名：</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="inputEmail3" placeholder="用户名" name="username">
+            </div>
+        </div>
+        <div class="form-group" style="margin-left: 15px;margin-top: 15px;">
+            <label for="inputPassword3" class="col-sm-2 control-label">密码：</label>
+            <div class="col-xs-4">
+                <input type="password" class="form-control" id="inputPassword3" placeholder="Password" name="password">
+            </div>
+        </div>
+        <div class="form-group" style="margin-left: 15px;margin-top: 15px;">
+            <label for="inputEmail3" class="col-sm-2 control-label">积分减少：</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="inputEmail3" value="1000" readonly="readonly">
+            </div>
+        </div>
+        <div class="form-group" style="margin-left: 15px;margin-top: 15px;">
+            <div class="col-sm-offset-2 col-xs-4" style="text-align: center;margin-top: 15px;margin-bottom: 150px;">
+                <button type="submit" class="btn btn-default" style="background-color: #5bc0de;">确定</button>
+            </div>
+        </div>
+    </form>
 </div>
+<script type="text/javascript">
+    $(function(){
+        $(".btn").click(function(){
+            var username=$("input[name='username']").val();
+            var password=$("input[name='password']").val();
+            var re = new RegExp(/^[a-zA-Z0-9]{4,8}$/);       // ^表示开始  $表示结束
+            if (!re.test(username)){
+                alert("用户名必须为数字或字母，只能为8~12位！");
+                return;
+            }
+            if (!re.test(password)){
+                alert("密码必须为数字或字母，只能为8~12位！");
+                return;
+            }
+        });
+    });
+</script>
 </body>
 </html>

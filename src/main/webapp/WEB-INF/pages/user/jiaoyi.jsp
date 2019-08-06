@@ -31,59 +31,28 @@
 
 <jsp:include page="main.jsp" flush="true"/>
 
-<div class="container">
-    <p class="text-left"><h2><span class="glyphicon glyphicon-transfer" aria-hidden="true"> </span> 积分交易</h2></p>
-    <div class="row">
-        <table class="table">
-            <!-- On cells (`td` or `th`) -->
-            <tr>
-                <td class="active">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">交易给：</label>
-                            <div class="col-xs-4">
-                                <input type="text" class="form-control" id="inputEmail3" placeholder="用户名" ">
-                            </div>
-                        </div>
-                    </form>
-                </td>
-            </tr>
-        </table>
-    </div>
+<div class="container" style="background-color: #dff0d8;padding-left: 300px;margin-top: 20px; padding-top: 15px;">
+    <p class="text-left"><h2><span class="glyphicon glyphicon-user" aria-hidden="true"> </span> 积分交易</h2></p>
 
-    <div class="row">
-        <table class="table">
-            <!-- On cells (`td` or `th`) -->
-            <tr>
-                <td class="success">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">交易数量：</label>
-                            <div class="col-xs-4">
-                                <input type="text" class="form-control" id="inputEmail3" placeholder="积分" ">
-                            </div>
-                        </div>
-                    </form>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="row">
-        <table class="table">
-            <!-- On cells (`td` or `th`) -->
-            <tr>
-                <td class="warning">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <div class="col-xs-4">
-                                <button type="submit" class="btn btn-default" style="margin-left: 320px;">确定</button>
-                            </div>
-                        </div>
-                    </form>
-                </td>
-            </tr>
-        </table>
-    </div>
+    <form class="form-horizontal">
+        <div class="form-group" style="margin-left: 15px;margin-top: 30px;">
+            <label for="inputEmail3" class="col-sm-2 control-label">交易给：</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="inputEmail3" placeholder="用户名">
+            </div>
+        </div>
+        <div class="form-group" style="margin-left: 15px;margin-top: 15px;">
+            <label for="inputPassword3" class="col-sm-2 control-label">交易金额：</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="inputPassword3" placeholder="请输入积分">
+            </div>
+        </div>
+        <div class="form-group" style="margin-left: 15px;margin-top: 15px;">
+            <div class="col-sm-offset-2 col-xs-4" style="text-align: center;margin-top: 15px;margin-bottom: 150px;">
+                <button type="submit" class="btn btn-default" style="background-color: #5bc0de;">确定</button>
+            </div>
+        </div>
+    </form>
 </div>
 
 </body>

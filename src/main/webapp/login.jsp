@@ -51,7 +51,6 @@
         $(".layui-canvs").jParticle({
             background: "#141414",
         });
-        //登录链接测试，使用时可删除
         $(".submit_btn").click(function(){
             var username=$("input[name='username']").val();
             var password=$("input[name='password']").val();
