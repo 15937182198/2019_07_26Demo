@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page isELIgnored="false" contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -33,15 +34,11 @@
     <div class="larry-personal">
         <div class="layui-tab">
             <blockquote class="layui-elem-quote news_search">
-
                 <div class="layui-inline">
                     <div class="layui-input-inline">
-                        <input value="" placeholder="请输入关键字" class="layui-input search_input" type="text">
+                        <input value="" placeholder="请输入用户名" class="layui-input search_input" type="text">
                     </div>
-                    <a class="layui-btn search_btn">查询</a>
-                </div>
-                <div class="layui-inline">
-                    <a class="layui-btn layui-btn-normal newsAdd_btn">添加用户</a>
+                    <button class="layui-btn search_btn">查询</button>
                 </div>
             </blockquote>
 
@@ -60,21 +57,21 @@
                     </thead>
                     <tbody class="news_content">
                     <%--  --%>
-                    <tr>
-                        <td>id</td>
-                        <td align="left">小明</td>
-                        <td>0.00</td>
-                        <td>2017-04-14</td>
-                        <td>老王</td>
-                        <td>
-                            <a href="${pageContext.request.contextPath}/loginController/userInforUpdate" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 修改</a>
-                        </td>
-                    </tr>
-
+                    <c:forEach items="${pageInfo.list}" var="account">
+                        <tr>
+                            <td>${account.accountId}</td>
+                            <td align="left">${account.accountName}</td>
+                            <td>${account.accountMoney}</td>
+                            <td>${account.accountCreateDate}</td>
+                            <td>${account.referrer}</td>
+                            <td>
+                                <a href="${pageContext.request.contextPath}/loginController/userInforUpdate?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 修改</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
                 <div class="larry-table-page clearfix">
-                    <a href="javascript:;" class="layui-btn layui-btn-small"><i class="iconfont icon-shanchu1"></i>删除</a>
                     <div id="page" class="page"></div>
                 </div>
             </div>
@@ -97,11 +94,10 @@
         window.layer = layui.layer;
         var element = layui.element(),
             laypage = layui.laypage;
-
-
+        var int=${pageInfo.pages};
         laypage({
             cont: 'page',
-            pages: 10 //总页数
+            pages: int //总页数
             ,
             groups: 5 //连续显示分页数
             ,
@@ -130,5 +126,6 @@
         });
     });
 </script>
+
 </body>
 </html>

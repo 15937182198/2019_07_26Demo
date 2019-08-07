@@ -4,8 +4,10 @@ import cn.kgc.dao.AccountDao;
 import cn.kgc.dao.JurDao;
 import cn.kgc.pojo.Account;
 import cn.kgc.pojo.Jurisdiction;
+import cn.kgc.pojo.PageInfo;
 import cn.kgc.service.AccountService;
 import cn.kgc.util.AccountLeadUtil;
+import com.github.pagehelper.PageHelper;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -63,15 +65,31 @@ public class AccountServiceImpl implements AccountService {
         return accountDao.findAccountByAccountLead(accountLead);
     }
 
+
+    /**
+     * 根据账户名查询账户
+     * @param accountName 需要查询的账户名
+     * @return 该账户名所对应的账户名
+     */
+    @Override
+    public Account findAccountByName(String accountName) {
+        return accountDao.findAccountByName(accountName);
+    }
+
     /**
      * 保存账户需要的方法
-     * @param account 需要保存的账户
      * @param referrer 推荐人id
-     * @param jur 权限编号
      * @return 是否保存成功
      */
     @Override
-    public boolean saveAccount(Account account, Integer referrer, Integer jur) {
+    public boolean saveAccount(String accountName,String accountPassword, Integer referrer) {
+        Account account=new Account();
+        //初次设置密码
+        account.setAccountPassword(accountPassword);
+        //设置账户名
+        account.setAccountName(accountName);
+        //设置密码
+        account.setJur(3);
         //设置基本积分
         account.setAccountMoney((double) 1000);
         //设置密码
@@ -83,22 +101,13 @@ public class AccountServiceImpl implements AccountService {
         //给用户设定金字塔坐标
         account.setAccountLead(accountLeadUtil.getAccountLead(referrer));
         //保存账户
+        System.out.println("开始保存");
         Integer integer = accountDao.saveAccount(account);
         if (integer!=0){
             return true;
         }else {
             return false;
         }
-    }
-
-    /**
-     * 根据账户名查询账户
-     * @param accountName 需要查询的账户名
-     * @return 该账户名所对应的账户名
-     */
-    @Override
-    public Account findAccountByName(String accountName) {
-        return accountDao.findAccountByName(accountName);
     }
 
     /**
@@ -147,5 +156,19 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public List<Account> findAccountByReferrer(Integer accountId) {
         return accountDao.findAccountByReferrer(accountId);
+    }
+
+    @Override
+    public PageInfo findPage(int page, int pageSize) {
+        PageHelper.startPage(page,pageSize);
+        List<Account> list=accountDao.findAccount();
+        PageInfo pageInfo = new PageInfo();
+        pageInfo.setList(list);
+        return pageInfo;
+    }
+
+    @Override
+    public Account findAccountById(Integer accountId) {
+        return accountDao.findAccountById(accountId);
     }
 }

@@ -1,14 +1,15 @@
 package cn.kgc.controller;
 
 import cn.kgc.pojo.Account;
+import cn.kgc.pojo.PageInfo;
 import cn.kgc.service.AccountService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
-import javax.xml.crypto.Data;
 import java.util.Date;
 import java.util.List;
 
@@ -36,15 +37,24 @@ public class AccountController {
         return true;
     }
 
+
+
     /**
      * 保存普通账户的方法
-     * @param account 需要保存的账户
      * @param referrer 推荐人id
      * @return 是否保存成功
      */
     @RequestMapping("/saveAccount")
-    public @ResponseBody Boolean saveAccount(Account account,Integer referrer){
-        return accountService.saveAccount(account,referrer,3);
+    public @ResponseBody Boolean saveAccount(String  accountName,String accountPassword,Integer referrer){
+        boolean b=false;
+        //根据用户名查询用户
+        Account accountByName = accountService.findAccountByName(accountName);
+        //如果有该用户返回false
+        if (accountByName!=null){
+            return b;
+        }
+        b= accountService.saveAccount(accountName, accountPassword, referrer);
+        return b;
     }
 
     /**
@@ -76,14 +86,44 @@ public class AccountController {
 
     @RequestMapping("/findAccountByReferrer")
     public @ResponseBody String findAccountByReferrer(){
+        //查询所有所有用户
         List<Account> account = accountService.findAccount();
+        //推荐人数大于等于6的总人数
         int i=0;
         for (Account account1 : account) {
+            //根据用户id查询推荐人
             List<Account> list=accountService.findAccountByReferrer(account1.getAccountId());
+            //如果推荐人大于等于6
             if (list.size()>=6){
                 i++;
             }
         }
         return i+"";
     }
+
+    /**
+     * 分页
+     * @param currPage
+     * @param pageSizes
+     * @return
+     */
+    @RequestMapping("/pageInfo")
+    public ModelAndView pageInfo(
+            @RequestParam(required = false,defaultValue = "1",value = "currPage")Integer currPage,
+            @RequestParam(required = false,defaultValue = "5",value = "pageSizes")Integer pageSizes
+    ){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject(accountService.findPage(currPage,pageSizes));
+        modelAndView.setViewName("/admin/table");
+        return modelAndView;
+    }
+
+
+    /**
+     * 管理员添加用户的方法
+     * @param accountName 用户名
+     * @param accountPassword 用户密码
+     * @param referrer 推荐人
+     * @return 保存成功返回true，保存失败返回false
+     */
 }

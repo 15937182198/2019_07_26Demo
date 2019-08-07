@@ -78,19 +78,13 @@
                     </a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="${pageContext.request.contextPath}/loginController/userInfor" data-url="table.jsp">
-                                <i class="iconfont icon-geren1" data-icon='icon-geren1'></i>
+                            <a href="${pageContext.request.contextPath}/account/pageInfo">
+                                <i class="iconfont icon-geren1" data-icon='icon-geren1' id="account"></i>
                                 <span>用户信息</span>
                             </a>
                         </dd>
                         <dd>
-                            <a href="${pageContext.request.contextPath}/loginController/userInforUpdate" data-url="changepwd.jsp">
-                                <i class="iconfont icon-iconfuzhi01" data-icon='icon-iconfuzhi01'></i>
-                                <span>修改信息</span>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a href="${pageContext.request.contextPath}/loginController/userInforAdd" data-url="changepwd.html">
+                            <a href="${pageContext.request.contextPath}/loginController/addUser" data-url="changepwd.html">
                                 <i class="iconfont icon-iconfuzhi01" data-icon='icon-iconfuzhi01'></i>
                                 <span>添加用户</span>
                             </a>

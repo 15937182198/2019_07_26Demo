@@ -22,12 +22,13 @@ public class AccountLeadUtil {
     public  Integer getAccountLead(Integer accountId){
         //根据用户编号查询用户
         Account accountByAccountId = accountDao.findAccountByAccountId(accountId);
+        System.out.println(accountByAccountId);
         //因为用户的第一个直系下属的金字塔编号是该用户金字塔编号的2倍，所以该用户编号的2倍后的所有用户都在改用户的金字塔下
         for (int i=accountByAccountId.getAccountJNumber()*2;;i++){
             //根据该用户金字塔编号查询该用户
             Account accountByAccountJNumber = accountDao.findAccountByAccountJNumber(i);
             //如果该用户等于空，并且该用户的编号是双数，那么返回该用户的编号，如果不是则-1返回该用户的编号
-            if (accountByAccountJNumber==null){
+            if (accountByAccountJNumber!=null){
                 if (i%2==0){
                     return accountDao.findAccountByAccountJNumber(i%2).getAccountId();
                 }else {

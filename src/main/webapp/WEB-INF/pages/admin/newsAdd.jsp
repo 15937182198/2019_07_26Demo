@@ -35,7 +35,7 @@
     <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">用户名：</label>
         <div class="col-xs-4">
-            <input type="email" class="form-control" name="" id="inputEmail3" placeholder="用户名">
+            <input type="email" class="form-control" name="" id="inputEmail3" value="${account.accountName}" readonly>
         </div>
     </div>
     <div class="form-group">
@@ -47,19 +47,19 @@
     <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 control-label">积分余额：</label>
         <div class="col-xs-4">
-            <input type="password" class="form-control" id="" name="" placeholder="积分余额">
+            <input type="text" class="form-control" id="" name="" value="${account.accountMoney}0">
         </div>
     </div>
     <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 control-label">创建时间：</label>
         <div class="col-xs-4">
-            <input type="password" class="form-control" name="" placeholder="创建时间" readonly>
+            <input type="password" class="form-control" name="" value="${account.accountCreateDate}" readonly>
         </div>
     </div>
     <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 control-label">推荐人：</label>
         <div class="col-xs-4">
-            <input type="password" class="form-control" name="" placeholder="推荐人" readonly>
+            <input type="password" class="form-control" name="" value="${account.referrer}" readonly>
         </div>
     </div>
     <div class="form-group">

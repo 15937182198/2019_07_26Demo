@@ -2,6 +2,7 @@ package cn.kgc.controller;
 
 import cn.kgc.dao.AccountDao;
 import cn.kgc.pojo.Account;
+import cn.kgc.service.AccountService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,17 +14,17 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/loginController")
 public class loginController {
 
-    @Resource(name = "accountDao")
-    private AccountDao accountDao;
+    @Resource(name = "accountService")
+    private AccountService accountService;
 
-
+    //登陆跳转
     @RequestMapping("/login")
     public ModelAndView login(HttpServletRequest request){
         //获得在session中的用户名
         String accountName= (String) request.getSession().getAttribute("username");
         System.out.println(accountName);
         //根据用户名查找该用户信息
-        Account account = accountDao.findAccountByName(accountName);
+        Account account = accountService.findAccountByName(accountName);
         request.getSession().setAttribute("account",account);
         //根据用户权限跳转不同页面
         ModelAndView modelAndView=new ModelAndView();
@@ -50,8 +51,10 @@ public class loginController {
      * @return
      */
     @RequestMapping("/userInforUpdate")
-    public ModelAndView userInforUpdate(){
+    public ModelAndView userInforUpdate(Integer accountId){
+        Account account=accountService.findAccountById(accountId);
         ModelAndView modelAndView =new ModelAndView();
+        modelAndView.addObject(account);
         modelAndView.setViewName("/admin/newsAdd");
         return modelAndView;
     }
@@ -104,5 +107,13 @@ public class loginController {
         ModelAndView modelAndView =new ModelAndView();
         modelAndView.setViewName("/user/index");
         return modelAndView;
+    }
+
+    /**
+     * 管理员跳转添加用户页面
+     */
+    @RequestMapping("/addUser")
+    public String addUser(){
+        return "/admin/addUser";
     }
 }

@@ -57,7 +57,7 @@ public interface AccountDao {
      * @param accountJNumber 需要查询的用户金字塔编号
      * @return 该编号所对应的金字塔编号
      */
-    @Select("select * from where accountJNumber=#{accountJNumber}")
+    @Select("select * from account where accountJNumber=#{accountJNumber}")
     Account findAccountByAccountJNumber(Integer accountJNumber);
 
     /**
@@ -65,7 +65,7 @@ public interface AccountDao {
      * @param account 需要保存的账户
      * @return 保存受影响的行数
      */
-    @Insert("insert into account values (null,#{accountName},#{accountPassword},null,#{accountCreateDate},#{referrer},#{accountLead},#{jur},accountJNumber);")
+    @Insert("insert into account values (null,#{accountName},#{accountPassword},#{accountMoney},#{accountCreateDate},#{referrer},#{accountLead},#{jur},#{accountJNumber});")
     Integer saveAccount(Account account);
 
     /**
@@ -89,4 +89,12 @@ public interface AccountDao {
      */
     @Select("select * from account where accountCreateDate=#{date}")
     List<Account> findAccountByDate(Date date);
+
+    /**
+     * 根据账户id查询账户
+     * @param accountId 需要查询的账户id
+     * @return 该账户id对应的账户
+     */
+    @Select("select * from account where accountId=#{accountId}")
+    Account findAccountById(Integer accountId);
 }

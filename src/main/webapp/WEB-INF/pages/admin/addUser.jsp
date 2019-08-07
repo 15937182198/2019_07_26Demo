@@ -32,38 +32,23 @@
 
         <div class="layui-tab-content" style="min-height: 150px; margin-top: 25px;">
             <div class="layui-tab-item layui-show">
-                <form class="form-horizontal ">
+                <form class="form-horizontal " method="post" action="${pageContext.request.contextPath}/account/saveAccount">
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-2 control-label">用户名：</label>
                         <div class="col-xs-4">
-                            <input type="email" class="form-control" name="" id="inputEmail3" placeholder="用户名">
+                            <input type="email" class="form-control" name="accountName" id="inputEmail3" placeholder="用户名">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-2 control-label">密码：</label>
                         <div class="col-xs-4">
-                            <input type="password" class="form-control" name="" id="inputPassword3" placeholder="密码">
+                            <input type="password" class="form-control" name="accountPassword" id="inputPassword3" placeholder="密码">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="inputPassword3" class="col-sm-2 control-label">积分余额：</label>
-                        <div class="col-xs-4">
-                            <input type="text" class="form-control" id="" name="" value="1000" readonly>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="inputPassword3" class="col-sm-2 control-label">用户权限：</label>
-                        <div class="col-xs-4" style="height:40px;">
-                            <select class="form-control">
-                                <option selected="selected" value="1">普通用户</option>
-                                <option value="3">后台管理</option>
-                            </select>
-                        </div>
-                    </div>
+                    <input type="hidden" value="1" name="referrer">
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default">确认修改</button>
+                            <button type="submit" class="btn btn-default">提交</button>
                         </div>
                     </div>
                 </form>
