@@ -72,7 +72,6 @@
                     </tbody>
                 </table>
                 <div class="larry-table-page clearfix">
-                    <div style="margin-top: 50px"><span>共${pageInfo.accountNum}个用户</span></div>
                     <div class="box-footer">
                         <div class="box-tools pull-right">
                             <ul class="pagination">

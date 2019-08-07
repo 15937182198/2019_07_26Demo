@@ -971,7 +971,8 @@
     </column>
     <column id="241" parent="231" name="accountLead">
       <Position>7</Position>
-      <Comment>用户上级编号</Comment>
+      <Comment>用户上级id
+</Comment>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>

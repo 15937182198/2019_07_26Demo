@@ -32,10 +32,12 @@
 <div class="container" style="background-color: #e7eaed;padding-left: 300px;margin-top: 20px; padding-top: 15px;">
     <p class="text-left"><h2><span class="glyphicon glyphicon-user" aria-hidden="true"> </span> 购买账号</h2></p>
 
-    <form class="form-horizontal">
+    <div class="form-horizontal">
         <div class="form-group" style="margin-left: 15px;margin-top: 30px;">
             <label for="inputEmail3" class="col-sm-2 control-label">用户名：</label>
             <div class="col-xs-4">
+                <%--推荐人id--%>
+                <input type="hidden" value="${pageContext.session.getAttribute("account").accountId}" id="referrer">
                 <input type="text" class="form-control" id="inputEmail3" placeholder="数字或字母，只能为8~12位！" name="username">
             </div>
         </div>
@@ -53,10 +55,11 @@
         </div>
         <div class="form-group" style="margin-left: 15px;margin-top: 15px;">
             <div class="col-sm-offset-2 col-xs-4" style="text-align: center;margin-top: 15px;margin-bottom: 150px;">
+                <p style="color: red">您的积分必须在2000以上才可购买，如果不够请联系管理员</p>
                 <button type="submit" class="btn btn-default" style="background-color: #5bc0de;">确定</button>
             </div>
         </div>
-    </form>
+    </div>
 </div>
 <script type="text/javascript">
     $(function(){
@@ -72,6 +75,28 @@
                 alert("密码必须为数字或字母，只能为8~12位！");
                 return;
             }
+
+            var accountId = $("#referrer").val();
+            $.ajax({
+                url:"${pageContext.request.contextPath}/account/userSaveAccount",
+                type:"POST",
+                data:{"referrer":accountId,
+                    "accountName":username,
+                    "accountPassword":password},
+                success:function (res) {
+                    if (res=="1"){
+                        alert("该用户名已存在!");
+                    }else if (res=="2"){
+                        alert("您的积分不够2000请联系管理员");
+                    }else if (res == false){
+                        alert("购买失败");
+                        window.location.href="${pageContext.request.contextPath}/loginController/userAdd";
+                    }else {
+                        alert("购买成功");
+                        window.location.href="${pageContext.request.contextPath}/loginController/userAdd";
+                    }
+                }
+            });
         });
     });
 </script>

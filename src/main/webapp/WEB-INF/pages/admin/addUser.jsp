@@ -29,14 +29,13 @@
 <jsp:include page="index.jsp" flush="true"/>
 <div class="layui-body" id="larry-body" style="bottom: 0;border-left: solid 2px #2299ee; margin-top: 50px; background-color: #f1f2f7">
     <div class="layui-tab layui-tab-card larry-tab-box" id="larry-tab" lay-filter="demo" lay-allowclose="true">
-
         <div class="layui-tab-content" style="min-height: 150px; margin-top: 25px;">
             <div class="layui-tab-item layui-show">
-                <form class="form-horizontal " method="post" action="${pageContext.request.contextPath}/account/saveAccount" style="margin-top: 70px;margin-left: 200px;">
-                   <span class="glyphicon glyphicon-user" aria-hidden="true" style="font-size: 25px; margin-left: 80px;margin-bottom: 30px;"> </span>&nbsp;&nbsp;<span style="font-family: '微软雅黑'; font-size: 25px">添加账号</span>
+                <div class="form-horizontal "style="margin-top: 70px;margin-left: 200px;">
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-2 control-label">用户名：</label>
                         <div class="col-xs-4">
+                            <input type="hidden" id="referrer" value="1">
                             <input type="text" class="form-control" name="accountName" id="inputEmail3" placeholder="数字或字母，只能为8~12位！">
                         </div>
                     </div>
@@ -52,14 +51,14 @@
                             <button type="submit" class="btn btn-default">提交</button>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <script type="text/javascript" src="${pageContext.request.contextPath}/common/layui/layui.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/newsadd.js"></script>
-<script type="text/javascript">
+<script charset="UTF-8" type="text/javascript">
     $(function(){
         $(".btn").click(function(){
             var username=$("input[name='accountName']").val();
@@ -73,8 +72,34 @@
                 alert("密码必须为数字或字母，只能为8~12位！");
                 return;
             }
+            var referrer=$("#referrer").val();
+            $.ajax({
+                url:"${pageContext.request.contextPath}/account/saveAccount.admin",
+                type:"POST",
+                data:{"accountName":username,
+                    "accountPassword":password,
+                "referrer":referrer},
+                success:function (res) {
+                    if (res == false){
+                        alert("添加失败");
+                        window.location.href="${pageContext.request.contextPath}/loginController/userGuanLi";
+                        return;
+                    }
+                    if (res=="1") {
+                        alert("该用户已存在!");
+                        window.location.href="${pageContext.request.contextPath}/loginController/userGuanLi";
+                        return;
+                    }
+                    if (res!=true&&res!="1") {
+                        alert("添加成功");
+                        window.location.href="${pageContext.request.contextPath}/loginController/userGuanLi";
+                        return;
+                    }
+                }
+            });
         });
     });
+
 </script>
 </body>
 </html>

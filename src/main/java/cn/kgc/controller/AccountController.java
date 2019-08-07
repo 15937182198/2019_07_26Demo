@@ -61,14 +61,14 @@ public class AccountController {
      * @param referrer 推荐人
      * @return 保存成功返回true，保存失败返回false
      */
-    @RequestMapping("/saveAccount")
+    @RequestMapping("/saveAccount.admin")
     public @ResponseBody String saveAccount(String  accountName,String accountPassword,Integer referrer){
         boolean b=false;
         //根据用户名查询用户
         Account accountByName = accountService.findAccountByName(accountName);
         //如果有该用户返回false
         if (accountByName!=null){
-            return b+"";
+            return "1";
         }
         b= accountService.saveAccount(accountName, accountPassword, referrer);
         return b+"";
@@ -80,8 +80,12 @@ public class AccountController {
      * @return 是否保存成功
      */
     @RequestMapping("/saveAdmin")
-    public @ResponseBody Boolean saveAccount(Account account){
-        return accountService.saveAccount(account);
+    public @ResponseBody String saveAccount(Account account){
+        System.out.println(accountService.findAccountByName(account.getAccountName()));
+        if (accountService.findAccountByName(account.getAccountName())!=null){
+            return "1";
+        }
+        return accountService.saveAccount(account)+"";
     }
 
     /**
@@ -102,6 +106,10 @@ public class AccountController {
         return accountService.findAccountByDate(simpleDateFormat.format(new Date())).size()+"";
     }
 
+    /**
+     * 查询推荐人大于6的方法
+     * @return 推荐人数大于6的总人数
+     */
     @RequestMapping("/findAccountByReferrer")
     public @ResponseBody String findAccountByReferrer(){
         //查询所有所有用户
@@ -122,9 +130,8 @@ public class AccountController {
 
     /**
      * 分页
-     * @param currPage
-     * @param pageSizes
-     * @return
+     * @param currPage 当前页面
+     * @param pageSizes 页面容量
      */
     @RequestMapping("/pageInfo")
     public ModelAndView pageInfo(
@@ -161,5 +168,29 @@ public class AccountController {
         return bo+"";
     }
 
-
+    /**
+     * 用户新增账号的方法
+     * @param referrer 推荐人id
+     * @param accountName 用户名
+     * @param accountPassword 用户密码
+     */
+    @RequestMapping("/userSaveAccount")
+    public @ResponseBody String userSaveAccount(Integer referrer,String accountName,String accountPassword){
+        Account accountByName = accountService.findAccountByName(accountName);
+        if (accountByName!=null){
+            return "1";
+        }
+        Account accountById = accountService.findAccountById(referrer);
+        if (accountById.getAccountMoney()<2000){
+            return "2";
+        }
+        boolean b = accountService.saveAccount(accountName, accountPassword, referrer);
+        if (b){
+            accountById.setAccountMoney(accountById.getAccountMoney()+180);
+            Account accountByName1 = accountService.findAccountByName(accountName);
+            Account accountById1 = accountService.findAccountById(accountByName1.getAccountLead());
+            accountById1.setAccountMoney(accountById1.getAccountMoney()+30);//2019/8/7杜宇森，下一步写个工具类，向上算30层增加积分
+        }
+        return b+"";
+    }
 }

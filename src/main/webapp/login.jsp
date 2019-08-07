@@ -23,7 +23,7 @@
 
 <body style="overflow: hidden">
 <div>
-<div class="layui-layout layui-layout-login">
+<div class="layui-layout layui-layout-login" >
     <h1>
         <strong>管理系统后台</strong>
     </h1>
