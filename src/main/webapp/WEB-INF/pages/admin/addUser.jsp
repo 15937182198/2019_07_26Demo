@@ -33,6 +33,7 @@
         <div class="layui-tab-content" style="min-height: 150px; margin-top: 25px;">
             <div class="layui-tab-item layui-show">
                 <form class="form-horizontal " method="post" action="${pageContext.request.contextPath}/account/saveAccount" style="margin-top: 70px;margin-left: 200px;">
+                   <span class="glyphicon glyphicon-user" aria-hidden="true" style="font-size: 25px; margin-left: 80px;margin-bottom: 30px;"> </span>&nbsp;&nbsp;<span style="font-family: '微软雅黑'; font-size: 25px">添加账号</span>
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-2 control-label">用户名：</label>
                         <div class="col-xs-4">
