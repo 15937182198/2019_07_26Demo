@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 
 public class PageInfo<T> implements Serializable {
+    //用户总数
+    private int accountNum;
+
     //当前页
     private int pageNum;
     //每页的数量
@@ -50,7 +53,13 @@ public class PageInfo<T> implements Serializable {
     public void setPageNum(int pageNum) {
         this.pageNum = pageNum;
     }
+    public int getAccountNum() {
+        return accountNum;
+    }
 
+    public void setAccountNum(int accountNum) {
+        this.accountNum = accountNum;
+    }
     public int getPageSize() {
         return pageSize;
     }

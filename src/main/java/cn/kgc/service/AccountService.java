@@ -79,4 +79,18 @@ public interface AccountService extends UserDetailsService {
      * @return 该账户id对应的账户
      */
     Account findAccountById(Integer accountId);
+
+    /**
+     * 修改用户密码的方法
+     * @param account 需要修改的用户
+     * @return 是否修改成功
+     */
+    boolean updateAccountPassword(Account account);
+
+    /**
+     * 修改用户积分的方法
+     * @param account 需要修改的用户
+     * @return 是否修改成功
+     */
+    boolean updateAccountMoney(Account account);
 }

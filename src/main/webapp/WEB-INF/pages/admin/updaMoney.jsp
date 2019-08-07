@@ -32,17 +32,18 @@
     <div class="layui-tab layui-tab-card larry-tab-box" id="larry-tab" lay-filter="demo" lay-allowclose="true">
         <div class="layui-tab-content" style="min-height: 150px; margin-top: 25px;">
             <div class="layui-tab-item layui-show">
-<form class="form-horizontal " style="margin-top: 70px;margin-left: 200px;">
+<div class="form-horizontal " style="margin-top: 70px;margin-left: 200px;">
     <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">用户名：</label>
         <div class="col-xs-4">
+            <input type="hidden" value="${account.accountId}" id="accountId">
             <input type="text" class="form-control" name="accountName" id="inputEmail3" value="${account.accountName}" readonly>
         </div>
     </div>
     <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 control-label">积分余额：</label>
         <div class="col-xs-4">
-            <input type="text" class="form-control" id="" name="" value="${account.accountMoney}">
+            <input type="text" class="form-control" id="accountMoney" name="accountMoney" value="${account.accountMoney}">
         </div>
     </div>
     <div class="form-group">
@@ -62,22 +63,32 @@
             <button type="submit" class="btn btn-default">确认修改</button>
         </div>
     </div>
-</form>
+</div>
             </div>
         </div>
     </div>
 </div>
 <script type="text/javascript" src="${pageContext.request.contextPath}/common/layui/layui.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/newsadd.js"></script>
+<script src="../../../js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
     $(function(){
         $(".btn").click(function(){
-            var password=$("input[name='accountPassword']").val();
-            var re = new RegExp(/^[a-zA-Z0-9]{4,8}$/);       // ^表示开始  $表示结束
-            if (!re.test(password)){
-                alert("密码必须为数字或字母，只能为8~12位！");
-                return;
-            }
+            var val = $("#accountId").val();
+            var accountMoney=$("input[name='accountMoney']").val();
+            $.ajax({
+                url:"${pageContext.request.contextPath}/account/updateAccountMoney",
+                type:"POST",
+                data:{"accountId":val,
+                    "accountMoney":accountMoney},
+                success:function (res) {
+                    if (res == false){
+                        alert("修改失败");
+                    } else {
+                        alert("修改成功");
+                    }
+                }
+            })
         });
     });
 </script>

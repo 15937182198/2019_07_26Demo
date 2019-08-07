@@ -174,6 +174,7 @@ public class AccountServiceImpl implements AccountService {
         }else {
             pageInfo.setPages(number/pageSize);
         }
+        pageInfo.setAccountNum(number);
         pageInfo.setPageSize(pageSize);
         pageInfo.setPageNum(page);
         pageInfo.setList(list);
@@ -183,5 +184,24 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Account findAccountById(Integer accountId) {
         return accountDao.findAccountById(accountId);
+    }
+
+    @Override
+    public boolean updateAccountPassword(Account account) {
+        account.setAccountPassword(passwordEncoder.encode(account.getAccountPassword()));
+        int i=accountDao.updateAccountPassword(account);
+        if (i!=0){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean updateAccountMoney(Account account) {
+        int i=accountDao.updateAccountMoney(account);
+        if (i!=0){
+            return true;
+        }
+        return false;
     }
 }

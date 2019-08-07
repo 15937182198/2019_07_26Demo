@@ -137,6 +137,29 @@ public class AccountController {
         return modelAndView;
     }
 
+    /**
+     * 修改密码的方法
+     * @return 修改成功返回true 失败返回false
+     */
+    @RequestMapping("/updateAccountPassword")
+    public @ResponseBody String updateAccountPassword(Integer accountId,String accountPassword){
+        Account account = accountService.findAccountById(accountId);
+        account.setAccountPassword(accountPassword);
+        boolean bo=accountService.updateAccountPassword(account);
+        return bo+"";
+    }
+
+    /**
+     * 修改积分的方法
+     * @return 修改成功返回true 失败返回false
+     */
+    @RequestMapping("/updateAccountMoney")
+    public @ResponseBody String updateAccountMoney(Integer accountId,double accountMoney){
+        Account account = accountService.findAccountById(accountId);
+        account.setAccountMoney(accountMoney);
+        boolean bo=accountService.updateAccountMoney(account);
+        return bo+"";
+    }
 
 
 }

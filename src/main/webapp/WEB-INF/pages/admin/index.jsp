@@ -29,7 +29,7 @@
         <div class="layui-main">
             <!-- logo区域 -->
             <div class="admin-logo-box">
-                <a class="logo" href="http://www.kuxuebao.net" title="logo">后台管理系统</a>
+                <a class="logo" href="${pageContext.request.contextPath}/loginController/userShouYe" title="logo">后台管理系统</a>
                 <div class="larry-side-menu" style="background: #23262E;">
                     <i class="fa fa-bars" aria-hidden="true" ></i>
                 </div>

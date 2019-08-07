@@ -3,6 +3,7 @@ package cn.kgc.dao;
 import cn.kgc.pojo.Account;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import javax.xml.crypto.Data;
@@ -72,7 +73,7 @@ public interface AccountDao {
      * 查询所有管理员
      * @return 所有管理员
      */
-    @Select("select * from account where jur!=3")
+    @Select("select * from account where jur=1 or jur=2")
     List<Account> findAdmin();
 
     /**
@@ -83,13 +84,26 @@ public interface AccountDao {
     List<Account> findAccount();
 
     /**
+     * 查询所有店铺
+     * @return 所有用户
+     */
+    @Select("select * from account where jur=4 ")
+    List<Account> findAccountShop();
+    /**
      * 根据时间查询用户
      * @param date 当前时间
      * @return 查询到的用户
      */
-    @Select("select * from account where accountCreateDate=#{date}")
+    @Select("select * from account where accountCreateDate=#{date} and jur=3")
     List<Account> findAccountByDate(String date);
 
+    /**
+     * 根据时间查询店铺
+     * @param date 当前时间
+     * @return 查询到的用户
+     */
+    @Select("select * from account where accountCreateDate=#{date} and jur=4")
+    List<Account> findAccountShopByDate(String date);
     /**
      * 根据账户id查询账户
      * @param accountId 需要查询的账户id
@@ -97,4 +111,20 @@ public interface AccountDao {
      */
     @Select("select * from account where accountId=#{accountId}")
     Account findAccountById(Integer accountId);
+
+    /**
+     * 修改密码的方法
+     * @param account 需要修改的用户
+     * @return 修改受影响的行数
+     */
+    @Update("update account set accountPassword=#{accountPassword} where accountId=#{accountId}")
+    int updateAccountPassword(Account account);
+
+    /**
+     * 修改积分余额的方法
+     * @param account 需要修改的用户
+     * @return 受影响的行数
+     */
+    @Update("update account set accountMoney=#{accountMoney} where accountId=#{accountId}")
+    int updateAccountMoney(Account account);
 }
