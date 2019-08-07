@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -40,21 +41,23 @@ public class AccountController {
 
 
     /**
-     * 保存普通账户的方法
-     * @param referrer 推荐人id
-     * @return 是否保存成功
+     * 管理员添加用户的方法
+     * @param accountName 用户名
+     * @param accountPassword 用户密码
+     * @param referrer 推荐人
+     * @return 保存成功返回true，保存失败返回false
      */
     @RequestMapping("/saveAccount")
-    public @ResponseBody Boolean saveAccount(String  accountName,String accountPassword,Integer referrer){
+    public @ResponseBody String saveAccount(String  accountName,String accountPassword,Integer referrer){
         boolean b=false;
         //根据用户名查询用户
         Account accountByName = accountService.findAccountByName(accountName);
         //如果有该用户返回false
         if (accountByName!=null){
-            return b;
+            return b+"";
         }
         b= accountService.saveAccount(accountName, accountPassword, referrer);
-        return b;
+        return b+"";
     }
 
     /**
@@ -81,7 +84,8 @@ public class AccountController {
      */
     @RequestMapping("/findAccountByDate")
     public @ResponseBody String findAccountByDate(){
-        return accountService.findAccountByDate(new Date()).size()+"";
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+        return accountService.findAccountByDate(simpleDateFormat.format(new Date())).size()+"";
     }
 
     @RequestMapping("/findAccountByReferrer")
@@ -101,6 +105,7 @@ public class AccountController {
         return i+"";
     }
 
+
     /**
      * 分页
      * @param currPage
@@ -110,7 +115,7 @@ public class AccountController {
     @RequestMapping("/pageInfo")
     public ModelAndView pageInfo(
             @RequestParam(required = false,defaultValue = "1",value = "currPage")Integer currPage,
-            @RequestParam(required = false,defaultValue = "5",value = "pageSizes")Integer pageSizes
+            @RequestParam(required = false,defaultValue = "1",value = "pageSizes")Integer pageSizes
     ){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject(accountService.findPage(currPage,pageSizes));
@@ -119,11 +124,5 @@ public class AccountController {
     }
 
 
-    /**
-     * 管理员添加用户的方法
-     * @param accountName 用户名
-     * @param accountPassword 用户密码
-     * @param referrer 推荐人
-     * @return 保存成功返回true，保存失败返回false
-     */
+
 }

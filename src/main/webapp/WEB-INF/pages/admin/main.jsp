@@ -164,7 +164,7 @@
             "dataType"	:"JSON",
             "success"	:function (data) {
                 count2.html(data);
-                count4.html(data*1000);
+                count4.html(data*1000+"元");
             }
         });
         $.ajax({

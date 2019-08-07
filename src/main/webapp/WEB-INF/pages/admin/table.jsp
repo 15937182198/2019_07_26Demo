@@ -57,9 +57,9 @@
                     </thead>
                     <tbody class="news_content">
                     <%--  --%>
-                    <c:forEach items="${pageInfo.list}" var="account">
+                    <c:forEach items="${pageInfo.list}" var="account" varStatus="id">
                         <tr>
-                            <td>${account.accountId}</td>
+                            <td>${(pageInfo.pageNum-1)*5+id.count}</td>
                             <td align="left">${account.accountName}</td>
                             <td>${account.accountMoney}</td>
                             <td>${account.accountCreateDate}</td>
@@ -72,7 +72,28 @@
                     </tbody>
                 </table>
                 <div class="larry-table-page clearfix">
-                    <div id="page" class="page"></div>
+                    <div class="box-footer">
+
+                        <div class="box-tools pull-right">
+                            <ul class="pagination">
+                                <li><a href="javascript:pageBeanNumber(1)" aria-label="Previous">首页</a></li>
+                                <li><a href="javascript:pageBeanNumber(${pageInfo.pageNum-1})">上一页</a></li>
+                                <li><a href="javascript:pageBeanNumber(${i})">${i}</a></li>
+                                    <c:forEach begin="1" end="${pageInfo.pageNum+4}" var="i">
+                                        <c:if test="${pageInfo.pageNum-2}<0">
+                                            <li><a href="javascript:pageBeanNumber(${i})">${i}</a></li>
+                                        </c:if>
+                                        <c:if test="${pageInfo.pageNum-2>0?pageInfo.pageNum:1<i<=5}">
+                                            <li><a href="javascript:pageBeanNumber(${i})">${i}</a></li>
+                                        </c:if>
+                                    </c:forEach>
+                                <li><a href="javascript:pageBeanNumber(${pageInfo.pageNum+1})">下一页</a></li>
+                                <li><a href="javascript:pageBeanNumber(${pageInfo.pages})" aria-label="Next">尾页</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -88,44 +109,21 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/common/layui/layui.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/larry.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/index.js"></script>
-<script type="text/javascript">
-    layui.use(['jquery','layer','element','laypage'],function(){
-        window.jQuery = window.$ = layui.jquery;
-        window.layer = layui.layer;
-        var element = layui.element(),
-            laypage = layui.laypage;
-        var int=${pageInfo.pages};
-        laypage({
-            cont: 'page',
-            pages: int //总页数
-            ,
-            groups: 5 //连续显示分页数
-            ,
-            jump: function(obj, first) {
-                //得到了当前页，用于向服务端请求对应数据
-                var curr = obj.curr;
-                if(!first) {
-                    //layer.msg('第 '+ obj.curr +' 页');
-                }
-            }
-        });
+<script src="../../../js/jquery-3.2.1.min.js"></script>
+<script>
+    <%--分页函数--%>
+    function pageBeanNumber(nowPage) {
+        //获取页面数据大小
 
-        laypage({
-            cont: 'page2',
-            pages: 10 //总页数
-            ,
-            groups: 5 //连续显示分页数
-            ,
-            jump: function(obj, first) {
-                //得到了当前页，用于向服务端请求对应数据
-                var curr = obj.curr;
-                if(!first) {
-                    //layer.msg('第 '+ obj.curr +' 页');
-                }
-            }
-        });
-    });
+        if(nowPage<1){
+            return;
+        }
+
+        if(nowPage>${pageInfo.pages}){
+            return;
+        }
+        location.href="${pageContext.request.contextPath}/account/pageInfo?currPage="+nowPage;
+    }
 </script>
-
 </body>
 </html>

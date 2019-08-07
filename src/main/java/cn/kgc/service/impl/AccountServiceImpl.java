@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.xml.crypto.Data;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -95,13 +96,15 @@ public class AccountServiceImpl implements AccountService {
         //设置密码
         account.setAccountPassword(passwordEncoder.encode(account.getAccountPassword()));
         //后台给账户设定创建时间
-        account.setAccountCreateDate(new Date());
+        account.setAccountCreateDate(new SimpleDateFormat("yyy-MM-dd").format(new Date()));
         //给用户设定推荐人
         account.setReferrer(referrer);
         //给用户设定金字塔坐标
-        account.setAccountLead(accountLeadUtil.getAccountLead(referrer));
+        List<Integer> list = accountLeadUtil.getAccountLead(referrer);
+        account.setAccountJNumber(list.get(0));
+        //给用户设定上级
+        account.setAccountLead(list.get(1));
         //保存账户
-        System.out.println("开始保存");
         Integer integer = accountDao.saveAccount(account);
         if (integer!=0){
             return true;
@@ -122,7 +125,8 @@ public class AccountServiceImpl implements AccountService {
         //设置密码
         account.setAccountPassword(passwordEncoder.encode(account.getAccountPassword()));
         //后台给账户设定创建时间
-        account.setAccountCreateDate(new Date());
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+        account.setAccountCreateDate(simpleDateFormat.format(new Date()));
         //保存账户
         Integer integer = accountDao.saveAccount(account);
         if (integer!=0){
@@ -149,7 +153,7 @@ public class AccountServiceImpl implements AccountService {
      * @return 查询到的用户
      */
     @Override
-    public List<Account> findAccountByDate(Date date) {
+    public List<Account> findAccountByDate(String date) {
         return accountDao.findAccountByDate(date);
     }
 
@@ -158,11 +162,20 @@ public class AccountServiceImpl implements AccountService {
         return accountDao.findAccountByReferrer(accountId);
     }
 
+    //分页
     @Override
     public PageInfo findPage(int page, int pageSize) {
+        int number=accountDao.findAccount().size();
         PageHelper.startPage(page,pageSize);
         List<Account> list=accountDao.findAccount();
         PageInfo pageInfo = new PageInfo();
+        if (number%pageSize!=0){
+            pageInfo.setPages(number/pageSize+1);
+        }else {
+            pageInfo.setPages(number/pageSize);
+        }
+        pageInfo.setPageSize(pageSize);
+        pageInfo.setPageNum(page);
         pageInfo.setList(list);
         return pageInfo;
     }

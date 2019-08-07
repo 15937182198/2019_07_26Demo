@@ -88,7 +88,7 @@ public interface AccountDao {
      * @return 查询到的用户
      */
     @Select("select * from account where accountCreateDate=#{date}")
-    List<Account> findAccountByDate(Date date);
+    List<Account> findAccountByDate(String date);
 
     /**
      * 根据账户id查询账户

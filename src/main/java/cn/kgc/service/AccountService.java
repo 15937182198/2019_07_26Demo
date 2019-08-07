@@ -56,7 +56,7 @@ public interface AccountService extends UserDetailsService {
      * @param date 查询时间
      * @return 查询到的用户总数
      */
-    List<Account> findAccountByDate(Date date);
+    List<Account> findAccountByDate(String date);
 
     /**
      * 根据账户id查询推荐人数

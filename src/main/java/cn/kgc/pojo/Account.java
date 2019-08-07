@@ -48,7 +48,7 @@ public class Account  implements Serializable {
 	 * 账户创建时间
 	 */
    	@Column(name = "accountCreateDate" )
-	private Date accountCreateDate;
+	private String accountCreateDate;
 
 	/**
 	 * 推荐人id
@@ -106,11 +106,11 @@ public class Account  implements Serializable {
 		this.accountMoney = accountMoney;
 	}
 
-	public Date getAccountCreateDate() {
+	public String getAccountCreateDate() {
 		return accountCreateDate;
 	}
 
-	public void setAccountCreateDate(Date accountCreateDate) {
+	public void setAccountCreateDate(String accountCreateDate) {
 		this.accountCreateDate = accountCreateDate;
 	}
 
