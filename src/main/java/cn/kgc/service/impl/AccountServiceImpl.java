@@ -89,7 +89,7 @@ public class AccountServiceImpl implements AccountService {
         account.setAccountPassword(accountPassword);
         //设置账户名
         account.setAccountName(accountName);
-        //设置密码
+        //设置权限
         account.setJur(3);
         //设置基本积分
         account.setAccountMoney((double) 1000);

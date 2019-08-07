@@ -93,7 +93,7 @@ public class loginController {
      * @return
      */
     @RequestMapping("/userAdd")
-    public ModelAndView userAdd(){
+    public ModelAndView userAdd(HttpServletRequest request){
         ModelAndView modelAndView =new ModelAndView();
         modelAndView.setViewName("/user/userAdd");
         return modelAndView;

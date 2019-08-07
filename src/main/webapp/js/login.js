@@ -16,4 +16,3 @@ layui.use(['jquery'],function(){
    $(".layui-canvs").width($(window).width());
    $(".layui-canvs").height($(window).height());
 });
-e
