@@ -69,6 +69,16 @@ public class loginController {
         return modelAndView;
     }
     /**
+     * 添加管理员信息页面跳转
+     * @return
+     */
+    @RequestMapping("/userGuanLi")
+    public ModelAndView userGuanLi(){
+        ModelAndView modelAndView =new ModelAndView();
+        modelAndView.setViewName("/admin/addGuanLi");
+        return modelAndView;
+    }
+    /**
      * 后台首页面跳转
      * @return
      */

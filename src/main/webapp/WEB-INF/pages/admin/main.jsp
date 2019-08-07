@@ -86,8 +86,9 @@
                         </div>
                     </div>
                     <!-- overview end -->
-                    <div class="row">
-                        <div class="col-lg-6">
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-8">
                             <section class="panel">
                                 <header class="panel-heading bm0">
                                     <span class='span-title'>系统概览</span>
@@ -98,6 +99,12 @@
                                         <tbody>
                                         <tr>
                                             <td>
+                                                <strong>后台管理</strong>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
                                                 <strong>当前登录用户</strong>： <span class="current_user">${pageContext.session.getAttribute("username")}</span>
 
                                             </td>
@@ -105,7 +112,25 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <strong>网站域名</strong>：未定义
+                                                <strong>网站域名</strong>： <span class="current_user">未定义</span>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>服务器IP</strong>： <span class="current_user">未定义</span>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>端口号</strong>：<span class="current_user">8080</span>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>当前版本</strong>：<span class="current_user">1.0</span>
                                             </td>
                                             <td></td>
                                         </tr>
@@ -114,6 +139,7 @@
                                 </div>
                             </section>
                         </div>
+                        <div class="col-md-3"></div>
                     </div>
                 </section>
             </div>

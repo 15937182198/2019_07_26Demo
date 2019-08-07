@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Dys
@@ -91,7 +92,15 @@
                     </a>
                 </li>
                 <hr class="layui-bg-blue" style="margin: 0;padding: 0">
-
+                <c:if test="${pageContext.session.getAttribute('username')=='root'}">
+                <li class="layui-nav-item layui-this" >
+                    <a href="${pageContext.request.contextPath}/loginController/userGuanLi">
+                        <i class="iconfont icon-refurbish" data-icon='icon-home1'></i>
+                        <span>添加管理员</span>
+                    </a>
+                </li>
+                <hr class="layui-bg-blue" style="margin: 0;padding: 0">
+                </c:if>
             </ul>
         </div>
     </div>

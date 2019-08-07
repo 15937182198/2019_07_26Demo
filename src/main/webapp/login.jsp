@@ -22,7 +22,7 @@
 </head>
 
 <body style="overflow: hidden">
-<div class="layui-canvs"></div>
+<div>
 <div class="layui-layout layui-layout-login">
     <h1>
         <strong>管理系统后台</strong>
@@ -38,19 +38,13 @@
             <input type="submit" value="立即登陆" class="submit_btn"/>
         </div>
     </form>
-    <div class="layui-login-text">
-        <!--<p>版权所有</p>
-        <p>鄂xxxxxx</p>-->
-    </div>
+</div>
 </div>
 <script type="text/javascript" src="common/layui/lay/dest/layui.all.js"></script>
 <script type="text/javascript" src="js/login.js"></script>
 <script type="text/javascript" src="jsplug/jparticle.jquery.js"></script>
 <script type="text/javascript">
     $(function(){
-        $(".layui-canvs").jParticle({
-            background: "#141414",
-        });
         $(".submit_btn").click(function(){
             var username=$("input[name='username']").val();
             var password=$("input[name='password']").val();

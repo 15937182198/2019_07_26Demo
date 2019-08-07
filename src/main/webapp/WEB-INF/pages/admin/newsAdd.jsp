@@ -89,6 +89,11 @@
         $(".btn").click(function(){
             var val = $("#accountId").val();
             var password=$("input[name='accountPassword']").val();
+            var re = new RegExp(/^[a-zA-Z0-9]{4,8}$/);       // ^表示开始  $表示结束
+            if (!re.test(password)){
+                alert("密码必须为数字或字母，只能为8~12位！");
+                return;
+            }
             $.ajax({
                 url:"${pageContext.request.contextPath}/account/updateAccountPassword",
                 type:"POST",
