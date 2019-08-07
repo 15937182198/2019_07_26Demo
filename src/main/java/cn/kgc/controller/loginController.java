@@ -126,4 +126,17 @@ public class loginController {
     public String addUser(){
         return "/admin/addUser";
     }
+
+    /**
+     * 用户信息页面跳转
+     * @return
+     */
+    @RequestMapping("/updateMoney")
+    public ModelAndView updateMoney(Integer accountId){
+        Account account=accountService.findAccountById(accountId);
+        ModelAndView modelAndView =new ModelAndView();
+        modelAndView.addObject(account);
+        modelAndView.setViewName("/admin/updaMoney");
+        return modelAndView;
+    }
 }

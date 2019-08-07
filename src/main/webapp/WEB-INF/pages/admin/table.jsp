@@ -36,9 +36,9 @@
             <blockquote class="layui-elem-quote news_search">
                 <div class="layui-inline">
                     <div class="layui-input-inline">
-                        <input value="" placeholder="请输入用户名" class="layui-input search_input" type="text">
+                        <input value="" placeholder="请输入用户名" class="layui-input search_input" type="text" id="accountName">
                     </div>
-                    <button class="layui-btn search_btn">查询</button>
+                    <button class="layui-btn search_btn" id="button1" name="button1">查询</button>
                 </div>
             </blockquote>
 
@@ -47,7 +47,6 @@
                 <table class="layui-table">
                     <thead>
                     <tr>
-                        <th>ID</th>
                         <th>用户名</th>
                         <th>积分余额</th>
                         <th>创建时间</th>
@@ -59,13 +58,14 @@
                     <%--  --%>
                     <c:forEach items="${pageInfo.list}" var="account" varStatus="id">
                         <tr>
-                            <td>${(pageInfo.pageNum-1)*5+id.count}</td>
                             <td align="left">${account.accountName}</td>
                             <td>${account.accountMoney}</td>
                             <td>${account.accountCreateDate}</td>
                             <td>${account.referrer}</td>
                             <td>
-                                <a href="${pageContext.request.contextPath}/loginController/userInforUpdate?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 修改</a>
+                                <a href="${pageContext.request.contextPath}/loginController/userInforUpdate?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 修改密码</a>
+                                <a href="${pageContext.request.contextPath}/loginController/updateMoney?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 修改积分</a>
+
                             </td>
                         </tr>
                     </c:forEach>
@@ -73,19 +73,12 @@
                 </table>
                 <div class="larry-table-page clearfix">
                     <div class="box-footer">
-
                         <div class="box-tools pull-right">
                             <ul class="pagination">
                                 <li><a href="javascript:pageBeanNumber(1)" aria-label="Previous">首页</a></li>
                                 <li><a href="javascript:pageBeanNumber(${pageInfo.pageNum-1})">上一页</a></li>
-                                <li><a href="javascript:pageBeanNumber(${i})">${i}</a></li>
                                     <c:forEach begin="1" end="${pageInfo.pageNum+4}" var="i">
-                                        <c:if test="${pageInfo.pageNum-2}<0">
-                                            <li><a href="javascript:pageBeanNumber(${i})">${i}</a></li>
-                                        </c:if>
-                                        <c:if test="${pageInfo.pageNum-2>0?pageInfo.pageNum:1<i<=5}">
-                                            <li><a href="javascript:pageBeanNumber(${i})">${i}</a></li>
-                                        </c:if>
+                                        <li><a href="javascript:pageBeanNumber(${i})">${i}</a></li>
                                     </c:forEach>
                                 <li><a href="javascript:pageBeanNumber(${pageInfo.pageNum+1})">下一页</a></li>
                                 <li><a href="javascript:pageBeanNumber(${pageInfo.pages})" aria-label="Next">尾页</a></li>
@@ -124,6 +117,14 @@
         }
         location.href="${pageContext.request.contextPath}/account/pageInfo?currPage="+nowPage;
     }
+</script>
+<script>
+    $(function () {
+        $("#button1").click(function () {
+            var val = $("#accountName").val();
+            window.location.href="${pageContext.request.contextPath}/account/findAccountByAccountName?accountName="+val;
+        });
+    });
 </script>
 </body>
 </html>

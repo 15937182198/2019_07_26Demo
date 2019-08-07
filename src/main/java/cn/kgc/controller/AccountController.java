@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -36,6 +37,19 @@ public class AccountController {
             return false;
         }
         return true;
+    }
+
+    @RequestMapping("/findAccountByAccountName")
+    public ModelAndView findAccountByAccountName(String accountName){
+        ModelAndView modelAndView=new ModelAndView();
+        Account account = accountService.findAccountByName(accountName);
+        PageInfo pageInfo=new PageInfo();
+        ArrayList<Account> arrayList = new ArrayList<Account>();
+        arrayList.add(account);
+        pageInfo.setList(arrayList);
+        modelAndView.setViewName("/admin/table");
+        modelAndView.addObject(pageInfo);
+        return modelAndView;
     }
 
 
@@ -115,7 +129,7 @@ public class AccountController {
     @RequestMapping("/pageInfo")
     public ModelAndView pageInfo(
             @RequestParam(required = false,defaultValue = "1",value = "currPage")Integer currPage,
-            @RequestParam(required = false,defaultValue = "1",value = "pageSizes")Integer pageSizes
+            @RequestParam(required = false,defaultValue = "5",value = "pageSizes")Integer pageSizes
     ){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject(accountService.findPage(currPage,pageSizes));

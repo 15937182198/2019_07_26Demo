@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>修改用户</title>
+    <title>修改积分</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -40,15 +40,9 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="inputPassword3" class="col-sm-2 control-label" id="password">密码：</label>
-        <div class="col-xs-4">
-            <input type="password" class="form-control" name="accountPassword" id="inputPassword3" placeholder="数字或字母，只能为8~12位！">
-        </div>
-    </div>
-    <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 control-label">积分余额：</label>
         <div class="col-xs-4">
-            <input type="text" class="form-control" id="" name="" value="${account.accountMoney}" readonly>
+            <input type="text" class="form-control" id="" name="" value="${account.accountMoney}">
         </div>
     </div>
     <div class="form-group">
@@ -77,15 +71,13 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/newsadd.js"></script>
 <script type="text/javascript">
     $(function(){
-        $("#password").blur(function () {
+        $(".btn").click(function(){
             var password=$("input[name='accountPassword']").val();
             var re = new RegExp(/^[a-zA-Z0-9]{4,8}$/);       // ^表示开始  $表示结束
             if (!re.test(password)){
                 alert("密码必须为数字或字母，只能为8~12位！");
+                return;
             }
-        });
-        $(".btn").click(function(){
-
         });
     });
 </script>
