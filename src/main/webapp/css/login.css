@@ -40,8 +40,8 @@
 	font-size:25px;
 	font-weight:bold;
 	text-align:center;
-	color:#45bda6;
-	text-shadow:0 0 1px #0e947a;
+	/*color:#45bda6;*/
+	/*text-shadow:0 0 1px #0e947a;*/
 	margin-bottom:15px;
 }
 .layui-layout-login h1 strong{
@@ -66,11 +66,10 @@
 	width:100%;
 	text-indent:2em;
 	border:none;
-	background:#5cbdaa;
-	color:white;
+	background:#e8f0fe;
 }
 .larry-login  .login_txtbx::-webkit-input-placeholder {
-	color:#f4f4f4;
+	color:#dedede;
 	line-height:inherit;
 } 
 .larry-login  .login_txtbx:-moz-placeholder {
