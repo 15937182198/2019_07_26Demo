@@ -21,27 +21,28 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/common/global.css" media="all">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/personal.css" media="all">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminstyle.css" media="all">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css" media="all">
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 </head>
 <body class="childrenBody">
 <jsp:include page="index.jsp" flush="true"/>
-<div class="layui-body" id="larry-body" style="bottom: 0;border-left: solid 2px #2299ee; margin-top: 50px;">
+<div class="layui-body" id="larry-body" style="bottom: 0;border-left: solid 2px #2299ee; margin-top: 50px;background-color: #f1f2f7">
     <div class="layui-tab layui-tab-card larry-tab-box" id="larry-tab" lay-filter="demo" lay-allowclose="true">
         <div class="layui-tab-content" style="min-height: 150px; margin-top: 25px;">
             <div class="layui-tab-item layui-show">
-<form class="form-horizontal ">
+<form class="form-horizontal " style="margin-top: 70px;margin-left: 200px;">
     <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">用户名：</label>
         <div class="col-xs-4">
-            <input type="email" class="form-control" name="" id="inputEmail3" value="${account.accountName}" readonly>
+            <input type="text" class="form-control" name="accountName" id="inputEmail3" value="${account.accountName}" readonly>
         </div>
     </div>
     <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 control-label">密码：</label>
         <div class="col-xs-4">
-            <input type="password" class="form-control" name="" id="inputPassword3" placeholder="密码">
+            <input type="password" class="form-control" name="accountPassword" id="inputPassword3" placeholder="数字或字母，只能为8~12位！">
         </div>
     </div>
     <div class="form-group">
@@ -74,6 +75,17 @@
 </div>
 <script type="text/javascript" src="${pageContext.request.contextPath}/common/layui/layui.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/newsadd.js"></script>
-
+<script type="text/javascript">
+    $(function(){
+        $(".btn").click(function(){
+            var password=$("input[name='accountPassword']").val();
+            var re = new RegExp(/^[a-zA-Z0-9]{4,8}$/);       // ^表示开始  $表示结束
+            if (!re.test(password)){
+                alert("密码必须为数字或字母，只能为8~12位！");
+                return;
+            }
+        });
+    });
+</script>
 </body>
 </html>

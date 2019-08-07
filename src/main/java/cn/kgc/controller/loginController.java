@@ -69,6 +69,16 @@ public class loginController {
         return modelAndView;
     }
     /**
+     * 后台首页面跳转
+     * @return
+     */
+    @RequestMapping("/userShouYe")
+    public ModelAndView userShouYe(){
+        ModelAndView modelAndView =new ModelAndView();
+        modelAndView.setViewName("/admin/main");
+        return modelAndView;
+    }
+    /**
      * 普通用户购买账号页面跳转
      * @return
      */

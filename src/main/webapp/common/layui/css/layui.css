@@ -1563,14 +1563,14 @@ a cite {
 }
 
 .layui-nav-tree .layui-nav-item a:hover {
-	background-color: #4E5465
+	background-color: #393D49;
 }
 
 .layui-nav-tree .layui-nav-child dd.layui-this,
 .layui-nav-tree .layui-this,
 .layui-nav-tree .layui-this>a,
 .layui-nav-tree .layui-this>a:hover {
-	background-color: ;
+	background-color:#393D49;
 	color: #fff
 }
 

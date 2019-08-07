@@ -20,10 +20,13 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/common/bootstrap/css/bootstrap.css" media="all">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/common/global.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css" media="all">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/personal.css" media="all">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminstyle.css" media="all">
 
 </head>
 <body>
 <jsp:include page="index.jsp" flush="true"/>
+
 <div class="layui-body" id="larry-body" style="bottom: 0;border-left: solid 2px #2299ee; margin-top: 50px;">
     <div class="layui-tab layui-tab-card larry-tab-box" id="larry-tab" lay-filter="demo" lay-allowclose="true">
         <div class="layui-tab-content" style="min-height: 150px; ">
@@ -119,7 +122,6 @@
 </div>
 
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/common/layui/layui.js"></script>
 <script type="text/javascript">
     layui.use(['jquery','layer','element'],function(){
         window.jQuery = window.$ = layui.jquery;
@@ -139,9 +141,8 @@
 
     });
 </script>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/common/layui/layui.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jsplug/echarts.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/main.js"></script>
 <script src="../../../js/jquery-3.2.1.min.js"></script>
 <script>
     $(function () {

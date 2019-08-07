@@ -31,8 +31,8 @@
 
 <jsp:include page="main.jsp" flush="true"/>
 
-<div class="container" style="background-color: #dff0d8;padding-left: 300px;margin-top: 20px; padding-top: 15px;">
-    <p class="text-left"><h2><span class="glyphicon glyphicon-user" aria-hidden="true"> </span> 积分交易</h2></p>
+<div class="container" style="background-color: #e7eaed;padding-left: 300px;margin-top: 20px; padding-top: 15px;">
+    <p class="text-left"><h2><span class="glyphicon glyphicon-transfer" aria-hidden="true"> </span> 积分交易</h2></p>
 
     <form class="form-horizontal">
         <div class="form-group" style="margin-left: 15px;margin-top: 30px;">

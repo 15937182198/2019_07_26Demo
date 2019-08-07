@@ -20,18 +20,8 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/common/layui/css/layui.css" media="all">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/common/global.css" media="all">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminstyle.css" media="all">
-    <style type="text/css">
-        .one{
-            margin-top: 25px;
-        }
-        .margintop{
-            margin-top: 70px;
-        }
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/login.css" media="all">
 </head>
-
-
 <body style="overflow: hidden">
 <div class="layui-layout layui-layout-admin" id="layui_layout">
     <!-- 顶部区域 -->
@@ -64,61 +54,43 @@
             <!-- 左侧菜单 -->
             <ul class="layui-nav layui-nav-tree">
                 <li class="layui-nav-item layui-this" >
-                    <a href="javascript:;" data-url="main.jsp">
+                    <a href="${pageContext.request.contextPath}/loginController/userShouYe">
                         <i class="iconfont icon-home1" data-icon='icon-home1'></i>
                         <span>后台首页</span>
                     </a>
+
                 </li>
-                <!-- 个人信息 -->
-                <li class="layui-nav-item">
-                    <a href="javascript:;">
-                        <i class="iconfont icon-jiaoseguanli" ></i>
-                        <span>用户管理</span>
-                        <em class="layui-nav-more"></em>
+                <hr class="layui-bg-blue" style="margin: 0;padding: 0">
+                <li class="layui-nav-item layui-this" >
+                    <a href="${pageContext.request.contextPath}/account/pageInfo">
+                        <i class="iconfont icon-sousuo2" data-icon='icon-home1'></i>
+                        <span>用户信息</span>
                     </a>
-                    <dl class="layui-nav-child">
-                        <dd>
-                            <a href="${pageContext.request.contextPath}/account/pageInfo">
-                                <i class="iconfont icon-geren1" data-icon='icon-geren1' id="account"></i>
-                                <span>用户信息</span>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a href="${pageContext.request.contextPath}/loginController/addUser" data-url="changepwd.html">
-                                <i class="iconfont icon-iconfuzhi01" data-icon='icon-iconfuzhi01'></i>
-                                <span>添加用户</span>
-                            </a>
-                        </dd>
-                    </dl>
+                    <hr class="layui-bg-blue" style="margin: 0;padding: 0">
                 </li>
-                <!-- 用户管理 -->
-                <li class="layui-nav-item">
-                    <a href="javascript:;">
-                        <i class="iconfont icon-jiaoseguanli2" ></i>
-                        <span>店铺管理</span>
-                        <em class="layui-nav-more"></em>
+                <li class="layui-nav-item layui-this">
+                    <a href="${pageContext.request.contextPath}/loginController/addUser">
+                        <i class="iconfont icon-refurbish" data-icon='icon-home1'></i>
+                        <span>添加用户</span>
                     </a>
-                    <dl class="layui-nav-child">
-                        <dd>
-                            <a href="${pageContext.request.contextPath}/loginController/userInfor" data-url="table.jsp">
-                                <i class="iconfont icon-yonghu1" data-icon='icon-yonghu1'></i>
-                                <span>店铺信息</span>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;"  data-url="table_1.jsp">
-                                <i class="iconfont icon-jiaoseguanli4" data-icon='icon-jiaoseguanli4'></i>
-                                <span>修改信息</span>
-                            </a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" data-url="myloginfo.jsp">
-                                <i class="iconfont icon-quanxian2" data-icon='icon-quanxian2'></i>
-                                <span>添加店铺</span>
-                            </a>
-                        </dd>
-                    </dl>
                 </li>
+                <hr class="layui-bg-blue" style="margin: 0;padding: 0">
+
+                <li class="layui-nav-item layui-this" >
+                    <a href="${pageContext.request.contextPath}/loginController/userInfor">
+                        <i class="iconfont icon-sousuo2" data-icon='icon-home1'></i>
+                        <span>店铺信息</span>
+                    </a>
+                </li>
+                <hr class="layui-bg-blue" style="margin: 0;padding: 0">
+
+                <li class="layui-nav-item layui-this" >
+                    <a href="${pageContext.request.contextPath}/loginController/userInfor">
+                        <i class="iconfont icon-refurbish" data-icon='icon-home1'></i>
+                        <span>添加店铺</span>
+                    </a>
+                </li>
+                <hr class="layui-bg-blue" style="margin: 0;padding: 0">
 
             </ul>
         </div>

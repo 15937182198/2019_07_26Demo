@@ -29,20 +29,20 @@
 </head>
 <body>
 <jsp:include page="main.jsp" flush="true"/>
-<div class="container" style="background-color: #dff0d8;padding-left: 300px;margin-top: 20px; padding-top: 15px;">
+<div class="container" style="background-color: #e7eaed;padding-left: 300px;margin-top: 20px; padding-top: 15px;">
     <p class="text-left"><h2><span class="glyphicon glyphicon-user" aria-hidden="true"> </span> 购买账号</h2></p>
 
     <form class="form-horizontal">
         <div class="form-group" style="margin-left: 15px;margin-top: 30px;">
             <label for="inputEmail3" class="col-sm-2 control-label">用户名：</label>
             <div class="col-xs-4">
-                <input type="text" class="form-control" id="inputEmail3" placeholder="用户名" name="username">
+                <input type="text" class="form-control" id="inputEmail3" placeholder="数字或字母，只能为8~12位！" name="username">
             </div>
         </div>
         <div class="form-group" style="margin-left: 15px;margin-top: 15px;">
             <label for="inputPassword3" class="col-sm-2 control-label">密码：</label>
             <div class="col-xs-4">
-                <input type="password" class="form-control" id="inputPassword3" placeholder="Password" name="password">
+                <input type="password" class="form-control" id="inputPassword3" placeholder="数字或字母，只能为8~12位！" name="password">
             </div>
         </div>
         <div class="form-group" style="margin-left: 15px;margin-top: 15px;">

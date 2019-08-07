@@ -27,8 +27,8 @@
 </head>
 <body>
 <jsp:include page="main.jsp" flush="true"/>
-<div class="container" style="background-color: #dff0d8;padding-left: 300px;margin-top: 20px; padding-top: 15px;">
-    <p class="text-left"><h2><span class="glyphicon glyphicon-user" aria-hidden="true"> </span> 修改信息</h2></p>
+<div class="container" style="background-color: #e7eaed;padding-left: 300px;margin-top: 20px; padding-top: 15px;">
+    <p class="text-left"><h2><span class="glyphicon glyphicon-cog" aria-hidden="true"> </span> 修改信息</h2></p>
 
     <form class="form-horizontal">
         <div class="form-group" style="margin-left: 15px;margin-top: 30px;">
@@ -40,7 +40,7 @@
         <div class="form-group" style="margin-left: 15px;margin-top: 15px;">
             <label for="inputPassword3" class="col-sm-2 control-label">新密码：</label>
             <div class="col-xs-4">
-                <input type="password" class="form-control" id="inputPassword3" placeholder="Password" name="password">
+                <input type="password" class="form-control" id="inputPassword3" placeholder="请提高安全意识" name="password">
             </div>
         </div>
         <div class="form-group" style="margin-left: 15px;margin-top: 15px;">
