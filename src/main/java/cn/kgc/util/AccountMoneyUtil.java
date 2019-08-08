@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 账户积分的工具类
@@ -95,6 +97,28 @@ public class AccountMoneyUtil {
             }
         }
         return true;
+    }
+
+
+    /**
+     * 用户注册时用来计算他30层上的上级积分情况
+     * @param accountLead 注册用户的上级
+     * @return 修改后的用户集合
+     */
+    public List<Account> updateAccountLeadMoney(Integer accountLead){
+        System.out.println(accountDao);
+        List<Account> list=new ArrayList<Account>();
+        for (int i=0;i<30;i++){
+            System.out.println(accountLead);
+            Account accountById = accountDao.findAccountById(accountLead);
+            if (accountById==null){
+                return list;
+            }
+            accountById.setAccountMoney(30*(0.8*i));
+            list.add(accountById);
+            accountLead=accountById.getAccountLead();
+        }
+        return list;
     }
 
 

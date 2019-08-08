@@ -3,6 +3,7 @@ package cn.kgc.controller;
 import cn.kgc.pojo.Account;
 import cn.kgc.pojo.PageInfo;
 import cn.kgc.service.AccountService;
+import cn.kgc.util.AccountMoneyUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,6 +25,9 @@ public class AccountController {
 
     @Resource(name = "accountService")
     private AccountService accountService;
+
+    @Resource(name = "accountMoneyUtil")
+    private AccountMoneyUtil accountMoneyUtil;
 
     /**
      * 根据用户名查询是否有该用户
@@ -176,20 +180,30 @@ public class AccountController {
      */
     @RequestMapping("/userSaveAccount")
     public @ResponseBody String userSaveAccount(Integer referrer,String accountName,String accountPassword){
+        //判断该用户名是否可用
         Account accountByName = accountService.findAccountByName(accountName);
         if (accountByName!=null){
             return "1";
         }
+        //查看推荐人积分是否在2000积分以上
         Account accountById = accountService.findAccountById(referrer);
         if (accountById.getAccountMoney()<2000){
             return "2";
         }
+        //保存该用户
         boolean b = accountService.saveAccount(accountName, accountPassword, referrer);
         if (b){
-            accountById.setAccountMoney(accountById.getAccountMoney()+180);
+            //给上级增加180积分,并保存
+            accountById.setAccountMoney(accountById.getAccountMoney()-1000+180);
+            accountService.updateAccountMoney(accountById);
+            //查询新增用户
             Account accountByName1 = accountService.findAccountByName(accountName);
-            Account accountById1 = accountService.findAccountById(accountByName1.getAccountLead());
-            accountById1.setAccountMoney(accountById1.getAccountMoney()+30);//2019/8/7杜宇森，下一步写个工具类，向上算30层增加积分
+            System.out.println(accountByName1);
+            //给该用户上30层的所有上级增加相应积分
+            List<Account> accounts =accountMoneyUtil.updateAccountLeadMoney(accountById.getAccountLead());
+            for (Account account : accounts) {
+                accountService.updateAccountMoney(account);
+            }
         }
         return b+"";
     }

@@ -82,17 +82,16 @@
                 success:function (res) {
                     if (res == false){
                         alert("添加失败");
-                        window.location.href="${pageContext.request.contextPath}/loginController/userGuanLi";
+                        window.location.href="${pageContext.request.contextPath}/loginController/userShouYe";
                         return;
                     }
                     if (res=="1") {
                         alert("该用户已存在!");
-                        window.location.href="${pageContext.request.contextPath}/loginController/userGuanLi";
                         return;
                     }
                     if (res!=true&&res!="1") {
                         alert("添加成功");
-                        window.location.href="${pageContext.request.contextPath}/loginController/userGuanLi";
+                        window.location.href="${pageContext.request.contextPath}/loginController/userShouYe";
                         return;
                     }
                 }
