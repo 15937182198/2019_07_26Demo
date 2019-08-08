@@ -72,14 +72,33 @@
                     </tbody>
                 </table>
                 <div class="larry-table-page clearfix">
+                    <div style="margin-top: 50px"><span>共${pageInfo.accountNum}个用户</span><span>当前是第${pageInfo.pageNum}页</span></div>
                     <div class="box-footer">
                         <div class="box-tools pull-right">
                             <ul class="pagination">
                                 <li><a href="javascript:pageBeanNumber(1)" aria-label="Previous">首页</a></li>
                                 <li><a href="javascript:pageBeanNumber(${pageInfo.pageNum-1})">上一页</a></li>
-                                    <c:forEach begin="1" end="${pageInfo.pageNum+4}" var="i">
+                                <c:choose>
+                                    <c:when test="${pageInfo.pages<=5}">
+                                    <c:forEach begin="1" end="${pageInfo.pages}" var="i">
                                         <li><a href="javascript:pageBeanNumber(${i})">${i}</a></li>
                                     </c:forEach>
+                                    </c:when>
+
+                                    <c:otherwise>
+                                            <c:if test="${pageInfo.pageNum+4<pageInfo.pages}">
+                                                <c:set var="start" value="${pageInfo.pageNum}"/>
+                                                <c:set var="end" value="${pageInfo.pageNum+4}"/>
+                                            </c:if>
+                                            <c:if test="${pageInfo.pageNum+4>=pageInfo.pages}">
+                                                <c:set var="start" value="${pageInfo.pages-4}"/>
+                                                <c:set var="end" value="${pageInfo.pages}"/>
+                                            </c:if>
+                                        <c:forEach begin="${start}" end="${end}" var="i">
+                                            <li><a href="javascript:pageBeanNumber(${i})">${i}</a></li>
+                                        </c:forEach>
+                                    </c:otherwise>
+                                </c:choose>
                                 <li><a href="javascript:pageBeanNumber(${pageInfo.pageNum+1})">下一页</a></li>
                                 <li><a href="javascript:pageBeanNumber(${pageInfo.pages})" aria-label="Next">尾页</a></li>
                             </ul>
@@ -107,7 +126,6 @@
     <%--分页函数--%>
     function pageBeanNumber(nowPage) {
         //获取页面数据大小
-
         if(nowPage<1){
             return;
         }
