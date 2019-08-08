@@ -39,6 +39,7 @@
                 <%--推荐人id--%>
                 <input type="hidden" value="${pageContext.session.getAttribute("account").accountId}" id="referrer">
                 <input type="text" class="form-control" id="inputEmail3" placeholder="数字或字母，只能为8~12位！" name="username">
+                <span id="uname"></span>
             </div>
         </div>
         <div class="form-group" style="margin-left: 15px;margin-top: 15px;">
@@ -63,6 +64,32 @@
 </div>
 <script type="text/javascript">
     $(function(){
+
+        $("input[name='username']").blur(function () {
+            var username = $("input[name='username']").val();
+            var re = new RegExp(/^[a-zA-Z0-9]{4,8}$/);       // ^表示开始  $表示结束
+            if (!re.test(username)){
+                $("#uname").html("用户名必须为数字或字母，只能为8~12位！");
+                return;
+            }
+            if (re.test(username)) {
+                $("#uname").html("");
+            }
+            $.ajax({
+                url:"${pageContext.request.contextPath}/account/userFindAccountByAccountName",
+                type:"POST",
+                data:{
+                    "accountName":username},
+                success:function (res) {
+                    if (res!=1){
+                        $("#uname").html("该账号已存在!");
+                    }else {
+                        $("#uname").html("");
+                    }
+                }
+            });
+        });
+
         $(".btn").click(function(){
             var username=$("input[name='username']").val();
             var password=$("input[name='password']").val();

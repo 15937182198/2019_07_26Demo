@@ -193,4 +193,18 @@ public class AccountController {
         }
         return b+"";
     }
+
+    /**
+     * 根据用户名判断该用户名是否可用
+     * @param accountName 需要查询的用户名
+     */
+    @RequestMapping("/userFindAccountByAccountName")
+    public @ResponseBody String userFindAccountByAccountName(String accountName){
+        Account accountByName = accountService.findAccountByName(accountName);
+        if (accountByName==null){
+            return "1";
+        }else {
+            return "2";
+        }
+    }
 }
