@@ -39,6 +39,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">个人中心<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="${pageContext.request.contextPath}/loginController/userAdd">新增用户</a></li>
+                                <li><a href="${pageContext.request.contextPath}/loginController/shopAdd">新增店铺</a></li>
                                 <li><a href="${pageContext.request.contextPath}/loginController/UpdateUser">修改密码</a></li>
                                 <li><a href="${pageContext.request.contextPath}/loginController/userjiaoyi">积分交易</a></li>
                                 <li><a href="#">积分：${pageContext.session.getAttribute("account").accountMoney}</a></li>

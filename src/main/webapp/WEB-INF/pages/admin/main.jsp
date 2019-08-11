@@ -32,7 +32,7 @@
         <div class="layui-tab-content" style="min-height: 150px; ">
             <div class="layui-tab-item layui-show">
                 <section class="larry-wrapper">
-                    <!-- overview -->
+                    <!-- overview 用户-->
                     <div class="row state-overview">
                         <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
                             <section class="panel">
@@ -42,7 +42,7 @@
                                     <a href="#">
                                         <p id="count1">13</p>
                                     </a>
-                                    <p>用户总量</p>
+                                    <p>用户总数</p>
                                 </div>
                             </section>
                         </div>
@@ -79,6 +79,59 @@
                                 <div class="value">
                                     <a href="#">
                                         <h1 id="count4">1000</h1>
+                                    </a>
+                                    <p>今日收益</p>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <%--店铺--%>
+                    <div class="row state-overview">
+                        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+                            <section class="panel">
+                                <div class="symbol userblue layui-anim layui-anim-rotate"> <i class="iconpx-users"></i>
+                                </div>
+                                <div class="value">
+                                    <a href="#">
+                                        <p id="count5">13</p>
+                                    </a>
+                                    <p>店铺总数</p>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+                            <section class="panel">
+                                <div class="symbol commred layui-anim layui-anim-rotate"> <i class="iconpx-user-add"></i>
+                                </div>
+                                <div class="value">
+                                    <a href="#">
+                                        <h1 id="count6">12</h1>
+                                    </a>
+                                    <p>今日注册店铺</p>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+                            <section class="panel">
+                                <div class="symbol articlegreen layui-anim layui-anim-rotate">
+                                    <i class="iconpx-file-word-o"></i>
+                                </div>
+                                <div class="value">
+                                    <a href="#">
+                                        <h1 id="count7">12</h1>
+                                    </a>
+                                    <p>推荐人数超过6的用户数</p>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+                            <section class="panel">
+                                <div class="symbol rsswet layui-anim layui-anim-rotate">
+                                    <i class="iconpx-check-circle"></i>
+                                </div>
+                                <div class="value">
+                                    <a href="#">
+                                        <h1 id="count8">1000</h1>
                                     </a>
                                     <p>今日收益</p>
                                 </div>

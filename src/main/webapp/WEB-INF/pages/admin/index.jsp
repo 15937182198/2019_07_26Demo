@@ -75,7 +75,7 @@
                 <hr class="layui-bg-blue" style="margin: 0;padding: 0">
 
                 <li class="layui-nav-item layui-this" >
-                    <a href="${pageContext.request.contextPath}/loginController/userInfor">
+                    <a href="${pageContext.request.contextPath}/loginController/shopInfo">
                         <i class="iconfont icon-sousuo2" data-icon='icon-home1'></i>
                         <span>店铺信息</span>
                     </a>
@@ -83,13 +83,20 @@
                 <hr class="layui-bg-blue" style="margin: 0;padding: 0">
 
                 <li class="layui-nav-item layui-this" >
-                    <a href="${pageContext.request.contextPath}/loginController/userInfor">
+                    <a href="${pageContext.request.contextPath}/loginController/addShop">
                         <i class="iconfont icon-refurbish" data-icon='icon-home1'></i>
                         <span>添加店铺</span>
                     </a>
                 </li>
                 <hr class="layui-bg-blue" style="margin: 0;padding: 0">
                 <c:if test="${pageContext.session.getAttribute('username')=='root'}">
+                    <li class="layui-nav-item layui-this" >
+                        <a href="${pageContext.request.contextPath}/loginController/guanLiInfo">
+                            <i class="iconfont icon-sousuo2" data-icon='icon-home1'></i>
+                            <span>管理员信息</span>
+                        </a>
+                    </li>
+                    <hr class="layui-bg-blue" style="margin: 0;padding: 0">
                 <li class="layui-nav-item layui-this" >
                     <a href="${pageContext.request.contextPath}/loginController/userGuanLi">
                         <i class="iconfont icon-refurbish" data-icon='icon-home1'></i>

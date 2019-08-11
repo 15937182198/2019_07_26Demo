@@ -89,6 +89,36 @@ public class loginController {
         return modelAndView;
     }
     /**
+     * 后台店铺添加跳转
+     * @return
+     */
+    @RequestMapping("/addShop")
+    public ModelAndView addShop(){
+        ModelAndView modelAndView =new ModelAndView();
+        modelAndView.setViewName("/admin/addShop");
+        return modelAndView;
+    }
+    /**
+     * 后台店铺跳转
+     * @return
+     */
+    @RequestMapping("/shopInfo")
+    public ModelAndView shopInfo(){
+        ModelAndView modelAndView =new ModelAndView();
+        modelAndView.setViewName("/admin/shopInfo");
+        return modelAndView;
+    }
+    /**
+     * 后台管理员修改密码跳转
+     * @return
+     */
+    @RequestMapping("/guanLiInfo")
+    public ModelAndView guanLiInfo(){
+        ModelAndView modelAndView =new ModelAndView();
+        modelAndView.setViewName("/admin/guanLiInfo");
+        return modelAndView;
+    }
+    /**
      * 普通用户购买账号页面跳转
      * @return
      */
@@ -147,6 +177,18 @@ public class loginController {
         ModelAndView modelAndView =new ModelAndView();
         modelAndView.addObject(account);
         modelAndView.setViewName("/admin/updaMoney");
+        return modelAndView;
+    }
+    /**
+     * 普通用户购买店铺账号页面跳转
+     * @return
+     */
+    @RequestMapping("/shopAdd")
+    public ModelAndView shopAdd(){
+//        Account account=accountService.findAccountById(accountId);
+        ModelAndView modelAndView =new ModelAndView();
+//        modelAndView.addObject(account);
+        modelAndView.setViewName("/user/shopAdd");
         return modelAndView;
     }
 }

@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>添加管理员</title>
+    <title>添加店铺</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -29,13 +29,13 @@
 <jsp:include page="index.jsp" flush="true"/>
 <div class="layui-body" id="larry-body" style="bottom: 0;border-left: solid 2px #2299ee; margin-top: 50px; background-color: #f1f2f7">
     <div class="layui-tab layui-tab-card larry-tab-box" id="larry-tab" lay-filter="demo" lay-allowclose="true">
-
         <div class="layui-tab-content" style="min-height: 150px; margin-top: 25px;">
             <div class="layui-tab-item layui-show">
-                <div class="form-horizontal "  style="margin-top: 70px;margin-left: 200px;">
+                <div class="form-horizontal "style="margin-top: 70px;margin-left: 200px;">
                     <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">管理员：</label>
+                        <label for="inputEmail3" class="col-sm-2 control-label">店铺名：</label>
                         <div class="col-xs-4">
+                            <input type="hidden" id="referrer" value="1">
                             <input type="text" class="form-control" name="accountName" id="inputEmail3" placeholder="数字或字母，只能为8~12位！">
                         </div>
                     </div>
@@ -74,20 +74,19 @@
             }
             var referrer=$("#referrer").val();
             $.ajax({
-                url:"${pageContext.request.contextPath}/account/saveAdmin",
+                url:"${pageContext.request.contextPath}/account/saveAccount.admin",
                 type:"POST",
                 data:{"accountName":username,
                     "accountPassword":password,
-                    "referrer":referrer},
+                "referrer":referrer},
                 success:function (res) {
                     if (res == false){
                         alert("添加失败");
-                        window.location.href="${pageContext.request.contextPath}/loginController/userGuanLi";
+                        window.location.href="${pageContext.request.contextPath}/loginController/userShouYe";
                         return;
                     }
                     if (res=="1") {
-                        alert("该管理员已存在!");
-                        window.location.href="${pageContext.request.contextPath}/loginController/userGuanLi";
+                        alert("该用户已存在!");
                         return;
                     }
                     if (res!=true&&res!="1") {
@@ -99,6 +98,7 @@
             });
         });
     });
+
 </script>
 </body>
 </html>
