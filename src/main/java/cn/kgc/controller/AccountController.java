@@ -1,6 +1,7 @@
 package cn.kgc.controller;
 
 import cn.kgc.pojo.Account;
+import cn.kgc.pojo.NewAccount;
 import cn.kgc.pojo.PageInfo;
 import cn.kgc.service.AccountService;
 import cn.kgc.util.AccountMoneyUtil;
@@ -47,9 +48,15 @@ public class AccountController {
     public ModelAndView findAccountByAccountName(String accountName){
         ModelAndView modelAndView=new ModelAndView();
         Account account = accountService.findAccountByName(accountName);
+        NewAccount newAccount=new NewAccount();
+        newAccount.setAccountId(account.getAccountId());
+        newAccount.setAccountName(account.getAccountName());
+        newAccount.setAccountCreateDate(account.getAccountCreateDate());
+        newAccount.setReferrer(accountService.findAccountById(account.getReferrer()).getAccountName());
+        newAccount.setAccountMoney(account.getAccountMoney());
         PageInfo pageInfo=new PageInfo();
-        ArrayList<Account> arrayList = new ArrayList<Account>();
-        arrayList.add(account);
+        ArrayList<NewAccount> arrayList = new ArrayList<NewAccount>();
+        arrayList.add(newAccount);
         pageInfo.setList(arrayList);
         modelAndView.setViewName("/admin/table");
         modelAndView.addObject(pageInfo);

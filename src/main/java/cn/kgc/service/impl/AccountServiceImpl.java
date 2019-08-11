@@ -4,6 +4,7 @@ import cn.kgc.dao.AccountDao;
 import cn.kgc.dao.JurDao;
 import cn.kgc.pojo.Account;
 import cn.kgc.pojo.Jurisdiction;
+import cn.kgc.pojo.NewAccount;
 import cn.kgc.pojo.PageInfo;
 import cn.kgc.service.AccountService;
 import cn.kgc.util.AccountLeadUtil;
@@ -174,10 +175,21 @@ public class AccountServiceImpl implements AccountService {
         }else {
             pageInfo.setPages(number/pageSize);
         }
+        List<NewAccount> newList=new ArrayList<NewAccount>();
+        for (Account account : list) {
+            NewAccount newAccount=new NewAccount();
+            newAccount.setAccountId(account.getAccountId());
+            newAccount.setAccountName(account.getAccountName());
+            newAccount.setAccountCreateDate(account.getAccountCreateDate());
+            newAccount.setReferrer(accountDao.findAccountById(account.getReferrer()).getAccountName());
+            newAccount.setAccountMoney(account.getAccountMoney());
+            newList.add(newAccount);
+        }
+
         pageInfo.setAccountNum(number);
         pageInfo.setPageSize(pageSize);
         pageInfo.setPageNum(page);
-        pageInfo.setList(list);
+        pageInfo.setList(newList);
         return pageInfo;
     }
 
