@@ -137,7 +137,24 @@
                                 </div>
                             </section>
                         </div>
+
                     </div>
+                    <%--总收益--%>
+                    <div class="row state-overview">
+                        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+                            <section class="panel">
+                                <div class="symbol rsswet layui-anim layui-anim-rotate"> <i class="iconpx-users"></i>
+                                </div>
+                                <div class="value">
+                                    <a href="#">
+                                        <p id="count10">2222</p>
+                                    </a>
+                                    <p>今日总收益</p>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+
                     <!-- overview end -->
                     <div class="row" style="margin-top: 20px">
                         <div class="col-md-1"></div>

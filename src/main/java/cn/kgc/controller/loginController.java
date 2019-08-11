@@ -191,4 +191,14 @@ public class loginController {
         modelAndView.setViewName("/user/shopAdd");
         return modelAndView;
     }
+    /**
+     * 我的推荐页面跳转
+     * @return
+     */
+    @RequestMapping("/recommender")
+    public ModelAndView recommender(){
+        ModelAndView modelAndView =new ModelAndView();
+        modelAndView.setViewName("/user/recommender");
+        return modelAndView;
+    }
 }
