@@ -133,7 +133,7 @@
         if(nowPage>${pageInfo.pages}){
             return;
         }
-        location.href="${pageContext.request.contextPath}/account/pageInfo?currPage="+nowPage;
+        location.href="${pageContext.request.contextPath}/account/shopPageInfo?currPage="+nowPage;
     }
 </script>
 <script>

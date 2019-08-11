@@ -163,12 +163,13 @@ public class AccountServiceImpl implements AccountService {
         return accountDao.findAccountByReferrer(accountId);
     }
 
-    //分页
+    //用户分页
     @Override
     public PageInfo findPage(int page, int pageSize) {
+        List<Account> list=accountDao.findAccount();
         int number=accountDao.findAccount().size();
         PageHelper.startPage(page,pageSize);
-        List<Account> list=accountDao.findAccount();
+
         PageInfo pageInfo = new PageInfo();
         if (number%pageSize!=0){
             pageInfo.setPages(number/pageSize+1);
@@ -192,7 +193,45 @@ public class AccountServiceImpl implements AccountService {
         pageInfo.setList(newList);
         return pageInfo;
     }
+    //店铺分页
+    @Override
+    public PageInfo shopPage(int page, int pageSize) {
+        List<Account> list=accountDao.findAccountShop();
+        int number=list.size();
+        PageHelper.startPage(page,pageSize);
 
+        PageInfo pageInfo = new PageInfo();
+        if (number%pageSize!=0){
+            pageInfo.setPages(number/pageSize+1);
+        }else {
+            pageInfo.setPages(number/pageSize);
+        }
+        pageInfo.setAccountNum(number);
+        pageInfo.setPageSize(pageSize);
+        pageInfo.setPageNum(page);
+        pageInfo.setList(list);
+        return pageInfo;
+    }
+    //管理员分页
+    @Override
+    public PageInfo guanliPage(int page, int pageSize) {
+        PageHelper.startPage(page,pageSize);
+        List<Account> list=accountDao.findAdmin();
+        int number=list.size();
+        PageHelper.startPage(page,pageSize);
+
+        PageInfo pageInfo = new PageInfo();
+        if (number%pageSize!=0){
+            pageInfo.setPages(number/pageSize+1);
+        }else {
+            pageInfo.setPages(number/pageSize);
+        }
+        pageInfo.setAccountNum(number);
+        pageInfo.setPageSize(pageSize);
+        pageInfo.setPageNum(page);
+        pageInfo.setList(list);
+        return pageInfo;
+    }
     @Override
     public Account findAccountById(Integer accountId) {
         return accountDao.findAccountById(accountId);

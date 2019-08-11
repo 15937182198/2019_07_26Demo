@@ -72,6 +72,8 @@ public interface AccountService extends UserDetailsService {
      * @return pageinfo对象
      */
     public PageInfo findPage(int page, int pageSize);
+    public PageInfo shopPage(int page, int pageSize);
+    public PageInfo guanliPage(int page, int pageSize);
 
     /**
      * 根据账户id查询账户

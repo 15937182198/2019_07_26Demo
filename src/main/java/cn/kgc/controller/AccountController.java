@@ -147,7 +147,7 @@ public class AccountController {
 
 
     /**
-     * 分页
+     * 用户分页
      * @param currPage 当前页面
      * @param pageSizes 页面容量
      */
@@ -161,7 +161,36 @@ public class AccountController {
         modelAndView.setViewName("/admin/table");
         return modelAndView;
     }
-
+    /**
+     * 店铺分页
+     * @param currPage 当前页面
+     * @param pageSizes 页面容量
+     */
+    @RequestMapping("/shopPageInfo")
+    public ModelAndView shopPageInfo(
+            @RequestParam(required = false,defaultValue = "1",value = "currPage")Integer currPage,
+            @RequestParam(required = false,defaultValue = "5",value = "pageSizes")Integer pageSizes
+    ){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject(accountService.shopPage(currPage,pageSizes));
+        modelAndView.setViewName("/admin/shopInfo");
+        return modelAndView;
+    }
+    /**
+     * 管理员分页
+     * @param currPage 当前页面
+     * @param pageSizes 页面容量
+     */
+    @RequestMapping("/guanliPageInfo")
+    public ModelAndView guanliPageInfo(
+            @RequestParam(required = false,defaultValue = "1",value = "currPage")Integer currPage,
+            @RequestParam(required = false,defaultValue = "5",value = "pageSizes")Integer pageSizes
+    ){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject(accountService.guanliPage(currPage,pageSizes));
+        modelAndView.setViewName("/admin/guanLiInfo");
+        return modelAndView;
+    }
     /**
      * 修改密码的方法
      * @return 修改成功返回true 失败返回false
