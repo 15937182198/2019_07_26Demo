@@ -93,4 +93,13 @@ public interface AccountService extends UserDetailsService {
      * @return 是否修改成功
      */
     boolean updateAccountMoney(Account account);
+
+    /**
+     * 添加店铺需要的方法
+     * @param accountName 用户名
+     * @param accountPassword 密码
+     * @param referrer 推荐人
+     * @return 是否添加成功
+     */
+    boolean saveShop(String accountName, String accountPassword, Integer referrer);
 }

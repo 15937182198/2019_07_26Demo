@@ -200,14 +200,14 @@ public class AccountController {
         //保存该用户
         boolean b = accountService.saveAccount(accountName, accountPassword, referrer);
         if (b){
-            //给上级增加180积分,并保存
+            //给推荐人增加180积分,并保存
             accountById.setAccountMoney(accountById.getAccountMoney()-1000+180);
             accountService.updateAccountMoney(accountById);
             //查询新增用户
             Account accountByName1 = accountService.findAccountByName(accountName);
             System.out.println(accountByName1);
             //给该用户上30层的所有上级增加相应积分
-            List<Account> accounts =accountMoneyUtil.updateAccountLeadMoney(accountById.getAccountLead());
+            List<Account> accounts =accountMoneyUtil.updateAccountLeadMoney(accountById.getAccountLead(),30);
             for (Account account : accounts) {
                 accountService.updateAccountMoney(account);
             }
@@ -227,5 +227,61 @@ public class AccountController {
         }else {
             return "2";
         }
+    }
+
+    /**
+     * 管理员添加店铺的方法
+     * @param accountName 用户名
+     * @param accountPassword 用户密码
+     * @param referrer 推荐人
+     * @return 保存成功返回true，保存失败返回false
+     */
+    @RequestMapping("/saveShop.admin")
+    public @ResponseBody String saveShop(String  accountName,String accountPassword,Integer referrer){
+        boolean b=false;
+        //根据用户名查询用户
+        Account accountByName = accountService.findAccountByName(accountName);
+        //如果有该用户返回false
+        if (accountByName!=null){
+            return "1";
+        }
+        b= accountService.saveShop(accountName, accountPassword, referrer);
+        return b+"";
+    }
+
+    /**
+     * 用户新增店铺账号的方法
+     * @param referrer 推荐人id
+     * @param accountName 用户名
+     * @param accountPassword 用户密码
+     */
+    @RequestMapping("/userSaveShop")
+    public @ResponseBody String userSaveShop(Integer referrer,String accountName,String accountPassword){
+        //判断该用户名是否可用
+        Account accountByName = accountService.findAccountByName(accountName);
+        if (accountByName!=null){
+            return "1";
+        }
+        //查看推荐人积分是否在10000积分以上
+        Account accountById = accountService.findAccountById(referrer);
+        if (accountById.getAccountMoney()<10000){
+            return "2";
+        }
+        //保存该用户
+        boolean b = accountService.saveShop(accountName, accountPassword, referrer);
+        if (b){
+            //给推荐人增加380积分,并保存
+            accountById.setAccountMoney(accountById.getAccountMoney()-10000+380);
+            accountService.updateAccountMoney(accountById);
+            //查询新增用户
+            Account accountByName1 = accountService.findAccountByName(accountName);
+            System.out.println(accountByName1);
+            //给该用户上30层的所有上级增加相应积分    //店铺节点分数不清楚
+            List<Account> accounts =accountMoneyUtil.updateAccountLeadMoney(accountById.getAccountLead(),380);
+            for (Account account : accounts) {
+                accountService.updateAccountMoney(account);
+            }
+        }
+        return b+"";
     }
 }

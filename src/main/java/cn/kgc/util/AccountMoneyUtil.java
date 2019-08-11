@@ -105,7 +105,7 @@ public class AccountMoneyUtil {
      * @param accountLead 注册用户的上级
      * @return 修改后的用户集合
      */
-    public List<Account> updateAccountLeadMoney(Integer accountLead){
+    public List<Account> updateAccountLeadMoney(Integer accountLead,Integer accountMoney){
         System.out.println(accountDao);
         List<Account> list=new ArrayList<Account>();
         for (int i=0;i<30;i++){
@@ -114,7 +114,7 @@ public class AccountMoneyUtil {
             if (accountById==null){
                 return list;
             }
-            accountById.setAccountMoney(30*(0.8*i));
+            accountById.setAccountMoney(accountMoney*(0.8*i));
             list.add(accountById);
             accountLead=accountById.getAccountLead();
         }

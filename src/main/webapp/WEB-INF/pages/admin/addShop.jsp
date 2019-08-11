@@ -74,7 +74,7 @@
             }
             var referrer=$("#referrer").val();
             $.ajax({
-                url:"${pageContext.request.contextPath}/account/saveAccount.admin",
+                url:"${pageContext.request.contextPath}/account/saveShop.admin",
                 type:"POST",
                 data:{"accountName":username,
                     "accountPassword":password,

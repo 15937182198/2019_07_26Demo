@@ -216,4 +216,39 @@ public class AccountServiceImpl implements AccountService {
         }
         return false;
     }
+
+    /**
+     * 保存店铺的方法
+     * @param accountName 用户名
+     * @param accountPassword 密码
+     * @param referrer 推荐人
+     * @return 保存成功返回true。失败返回false
+     */
+    @Override
+    public boolean saveShop(String accountName, String accountPassword, Integer referrer) {
+        Account account=new Account();
+        //设置用户名
+        account.setAccountName(accountName);
+        //设置用户密码
+        account.setAccountPassword(passwordEncoder.encode(accountPassword));
+        //设置用户权限
+        account.setJur(4);
+        //设置初始积分
+        account.setAccountMoney(10000d);
+        //设置推荐人
+        account.setReferrer(referrer);
+        //给用户设定金字塔坐标
+        List<Integer> list = accountLeadUtil.getAccountLead(referrer);
+        account.setAccountJNumber(list.get(0));
+        //设置创建时间
+        account.setAccountCreateDate(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+        //给用户设定上级
+        account.setAccountLead(list.get(1));
+        //保存账户
+        Integer integer = accountDao.saveAccount(account);
+        if (integer>0){
+            return true;
+        }
+        return false;
+    }
 }

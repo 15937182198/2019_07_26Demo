@@ -105,7 +105,7 @@
 
             var accountId = $("#referrer").val();
             $.ajax({
-                url:"${pageContext.request.contextPath}/account/userSaveAccount",
+                url:"${pageContext.request.contextPath}/account/userSaveShop",
                 type:"POST",
                 data:{"referrer":accountId,
                     "accountName":username,
