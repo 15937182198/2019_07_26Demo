@@ -48,24 +48,6 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="inputPassword3" class="col-sm-2 control-label">积分余额：</label>
-        <div class="col-xs-4">
-            <input type="text" class="form-control" id="" name="" value="${account.accountMoney}" readonly>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="inputPassword3" class="col-sm-2 control-label">创建时间：</label>
-        <div class="col-xs-4">
-            <input type="text" class="form-control" name="" value="${account.accountCreateDate}" readonly>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="inputPassword3" class="col-sm-2 control-label">推荐人：</label>
-        <div class="col-xs-4">
-            <input type="text" class="form-control" name="" value="${account.referrer}" readonly>
-        </div>
-    </div>
-    <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <button type="submit" class="btn btn-default">确认修改</button>
         </div>
@@ -105,6 +87,7 @@
                         alert("修改失败");
                     } else {
                         alert("修改成功");
+                        window.location.href="${pageContext.request.contextPath}/loginController/userShouYe";
                     }
                 }
             })
