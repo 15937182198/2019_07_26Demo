@@ -43,14 +43,14 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img src="${pageContext.request.contextPath}/img/1.jpg" alt="...">
+                    <img src="${pageContext.request.contextPath}/img/16008002.jpg" alt="...">
                 </div>
                 <div class="item">
-                    <img src="${pageContext.request.contextPath}/img/2.jpg" alt="...">
+                    <img src="${pageContext.request.contextPath}/img/16008003.jpg" alt="...">
 
                 </div>
                 <div class="item">
-                    <img src="${pageContext.request.contextPath}/img/3.jpg" alt="...">
+                    <img src="${pageContext.request.contextPath}/img/16008004.jpg" alt="...">
 
                 </div>
             </div>
@@ -66,6 +66,11 @@
             </a>
         </div>
     </div><!--0-2end-->
+    <script type="text/javascript">
+        $('.carousel').carousel({
+            interval: 2000
+        })
+    </script>
 
     <div class="row one"><!--3start -->
         <!--导航栏-------------------------------------->
