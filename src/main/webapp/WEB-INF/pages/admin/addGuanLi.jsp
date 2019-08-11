@@ -92,7 +92,7 @@
                     }
                     if (res!=true&&res!="1") {
                         alert("添加成功");
-                        window.location.href="${pageContext.request.contextPath}/loginController/userGuanLi";
+                        window.location.href="${pageContext.request.contextPath}/loginController/userShouYe";
                         return;
                     }
                 }
