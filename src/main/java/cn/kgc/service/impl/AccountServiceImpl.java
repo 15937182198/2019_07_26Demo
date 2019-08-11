@@ -251,4 +251,23 @@ public class AccountServiceImpl implements AccountService {
         }
         return false;
     }
+
+    /**
+     * 查询所有店铺
+     * @return 店铺集合
+     */
+    @Override
+    public List<Account> findShop() {
+        return accountDao.findAccountShop();
+    }
+
+    /**
+     * 查询当日注册的所有店铺
+     * @param format 注册时间
+     * @return 店铺集合
+     */
+    @Override
+    public List<Account> findShopByDate(String format) {
+        return accountDao.findAccountShopByDate(format);
+    }
 }

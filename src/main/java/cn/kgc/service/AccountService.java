@@ -102,4 +102,17 @@ public interface AccountService extends UserDetailsService {
      * @return 是否添加成功
      */
     boolean saveShop(String accountName, String accountPassword, Integer referrer);
+
+    /**
+     * 查询所有店铺
+     * @return 店铺集合
+     */
+    List<Account> findShop();
+
+    /**
+     * 查询当日注册的所有店铺
+     * @param format 注册时间
+     * @return 店铺集合
+     */
+    List<Account> findShopByDate(String format);
 }

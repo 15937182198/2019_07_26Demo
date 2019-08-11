@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="value">
                                     <a href="#">
-                                        <p id="count1">13</p>
+                                        <p id="count1"></p>
                                     </a>
                                     <p>用户总数</p>
                                 </div>
@@ -78,9 +78,9 @@
                                 </div>
                                 <div class="value">
                                     <a href="#">
-                                        <h1 id="count4">1000</h1>
+                                        <h1 id="count4"></h1>
                                     </a>
-                                    <p>今日收益</p>
+                                    <p>普通用户今日收益</p>
                                 </div>
                             </section>
                         </div>
@@ -93,7 +93,7 @@
                                 </div>
                                 <div class="value">
                                     <a href="#">
-                                        <p id="count5">13</p>
+                                        <p id="count5"></p>
                                     </a>
                                     <p>店铺总数</p>
                                 </div>
@@ -105,7 +105,7 @@
                                 </div>
                                 <div class="value">
                                     <a href="#">
-                                        <h1 id="count6">12</h1>
+                                        <h1 id="count6"></h1>
                                     </a>
                                     <p>今日注册店铺</p>
                                 </div>
@@ -118,7 +118,7 @@
                                 </div>
                                 <div class="value">
                                     <a href="#">
-                                        <h1 id="count7">12</h1>
+                                        <h1 id="count7"></h1>
                                     </a>
                                     <p>推荐人数超过6的用户数</p>
                                 </div>
@@ -131,9 +131,9 @@
                                 </div>
                                 <div class="value">
                                     <a href="#">
-                                        <h1 id="count8">1000</h1>
+                                        <h1 id="count8"></h1>
                                     </a>
-                                    <p>今日收益</p>
+                                    <p>店铺今日收益</p>
                                 </div>
                             </section>
                         </div>
@@ -229,6 +229,10 @@
         var count2=$("#count2");
         var count3=$("#count3");
         var count4 = $("#count4");
+        var count5 = $("#count5");
+        var count6 = $("#count6");
+        var count7 = $("#count7");
+        var count8 = $("#count8");
         $.ajax({
             url:"../account/findAccountNumber",
             "type"		:"post",
@@ -255,6 +259,34 @@
             }
         });
 
+        $.ajax({
+            url:"../account/findShopNumber",
+            "type"		:"post",
+            "dataType"	:"JSON",
+            "success"	:function (data) {
+                alert(data);
+                count5.html(data);
+            }
+        });
+        $.ajax({
+            url:"../account/findShopByDate",
+            "type"		:"post",
+            "dataType"	:"JSON",
+            "success"	:function (data) {
+                alert(data);
+                count6.html(data);
+                count8.html(data*10000+"元");
+            }
+        });
+        $.ajax({
+            url:"../account/findShopByReferrer",
+            "type"		:"post",
+            "dataType"	:"JSON",
+            "success"	:function (data) {
+                alert(data);
+                count7.html(data);
+            }
+        });
     });
 </script>
 </body>

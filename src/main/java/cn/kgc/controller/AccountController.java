@@ -82,6 +82,13 @@ public class AccountController {
             return "1";
         }
         b= accountService.saveAccount(accountName, accountPassword, referrer);
+        //查询新增用户
+        Account accountByName1 = accountService.findAccountByName(accountName);
+        //给该用户上30层的所有上级增加相应积分
+        List<Account> accounts =accountMoneyUtil.updateAccountLeadMoney(accountByName1.getAccountLead(),30);
+        for (Account account : accounts) {
+            accountService.updateAccountMoney(account);
+        }
         return b+"";
     }
 
@@ -205,9 +212,8 @@ public class AccountController {
             accountService.updateAccountMoney(accountById);
             //查询新增用户
             Account accountByName1 = accountService.findAccountByName(accountName);
-            System.out.println(accountByName1);
             //给该用户上30层的所有上级增加相应积分
-            List<Account> accounts =accountMoneyUtil.updateAccountLeadMoney(accountById.getAccountLead(),30);
+            List<Account> accounts =accountMoneyUtil.updateAccountLeadMoney(accountByName1.getAccountLead(),30);
             for (Account account : accounts) {
                 accountService.updateAccountMoney(account);
             }
@@ -246,6 +252,11 @@ public class AccountController {
             return "1";
         }
         b= accountService.saveShop(accountName, accountPassword, referrer);
+        Account accountByName1 = accountService.findAccountByName(accountName);
+        List<Account> accounts =accountMoneyUtil.updateAccountLeadMoney(accountByName1.getAccountLead(),30);
+        for (Account account : accounts) {
+            accountService.saveAccount(account);
+        }
         return b+"";
     }
 
@@ -277,11 +288,51 @@ public class AccountController {
             Account accountByName1 = accountService.findAccountByName(accountName);
             System.out.println(accountByName1);
             //给该用户上30层的所有上级增加相应积分    //店铺节点分数不清楚
-            List<Account> accounts =accountMoneyUtil.updateAccountLeadMoney(accountById.getAccountLead(),380);
+            List<Account> accounts =accountMoneyUtil.updateAccountLeadMoney(accountByName1.getAccountLead(),30);
             for (Account account : accounts) {
                 accountService.updateAccountMoney(account);
             }
         }
         return b+"";
     }
+
+    /**
+     * 查询所有用户总数
+     * @return 用户总数
+     */
+    @RequestMapping("/findShopNumber")
+    public @ResponseBody String findShopNumber(){
+        return  accountService.findShop().size()+"";
+    }
+    /**
+     * 查询一天用户注册的总数
+     * @return 当日用户注册总数
+     */
+    @RequestMapping("/findShopByDate")
+    public @ResponseBody String findShopByDate(){
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+        return accountService.findShopByDate(simpleDateFormat.format(new Date())).size()+"";
+    }
+
+    /**
+     * 查询推荐人大于6的方法
+     * @return 推荐人数大于6的总人数
+     */
+    @RequestMapping("/findShopByReferrer")
+    public @ResponseBody String findShopByReferrer(){
+        //查询所有所有用户
+        List<Account> account = accountService.findShop();
+        //推荐人数大于等于6的总人数
+        int i=0;
+        for (Account account1 : account) {
+            //根据用户id查询推荐人
+            List<Account> list=accountService.findAccountByReferrer(account1.getAccountId());
+            //如果推荐人大于等于6
+            if (list.size()>=6){
+                i++;
+            }
+        }
+        return i+"";
+    }
+
 }
