@@ -75,7 +75,7 @@
                 <hr class="layui-bg-blue" style="margin: 0;padding: 0">
 
                 <li class="layui-nav-item layui-this" >
-                    <a href="${pageContext.request.contextPath}/account/shopPageInfo">
+                    <a href="${pageContext.request.contextPath}/account/ShopPageInfo">
                         <i class="iconfont icon-sousuo2" data-icon='icon-home1'></i>
                         <span>店铺信息</span>
                     </a>
@@ -91,7 +91,7 @@
                 <hr class="layui-bg-blue" style="margin: 0;padding: 0">
                 <c:if test="${pageContext.session.getAttribute('username')=='root'}">
                     <li class="layui-nav-item layui-this" >
-                        <a href="${pageContext.request.contextPath}/account/guanliPageInfo">
+                        <a href="${pageContext.request.contextPath}/account/adminPageInfo">
                             <i class="iconfont icon-sousuo2" data-icon='icon-home1'></i>
                             <span>管理员信息</span>
                         </a>

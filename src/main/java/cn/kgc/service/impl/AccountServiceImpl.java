@@ -163,13 +163,17 @@ public class AccountServiceImpl implements AccountService {
         return accountDao.findAccountByReferrer(accountId);
     }
 
-    //用户分页
+    /**
+     * 用户分页
+     * @param page 当前页码
+     * @param pageSize 页面容量
+     * @return
+     */
     @Override
     public PageInfo findPage(int page, int pageSize) {
-        List<Account> list=accountDao.findAccount();
         int number=accountDao.findAccount().size();
         PageHelper.startPage(page,pageSize);
-
+        List<Account> list=accountDao.findAccount();
         PageInfo pageInfo = new PageInfo();
         if (number%pageSize!=0){
             pageInfo.setPages(number/pageSize+1);
@@ -193,33 +197,53 @@ public class AccountServiceImpl implements AccountService {
         pageInfo.setList(newList);
         return pageInfo;
     }
-    //店铺分页
-    @Override
-    public PageInfo shopPage(int page, int pageSize) {
-        List<Account> list=accountDao.findAccountShop();
-        int number=list.size();
-        PageHelper.startPage(page,pageSize);
 
+    /**
+     * 店铺分页
+     * @param page 当前页码
+     * @param pageSize 页面容量
+     * @return
+     */
+    @Override
+    public PageInfo shopFindPage(int page, int pageSize) {
+        int number=accountDao.findAccountShop().size();
+        PageHelper.startPage(page,pageSize);
+        List<Account> list=accountDao.findAccountShop();
         PageInfo pageInfo = new PageInfo();
         if (number%pageSize!=0){
             pageInfo.setPages(number/pageSize+1);
         }else {
             pageInfo.setPages(number/pageSize);
         }
+        List<NewAccount> newList=new ArrayList<NewAccount>();
+        for (Account account : list) {
+            NewAccount newAccount=new NewAccount();
+            newAccount.setAccountId(account.getAccountId());
+            newAccount.setAccountName(account.getAccountName());
+            newAccount.setAccountCreateDate(account.getAccountCreateDate());
+            newAccount.setReferrer(accountDao.findAccountById(account.getReferrer()).getAccountName());
+            newAccount.setAccountMoney(account.getAccountMoney());
+            newList.add(newAccount);
+        }
+
         pageInfo.setAccountNum(number);
         pageInfo.setPageSize(pageSize);
         pageInfo.setPageNum(page);
-        pageInfo.setList(list);
+        pageInfo.setList(newList);
         return pageInfo;
     }
-    //管理员分页
+
+    /**
+     * 管理员分页
+     * @param page 当前页码
+     * @param pageSize 页面容量
+     * @return
+     */
     @Override
-    public PageInfo guanliPage(int page, int pageSize) {
+    public PageInfo adminFindPage(int page, int pageSize) {
+        int number=accountDao.findAdmin().size();
         PageHelper.startPage(page,pageSize);
         List<Account> list=accountDao.findAdmin();
-        int number=list.size();
-        PageHelper.startPage(page,pageSize);
-
         PageInfo pageInfo = new PageInfo();
         if (number%pageSize!=0){
             pageInfo.setPages(number/pageSize+1);
@@ -232,6 +256,7 @@ public class AccountServiceImpl implements AccountService {
         pageInfo.setList(list);
         return pageInfo;
     }
+
     @Override
     public Account findAccountById(Integer accountId) {
         return accountDao.findAccountById(accountId);

@@ -264,7 +264,6 @@
             "type"		:"post",
             "dataType"	:"JSON",
             "success"	:function (data) {
-                alert(data);
                 count5.html(data);
             }
         });
@@ -273,7 +272,6 @@
             "type"		:"post",
             "dataType"	:"JSON",
             "success"	:function (data) {
-                alert(data);
                 count6.html(data);
                 count8.html(data*10000+"元");
             }
@@ -283,7 +281,6 @@
             "type"		:"post",
             "dataType"	:"JSON",
             "success"	:function (data) {
-                alert(data);
                 count7.html(data);
             }
         });

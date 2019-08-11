@@ -66,14 +66,28 @@ public interface AccountService extends UserDetailsService {
     List<Account> findAccountByReferrer(Integer accountId);
 
     /**
-     * 分页助手
+     * 用户分页助手
      * @param page 当前页码
      * @param pageSize 页面容量
      * @return pageinfo对象
      */
     public PageInfo findPage(int page, int pageSize);
-    public PageInfo shopPage(int page, int pageSize);
-    public PageInfo guanliPage(int page, int pageSize);
+
+    /**
+     * 店铺分页助手
+     * @param page 当前页码
+     * @param pageSize 页面容量
+     * @return pageinfo对象
+     */
+    public PageInfo shopFindPage(int page, int pageSize);
+
+    /**
+     * 管理员分页助手
+     * @param page 当前页码
+     * @param pageSize 页面容量
+     * @return pageinfo对象
+     */
+    public PageInfo adminFindPage(int page, int pageSize);
 
     /**
      * 根据账户id查询账户

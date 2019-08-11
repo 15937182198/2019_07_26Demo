@@ -52,7 +52,9 @@ public class AccountController {
         newAccount.setAccountId(account.getAccountId());
         newAccount.setAccountName(account.getAccountName());
         newAccount.setAccountCreateDate(account.getAccountCreateDate());
-        newAccount.setReferrer(accountService.findAccountById(account.getReferrer()).getAccountName());
+        if (account.getReferrer()!=null){
+            newAccount.setReferrer(accountService.findAccountById(account.getReferrer()).getAccountName());
+        }
         newAccount.setAccountMoney(account.getAccountMoney());
         PageInfo pageInfo=new PageInfo();
         ArrayList<NewAccount> arrayList = new ArrayList<NewAccount>();
@@ -161,36 +163,39 @@ public class AccountController {
         modelAndView.setViewName("/admin/table");
         return modelAndView;
     }
+
     /**
      * 店铺分页
      * @param currPage 当前页面
      * @param pageSizes 页面容量
      */
-    @RequestMapping("/shopPageInfo")
-    public ModelAndView shopPageInfo(
+    @RequestMapping("/ShopPageInfo")
+    public ModelAndView ShoppageInfo(
             @RequestParam(required = false,defaultValue = "1",value = "currPage")Integer currPage,
             @RequestParam(required = false,defaultValue = "5",value = "pageSizes")Integer pageSizes
     ){
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject(accountService.shopPage(currPage,pageSizes));
+        modelAndView.addObject(accountService.shopFindPage(currPage,pageSizes));
         modelAndView.setViewName("/admin/shopInfo");
         return modelAndView;
     }
+
     /**
      * 管理员分页
      * @param currPage 当前页面
      * @param pageSizes 页面容量
      */
-    @RequestMapping("/guanliPageInfo")
-    public ModelAndView guanliPageInfo(
+    @RequestMapping("/adminPageInfo")
+    public ModelAndView adminPageInfo(
             @RequestParam(required = false,defaultValue = "1",value = "currPage")Integer currPage,
             @RequestParam(required = false,defaultValue = "5",value = "pageSizes")Integer pageSizes
     ){
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject(accountService.guanliPage(currPage,pageSizes));
+        modelAndView.addObject(accountService.adminFindPage(currPage,pageSizes));
         modelAndView.setViewName("/admin/guanLiInfo");
         return modelAndView;
     }
+
     /**
      * 修改密码的方法
      * @return 修改成功返回true 失败返回false
