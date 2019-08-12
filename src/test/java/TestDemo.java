@@ -7,7 +7,7 @@ public class TestDemo{						//“Test07”需与文件名相同
         long x=1;
         for(int i=1;i<=a;i++){				//循环输出，有几行
             for(int n=1;n<=a-i;n++){		//根据有几行来确定输出几个空格
-                System.out.print(" ");		//输出填充的空格
+//                System.out.print(" ");		//输出填充的空格
             }
             int z=2;
             if (i>2){
@@ -19,8 +19,8 @@ public class TestDemo{						//“Test07”需与文件名相同
                 z=i;
             }
             for(int j=1;j<=z;j++){	//循环输出，每行有几个“*”
-                System.out.print(x);
-                System.out.print(" ");
+//                System.out.print(x);
+//                System.out.print(" ");
                 x++;
             }
             System.out.println();

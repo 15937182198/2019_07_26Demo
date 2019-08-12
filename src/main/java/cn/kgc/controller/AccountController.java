@@ -75,7 +75,7 @@ public class AccountController {
      * @return 保存成功返回true，保存失败返回false
      */
     @RequestMapping("/saveAccount.admin")
-    public @ResponseBody String saveAccount(String  accountName,String accountPassword,Integer referrer){
+    public @ResponseBody String saveAccount(String  accountName,String accountPassword,Integer referrer,Integer param,String userName,String userPhone,String site){
         boolean b=false;
         //根据用户名查询用户
         Account accountByName = accountService.findAccountByName(accountName);
@@ -83,13 +83,15 @@ public class AccountController {
         if (accountByName!=null){
             return "1";
         }
-        b= accountService.saveAccount(accountName, accountPassword, referrer);
-        //查询新增用户
-        Account accountByName1 = accountService.findAccountByName(accountName);
-        //给该用户上30层的所有上级增加相应积分
-        List<Account> accounts =accountMoneyUtil.updateAccountLeadMoney(accountByName1.getAccountLead(),30);
-        for (Account account : accounts) {
-            accountService.updateAccountMoney(account);
+        b= accountService.saveAccount(accountName, accountPassword, referrer,userName,userPhone,site);
+        if (param!=1){
+            //查询新增用户
+            Account accountByName1 = accountService.findAccountByName(accountName);
+            //给该用户上30层的所有上级增加相应积分
+            List<Account> accounts =accountMoneyUtil.updateAccountLeadMoney(accountByName1.getAccountLead(),30);
+            for (Account account : accounts) {
+                accountService.updateAccountMoney(account);
+            }
         }
         return b+"";
     }
@@ -101,7 +103,6 @@ public class AccountController {
      */
     @RequestMapping("/saveAdmin")
     public @ResponseBody String saveAccount(Account account){
-        System.out.println(accountService.findAccountByName(account.getAccountName()));
         if (accountService.findAccountByName(account.getAccountName())!=null){
             return "1";
         }
@@ -132,8 +133,8 @@ public class AccountController {
      */
     @RequestMapping("/findAccountByReferrer")
     public @ResponseBody String findAccountByReferrer(){
-        //查询所有所有用户
         List<Account> account = accountService.findAccount();
+        //查询所有所有用户
         //推荐人数大于等于6的总人数
         int i=0;
         for (Account account1 : account) {
@@ -201,8 +202,9 @@ public class AccountController {
      * @return 修改成功返回true 失败返回false
      */
     @RequestMapping("/updateAccountPassword")
-    public @ResponseBody String updateAccountPassword(Integer accountId,String accountPassword){
+    public @ResponseBody String updateAccountPassword(Integer accountId,String accountPassword,String accountName){
         Account account = accountService.findAccountById(accountId);
+        account.setAccountName(accountName);
         account.setAccountPassword(accountPassword);
         boolean bo=accountService.updateAccountPassword(account);
         return bo+"";
@@ -227,7 +229,7 @@ public class AccountController {
      * @param accountPassword 用户密码
      */
     @RequestMapping("/userSaveAccount")
-    public @ResponseBody String userSaveAccount(Integer referrer,String accountName,String accountPassword){
+    public @ResponseBody String userSaveAccount(Integer referrer,String accountName,String accountPassword,String userName,String userPhone,String site){
         //判断该用户名是否可用
         Account accountByName = accountService.findAccountByName(accountName);
         if (accountByName!=null){
@@ -239,10 +241,10 @@ public class AccountController {
             return "2";
         }
         //保存该用户
-        boolean b = accountService.saveAccount(accountName, accountPassword, referrer);
+        boolean b = accountService.saveAccount(accountName, accountPassword,referrer,userName,userPhone,site);
         if (b){
             //给推荐人增加180积分,并保存
-            accountById.setAccountMoney(accountById.getAccountMoney()-1000+180);
+            accountById.setAccountMoney(accountById.getAccountMoney()-999+180);
             accountService.updateAccountMoney(accountById);
             //查询新增用户
             Account accountByName1 = accountService.findAccountByName(accountName);
@@ -277,7 +279,7 @@ public class AccountController {
      * @return 保存成功返回true，保存失败返回false
      */
     @RequestMapping("/saveShop.admin")
-    public @ResponseBody String saveShop(String  accountName,String accountPassword,Integer referrer){
+    public @ResponseBody String saveShop(String  accountName,String accountPassword,Integer referrer,Integer param,String userName,String userPhone,String site){
         boolean b=false;
         //根据用户名查询用户
         Account accountByName = accountService.findAccountByName(accountName);
@@ -285,11 +287,13 @@ public class AccountController {
         if (accountByName!=null){
             return "1";
         }
-        b= accountService.saveShop(accountName, accountPassword, referrer);
-        Account accountByName1 = accountService.findAccountByName(accountName);
-        List<Account> accounts =accountMoneyUtil.updateAccountLeadMoney(accountByName1.getAccountLead(),30);
-        for (Account account : accounts) {
-            accountService.saveAccount(account);
+        b= accountService.saveShop(accountName, accountPassword, referrer, userName, userPhone, site);
+        if (param==1){
+            Account accountByName1 = accountService.findAccountByName(accountName);
+            List<Account> accounts =accountMoneyUtil.updateAccountLeadMoney(accountByName1.getAccountLead(),30);
+            for (Account account : accounts) {
+                accountService.updateAccountMoney(account);
+            }
         }
         return b+"";
     }
@@ -301,7 +305,7 @@ public class AccountController {
      * @param accountPassword 用户密码
      */
     @RequestMapping("/userSaveShop")
-    public @ResponseBody String userSaveShop(Integer referrer,String accountName,String accountPassword){
+    public @ResponseBody String userSaveShop(Integer referrer,String accountName,String accountPassword,String userName,String userPhone,String site){
         //判断该用户名是否可用
         Account accountByName = accountService.findAccountByName(accountName);
         if (accountByName!=null){
@@ -313,7 +317,7 @@ public class AccountController {
             return "2";
         }
         //保存该用户
-        boolean b = accountService.saveShop(accountName, accountPassword, referrer);
+        boolean b = accountService.saveShop(accountName, accountPassword, referrer,userName, userPhone, site);
         if (b){
             //给推荐人增加380积分,并保存
             accountById.setAccountMoney(accountById.getAccountMoney()-10000+380);
@@ -369,4 +373,21 @@ public class AccountController {
         return i+"";
     }
 
+    /**
+     * 用户积分交易所用方法
+     * @param accountId 转账人的账户id
+     * @param accountMoney 转账金额
+     * @param accountName 收款人
+     * @return 成功返回true，余额不足返回1，失败返回2
+     */
+    @RequestMapping("/transfer")
+    public @ResponseBody String transfer(Integer accountId,Integer accountMoney,String accountName){
+        Account accountById = accountService.findAccountById(accountId);
+        if (accountById.getUsableMoney()<accountMoney){
+            return "1";
+        }
+        boolean bo=accountService.transfer(accountId,accountMoney,accountName);
+
+        return bo+"";
+    }
 }

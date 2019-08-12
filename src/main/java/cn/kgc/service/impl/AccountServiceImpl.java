@@ -18,7 +18,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import javax.xml.crypto.Data;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -84,7 +83,7 @@ public class AccountServiceImpl implements AccountService {
      * @return 是否保存成功
      */
     @Override
-    public boolean saveAccount(String accountName,String accountPassword, Integer referrer) {
+    public boolean saveAccount(String accountName,String accountPassword, Integer referrer,String userName,String userPhone,String site) {
         Account account=new Account();
         //初次设置密码
         account.setAccountPassword(accountPassword);
@@ -92,10 +91,16 @@ public class AccountServiceImpl implements AccountService {
         account.setAccountName(accountName);
         //设置权限
         account.setJur(3);
-        //设置基本积分
-        account.setAccountMoney((double) 1000);
+        //设置冻结积分
+        account.setFreezeMoney((double) 1000);
         //设置密码
         account.setAccountPassword(passwordEncoder.encode(account.getAccountPassword()));
+        //设置用户姓名
+        account.setUserName(userName);
+        //设置用户手机号
+        account.setUserPhone(userPhone);
+        //设置用户收货地址
+        account.setSite(site);
         //后台给账户设定创建时间
         account.setAccountCreateDate(new SimpleDateFormat("yyy-MM-dd").format(new Date()));
         //给用户设定推荐人
@@ -289,7 +294,7 @@ public class AccountServiceImpl implements AccountService {
      * @return 保存成功返回true。失败返回false
      */
     @Override
-    public boolean saveShop(String accountName, String accountPassword, Integer referrer) {
+    public boolean saveShop(String accountName, String accountPassword, Integer referrer,String userName,String userPhone,String site) {
         Account account=new Account();
         //设置用户名
         account.setAccountName(accountName);
@@ -297,8 +302,14 @@ public class AccountServiceImpl implements AccountService {
         account.setAccountPassword(passwordEncoder.encode(accountPassword));
         //设置用户权限
         account.setJur(4);
-        //设置初始积分
-        account.setAccountMoney(10000d);
+        //设置冻结积分
+        account.setFreezeMoney(10000d);
+        //设置用户姓名
+        account.setUserName(userName);
+        //设置用户手机号
+        account.setUserPhone(userPhone);
+        //设置用户收货地址
+        account.setSite(site);
         //设置推荐人
         account.setReferrer(referrer);
         //给用户设定金字塔坐标
@@ -333,5 +344,33 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public List<Account> findShopByDate(String format) {
         return accountDao.findAccountShopByDate(format);
+    }
+
+    /**
+     * 查询当前用户下级
+     * @param accountId 需要查询的用户id
+     * @return 直属的两个下级
+     */
+    public List<Account> findSubordinate(Integer accountId){
+        //根据当前id查询该用户
+        Account accountById = accountDao.findAccountById(accountId);
+        //根据用户金字塔编号查询该用户所有下属
+        Account accountByAccountJNumber = accountDao.findAccountByAccountJNumber(accountById.getAccountJNumber() * 2);
+        Account accountByAccountJNumber1 = accountDao.findAccountByAccountJNumber(accountById.getAccountJNumber() * 2 + 1);
+        ArrayList<Account> accounts = new ArrayList<>();
+        accounts.add(accountByAccountJNumber);
+        accounts.add(accountByAccountJNumber1);
+        return accounts;
+    }
+
+    @Override
+    public boolean transfer(Integer accountId, double accountMoney, String accountName) {
+        Account accountById = accountDao.findAccountById(accountId);
+        accountById.setUsableMoney(accountById.getUsableMoney()-accountMoney);
+        Account accountByName = accountDao.findAccountByName(accountName);
+        accountByName.setUsableMoney(accountByName.getUsableMoney()+accountMoney);
+        accountDao.updateAccountMoney(accountById);
+        accountDao.updateAccountMoney(accountByName);
+        return true;
     }
 }

@@ -38,7 +38,7 @@
         <label for="inputEmail3" class="col-sm-2 control-label">用户名：</label>
         <div class="col-xs-4">
             <input type="hidden" value="${account.accountId}" id="accountId">
-            <input type="text" class="form-control" name="accountName" id="inputEmail3" value="${account.accountName}" readonly>
+            <input type="text" class="form-control" name="accountName" id="inputEmail3" value="${account.accountName}">
         </div>
     </div>
     <div class="form-group">
@@ -62,6 +62,7 @@
 <script src="../../../js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
     $(function(){
+
         $("input[name='accountPassword']").blur(function () {
             var password=$("input[name='accountPassword']").val();
             var re = new RegExp(/^[a-zA-Z0-9]{4,8}$/);       // ^表示开始  $表示结束
@@ -73,6 +74,7 @@
             var val = $("#accountId").val();
             var password=$("input[name='accountPassword']").val();
             var re = new RegExp(/^[a-zA-Z0-9]{4,8}$/);       // ^表示开始  $表示结束
+            var accountName=$("input[name='accountName']").val();
             if (!re.test(password)){
                 alert("密码必须为数字或字母，只能为8~12位！");
                 return;
@@ -81,6 +83,7 @@
                 url:"${pageContext.request.contextPath}/account/updateAccountPassword",
                 type:"POST",
                 data:{"accountId":val,
+                    "accountName":accountName,
                     "accountPassword":password},
                 success:function (res) {
                     if (res == false){

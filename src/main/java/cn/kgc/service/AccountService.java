@@ -4,9 +4,6 @@ import cn.kgc.pojo.Account;
 import cn.kgc.pojo.PageInfo;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-import javax.xml.crypto.Data;
-import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 public interface AccountService extends UserDetailsService {
@@ -23,7 +20,7 @@ public interface AccountService extends UserDetailsService {
      * @param referrer 推荐人id
      * @return 是否保存成功
      */
-    boolean saveAccount(String accountName,String accountPassword, Integer referrer);
+    boolean saveAccount(String accountName,String accountPassword, Integer referrer,String userName,String userPhone,String site);
 
     /**
      * 根据账户名查询该用户
@@ -117,7 +114,7 @@ public interface AccountService extends UserDetailsService {
      * @param referrer 推荐人
      * @return 是否添加成功
      */
-    boolean saveShop(String accountName, String accountPassword, Integer referrer);
+    boolean saveShop(String accountName, String accountPassword, Integer referrer,String userName,String userPhone,String site);
 
     /**
      * 查询所有店铺
@@ -131,4 +128,20 @@ public interface AccountService extends UserDetailsService {
      * @return 店铺集合
      */
     List<Account> findShopByDate(String format);
+
+    /**
+     * 查询当前用户下级
+     * @param accountId 需要查询的用户id
+     * @return 直属的两个下级
+     */
+    public List<Account> findSubordinate(Integer accountId);
+
+    /**
+     * 转账所用的方法
+     * @param accountId 转账人id
+     * @param accountMoney 交易金额
+     * @param accountName 收款人账户
+     * @return 是否交易成功
+     */
+    boolean transfer(Integer accountId, double accountMoney, String accountName);
 }

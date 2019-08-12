@@ -22,7 +22,75 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css" media="all">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/personal.css" media="all">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminstyle.css" media="all">
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script>
+        $(function () {
+            var count1 = $("#count1");
+            var count2=$("#count2");
+            var count3=$("#count3");
+            var count4 = $("#count4");
+            var count5 = $("#count5");
+            var count6 = $("#count6");
+            var count7 = $("#count7");
+            var count8 = $("#count8");
+            var count10 = $("#count10");
+            $.ajax({
+                url:"../account/findAccountNumber",
+                "type"		:"post",
+                "dataType"	:"JSON",
+                "success"	:function (data) {
+                    count1.html(data);
+                }
+            });
+            $.ajax({
+                url:"../account/findAccountByDate",
+                "type"		:"post",
+                "dataType"	:"JSON",
+                "success"	:function (data) {
+                    count2.html(data);
+                    number1=data*999;
+                    count4.html(number1+"元");
+                    $.ajax({
+                        url:"../account/findShopByDate",
+                        "type"		:"post",
+                        "dataType"	:"JSON",
+                        "success"	:function (data) {
+                            count6.html(data);
+                            number2=data*10000;
+                            count8.html(data*10000+"元");
+                            count10.html(number1+number2);
+                        }
+                    });
+                }
+            });
+            $.ajax({
+                url:"../account/findAccountByReferrer",
+                "type"		:"post",
+                "dataType"	:"JSON",
+                "success"	:function (data) {
+                    count3.html(data);
+                }
+            });
 
+            $.ajax({
+                url:"../account/findShopNumber",
+                "type"		:"post",
+                "dataType"	:"JSON",
+                "success"	:function (data) {
+                    count5.html(data);
+                }
+            });
+
+            $.ajax({
+                url:"../account/findShopByReferrer",
+                "type"		:"post",
+                "dataType"	:"JSON",
+                "success"	:function (data) {
+                    count7.html(data);
+                }
+            });
+        });
+    </script>
 </head>
 <body>
 <jsp:include page="index.jsp" flush="true"/>
@@ -147,7 +215,7 @@
                                 </div>
                                 <div class="value">
                                     <a href="#">
-                                        <p id="count10">2222</p>
+                                        <p id="count10"></p>
                                     </a>
                                     <p>今日总收益</p>
                                 </div>
@@ -239,69 +307,6 @@
 </script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/common/layui/layui.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jsplug/echarts.min.js"></script>
-<script src="../../../js/jquery-3.2.1.min.js"></script>
-<script>
-    $(function () {
-        var count1 = $("#count1");
-        var count2=$("#count2");
-        var count3=$("#count3");
-        var count4 = $("#count4");
-        var count5 = $("#count5");
-        var count6 = $("#count6");
-        var count7 = $("#count7");
-        var count8 = $("#count8");
-        $.ajax({
-            url:"../account/findAccountNumber",
-            "type"		:"post",
-            "dataType"	:"JSON",
-            "success"	:function (data) {
-                count1.html(data);
-            }
-        });
-        $.ajax({
-            url:"../account/findAccountByDate",
-            "type"		:"post",
-            "dataType"	:"JSON",
-            "success"	:function (data) {
-                count2.html(data);
-                count4.html(data*1000+"元");
-            }
-        });
-        $.ajax({
-            url:"../account/findAccountByReferrer",
-            "type"		:"post",
-            "dataType"	:"JSON",
-            "success"	:function (data) {
-                count3.html(data);
-            }
-        });
 
-        $.ajax({
-            url:"../account/findShopNumber",
-            "type"		:"post",
-            "dataType"	:"JSON",
-            "success"	:function (data) {
-                count5.html(data);
-            }
-        });
-        $.ajax({
-            url:"../account/findShopByDate",
-            "type"		:"post",
-            "dataType"	:"JSON",
-            "success"	:function (data) {
-                count6.html(data);
-                count8.html(data*10000+"元");
-            }
-        });
-        $.ajax({
-            url:"../account/findShopByReferrer",
-            "type"		:"post",
-            "dataType"	:"JSON",
-            "success"	:function (data) {
-                count7.html(data);
-            }
-        });
-    });
-</script>
 </body>
 </html>

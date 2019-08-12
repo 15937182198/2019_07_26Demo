@@ -59,7 +59,7 @@
                             <td align="left">${account.accountName}</td>
                             <td>${account.accountCreateDate}</td>
                             <td>
-                                <a href="${pageContext.request.contextPath}/loginController/guanLiInfo?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 修改密码</a>
+                                <a href="${pageContext.request.contextPath}/loginController/userInforUpdate?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 修改密码</a>
                             </td>
                         </tr>
                     </c:forEach>

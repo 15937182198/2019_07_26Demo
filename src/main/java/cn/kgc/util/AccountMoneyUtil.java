@@ -18,7 +18,7 @@ public class AccountMoneyUtil {
     @Resource(name = "accountDao")
     private AccountDao accountDao;
     /**
-     * 判断账户是否解冻的方法
+     * 判断账户冻结积分是否解冻的方法
      */
     public boolean WhetherToThaw(HttpServletRequest request){
         //拿到session作用域中的值
@@ -105,8 +105,7 @@ public class AccountMoneyUtil {
      * @param accountLead 注册用户的上级
      * @return 修改后的用户集合
      */
-    public List<Account> updateAccountLeadMoney(Integer accountLead,Integer accountMoney){
-        System.out.println(accountDao);
+    public List<Account> updateAccountLeadMoney(Integer accountLead, Integer accountMoney){
         List<Account> list=new ArrayList<Account>();
         for (int i=0;i<30;i++){
             System.out.println(accountLead);
@@ -121,5 +120,39 @@ public class AccountMoneyUtil {
         return list;
     }
 
+    /**
+     * 根据用户id判断该用户可以体现多少积分每日
+     * @param accountId 需要查询的用户id
+     * @return 每日体现金额
+     */
+    public Integer oneDayDeal(Integer accountId){
+        List<Account> list = accountDao.findAccountByReferrer(accountId);
+        if (list==null||list.size()==0){
+            return 0;
+        }else if (list.size()==1){
+            return 200;
+        }else if (list.size()==2){
+            return 200;
+        }else if (list.size()==3){
+            return 200;
+        }else if (list.size()==4){
+            return 200;
+        }else if (list.size()==5){
+            return 200;
+        }else if (list.size()==6){
+            return 200;
+        }else if (list.size()==7){
+            return 200;
+        }else if (list.size()==8){
+            return 200;
+        }else if (list.size()==9){
+            return 200;
+        }else if (list.size()==10){
+            return 200;
+        }else if (list.size()>10){
+            return 100000000;
+        }
+        return 0;
+    }
 
 }

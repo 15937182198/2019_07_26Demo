@@ -57,7 +57,8 @@ public class Account  implements Serializable {
 	private Integer referrer;
 
 	/**
-	 * 用户上级编号
+	 * 用户上级id
+
 	 */
    	@Column(name = "accountLead" )
 	private Integer accountLead;
@@ -73,6 +74,36 @@ public class Account  implements Serializable {
 	 */
    	@Column(name = "accountJNumber" )
 	private Integer accountJNumber;
+
+	/**
+	 * 冻结积分
+	 */
+   	@Column(name = "freezeMoney" )
+	private Double freezeMoney;
+
+	/**
+	 * 可用积分
+	 */
+   	@Column(name = "usableMoney" )
+	private Double usableMoney;
+
+	/**
+	 * 用户姓名
+	 */
+   	@Column(name = "userName" )
+	private String userName;
+
+	/**
+	 * 手机号
+	 */
+   	@Column(name = "userPhone" )
+	private String userPhone;
+
+	/**
+	 * 收货地址
+	 */
+   	@Column(name = "site" )
+	private String site;
 
 	public Integer getAccountId() {
 		return accountId;
@@ -144,5 +175,45 @@ public class Account  implements Serializable {
 
 	public void setAccountJNumber(Integer accountJNumber) {
 		this.accountJNumber = accountJNumber;
+	}
+
+	public Double getFreezeMoney() {
+		return freezeMoney;
+	}
+
+	public void setFreezeMoney(Double freezeMoney) {
+		this.freezeMoney = freezeMoney;
+	}
+
+	public Double getUsableMoney() {
+		return usableMoney;
+	}
+
+	public void setUsableMoney(Double usableMoney) {
+		this.usableMoney = usableMoney;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getUserPhone() {
+		return userPhone;
+	}
+
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
+	}
+
+	public String getSite() {
+		return site;
+	}
+
+	public void setSite(String site) {
+		this.site = site;
 	}
 }

@@ -51,7 +51,7 @@
         <div class="form-group" style="margin-left: 15px;margin-top: 15px;">
             <label for="inputEmail3" class="col-sm-2 control-label">积分减少：</label>
             <div class="col-xs-4">
-                <input type="text" class="form-control" id="inputEmail3" value="1000" readonly="readonly">
+                <input type="text" class="form-control" id="inputEmail3" value="999" readonly="readonly">
             </div>
         </div>
         <div class="form-group" style="margin-left: 15px;margin-top: 15px;">

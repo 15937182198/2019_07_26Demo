@@ -6,8 +6,6 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
-import javax.xml.crypto.Data;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -66,7 +64,7 @@ public interface AccountDao {
      * @param account 需要保存的账户
      * @return 保存受影响的行数
      */
-    @Insert("insert into account values (null,#{accountName},#{accountPassword},#{accountMoney},#{accountCreateDate},#{referrer},#{accountLead},#{jur},#{accountJNumber});")
+    @Insert("insert into account values (null,#{accountName},#{accountPassword},#{accountMoney},#{accountCreateDate},#{referrer},#{accountLead},#{jur},#{accountJNumber},#{freezeMoney},#{usableMoney},#{userName},#{userPhone},#{site})")
     Integer saveAccount(Account account);
 
     /**
@@ -127,4 +125,5 @@ public interface AccountDao {
      */
     @Update("update account set accountMoney=#{accountMoney} where accountId=#{accountId}")
     int updateAccountMoney(Account account);
+
 }

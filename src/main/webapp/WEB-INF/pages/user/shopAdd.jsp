@@ -114,7 +114,7 @@
                     if (res=="1"){
                         alert("该用户名已存在!");
                     }else if (res=="2"){
-                        alert("您的积分不够2000请联系管理员");
+                        alert("您的积分不够11000请联系管理员");
                     }else if (res == false){
                         alert("购买失败");
                         window.location.href="${pageContext.request.contextPath}/loginController/userAdd";
