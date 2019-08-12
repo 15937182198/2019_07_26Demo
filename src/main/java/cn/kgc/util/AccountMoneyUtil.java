@@ -112,10 +112,13 @@ public class AccountMoneyUtil {
             if (accountById==null){
                 return list;
             }
-            accountById.setAccountMoney(accountMoney*(0.8*i));
+            double pow = Math.pow(0.8,i);
+            accountById.setAccountMoney(accountById.getAccountMoney()+accountMoney*pow);
+
             list.add(accountById);
             accountLead=accountById.getAccountLead();
         }
+
         return list;
     }
 

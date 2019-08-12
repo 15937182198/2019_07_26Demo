@@ -144,4 +144,11 @@ public interface AccountService extends UserDetailsService {
      * @return 是否交易成功
      */
     boolean transfer(Integer accountId, double accountMoney, String accountName);
+
+    /**
+     * 修改可用积分的方法
+     * @param account 需要修改的对象
+     * @return 是否修改成功
+     */
+    boolean updateUsableMoney(Account account);
 }

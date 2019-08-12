@@ -278,12 +278,21 @@ public class AccountServiceImpl implements AccountService {
     }
 
     /**
-     * 修改可用积分
+     * 修改节点积分
      * @param account 需要修改的用户
      * @return
      */
     @Override
     public boolean updateAccountMoney(Account account) {
+        int i=accountDao.updateAccountMoney(account);
+        if (i!=0){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean updateUsableMoney(Account account) {
         int i=accountDao.updateUsableMoney(account);
         if (i!=0){
             return true;
