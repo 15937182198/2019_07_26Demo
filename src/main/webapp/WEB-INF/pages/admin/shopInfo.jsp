@@ -77,7 +77,7 @@
                             <td>${account.accountLead}</td>
                             <td>${account.junior1}|${account.junior2}</td>
                             <td>
-                                <a href="${pageContext.request.contextPath}/loginController/userInforUpdate?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 修改密码</a>
+                                <a href="${pageContext.request.contextPath}/loginController/userInforUpdate?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 修改信息</a>
                                 <a href="${pageContext.request.contextPath}/loginController/updateMoney?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 修改积分</a>
                                 <a href="${pageContext.request.contextPath}/loginController/record?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 交易记录</a>
                             </td>

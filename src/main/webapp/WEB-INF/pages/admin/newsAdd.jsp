@@ -42,9 +42,46 @@
         </div>
     </div>
     <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">姓名：</label>
+        <div class="col-xs-4">
+            <input type="text" class="form-control" name="accountName" id="inputEmai23" value="">
+        </div>
+    </div>
+
+    <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 control-label" id="accountPassword">密码：</label>
         <div class="col-xs-4">
             <input type="password" class="form-control" name="accountPassword" id="inputPassword3" placeholder="数字或字母，只能为8~12位！">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">联系方式：</label>
+        <div class="col-xs-4">
+            <input type="text" class="form-control" name="accountName" id="inputEmai24" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">节点积分：</label>
+        <div class="col-xs-4">
+            <input type="text" class="form-control" name="accountName" id="inputEmai25" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">可用积分：</label>
+        <div class="col-xs-4">
+            <input type="text" class="form-control" name="accountName" id="inputEmai26" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">冻结积分：</label>
+        <div class="col-xs-4">
+            <input type="text" class="form-control" name="accountName" id="inputEmai27" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">收货地址：</label>
+        <div class="col-xs-4">
+            <input type="text" class="form-control" name="accountName" id="inputEmai28" value="">
         </div>
     </div>
     <div class="form-group">

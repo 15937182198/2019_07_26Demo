@@ -107,7 +107,7 @@
                                 <div class="symbol userblue layui-anim layui-anim-rotate"> <i class="iconpx-users"></i>
                                 </div>
                                 <div class="value">
-                                    <a href="#">
+                                    <a href="${pageContext.request.contextPath}/account/pageInfo">
                                         <p id="count1"></p>
                                     </a>
                                     <p>用户总数</p>
@@ -160,7 +160,7 @@
                                 <div class="symbol userblue layui-anim layui-anim-rotate"> <i class="iconpx-users"></i>
                                 </div>
                                 <div class="value">
-                                    <a href="#">
+                                    <a href="${pageContext.request.contextPath}/account/ShopPageInfo">
                                         <p id="count5"></p>
                                     </a>
                                     <p>店铺总数</p>
