@@ -188,6 +188,9 @@ public class AccountServiceImpl implements AccountService {
         List<NewAccount> newList=new ArrayList<NewAccount>();
         for (Account account : list) {
             NewAccount newAccount=new NewAccount();
+            newAccount.setUserName(account.getUserName());
+            newAccount.setUserPhone(account.getUserPhone());
+            newAccount.setSite(account.getSite());
             newAccount.setAccountId(account.getAccountId());
             newAccount.setAccountName(account.getAccountName());
             newAccount.setAccountCreateDate(account.getAccountCreateDate());
@@ -223,6 +226,9 @@ public class AccountServiceImpl implements AccountService {
         List<NewAccount> newList=new ArrayList<NewAccount>();
         for (Account account : list) {
             NewAccount newAccount=new NewAccount();
+            newAccount.setUserName(account.getUserName());
+            newAccount.setUserPhone(account.getUserPhone());
+            newAccount.setSite(account.getSite());
             newAccount.setAccountId(account.getAccountId());
             newAccount.setAccountName(account.getAccountName());
             newAccount.setAccountCreateDate(account.getAccountCreateDate());

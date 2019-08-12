@@ -12,7 +12,7 @@ public class NewAccount {
     private String accountCreateDate;
     //用户推荐人
     private String referrer;
-    //积分余额
+    //节点积分
     private Double accountMoney;
     //用户上级
     private String accountLead;
@@ -23,8 +23,18 @@ public class NewAccount {
     //可用积分
     private double usableMoney;
 
+    //用户名
+    private String userName;
+
+    //用户手机号
+    private String userPhone;
+
+    //用户收货地址
+    private String site;
+
     //冻结积分
     private Double freezeMoney;
+
 
 
     public Double getUsableMoney() {
@@ -107,6 +117,34 @@ public class NewAccount {
         this.referrer = referrer;
     }
 
+    public void setUsableMoney(double usableMoney) {
+        this.usableMoney = usableMoney;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
+    }
+
+    public String getSite() {
+        return site;
+    }
+
+    public void setSite(String site) {
+        this.site = site;
+    }
+
     @Override
     public String toString() {
         return "NewAccount{" +
@@ -119,6 +157,9 @@ public class NewAccount {
                 ", junior1='" + junior1 + '\'' +
                 ", junior2='" + junior2 + '\'' +
                 ", usableMoney=" + usableMoney +
+                ", userName='" + userName + '\'' +
+                ", userPhone='" + userPhone + '\'' +
+                ", site='" + site + '\'' +
                 ", freezeMoney=" + freezeMoney +
                 '}';
     }
