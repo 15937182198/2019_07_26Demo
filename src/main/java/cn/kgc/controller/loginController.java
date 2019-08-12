@@ -228,4 +228,24 @@ public class loginController {
         modelAndView.setViewName("/user/recommender");
         return modelAndView;
     }
+    /**
+     * 交易记录页面跳转
+     * @return
+     */
+    @RequestMapping("/record")
+    public ModelAndView record(){
+        ModelAndView modelAndView =new ModelAndView();
+        modelAndView.setViewName("/admin/record");
+        return modelAndView;
+    }
+    /**
+     * 用户交易记录页面跳转
+     * @return
+     */
+    @RequestMapping("/userRecord")
+    public ModelAndView userRecord(){
+        ModelAndView modelAndView =new ModelAndView();
+        modelAndView.setViewName("/user/userRecord");
+        return modelAndView;
+    }
 }

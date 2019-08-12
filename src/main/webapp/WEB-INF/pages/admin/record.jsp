@@ -10,7 +10,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>用户信息</title>
+    <title>交易记录</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -33,40 +33,26 @@
 <section class="layui-larry-box">
     <div class="larry-personal">
         <div class="layui-tab">
-            <blockquote class="layui-elem-quote news_search">
-                <div class="layui-inline">
-                    <div class="layui-input-inline">
-                        <input value="" placeholder="请输入用户名" class="layui-input search_input" type="text" id="accountName">
-                    </div>
-                    <button class="layui-btn search_btn" id="button1" name="button1">查询</button>
-                </div>
-            </blockquote>
-
             <!-- 操作日志 -->
             <div class="layui-form news_list">
                 <table class="layui-table">
                     <thead>
                     <tr>
-                        <th>用户名</th>
-                        <th>积分余额</th>
-                        <th>创建时间</th>
-                        <th>推荐人</th>
-                        <th>操作</th>
+                        <th>交易编号</th>
+                        <th>收入/支出</th>
+                        <th>交易时间</th>
+                        <th>所属账户</th>
                     </tr>
                     </thead>
                     <tbody class="news_content">
                     <%--  --%>
                     <c:forEach items="${pageInfo.list}" var="account" varStatus="id">
                         <tr>
-                            <td align="left">${account.accountName}</td>
-                            <td>${account.accountMoney}</td>
-                            <td>${account.accountCreateDate}</td>
-                            <td>${account.referrer}</td>
-                            <td>
-                                <a href="${pageContext.request.contextPath}/loginController/userInforUpdate?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 修改密码</a>
-                                <a href="${pageContext.request.contextPath}/loginController/updateMoney?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 修改积分</a>
-                                <a href="${pageContext.request.contextPath}/loginController/record?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 交易记录</a>
-                            </td>
+                            <td align="left">110</td>
+                            <td>111?</td>
+                            <td>2019.08.12</td>
+                            <td>小明</td>
+
                         </tr>
                     </c:forEach>
                     </tbody>
