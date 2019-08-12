@@ -45,6 +45,24 @@
                             <input type="password" class="form-control" name="accountPassword" id="inputPassword3" placeholder="数字或字母，只能为8~12位！">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">姓名：</label>
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control" name="" id="inputEmai14">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">联系方式：</label>
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control" name="" id="inputEmai15">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">收货地址：</label>
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control" name="" id="inputEmai16">
+                        </div>
+                    </div>
                     <input type="hidden" value="1" name="referrer">
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">

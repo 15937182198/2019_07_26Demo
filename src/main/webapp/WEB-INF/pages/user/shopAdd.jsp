@@ -48,6 +48,24 @@
                 <input type="password" class="form-control" id="inputPassword3" placeholder="数字或字母，只能为8~12位！" name="password">
             </div>
         </div>
+        <div class="form-group" style="margin-left: 15px;margin-top: 30px;">
+            <label for="inputEmail3" class="col-sm-2 control-label">姓名：</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="inputEmail2" placeholder="" name="">
+            </div>
+        </div>
+        <div class="form-group" style="margin-left: 15px;margin-top: 30px;">
+            <label for="inputEmail3" class="col-sm-2 control-label">联系方式：</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="inputEmail6" placeholder="" name="">
+            </div>
+        </div>
+        <div class="form-group" style="margin-left: 15px;margin-top: 30px;">
+            <label for="inputEmail3" class="col-sm-2 control-label">收货地址：</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="inputEmail4" placeholder="" name="">
+            </div>
+        </div>
         <div class="form-group" style="margin-left: 15px;margin-top: 15px;">
             <label for="inputEmail3" class="col-sm-2 control-label">积分减少：</label>
             <div class="col-xs-4">

@@ -248,4 +248,44 @@ public class loginController {
         modelAndView.setViewName("/user/userRecord");
         return modelAndView;
     }
+    /**
+     * 用户今天注册页面跳转
+     * @return
+     */
+    @RequestMapping("/user_table")
+    public ModelAndView user_table(){
+        ModelAndView modelAndView =new ModelAndView();
+        modelAndView.setViewName("/admin/user_table");
+        return modelAndView;
+    }
+    /**
+     * 店铺今天注册页面跳转
+     * @return
+     */
+    @RequestMapping("/shop_table")
+    public ModelAndView shop_table(){
+        ModelAndView modelAndView =new ModelAndView();
+        modelAndView.setViewName("/admin/shop_table");
+        return modelAndView;
+    }
+    /**
+     * yonghu今天tuijian页面跳转
+     * @return
+     */
+    @RequestMapping("/user_TJ")
+    public ModelAndView user_Tj(){
+        ModelAndView modelAndView =new ModelAndView();
+        modelAndView.setViewName("/admin/user_Tj");
+        return modelAndView;
+    }
+    /**
+     * dianpu今天tuijian页面跳转
+     * @return
+     */
+    @RequestMapping("/shop_TJ")
+    public ModelAndView shop_Tj(){
+        ModelAndView modelAndView =new ModelAndView();
+        modelAndView.setViewName("/admin/shop_TJ");
+        return modelAndView;
+    }
 }

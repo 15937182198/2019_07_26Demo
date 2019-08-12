@@ -119,7 +119,7 @@
                                 <div class="symbol commred layui-anim layui-anim-rotate"> <i class="iconpx-user-add"></i>
                                 </div>
                                 <div class="value">
-                                    <a href="#">
+                                    <a href="${pageContext.request.contextPath}/loginController/user_table">
                                         <h1 id="count2"></h1>
                                     </a>
                                     <p>今日注册用户</p>
@@ -132,10 +132,10 @@
                                     <i class="iconpx-file-word-o"></i>
                                 </div>
                                 <div class="value">
-                                    <a href="#">
+                                    <a href="${pageContext.request.contextPath}/loginController/user_TJ">
                                         <h1 id="count3"></h1>
                                     </a>
-                                    <p>推荐人数超过6的用户数</p>
+                                    <p>推荐用户人数超过6的用户数</p>
                                 </div>
                             </section>
                         </div>
@@ -172,7 +172,7 @@
                                 <div class="symbol commred layui-anim layui-anim-rotate"> <i class="iconpx-user-add"></i>
                                 </div>
                                 <div class="value">
-                                    <a href="#">
+                                    <a href="${pageContext.request.contextPath}/loginController/shop_table">
                                         <h1 id="count6"></h1>
                                     </a>
                                     <p>今日注册店铺</p>
@@ -185,10 +185,10 @@
                                     <i class="iconpx-file-word-o"></i>
                                 </div>
                                 <div class="value">
-                                    <a href="#">
+                                    <a href="${pageContext.request.contextPath}/loginController/shop_TJ">
                                         <h1 id="count7"></h1>
                                     </a>
-                                    <p>推荐人数超过6的用户数</p>
+                                    <p>推荐店铺人数超过6的用户数</p>
                                 </div>
                             </section>
                         </div>

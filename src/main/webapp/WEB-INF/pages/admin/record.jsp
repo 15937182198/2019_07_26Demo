@@ -34,7 +34,7 @@
     <div class="larry-personal">
         <div class="layui-tab">
             <!-- 操作日志 -->
-            <div class="layui-form news_list">
+            <div class="layui-form news_list" style="padding-top: 78px;">
                 <table class="layui-table">
                     <thead>
                     <tr>

@@ -46,6 +46,24 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">姓名：</label>
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control" name="" id="inputEmai14">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">联系方式：</label>
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control" name="" id="inputEmai15">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">收货地址：</label>
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control" name="" id="inputEmai16">
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="inputPassword3" class="col-sm-2 control-label">分润：</label>
                         <div class="col-xs-4">
                             <select class="form-control" name="param" id="param">
@@ -110,7 +128,6 @@
             });
         });
     });
-
 </script>
 </body>
 </html>

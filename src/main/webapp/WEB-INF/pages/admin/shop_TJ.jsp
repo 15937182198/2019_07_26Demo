@@ -10,7 +10,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>店铺信息</title>
+    <title>店铺推荐人数</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -33,17 +33,8 @@
 <section class="layui-larry-box">
     <div class="larry-personal">
         <div class="layui-tab">
-            <blockquote class="layui-elem-quote news_search">
-                <div class="layui-inline">
-                    <div class="layui-input-inline">
-                        <input value="" placeholder="请输入用户名" class="layui-input search_input" type="text" id="accountName">
-                    </div>
-                    <button class="layui-btn search_btn" id="button1" name="button1">查询</button>
-                </div>
-            </blockquote>
-
             <!-- 操作日志 -->
-            <div class="layui-form news_list">
+            <div class="layui-form news_list" style="padding-top: 78px;">
                 <table class="layui-table">
                     <thead>
                     <tr>
@@ -59,7 +50,7 @@
                         <th>操作</th>
                     </tr>
                     </thead>
-                    <tbody class="news_content">
+                    <tbody class="news_content" >
                     <%--  --%>
                     <c:forEach items="${pageInfo.list}" var="account" varStatus="id">
                         <tr>

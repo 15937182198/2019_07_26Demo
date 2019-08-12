@@ -48,9 +48,14 @@
                     <thead>
                     <tr>
                         <th>用户名</th>
+                        <th>姓名</th>
+                        <th>联系方式</th>
                         <th>积分余额</th>
                         <th>创建时间</th>
                         <th>推荐人</th>
+                        <th>收货地址</th>
+                        <th>上级</th>
+                        <th>下级</th>
                         <th>操作</th>
                     </tr>
                     </thead>
@@ -59,8 +64,14 @@
                     <c:forEach items="${pageInfo.list}" var="account" varStatus="id">
                         <tr>
                             <td align="left">${account.accountName}</td>
+                            <td></td>
+                            <td></td>
                             <td>${account.accountMoney}</td>
                             <td>${account.accountCreateDate}</td>
+                            <td></td>
+                            <td></td>
+                            <td>${account}</td>
+                            <td>${account}</td>
                             <td>${account.referrer}</td>
                             <td>
                                 <a href="${pageContext.request.contextPath}/loginController/userInforUpdate?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 修改密码</a>
