@@ -119,11 +119,27 @@ public interface AccountDao {
     int updateAccountPassword(Account account);
 
     /**
-     * 修改积分余额的方法
+     * 修改节点积分余额的方法
      * @param account 需要修改的用户
      * @return 受影响的行数
      */
     @Update("update account set accountMoney=#{accountMoney} where accountId=#{accountId}")
     int updateAccountMoney(Account account);
 
+
+    /**
+     * 修改用户冻结积分的方法
+     * @param account 需要修改用户
+     * @return 受影响行数
+     */
+    @Update("update account set freezeMoney=#{freezeMoney} where accountId=#{accountId}")
+    int updateFreezeMoney(Account account);
+
+    /**
+     * 修改用户冻结积分的方法
+     * @param account 需要修改用户
+     * @return 受影响行数
+     */
+    @Update("update account set usableMoney=#{usableMoney} where accountId=#{accountId}")
+    int updateUsableMoney(Account account);
 }

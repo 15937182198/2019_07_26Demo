@@ -20,27 +20,26 @@ public class NewAccount {
     private String junior1;
     //用户下级2
     private String junior2;
-
     //可用积分
-    private Double usableMoney;
+    private double usableMoney;
 
     //冻结积分
     private Double freezeMoney;
 
 
-    public double getUsableMoney() {
+    public Double getUsableMoney() {
         return usableMoney;
     }
 
-    public void setUsableMoney(double usableMoney) {
+    public void setUsableMoney(Double usableMoney) {
         this.usableMoney = usableMoney;
     }
 
-    public double getFreezeMoney() {
+    public Double getFreezeMoney() {
         return freezeMoney;
     }
 
-    public void setFreezeMoney(double freezeMoney) {
+    public void setFreezeMoney(Double freezeMoney) {
         this.freezeMoney = freezeMoney;
     }
 
@@ -106,5 +105,21 @@ public class NewAccount {
 
     public void setReferrer(String referrer) {
         this.referrer = referrer;
+    }
+
+    @Override
+    public String toString() {
+        return "NewAccount{" +
+                "accountId=" + accountId +
+                ", accountName='" + accountName + '\'' +
+                ", accountCreateDate='" + accountCreateDate + '\'' +
+                ", referrer='" + referrer + '\'' +
+                ", accountMoney=" + accountMoney +
+                ", accountLead='" + accountLead + '\'' +
+                ", junior1='" + junior1 + '\'' +
+                ", junior2='" + junior2 + '\'' +
+                ", usableMoney=" + usableMoney +
+                ", freezeMoney=" + freezeMoney +
+                '}';
     }
 }

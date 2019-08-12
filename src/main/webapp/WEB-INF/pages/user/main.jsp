@@ -44,9 +44,9 @@
                                 <li><a href="${pageContext.request.contextPath}/loginController/recommender">我的推荐</a></li>
                                 <li><a href="${pageContext.request.contextPath}/loginController/userjiaoyi">积分交易</a></li>
                                 <li><a href="javascript:alert('请联系管理员');">积分提现</a></li>
-                                <li><a href="#">积分：${pageContext.session.getAttribute("account").accountMoney}</a></li>
-                                <li><a href="#">可用积分：${pageContext.session.getAttribute("account").accountMoney}</a></li>
-                                <li><a href="#">冻结积分：${pageContext.session.getAttribute("account").accountMoney}</a></li>
+                                <li><a href="#">节点积分：${pageContext.session.getAttribute("account").accountMoney}</a></li>
+                                <li><a href="#">可用积分：${pageContext.session.getAttribute("account").usableMoney}</a></li>
+                                <li><a href="#">冻结积分：${pageContext.session.getAttribute("account").freezeMoney}</a></li>
                             </ul>
                         </li>
                     </ul>

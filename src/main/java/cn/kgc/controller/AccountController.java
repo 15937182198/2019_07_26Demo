@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -84,12 +85,13 @@ public class AccountController {
             return "1";
         }
         b= accountService.saveAccount(accountName, accountPassword, referrer,userName,userPhone,site);
-        if (param!=1){
+        if (param==1){
             //查询新增用户
             Account accountByName1 = accountService.findAccountByName(accountName);
             //给该用户上30层的所有上级增加相应积分
             List<Account> accounts =accountMoneyUtil.updateAccountLeadMoney(accountByName1.getAccountLead(),30);
             for (Account account : accounts) {
+                System.out.println(account);
                 accountService.updateAccountMoney(account);
             }
         }
@@ -211,13 +213,13 @@ public class AccountController {
     }
 
     /**
-     * 修改积分的方法
+     * 修改可用积分的方法
      * @return 修改成功返回true 失败返回false
      */
     @RequestMapping("/updateAccountMoney")
     public @ResponseBody String updateAccountMoney(Integer accountId,double accountMoney){
         Account account = accountService.findAccountById(accountId);
-        account.setAccountMoney(accountMoney);
+        account.setUsableMoney(accountMoney);
         boolean bo=accountService.updateAccountMoney(account);
         return bo+"";
     }
@@ -229,7 +231,7 @@ public class AccountController {
      * @param accountPassword 用户密码
      */
     @RequestMapping("/userSaveAccount")
-    public @ResponseBody String userSaveAccount(Integer referrer,String accountName,String accountPassword,String userName,String userPhone,String site){
+    public @ResponseBody String userSaveAccount(HttpServletRequest request,Integer referrer, String accountName, String accountPassword, String userName, String userPhone, String site){
         //判断该用户名是否可用
         Account accountByName = accountService.findAccountByName(accountName);
         if (accountByName!=null){
@@ -237,14 +239,15 @@ public class AccountController {
         }
         //查看推荐人积分是否在2000积分以上
         Account accountById = accountService.findAccountById(referrer);
-        if (accountById.getAccountMoney()<2000){
+        if (accountById.getUsableMoney()<2000){
             return "2";
         }
         //保存该用户
         boolean b = accountService.saveAccount(accountName, accountPassword,referrer,userName,userPhone,site);
         if (b){
             //给推荐人增加180积分,并保存
-            accountById.setAccountMoney(accountById.getAccountMoney()-999+180);
+            accountById.setUsableMoney(accountById.getUsableMoney()-999);
+            accountById.setAccountMoney(accountById.getAccountMoney()+180);
             accountService.updateAccountMoney(accountById);
             //查询新增用户
             Account accountByName1 = accountService.findAccountByName(accountName);
@@ -254,6 +257,11 @@ public class AccountController {
                 accountService.updateAccountMoney(account);
             }
         }
+        NewAccount account = (NewAccount) request.getSession().getAttribute("account");
+        account.setAccountMoney(accountById.getAccountMoney());
+        account.setFreezeMoney(accountById.getFreezeMoney());
+        account.setUsableMoney(accountById.getUsableMoney());
+        request.getSession().setAttribute("account",account);
         return b+"";
     }
 
@@ -313,14 +321,15 @@ public class AccountController {
         }
         //查看推荐人积分是否在10000积分以上
         Account accountById = accountService.findAccountById(referrer);
-        if (accountById.getAccountMoney()<10000){
+        if (accountById.getUsableMoney()<10000){
             return "2";
         }
         //保存该用户
         boolean b = accountService.saveShop(accountName, accountPassword, referrer,userName, userPhone, site);
         if (b){
             //给推荐人增加380积分,并保存
-            accountById.setAccountMoney(accountById.getAccountMoney()-10000+380);
+            accountById.setUsableMoney(accountById.getUsableMoney()-10000);
+            accountById.setAccountMoney(accountById.getAccountMoney()+380);
             accountService.updateAccountMoney(accountById);
             //查询新增用户
             Account accountByName1 = accountService.findAccountByName(accountName);

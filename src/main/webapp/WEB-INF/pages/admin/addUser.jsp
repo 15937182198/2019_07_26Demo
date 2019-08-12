@@ -48,7 +48,7 @@
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-2 control-label">分润：</label>
                         <div class="col-xs-4">
-                            <select class="form-control" name="">
+                            <select class="form-control" name="param" id="param">
                                 <option selected="selected" value="1">是</option>
                                 <option value="0">否</option>
                             </select>
@@ -73,6 +73,7 @@
         $(".btn").click(function(){
             var username=$("input[name='accountName']").val();
             var password=$("input[name='accountPassword']").val();
+            var param=$("#param").val();
             var re = new RegExp(/^[a-zA-Z0-9]{4,8}$/);       // ^表示开始  $表示结束
             if (!re.test(username)){
                 alert("用户名必须为数字或字母，只能为8~12位！");
@@ -88,6 +89,7 @@
                 type:"POST",
                 data:{"accountName":username,
                     "accountPassword":password,
+                    "param":param,
                 "referrer":referrer},
                 success:function (res) {
                     if (res == false){

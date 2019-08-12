@@ -23,7 +23,6 @@ public class loginController {
     public ModelAndView login(HttpServletRequest request){
         //获得在session中的用户名
         String accountName= (String) request.getSession().getAttribute("username");
-        System.out.println(accountName);
         //根据用户名查找该用户信息
         Account account = accountService.findAccountByName(accountName);
         //将查询到的对象放入包装类中

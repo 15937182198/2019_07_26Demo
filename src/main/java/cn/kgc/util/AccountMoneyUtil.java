@@ -107,8 +107,7 @@ public class AccountMoneyUtil {
      */
     public List<Account> updateAccountLeadMoney(Integer accountLead, Integer accountMoney){
         List<Account> list=new ArrayList<Account>();
-        for (int i=0;i<30;i++){
-            System.out.println(accountLead);
+        for (int i=0;i<29;i++){
             Account accountById = accountDao.findAccountById(accountLead);
             if (accountById==null){
                 return list;

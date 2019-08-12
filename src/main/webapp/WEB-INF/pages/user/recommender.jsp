@@ -40,9 +40,9 @@
               <td>下级用户2</td>
           </tr>
             <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
+                <td>${pageContext.session.getAttribute("account").accountLead}</td>
+                <td>${pageContext.session.getAttribute("account").junior1}</td>
+                <td>${pageContext.session.getAttribute("account").junior2}</td>
             </tr>
         </table>
     </div>

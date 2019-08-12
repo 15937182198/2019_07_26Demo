@@ -277,9 +277,14 @@ public class AccountServiceImpl implements AccountService {
         return false;
     }
 
+    /**
+     * 修改可用积分
+     * @param account 需要修改的用户
+     * @return
+     */
     @Override
     public boolean updateAccountMoney(Account account) {
-        int i=accountDao.updateAccountMoney(account);
+        int i=accountDao.updateUsableMoney(account);
         if (i!=0){
             return true;
         }
@@ -353,10 +358,10 @@ public class AccountServiceImpl implements AccountService {
      */
     public List<Account> findSubordinate(Integer accountId){
         //根据当前id查询该用户
-        Account accountById = accountDao.findAccountById(accountId);
+        Account accountById = accountDao.findAccountByAccountJNumber(accountId);
         //根据用户金字塔编号查询该用户所有下属
-        Account accountByAccountJNumber = accountDao.findAccountByAccountJNumber(accountById.getAccountJNumber() * 2);
-        Account accountByAccountJNumber1 = accountDao.findAccountByAccountJNumber(accountById.getAccountJNumber() * 2 + 1);
+        Account accountByAccountJNumber = accountDao.findAccountByAccountJNumber(accountById.getAccountJNumber()*2);
+        Account accountByAccountJNumber1 = accountDao.findAccountByAccountJNumber(accountById.getAccountJNumber()*2+1);
         ArrayList<Account> accounts = new ArrayList<>();
         accounts.add(accountByAccountJNumber);
         accounts.add(accountByAccountJNumber1);

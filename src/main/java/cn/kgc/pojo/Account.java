@@ -42,7 +42,7 @@ public class Account  implements Serializable {
 	 * 积分
 	 */
    	@Column(name = "accountMoney" )
-	private Double accountMoney;
+	private double accountMoney;
 
 	/**
 	 * 账户创建时间
@@ -85,7 +85,7 @@ public class Account  implements Serializable {
 	 * 可用积分
 	 */
    	@Column(name = "usableMoney" )
-	private Double usableMoney;
+	private double usableMoney;
 
 	/**
 	 * 用户姓名
