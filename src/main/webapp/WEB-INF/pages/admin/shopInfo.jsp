@@ -68,14 +68,14 @@
                             <td align="left">${account.accountName}</td>
                             <td>${account.userName}</td>
                             <td>${account.userPhone}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>${account.accountMoney}</td>
+                            <td>${account.freezeMoney}</td>
+                            <td>${account.usableMoney}</td>
                             <td>${account.accountCreateDate}</td>
                             <td>${account.referrer}</td>
                             <td>${account.site}</td>
                             <td>${account.accountLead}</td>
-                            <td>${account.junior1}&nbsp;${account.junior2}</td>>
+                            <td>${account.junior1}|${account.junior2}</td>
                             <td>
                                 <a href="${pageContext.request.contextPath}/loginController/userInforUpdate?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 修改密码</a>
                                 <a href="${pageContext.request.contextPath}/loginController/updateMoney?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 修改积分</a>

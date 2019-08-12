@@ -48,19 +48,19 @@
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-2 control-label">姓名：</label>
                         <div class="col-xs-4">
-                            <input type="text" class="form-control" name="" id="inputEmai14">
+                            <input type="text" class="form-control" name="userName" id="inputEmai14">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-2 control-label">联系方式：</label>
                         <div class="col-xs-4">
-                            <input type="text" class="form-control" name="" id="inputEmai15">
+                            <input type="text" class="form-control" name="userPhone" id="inputEmai15">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-2 control-label">收货地址：</label>
                         <div class="col-xs-4">
-                            <input type="text" class="form-control" name="" id="inputEmai16">
+                            <input type="text" class="form-control" name="site" id="inputEmai16">
                         </div>
                     </div>
                     <div class="form-group">
@@ -90,6 +90,10 @@
         $(".btn").click(function(){
             var username=$("input[name='accountName']").val();
             var password=$("input[name='accountPassword']").val();
+            var userName=$("input[name='userName']").val();
+            var userPhone=$("input[name='userPhone']").val();
+            var site=$("input[name='site']").val();
+            var param=$("#param").val();
             var re = new RegExp(/^[a-zA-Z0-9]{4,8}$/);       // ^表示开始  $表示结束
             if (!re.test(username)){
                 alert("用户名必须为数字或字母，只能为8~12位！");
@@ -104,6 +108,10 @@
                 url:"${pageContext.request.contextPath}/account/saveShop.admin",
                 type:"POST",
                 data:{"accountName":username,
+                    "param":param,
+                    "userName":username,
+                    "userPhone":userPhone,
+                    "site":site,
                     "accountPassword":password,
                 "referrer":referrer},
                 success:function (res) {

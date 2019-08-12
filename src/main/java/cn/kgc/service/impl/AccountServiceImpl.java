@@ -188,14 +188,36 @@ public class AccountServiceImpl implements AccountService {
         List<NewAccount> newList=new ArrayList<NewAccount>();
         for (Account account : list) {
             NewAccount newAccount=new NewAccount();
+            //设置用户姓名
             newAccount.setUserName(account.getUserName());
+            //设置用户手机号
             newAccount.setUserPhone(account.getUserPhone());
+            //设置用户收货地址
             newAccount.setSite(account.getSite());
+            //设置用户id
             newAccount.setAccountId(account.getAccountId());
+            //这只用户账号
             newAccount.setAccountName(account.getAccountName());
+            //设置用户创建时间
             newAccount.setAccountCreateDate(account.getAccountCreateDate());
+            //设置用户推荐人
             newAccount.setReferrer(accountDao.findAccountById(account.getReferrer()).getAccountName());
+            //设置节点积分
             newAccount.setAccountMoney(account.getAccountMoney());
+            //设置用户冻结积分
+            newAccount.setFreezeMoney(account.getFreezeMoney());
+            //设置用户可用积分
+            newAccount.setUsableMoney(account.getUsableMoney());
+            //设置用户上级
+            newAccount.setAccountLead(accountDao.findAccountById(account.getAccountLead()).getAccountName());
+            //设置用户下级
+            List<Account> subordinate = findSubordinate(account.getAccountJNumber());
+            if (subordinate.get(0)!=null){
+                newAccount.setJunior1(subordinate.get(0).getAccountName());
+            }
+            if (subordinate.get(1)!=null){
+                newAccount.setJunior2(subordinate.get(1).getAccountName());
+            }
             newList.add(newAccount);
         }
 
@@ -226,17 +248,38 @@ public class AccountServiceImpl implements AccountService {
         List<NewAccount> newList=new ArrayList<NewAccount>();
         for (Account account : list) {
             NewAccount newAccount=new NewAccount();
+            //设置用户姓名
             newAccount.setUserName(account.getUserName());
+            //设置用户手机号
             newAccount.setUserPhone(account.getUserPhone());
+            //设置用户收货地址
             newAccount.setSite(account.getSite());
+            //设置用户id
             newAccount.setAccountId(account.getAccountId());
+            //这只用户账号
             newAccount.setAccountName(account.getAccountName());
+            //设置用户创建时间
             newAccount.setAccountCreateDate(account.getAccountCreateDate());
+            //设置用户推荐人
             newAccount.setReferrer(accountDao.findAccountById(account.getReferrer()).getAccountName());
+            //设置节点积分
             newAccount.setAccountMoney(account.getAccountMoney());
+            //设置用户冻结积分
+            newAccount.setFreezeMoney(account.getFreezeMoney());
+            //设置用户可用积分
+            newAccount.setUsableMoney(account.getUsableMoney());
+            //设置用户上级
+            newAccount.setAccountLead(accountDao.findAccountById(account.getAccountLead()).getAccountName());
+            //设置用户下级
+            List<Account> subordinate = findSubordinate(account.getAccountJNumber());
+            if (subordinate.get(0)!=null){
+                newAccount.setJunior1(subordinate.get(0).getAccountName());
+            }
+            if (subordinate.get(1)!=null){
+                newAccount.setJunior2(subordinate.get(1).getAccountName());
+            }
             newList.add(newAccount);
         }
-
         pageInfo.setAccountNum(number);
         pageInfo.setPageSize(pageSize);
         pageInfo.setPageNum(page);
@@ -372,7 +415,7 @@ public class AccountServiceImpl implements AccountService {
      * @return 直属的两个下级
      */
     public List<Account> findSubordinate(Integer accountId){
-        //根据当前id查询该用户
+        //根据当金字塔编号查询该用户
         Account accountById = accountDao.findAccountByAccountJNumber(accountId);
         //根据用户金字塔编号查询该用户所有下属
         Account accountByAccountJNumber = accountDao.findAccountByAccountJNumber(accountById.getAccountJNumber()*2);
