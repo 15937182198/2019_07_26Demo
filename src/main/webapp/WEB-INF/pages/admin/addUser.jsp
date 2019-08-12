@@ -45,6 +45,16 @@
                             <input type="password" class="form-control" name="accountPassword" id="inputPassword3" placeholder="数字或字母，只能为8~12位！">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">分润：</label>
+                        <div class="col-xs-4">
+                            <select class="form-control" name="">
+                                <option selected="selected" value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <input type="hidden" value="1" name="referrer">
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
