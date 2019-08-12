@@ -63,6 +63,15 @@
                             <input type="text" class="form-control" name="" id="inputEmai16">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">分润：</label>
+                        <div class="col-xs-4">
+                            <select class="form-control" name="param" id="param">
+                                <option selected="selected" value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                    </div>
                     <input type="hidden" value="1" name="referrer">
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
