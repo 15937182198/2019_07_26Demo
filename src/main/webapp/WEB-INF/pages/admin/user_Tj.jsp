@@ -43,7 +43,9 @@
                         <th>用户名</th>
                         <th>姓名</th>
                         <th>联系方式</th>
-                        <th>积分余额</th>
+                        <th>节点积分</th>
+                        <th>冻结积分</th>
+                        <th>可用积分</th>
                         <th>创建时间</th>
                         <th>推荐人</th>
                         <th>收货地址</th>
@@ -61,6 +63,8 @@
                             <td></td>
                             <td>${account.accountMoney}</td>
                             <td>${account.accountCreateDate}</td>
+                            <td></td>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td>${account}</td>
