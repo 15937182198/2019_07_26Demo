@@ -76,82 +76,67 @@
         <!--导航栏-------------------------------------->
         <nav class="navbar navbar-default">
             <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">产品详情:</a>
-                    <table class="table table-hover">
-                        <tr>
-                            <td>123</td>
-                            <td>456</td>
-                            <td>789</td>
-                            <td>123</td>
-                            <td>456</td>
-                            <td>789</td>
-                        </tr>
-                        <tr>
-                            <td>123</td>
-                            <td>456</td>
-                            <td>789</td>
-                            <td>121</td>
-                            <td>789</td>
-                            <td>121</td>
-                        </tr>
-                        <tr>
-                            <td>123</td>
-                            <td>456</td>
-                            <td>789</td>
-                            <td>121</td>
-                            <td>789</td>
-                            <td>121</td>
-                        </tr>
-
-                    </table>
-
+                <div class="navbar-header" style="margin-left: 44%;">
+                    <a class="navbar-brand " href="#" style="font-size: 28px;"><strong>畅销爆款</strong></a>
                 </div>
             </div>
         </nav>
+
+        <div class="row">
+            <div class="col-md-6">
+                <img src="${pageContext.request.contextPath}/img/160000.jpg" style="width:90%;"/>
+            </div>
+            <div class="col-md-6" style="margin-top:270px;">
+                <div class="col-md-6">
+                    <div class="thumbnail">
+                        <img src="${pageContext.request.contextPath}/img/1700000.jpg" style="width: 60%;" class="img-responsive"/>
+                        <p>大豆肽<br/><span>大豆肽,小分子肽，大豆蛋白肽粉</span><br/><span>零售价：&yen;399.00 &nbsp;会员价：<font color="red">55.00</font></span></p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="thumbnail">
+                        <img src="${pageContext.request.contextPath}/img/19400.jpg" style="width: 60%;" class="img-responsive"/>
+                        <p>大豆肽<br/><span>大豆肽,小分子肽，大豆蛋白肽粉</span><br/><span>零售价：&yen;399.00 &nbsp;会员价：<font color="red">55.00</font></span></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
         <!--导航条结束-------------------------------------->
     </div><!-- 3end -->
 
-    <div class="row"><!--4start -->
-        <!--导航栏-------------------------------------->
-        <nav class="navbar navbar-default">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">合作公司:</a>
-                    <table class="table table-hover">
-                        <tr>
-                            <td>123</td>
-                            <td>456</td>
-                            <td>789</td>
-                            <td>123</td>
-                            <td>456</td>
-                            <td>789</td>
-                        </tr>
-                        <tr>
-                            <td>123</td>
-                            <td>456</td>
-                            <td>789</td>
-                            <td>121</td>
-                            <td>789</td>
-                            <td>121</td>
-                        </tr>
-                        <tr>
-                            <td>123</td>
-                            <td>456</td>
-                            <td>789</td>
-                            <td>121</td>
-                            <td>789</td>
-                            <td>121</td>
-                        </tr>
+    <div class="row container"><!--0-4start-->
+        <span style="font-size:25px;">热门商品</span><img src="${pageContext.request.contextPath}/img/title2.jpg""/>
+    </div><!--0-4end-->
 
-                    </table>
-                </div>
-            </div>
-        </nav>
-    </div>	<!--4导航条结束-------------------------------------->
     <div class="row">
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <img src="${pageContext.request.contextPath}/img/19800.jpg" style="width: 50%;" class="img-responsive"/>
+                <p>大麦若叶青汁代餐粉，盒装，3克/条<br/>零售价：120.00，会员价：<font color="red">&yen;19.00</font></p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <img src="${pageContext.request.contextPath}/img/19500.jpg" style="width: 50%;" class="img-responsive"/>
+                <p>道阿夫帝王至尊800ML洗发膏洗发水沐浴露<br/>零售价：118.00，会员价：<font color="red">&yen;15.000</font></p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <img src="${pageContext.request.contextPath}/img/19600.jpg" style="width: 50%;" class="img-responsive"/>
+                <p>量子活力舒丝巾<br/>零售价：860.00，会员价：<font color="red">&yen;15.00</font></p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <img src="${pageContext.request.contextPath}/img/19700.jpg" style="width: 50%;" class="img-responsive"/>
+                <p>舒克舒敏亮白牙膏/120g<br/>零售价：25.00，会员价：<font color="red">&yen;7.00</font></p>
+            </div>
+        </div>
+
     </div>
 </div><!--0-end-->
 </body>
