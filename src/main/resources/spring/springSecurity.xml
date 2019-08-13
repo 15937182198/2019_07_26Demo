@@ -21,8 +21,10 @@
     <security:http pattern="/login.jsp" security="none"/>
     <!--拦截规则-->
     <security:http auto-config="true" use-expressions="false">
-        <security:intercept-url pattern="/**" access="ROLE_USER"/>
-        <security:intercept-url pattern="/**" access="ROLE_ADMIN"/>
+        <security:intercept-url pattern="/login/**" access="ROLE_SSR"/>
+        <security:intercept-url pattern="/account/**" access="ROLE_SSO"/>
+        <security:intercept-url pattern="/Home/**" access="ROLE_USER"/>
+        <security:intercept-url pattern="/loginController/**" access="ROLE_ADMIN"/>
         <security:intercept-url pattern="/**" access="ROLE_ROOT"/>
         <!--页面跳转
         -->

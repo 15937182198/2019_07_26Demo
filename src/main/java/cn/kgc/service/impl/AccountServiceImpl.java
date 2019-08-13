@@ -10,6 +10,7 @@ import cn.kgc.service.AccountService;
 import cn.kgc.util.AccountLeadUtil;
 import com.github.pagehelper.PageHelper;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -44,14 +45,19 @@ public class AccountServiceImpl implements AccountService {
         //判断是否为空
         if (account!=null){
             //创建角色集合
-            Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-            List<Jurisdiction> all = jurDao.findAll();
-            for (Jurisdiction jurisdiction : all) {
-                SimpleGrantedAuthority role_user = new SimpleGrantedAuthority(jurisdiction.getJurName());
-                authorities.add(role_user);
+            String jurName = jurDao.findJurByJurId(account.getJur()).getJurName();
+            if (jurName.equals("ROLE_USER")){
+                jurName+=",ROLE_SSR,ROLE_SSO";
             }
+            if (jurName.equals("ROLE_ADMIN")){
+                jurName+=",ROLE_SSR,ROLE_SSO,ROLE_USER";
+            }
+            if(jurName.equals("ROLE_ROOT")){
+                jurName+=",ROLE_SSR,ROLE_SSO,ROLE_USER,ROLE_ADMIN";
+            }
+
             //创建临时角色
-            return new User(account.getAccountName(),account.getAccountPassword(),authorities);
+            return new User(account.getAccountName(),account.getAccountPassword(), AuthorityUtils.commaSeparatedStringToAuthorityList(jurName));
         }
         return null;
     }

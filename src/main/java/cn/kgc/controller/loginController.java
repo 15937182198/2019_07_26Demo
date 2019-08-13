@@ -1,7 +1,6 @@
 package cn.kgc.controller;
 
 import cn.kgc.pojo.Account;
-import cn.kgc.pojo.NewAccount;
 import cn.kgc.service.AccountService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,57 +8,21 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
+/**
+ * 后台页面处理
+ */
 @Controller
 @RequestMapping("/loginController")
 public class loginController {
 
     @Resource(name = "accountService")
     private AccountService accountService;
-
-    //登陆跳转
-    @RequestMapping("/login")
+    //首页
+    @RequestMapping("/index")
     public ModelAndView login(HttpServletRequest request){
-        //获得在session中的用户名
-        String accountName= (String) request.getSession().getAttribute("username");
-        //根据用户名查找该用户信息
-        Account account = accountService.findAccountByName(accountName);
-        //将查询到的对象放入包装类中
-        NewAccount newAccount=new NewAccount();
-        newAccount.setAccountId(account.getAccountId());
-        newAccount.setAccountMoney(account.getAccountMoney());
-        if (accountService.findAccountById(account.getReferrer())!=null){
-            newAccount.setReferrer(accountService.findAccountById(account.getReferrer()).getAccountName());
-        }
-        newAccount.setAccountCreateDate(account.getAccountCreateDate());
-        newAccount.setAccountName(account.getAccountName());
-        if (accountService.findAccountById(account.getAccountLead())!=null){
-            newAccount.setAccountLead(accountService.findAccountById(account.getAccountLead()).getAccountName());
-
-        }
-        List<Account> subordinate=null;
-        if (account.getAccountJNumber()!=null){
-            subordinate = accountService.findSubordinate(account.getAccountJNumber());
-            if (subordinate.get(0)!=null){
-                newAccount.setJunior1(subordinate.get(0).getAccountName());
-            }
-            if (subordinate.get(1)!=null){
-                newAccount.setJunior2(subordinate.get(1).getAccountName());
-            }
-        }
-        newAccount.setFreezeMoney(account.getFreezeMoney());
-        if (account.getUsableMoney()!=null){
-            newAccount.setUsableMoney(account.getUsableMoney());
-        }
-        request.getSession().setAttribute("account",newAccount);
-        //根据用户权限跳转不同页面
         ModelAndView modelAndView=new ModelAndView();
-        if (account.getJur()!=3){
             modelAndView.setViewName("/admin/main");
-        }else {
-            modelAndView.setViewName("/user/index");
-        }
         return modelAndView;
     }
 
@@ -145,46 +108,6 @@ public class loginController {
         modelAndView.setViewName("/admin/guanLiInfo");
         return modelAndView;
     }
-    /**
-     * 普通用户购买账号页面跳转
-     * @return
-     */
-    @RequestMapping("/userAdd")
-    public ModelAndView userAdd(HttpServletRequest request){
-        ModelAndView modelAndView =new ModelAndView();
-        modelAndView.setViewName("/user/userAdd");
-        return modelAndView;
-    }
-    /**
-     * 普通用户修改账号页面跳转
-     * @return
-     */
-    @RequestMapping("/UpdateUser")
-    public ModelAndView updateUser(){
-        ModelAndView modelAndView =new ModelAndView();
-        modelAndView.setViewName("/user/updatPwd");
-        return modelAndView;
-    }
-    /**
-     * 普通用户积分交易账号页面跳转
-     * @return
-     */
-    @RequestMapping("/userjiaoyi")
-    public ModelAndView userjiaoyi(){
-        ModelAndView modelAndView =new ModelAndView();
-        modelAndView.setViewName("/user/jiaoyi");
-        return modelAndView;
-    }
-    /**
-     * 普通用户积分交易账号页面跳转
-     * @return
-     */
-    @RequestMapping("/usershouye")
-    public ModelAndView usershouye(){
-        ModelAndView modelAndView =new ModelAndView();
-        modelAndView.setViewName("/user/index");
-        return modelAndView;
-    }
 
     /**
      * 管理员跳转添加用户页面
@@ -206,28 +129,8 @@ public class loginController {
         modelAndView.setViewName("/admin/updaMoney");
         return modelAndView;
     }
-    /**
-     * 普通用户购买店铺账号页面跳转
-     * @return
-     */
-    @RequestMapping("/shopAdd")
-    public ModelAndView shopAdd(){
-//        Account account=accountService.findAccountById(accountId);
-        ModelAndView modelAndView =new ModelAndView();
-//        modelAndView.addObject(account);
-        modelAndView.setViewName("/user/shopAdd");
-        return modelAndView;
-    }
-    /**
-     * 我的推荐页面跳转
-     * @return
-     */
-    @RequestMapping("/recommender")
-    public ModelAndView recommender(){
-        ModelAndView modelAndView =new ModelAndView();
-        modelAndView.setViewName("/user/recommender");
-        return modelAndView;
-    }
+
+
     /**
      * 交易记录页面跳转
      * @return
@@ -238,16 +141,7 @@ public class loginController {
         modelAndView.setViewName("/admin/record");
         return modelAndView;
     }
-    /**
-     * 用户交易记录页面跳转
-     * @return
-     */
-    @RequestMapping("/userRecord")
-    public ModelAndView userRecord(){
-        ModelAndView modelAndView =new ModelAndView();
-        modelAndView.setViewName("/user/userRecord");
-        return modelAndView;
-    }
+
     /**
      * 用户今天注册页面跳转
      * @return

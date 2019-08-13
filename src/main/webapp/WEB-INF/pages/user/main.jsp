@@ -19,7 +19,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="${pageContext.request.contextPath}/loginController/usershouye">首页</a>
+                    <a class="navbar-brand" href="${pageContext.request.contextPath}/Home/usershouye">首页</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -38,12 +38,12 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">个人中心<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="${pageContext.request.contextPath}/loginController/userAdd">新增用户</a></li>
-                                <li><a href="${pageContext.request.contextPath}/loginController/shopAdd">新增店铺</a></li>
-                                <li><a href="${pageContext.request.contextPath}/loginController/UpdateUser">修改密码</a></li>
-                                <li><a href="${pageContext.request.contextPath}/loginController/recommender">我的推荐</a></li>
-                                <li><a href="${pageContext.request.contextPath}/loginController/userjiaoyi">积分交易</a></li>
-                                <li><a href="${pageContext.request.contextPath}/loginController/userRecord">交易记录</a></li>
+                                <li><a href="${pageContext.request.contextPath}/Home/userAdd">新增用户</a></li>
+                                <li><a href="${pageContext.request.contextPath}/Home/shopAdd">新增店铺</a></li>
+                                <li><a href="${pageContext.request.contextPath}/Home/UpdateUser">修改密码</a></li>
+                                <li><a href="${pageContext.request.contextPath}/Home/recommender">我的推荐</a></li>
+                                <li><a href="${pageContext.request.contextPath}/Home/userjiaoyi">积分交易</a></li>
+                                <li><a href="${pageContext.request.contextPath}/Home/userRecord">交易记录</a></li>
                                 <li><a href="javascript:alert('请联系管理员');">积分提现</a></li>
                                 <li><a href="#">节点积分：${pageContext.session.getAttribute("account").accountMoney}</a></li>
                                 <li><a href="#">可用积分：${pageContext.session.getAttribute("account").usableMoney}</a></li>

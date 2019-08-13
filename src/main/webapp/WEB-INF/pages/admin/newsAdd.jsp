@@ -79,9 +79,9 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="inputEmail3" class="col-sm-2 control-label">收货地址：</label>
+        <label for="inputEmail3" class="col-sm-2 control-label">冻结积分：</label>
         <div class="col-xs-4">
-            <input type="text" class="form-control" name="accountName" id="inputEmai28" value="">
+            <input type="text" class="form-control" name="accountName" id="inputEmai27" value="">
         </div>
     </div>
     <div class="form-group">
