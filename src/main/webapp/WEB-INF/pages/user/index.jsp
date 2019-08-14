@@ -46,7 +46,7 @@
                     <img src="${pageContext.request.contextPath}/img/16008002.jpg" alt="...">
                 </div>
                 <div class="item">
-                    <img src="${pageContext.request.contextPath}/img/16008003.jpg" alt="...">
+                    <img src="${pageContext.request.contextPath}/img/166663.jpg" alt="...">
 
                 </div>
                 <div class="item">
@@ -84,12 +84,12 @@
 
         <div class="row">
             <div class="col-md-6">
-                <img src="${pageContext.request.contextPath}/img/160000.jpg" style="width:90%;"/>
+                <img src="${pageContext.request.contextPath}/img/160000.jpg" style="width:80%;"/>
             </div>
-            <div class="col-md-6" style="margin-top:270px;">
+            <div class="col-md-6" style="margin-top:212px;">
                 <div class="col-md-6">
                     <div class="thumbnail">
-                        <img src="${pageContext.request.contextPath}/img/1700000.jpg" style="width: 60%;" class="img-responsive"/>
+                        <img src="${pageContext.request.contextPath}/img/1700000.jpg" style="width: 67%;" class="img-responsive"/>
                         <p>大豆肽<br/><span>大豆肽,小分子肽，大豆蛋白肽粉</span><br/><span>零售价：&yen;399.00 &nbsp;会员价：<font color="red">55.00</font></span></p>
                     </div>
                 </div>
@@ -114,7 +114,7 @@
     <div class="row">
         <div class="col-md-3">
             <div class="thumbnail">
-                <img src="${pageContext.request.contextPath}/img/19800.jpg" style="width: 50%;" class="img-responsive"/>
+                <img src="${pageContext.request.contextPath}/img/19800.jpg" style="width: 53%;" class="img-responsive"/>
                 <p>大麦若叶青汁代餐粉，盒装，3克/条<br/>零售价：120.00，会员价：<font color="red">&yen;19.00</font></p>
             </div>
         </div>
@@ -126,17 +126,27 @@
         </div>
         <div class="col-md-3">
             <div class="thumbnail">
-                <img src="${pageContext.request.contextPath}/img/19600.jpg" style="width: 50%;" class="img-responsive"/>
+                <img src="${pageContext.request.contextPath}/img/19600.jpg" style="width: 58%;" class="img-responsive"/>
                 <p>量子活力舒丝巾<br/>零售价：860.00，会员价：<font color="red">&yen;15.00</font></p>
             </div>
         </div>
         <div class="col-md-3">
             <div class="thumbnail">
-                <img src="${pageContext.request.contextPath}/img/19700.jpg" style="width: 50%;" class="img-responsive"/>
+                <img src="${pageContext.request.contextPath}/img/19700.jpg" style="width: 65%;" class="img-responsive"/>
                 <p>舒克舒敏亮白牙膏/120g<br/>零售价：25.00，会员价：<font color="red">&yen;7.00</font></p>
             </div>
         </div>
 
+    </div>
+    <%--底部--%>
+    <div>
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header" style="margin-left: 44%;">
+                    <a class="navbar-brand " href="#" style="font-size: 14px;"><strong></strong></a>
+                </div>
+            </div>
+        </nav>
     </div>
 </div><!--0-end-->
 </body>
