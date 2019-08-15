@@ -438,10 +438,8 @@ public class AccountServiceImpl implements AccountService {
         accountById.setUsableMoney(accountById.getUsableMoney()-accountMoney);
         Account accountByName = accountDao.findAccountByName(accountName);
         accountByName.setUsableMoney(accountByName.getUsableMoney()+accountMoney);
-        accountDao.updateAccountMoney(accountById);
-
-        accountDao.updateAccountMoney(accountByName);
-
+        accountDao.updateUsableMoney(accountById);
+        accountDao.updateUsableMoney(accountByName);
         return true;
     }
 

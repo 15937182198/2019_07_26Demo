@@ -414,7 +414,7 @@ public class AccountController {
             Account accountByName = accountService.findAccountByName(accountName);
             dealService.saveDeal(accountMoney,accountByName.getAccountId());
             accountMoney=0-accountMoney;
-            
+            dealService.saveDeal(accountMoney,accountId);
         }
         return bo+"";
     }

@@ -17,6 +17,7 @@ public class DealServiceImpl implements DealService {
     private DealDao dealDao;
     @Override
     public List<Deal> findDealByAccountId(Integer accountId) {
+        dealDao.deleteDeal();
         return dealDao.findDealByAccountId(accountId);
     }
 
@@ -24,8 +25,9 @@ public class DealServiceImpl implements DealService {
     public int saveDeal(double dealIncome,int accountId) {
         Deal deal=new Deal();
         deal.setDealIncome(dealIncome);
-        deal.setDealDate(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+        deal.setDealDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
         deal.setAccountId(accountId);
+        dealDao.deleteDeal();
         return dealDao.saveDeal(deal);
     }
 }

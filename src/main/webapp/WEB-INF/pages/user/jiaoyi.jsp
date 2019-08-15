@@ -44,7 +44,7 @@
                         }
                         if (res){
                             alert("交易成功");
-                            window.location.href="${pageContext.request.contextPath}/loginController/userjiaoyi";
+                            location.reload();
                         }else {
                             alert("交易失败");
                         }

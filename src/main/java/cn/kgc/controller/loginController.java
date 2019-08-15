@@ -1,13 +1,21 @@
 package cn.kgc.controller;
 
 import cn.kgc.pojo.Account;
+import cn.kgc.pojo.Deal;
+import cn.kgc.pojo.NewDeal;
 import cn.kgc.service.AccountService;
+import cn.kgc.service.DealService;
+import cn.kgc.pojo.PageInfo;
+import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 后台页面处理
@@ -18,6 +26,9 @@ public class loginController {
 
     @Resource(name = "accountService")
     private AccountService accountService;
+
+    @Resource(name = "dealService")
+    private DealService dealService;
     //首页
     @RequestMapping("/index")
     public ModelAndView login(HttpServletRequest request){
@@ -136,12 +147,31 @@ public class loginController {
      * @return
      */
     @RequestMapping("/record")
-    public ModelAndView record(){
+    public ModelAndView record(Integer accountId, @RequestParam(required = false,defaultValue = "1",value = "currPage")Integer currPage,
+                               @RequestParam(required = false,defaultValue = "5",value = "pageSizes")Integer pageSizes){
         ModelAndView modelAndView =new ModelAndView();
+        int number=dealService.findDealByAccountId(accountId).size();
+        PageHelper.startPage(currPage,pageSizes);
+        PageInfo pageInfo=new PageInfo();
+        List<Deal> list1 = dealService.findDealByAccountId(accountId);
+        if (number%pageSizes!=0){
+            pageInfo.setPages(number/pageSizes+1);
+        }else {
+            pageInfo.setPages(number/pageSizes);
+        }
+        List<NewDeal> list=new ArrayList<NewDeal>();
+        for (Deal deal : list1) {
+            NewDeal deal1=new NewDeal();
+            deal1.setDeal(deal);
+            Account accountById = accountService.findAccountById(accountId);
+            deal1.setAccountName(accountById.getAccountName());
+            list.add(deal1);
+        }
+        pageInfo.setList(list);
+        modelAndView.addObject(pageInfo);
         modelAndView.setViewName("/admin/record");
         return modelAndView;
     }
-
     /**
      * 用户今天注册页面跳转
      * @return

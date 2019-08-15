@@ -46,13 +46,12 @@
                     </thead>
                     <tbody class="news_content">
                     <%--  --%>
-                    <c:forEach items="${pageInfo.list}" var="account" varStatus="id">
+                    <c:forEach items="${pageInfo.list}" var="list" varStatus="id">
                         <tr>
-                            <td align="left">110</td>
-                            <td>111?</td>
-                            <td>2019.08.12</td>
-                            <td>小明</td>
-
+                            <td align="left">${list.deal.dealId}</td>
+                            <td>${list.deal.dealIncome}</td>
+                            <td>${list.deal.dealDate}</td>
+                            <td>${list.accountName}</td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -119,7 +118,7 @@
         if(nowPage>${pageInfo.pages}){
             return;
         }
-        location.href="${pageContext.request.contextPath}/account/pageInfo?currPage="+nowPage;
+        location.href="${pageContext.request.contextPath}/loginController/record?currPage="+nowPage;
     }
 </script>
 <script>

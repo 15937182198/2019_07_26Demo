@@ -41,24 +41,21 @@
               <th>交易时间</th>
               <th>所属账户</th>
           </tr>
-          <tr>
-              <td align="left">110</td>
-              <td>111?</td>
-              <td>2019.08.12</td>
-              <td>小明</td>
-          </tr>
+            <c:forEach items="${pageInfo.list}" var="list" varStatus="id">
+                <tr>
+                    <td align="left">${list.deal.dealId}</td>
+                    <td>${list.deal.dealIncome}</td>
+                    <td>${list.deal.dealDate}</td>
+                    <td>${list.accountName}</td>
+                </tr>
+            </c:forEach>
         </table>
         <div class="larry-table-page clearfix">
-            <div style="margin-top: 50px"><span>共${pageInfo.accountNum}个用户</span><span>当前是第${pageInfo.pageNum}页</span></div>
             <div class="box-footer">
                 <div class="box-tools pull-right">
                     <ul class="pagination">
                         <li><a href="javascript:pageBeanNumber(1)" aria-label="Previous">首页</a></li>
                         <li><a href="javascript:pageBeanNumber(${pageInfo.pageNum-1})">上一页</a></li>
-                        <li><a href="javascript:pageBeanNumber(${i})">1</a></li>
-                        <li><a href="javascript:pageBeanNumber(${i})">2</a></li>
-                        <li><a href="javascript:pageBeanNumber(${i})">3</a></li>
-
                         <c:choose>
                             <c:when test="${pageInfo.pages<=5}">
                                 <c:forEach begin="1" end="${pageInfo.pages}" var="i">
