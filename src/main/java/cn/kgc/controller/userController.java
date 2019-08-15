@@ -114,18 +114,6 @@ public class userController {
             deal1.setAccountName(accountById.getAccountName());
             list.add(deal1);
         }
-        System.out.println(list);
-        System.out.println(list);
-        System.out.println(list);
-        System.out.println(list);
-        System.out.println(list);
-        System.out.println(list);
-        System.out.println(list);
-        System.out.println(list);
-        System.out.println(list);
-        System.out.println(list);
-        System.out.println(list);
-        System.out.println(list);
         pageInfo.setList(list);
         modelAndView.addObject(pageInfo);
         modelAndView.setViewName("/user/userRecord");

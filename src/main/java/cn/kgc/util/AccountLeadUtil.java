@@ -24,7 +24,6 @@ public class AccountLeadUtil {
     public List<Integer> getAccountLead(Integer accountId){
         //根据用户编号查询用户
         Account accountByAccountId = accountDao.findAccountByAccountId(accountId);
-        System.err.println(accountByAccountId);
         //因为用户的第一个直系下属的金字塔编号是该用户金字塔编号的2倍，所以该用户编号的2倍后的所有用户都在改用户的金字塔下
         int num=2;
         for (int i=accountByAccountId.getAccountJNumber()*2;;i=i*2){
@@ -35,8 +34,6 @@ public class AccountLeadUtil {
                 if (accountByAccountJNumber==null){
                     List<Integer> list=new ArrayList<Integer>();
                     list.add(i+j);
-                    System.out.println(j);
-                    System.out.println(i);
                     if ((i+j)%2==0){
                         list.add(accountDao.findAccountByAccountJNumber((i+j)/2).getAccountId());
                         return list;

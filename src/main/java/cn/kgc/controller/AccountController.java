@@ -94,19 +94,7 @@ public class AccountController {
             Account accountByName1 = accountService.findAccountByName(accountName);
             //给该用户上30层的所有上级增加相应积分
             List<Account> accounts =accountMoneyUtil.updateAccountLeadMoney(accountByName1.getAccountLead(),30);
-            System.out.println(accounts.size());
-            System.out.println(accounts.size());
-            System.out.println(accounts.size());
-            System.out.println(accounts.size());
-            System.out.println(accounts.size());
-            System.out.println(accounts.size());
-            System.out.println(accounts.size());
             for (Account account : accounts) {
-                System.out.println(account);
-                System.out.println(account);
-                System.out.println(account);
-                System.out.println(account);
-                System.out.println(account);
                 accountService.updateAccountMoney(account);
             }
         }
@@ -347,7 +335,6 @@ public class AccountController {
             accountService.updateAccountMoney(accountById);
             //查询新增用户
             Account accountByName1 = accountService.findAccountByName(accountName);
-            System.out.println(accountByName1);
             //给该用户上30层的所有上级增加相应积分    //店铺节点分数不清楚
             List<Account> accounts =accountMoneyUtil.updateAccountLeadMoney(accountByName1.getAccountLead(),30);
             for (Account account : accounts) {
