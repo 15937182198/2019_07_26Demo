@@ -81,7 +81,6 @@
                 </div>
             </div>
         </nav>
-
         <div class="row">
             <div class="col-md-6">
                 <img src="${pageContext.request.contextPath}/img/160000.jpg" style="width:80%;"/>

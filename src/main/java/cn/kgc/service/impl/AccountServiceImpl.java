@@ -2,10 +2,7 @@ package cn.kgc.service.impl;
 
 import cn.kgc.dao.AccountDao;
 import cn.kgc.dao.JurDao;
-import cn.kgc.pojo.Account;
-import cn.kgc.pojo.Jurisdiction;
-import cn.kgc.pojo.NewAccount;
-import cn.kgc.pojo.PageInfo;
+import cn.kgc.pojo.*;
 import cn.kgc.service.AccountService;
 import cn.kgc.util.AccountLeadUtil;
 import com.github.pagehelper.PageHelper;
@@ -456,5 +453,30 @@ public class AccountServiceImpl implements AccountService {
         account.setFreezeMoney(freezeMoney);
         accountDao.updateAccount(account);
         return false;
+    }
+
+    @Override
+    public int profit(int a ,int b ,long date) {
+        Profit profit1 = accountDao.querybyId(a);
+        if (profit1==null){
+            Profit profit = new Profit();
+            profit.setAccountId(a);
+            profit.setToday(b);
+            profit.setYesterdayTime(date);
+            accountDao.insetProfit(profit);
+            return 0;
+        }
+        long l = profit1.getYesterdayTime();
+        long s =date;
+        if (s-l>=86400000){
+            Profit profit = new Profit();
+            profit.setAccountId(a);
+            profit.setYesterday(b-profit1.getToday());
+            profit.setYesterdayTime(date);
+            profit.setToday(b);
+            int i = accountDao.updateProfit(profit);
+            return b-profit1.getToday();
+        }
+       return profit1.getYesterday();
     }
 }

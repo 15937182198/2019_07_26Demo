@@ -1,6 +1,8 @@
 package cn.kgc.dao;
 
 import cn.kgc.pojo.Account;
+import cn.kgc.pojo.Profit;
+import cn.kgc.pojo.Record;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -145,4 +147,10 @@ public interface AccountDao {
 
     @Update("update account set accountName=#{accountName},userName=#{userName},userPhone=#{userPhone},site=#{site},accountMoney=#{accountMoney},usableMoney=#{usableMoney},freezeMoney=#{freezeMoney} where accountId=#{accountId}")
     void updateAccount(Account account);
+    @Select("select *from Profit where accountId=#{param1}")
+    Profit querybyId(int a);
+    @Insert("insert into Profit values(#{accountId},null,#{YesterdayTime},#{Today})")
+     int insetProfit(Profit profit);
+    @Update("update Profit set accountId=#{accountId},Yesterday=#{Yesterday},YesterdayTime=#{YesterdayTime},Today=#{Today}")
+    int updateProfit(Profit profit);
 }

@@ -45,7 +45,7 @@
                                 <li><a href="${pageContext.request.contextPath}/Home/userjiaoyi">积分交易</a></li>
                                 <li><a href="${pageContext.request.contextPath}/Home/userRecord?accountId=${pageContext.session.getAttribute("account").accountId}">交易记录</a></li>
                                 <li><a href="javascript:alert('请联系管理员');">积分提现</a></li>
-                                <li><a href="#">昨日收益:</a></li>
+                                <li><a href="#">昨日收益:<span id="sum"></span></a></li>
                                 <li><a href="#">节点积分：${pageContext.session.getAttribute("account").accountMoney}</a></li>
                                 <li><a href="#">可用积分：${pageContext.session.getAttribute("account").usableMoney}</a></li>
                                 <li><a href="#">冻结积分：${pageContext.session.getAttribute("account").freezeMoney}</a></li>
@@ -58,4 +58,18 @@
     </div>	<!--导航条结束-------------------------------------->
     <!--我的信息-->
 </div><!--0-end-->
-
+<script type="text/javascript">
+    window.onload=function(){
+        $.ajax({
+            url:"${pageContext.request.contextPath}/account/Profit",
+            type:"POST",
+            data:{
+                accountId:${pageContext.session.getAttribute("account").accountId},
+                sum:${pageContext.session.getAttribute("account").accountMoney+pageContext.session.getAttribute("account").usableMoney+pageContext.session.getAttribute("account").freezeMoney}
+            },
+            success:function (date) {
+                $("#sum").html(date);
+            }
+        });
+    };
+</script>

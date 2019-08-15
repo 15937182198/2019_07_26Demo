@@ -7,9 +7,7 @@ import cn.kgc.service.AccountService;
 import cn.kgc.service.DealService;
 import cn.kgc.util.AccountMoneyUtil;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
@@ -410,5 +408,14 @@ public class AccountController {
     public @ResponseBody String updateAccount(Integer accountId,String accountName,String userName,String site,String userPhone,double accountMoney,double usableMoney,double freezeMoney){
         boolean bo=accountService.updateAccount(accountId,accountName,userName,site,userPhone,accountMoney,usableMoney,freezeMoney);
         return bo+"";
+    }
+    /**
+     * 昨日收益Profit
+     */
+    @RequestMapping(value = "/Profit")
+    public @ResponseBody String profit(Integer accountId, Integer sum){
+        long l = System.currentTimeMillis();
+        int profit = accountService.profit(accountId, sum, l);
+        return profit+"";
     }
 }
