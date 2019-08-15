@@ -49,12 +49,6 @@
     </div>
 
     <div class="form-group">
-        <label for="inputPassword3" class="col-sm-2 control-label" id="accountPassword">密码：</label>
-        <div class="col-xs-4">
-            <input type="password" class="form-control" name="accountPassword" id="inputPassword3" placeholder="数字或字母，只能为8~12位！">
-        </div>
-    </div>
-    <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">联系方式：</label>
         <div class="col-xs-4">
             <input type="text" class="form-control" name="accountName" id="inputEmai24" value="">
@@ -75,13 +69,13 @@
     <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">冻结积分：</label>
         <div class="col-xs-4">
-            <input type="text" class="form-control" name="accountName" id="inputEmai27" value="">
+            <input type="text" class="form-control" name="accountName" id="inputEmai28" value="">
         </div>
     </div>
     <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">冻结积分：</label>
         <div class="col-xs-4">
-            <input type="text" class="form-control" name="accountName" id="inputEmai27" value="">
+            <input type="text" class="form-control" name="accountName" id="inputEmai29" value="">
         </div>
     </div>
     <div class="form-group">
@@ -106,31 +100,6 @@
             if (!re.test(password)){
                 alert("密码必须为数字或字母，只能为8~12位！");
             }
-        });
-        $(".btn").click(function(){
-            var val = $("#accountId").val();
-            var password=$("input[name='accountPassword']").val();
-            var re = new RegExp(/^[a-zA-Z0-9]{4,8}$/);       // ^表示开始  $表示结束
-            var accountName=$("input[name='accountName']").val();
-            if (!re.test(password)){
-                alert("密码必须为数字或字母，只能为8~12位！");
-                return;
-            }
-            $.ajax({
-                url:"${pageContext.request.contextPath}/account/updateAccountPassword",
-                type:"POST",
-                data:{"accountId":val,
-                    "accountName":accountName,
-                    "accountPassword":password},
-                success:function (res) {
-                    if (res == false){
-                        alert("修改失败");
-                    } else {
-                        alert("修改成功");
-                        window.location.href="${pageContext.request.contextPath}/loginController/userShouYe";
-                    }
-                }
-            })
         });
     });
 </script>

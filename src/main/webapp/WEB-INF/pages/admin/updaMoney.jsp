@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>修改积分</title>
+    <title>修改密码</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -33,7 +33,7 @@
         <div class="layui-tab-content" style="min-height: 150px; margin-top: 25px;">
             <div class="layui-tab-item layui-show">
 <div class="form-horizontal " style="margin-top: 70px;margin-left: 200px;">
-    <span class="glyphicon glyphicon-user" aria-hidden="true" style="font-size: 25px; margin-left: 80px;margin-bottom: 30px;"> </span>&nbsp;&nbsp;<span style="font-family: '微软雅黑'; font-size: 25px">修改积分</span>
+    <span class="glyphicon glyphicon-user" aria-hidden="true" style="font-size: 25px; margin-left: 80px;margin-bottom: 30px;"> </span>&nbsp;&nbsp;<span style="font-family: '微软雅黑'; font-size: 25px">修改密码</span>
     <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">用户名：</label>
         <div class="col-xs-4">
@@ -42,9 +42,9 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="inputPassword3" class="col-sm-2 control-label">积分余额：</label>
+        <label for="inputPassword3" class="col-sm-2 control-label">密码：</label>
         <div class="col-xs-4">
-            <input type="text" class="form-control" id="accountMoney" name="accountMoney" value="${account.accountMoney}">
+            <input type="password" class="form-control" id="inputPassword3" name="accountPassword" placeholder="输入新密码">
         </div>
     </div>
     <div class="form-group">
@@ -61,15 +61,22 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/newsadd.js"></script>
 <script src="../../../js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
+
     $(function(){
         $(".btn").click(function(){
             var val = $("#accountId").val();
-            var accountMoney=$("input[name='accountMoney']").val();
+            var accountPassword=$("input[name='accountPassword']").val();
+            var re = new RegExp(/^[a-zA-Z0-9]{4,8}$/);       // ^表示开始  $表示结束
+            var accountName=$("input[name='accountName']").val();
+            if (!re.test(password)){
+                alert("密码必须为数字或字母，只能为8~12位！");
+                return;
+            }
             $.ajax({
                 url:"${pageContext.request.contextPath}/account/updateAccountMoney",
                 type:"POST",
                 data:{"accountId":val,
-                    "accountMoney":accountMoney},
+                    "accountPassword":accountPassword},
                 success:function (res) {
                     if (res == false){
                         alert("修改失败");
