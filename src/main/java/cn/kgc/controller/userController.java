@@ -1,9 +1,11 @@
 package cn.kgc.controller;
 
+import cn.kgc.service.DealService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -14,6 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping("/Home")
 public class userController {
+
+
+
     //首页页面跳转
     @RequestMapping("/index")
     public ModelAndView login(HttpServletRequest request){

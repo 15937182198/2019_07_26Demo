@@ -439,7 +439,24 @@ public class AccountServiceImpl implements AccountService {
         Account accountByName = accountDao.findAccountByName(accountName);
         accountByName.setUsableMoney(accountByName.getUsableMoney()+accountMoney);
         accountDao.updateAccountMoney(accountById);
+
         accountDao.updateAccountMoney(accountByName);
+
         return true;
+    }
+
+    @Override
+    public boolean updateAccount(Integer accountId, String accountName, String userName, String site, String userPhone, double accountMoney, double usableMoney, double freezeMoney) {
+        Account account=new Account();
+        account.setAccountName(accountName);
+        account.setAccountId(accountId);
+        account.setUserName(userName);
+        account.setSite(site);
+        account.setUserPhone(userPhone);
+        account.setAccountMoney(accountMoney);
+        account.setUsableMoney(usableMoney);
+        account.setFreezeMoney(freezeMoney);
+        accountDao.updateAccount(account);
+        return false;
     }
 }

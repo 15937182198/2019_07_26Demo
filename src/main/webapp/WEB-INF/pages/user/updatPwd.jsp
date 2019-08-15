@@ -75,11 +75,11 @@
                 success:function (res) {
                     if (res == false){
                         alert("修改失败");
-                        window.location.href="${pageContext.request.contextPath}/loginController/UpdateUser";
+                        window.location.href="${pageContext.request.contextPath}/logout";
                         return;
                     }else {
                         alert("修改成功");
-                        window.location.href="${pageContext.request.contextPath}/loginController/UpdateUser";
+                        window.location.href="${pageContext.request.contextPath}/logout";
                         return;
                     }
                 }

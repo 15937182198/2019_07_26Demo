@@ -142,4 +142,7 @@ public interface AccountDao {
      */
     @Update("update account set usableMoney=#{usableMoney} where accountId=#{accountId}")
     int updateUsableMoney(Account account);
+
+    @Update("update account set accountName=#{accountName},userName=#{userName},userPhone=#{userPhone},site=#{site},accountMoney=#{accountMoney},usableMoney=#{usableMoney},freezeMoney=#{freezeMoney} where accountId=#{accountId}")
+    void updateAccount(Account account);
 }

@@ -151,4 +151,18 @@ public interface AccountService extends UserDetailsService {
      * @return 是否修改成功
      */
     boolean updateUsableMoney(Account account);
+
+    /**
+     * 修改用户信息的方法
+     * @param accountId 用户id
+     * @param accountName 用户名
+     * @param userName 用户姓名
+     * @param site 用户地址
+     * @param userPhone 用户手机号
+     * @param accountMoney 用户节点积分
+     * @param usableMoney 用户可用积分
+     * @param freezeMoney 用户冻结积分
+     * @return 是否修改成功
+     */
+    boolean updateAccount(Integer accountId, String accountName, String userName, String site, String userPhone, double accountMoney, double usableMoney, double freezeMoney);
 }

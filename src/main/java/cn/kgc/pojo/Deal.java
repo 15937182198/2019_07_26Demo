@@ -37,7 +37,7 @@ public class Deal  implements Serializable {
 	 * 交易时间
 	 */
    	@Column(name = "dealDate" )
-	private Date dealDate;
+	private String dealDate;
 
 	/**
 	 * 所属账户
@@ -45,4 +45,35 @@ public class Deal  implements Serializable {
    	@Column(name = "accountId" )
 	private Integer accountId;
 
+	public Integer getDealId() {
+		return dealId;
+	}
+
+	public void setDealId(Integer dealId) {
+		this.dealId = dealId;
+	}
+
+	public Double getDealIncome() {
+		return dealIncome;
+	}
+
+	public void setDealIncome(Double dealIncome) {
+		this.dealIncome = dealIncome;
+	}
+
+	public String getDealDate() {
+		return dealDate;
+	}
+
+	public void setDealDate(String dealDate) {
+		this.dealDate = dealDate;
+	}
+
+	public Integer getAccountId() {
+		return accountId;
+	}
+
+	public void setAccountId(Integer accountId) {
+		this.accountId = accountId;
+	}
 }

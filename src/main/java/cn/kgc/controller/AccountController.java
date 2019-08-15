@@ -4,6 +4,7 @@ import cn.kgc.pojo.Account;
 import cn.kgc.pojo.NewAccount;
 import cn.kgc.pojo.PageInfo;
 import cn.kgc.service.AccountService;
+import cn.kgc.service.DealService;
 import cn.kgc.util.AccountMoneyUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,9 @@ public class AccountController {
 
     @Resource(name = "accountService")
     private AccountService accountService;
+
+    @Resource(name = "dealService")
+    private DealService dealService;
 
     @Resource(name = "accountMoneyUtil")
     private AccountMoneyUtil accountMoneyUtil;
@@ -215,9 +219,8 @@ public class AccountController {
      * @return 修改成功返回true 失败返回false
      */
     @RequestMapping("/updateAccountPassword")
-    public @ResponseBody String updateAccountPassword(Integer accountId,String accountPassword,String accountName){
+    public @ResponseBody String updateAccountPassword(Integer accountId,String accountPassword){
         Account account = accountService.findAccountById(accountId);
-        account.setAccountName(accountName);
         account.setAccountPassword(accountPassword);
         boolean bo=accountService.updateAccountPassword(account);
         return bo+"";
@@ -407,7 +410,18 @@ public class AccountController {
             return "1";
         }
         boolean bo=accountService.transfer(accountId,accountMoney,accountName);
+        if (bo){
+            Account accountByName = accountService.findAccountByName(accountName);
+            dealService.saveDeal(accountMoney,accountByName.getAccountId());
+            accountMoney=0-accountMoney;
+            
+        }
+        return bo+"";
+    }
 
+    @RequestMapping("/updateAccount")
+    public @ResponseBody String updateAccount(Integer accountId,String accountName,String userName,String site,String userPhone,double accountMoney,double usableMoney,double freezeMoney){
+        boolean bo=accountService.updateAccount(accountId,accountName,userName,site,userPhone,accountMoney,usableMoney,freezeMoney);
         return bo+"";
     }
 }

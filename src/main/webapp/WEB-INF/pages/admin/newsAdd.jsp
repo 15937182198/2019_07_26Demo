@@ -44,38 +44,38 @@
     <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">姓名：</label>
         <div class="col-xs-4">
-            <input type="text" class="form-control" name="accountName" id="inputEmai23" value="">
+            <input type="text" class="form-control" name="userName" id="inputEmai23" value="${account.userName}">
         </div>
     </div>
 
     <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label" id="accountPassword">收货地址：</label>
+        <div class="col-xs-4">
+            <input type="text" class="form-control" name="site" id="inputPassword3" value="${account.site}">
+        </div>
+    </div>
+    <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">联系方式：</label>
         <div class="col-xs-4">
-            <input type="text" class="form-control" name="accountName" id="inputEmai24" value="">
+            <input type="text" class="form-control" name="userPhone" id="inputEmai24" value="${account.userPhone}">
         </div>
     </div>
     <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">节点积分：</label>
         <div class="col-xs-4">
-            <input type="text" class="form-control" name="accountName" id="inputEmai25" value="">
+            <input type="text" class="form-control" name="accountMoney" id="inputEmai25" value="${account.accountMoney}">
         </div>
     </div>
     <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">可用积分：</label>
         <div class="col-xs-4">
-            <input type="text" class="form-control" name="accountName" id="inputEmai26" value="">
+            <input type="text" class="form-control" name="usableMoney" id="inputEmai26" value="${account.usableMoney}">
         </div>
     </div>
     <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">冻结积分：</label>
         <div class="col-xs-4">
-            <input type="text" class="form-control" name="accountName" id="inputEmai28" value="">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="inputEmail3" class="col-sm-2 control-label">冻结积分：</label>
-        <div class="col-xs-4">
-            <input type="text" class="form-control" name="accountName" id="inputEmai29" value="">
+            <input type="text" class="form-control" name="freezeMoney" id="inputEmai27" value="${account.freezeMoney}">
         </div>
     </div>
     <div class="form-group">
@@ -93,13 +93,35 @@
 <script src="../../../js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
     $(function(){
-
-        $("input[name='accountPassword']").blur(function () {
-            var password=$("input[name='accountPassword']").val();
-            var re = new RegExp(/^[a-zA-Z0-9]{4,8}$/);       // ^表示开始  $表示结束
-            if (!re.test(password)){
-                alert("密码必须为数字或字母，只能为8~12位！");
-            }
+        $(".btn").click(function(){
+            var val = $("#accountId").val();
+            var accountName=$("input[name='accountName']").val();
+            var userName=$("input[name='userName']").val();
+            var site=$("input[name='site']").val();
+            var userPhone=$("input[name='userPhone']").val();
+            var accountMoney=$("input[name='accountMoney']").val();
+            var usableMoney=$("input[name='usableMoney']").val();
+            var freezeMoney=$("input[name='freezeMoney']").val();
+            $.ajax({
+                url:"${pageContext.request.contextPath}/account/updateAccount",
+                type:"POST",
+                data:{"accountId":val,
+                    "accountName":accountName,
+                    "userName":userName,
+                    "site":site,
+                    "userPhone":userPhone,
+                    "accountMoney":accountMoney,
+                    "usableMoney":usableMoney,
+                    "freezeMoney":freezeMoney},
+                success:function (res) {
+                    if (res == false){
+                        alert("修改失败");
+                    } else {
+                        alert("修改成功");
+                        window.location.href="${pageContext.request.contextPath}/loginController/userShouYe";
+                    }
+                }
+            })
         });
     });
 </script>
