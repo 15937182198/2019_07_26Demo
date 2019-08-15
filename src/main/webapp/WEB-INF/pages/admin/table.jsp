@@ -58,6 +58,7 @@
                         <th>收货地址</th>
                         <th>上级</th>
                         <th>下级</th>
+                        <th>是否满足十层</th>
                         <th>操作</th>
                     </tr>
                     </thead>
@@ -76,6 +77,7 @@
                             <td>${account.site}</td>
                             <td>${account.accountLead}</td>
                             <td>${account.junior1}|${account.junior2}</td>
+                            <td></td>
                             <td>
                                 <a href="${pageContext.request.contextPath}/loginController/userInforUpdate?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 修改信息</a>
                                 <a href="${pageContext.request.contextPath}/loginController/updateMoney?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 修改密码</a>

@@ -33,7 +33,7 @@
         <div class="layui-tab-content" style="min-height: 150px; margin-top: 25px;">
             <div class="layui-tab-item layui-show">
 <div class="form-horizontal " style="margin-top: 70px;margin-left: 200px;">
-    <span class="glyphicon glyphicon-user" aria-hidden="true" style="font-size: 25px; margin-left: 80px;margin-bottom: 30px;"> </span>&nbsp;&nbsp;<span style="font-family: '微软雅黑'; font-size: 25px">修改积分</span>
+    <span class="glyphicon glyphicon-user" aria-hidden="true" style="font-size: 25px; margin-left: 80px;margin-bottom: 30px;"> </span>&nbsp;&nbsp;<span style="font-family: '微软雅黑'; font-size: 25px">修改密码</span>
     <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">用户名：</label>
         <div class="col-xs-4">
@@ -44,7 +44,7 @@
     <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 control-label">请输入密码：</label>
         <div class="col-xs-4">
-            <input type="text" class="form-control" id="accountPassword" name="accountPassword" value="">
+            <input type="password" class="form-control" id="accountPassword" name="accountPassword" placeholder="密码必须为数字或字母，只能为8~12位！" value="">
         </div>
     </div>
     <div class="form-group">
@@ -65,6 +65,11 @@
         $(".btn").click(function(){
             var val = $("#accountId").val();
             var accountPassword=$("input[name='accountPassword']").val();
+            var re = new RegExp(/^[a-zA-Z0-9]{4,8}$/);
+            if (!re.test(accountPassword)){
+                alert("密码必须为数字或字母，只能为8~12位！");
+                return;
+            }
             $.ajax({
                 url:"${pageContext.request.contextPath}/account/updateAccountPassword",
                 type:"POST",
