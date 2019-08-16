@@ -583,7 +583,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public double profit(int a ,double b ,long date) {
+    public double profit(int a ,Double b ,long date) {
         Profit profit1 = accountDao.querybyId(a);
         if (profit1==null){
             Profit profit = new Profit();

@@ -8,9 +8,9 @@ import java.util.Date;
  */
 public class Profit {
     private int accountId;
-    private double Yesterday;
+    private Double Yesterday;
     private long YesterdayTime;
-    private double Today;
+    private Double Today;
 
 
     public int getAccountId() {
@@ -21,11 +21,11 @@ public class Profit {
         this.accountId = accountId;
     }
 
-    public double getYesterday() {
+    public Double getYesterday() {
         return Yesterday;
     }
 
-    public void setYesterday(double yesterday) {
+    public void setYesterday(Double yesterday) {
         Yesterday = yesterday;
     }
 
@@ -37,11 +37,11 @@ public class Profit {
         YesterdayTime = yesterdayTime;
     }
 
-    public double getToday() {
+    public Double getToday() {
         return Today;
     }
 
-    public void setToday(double today) {
+    public void setToday(Double today) {
         Today = today;
     }
 
