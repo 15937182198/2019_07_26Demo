@@ -427,9 +427,9 @@ public class AccountController {
      * 昨日收益Profit
      */
     @RequestMapping(value = "/Profit")
-    public @ResponseBody String profit(Integer accountId, Integer sum){
+    public @ResponseBody String profit(Integer accountId, double sum){
         long l = System.currentTimeMillis();
-        int profit = accountService.profit(accountId, sum, l);
+        double profit = accountService.profit(accountId, sum, l);
         return profit+"";
     }
 }

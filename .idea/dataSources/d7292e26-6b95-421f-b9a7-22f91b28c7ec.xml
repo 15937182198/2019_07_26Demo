@@ -924,10 +924,7 @@
       <Comment>账户表</Comment>
       <Collation>utf8_general_ci</Collation>
     </table>
-    <table id="233" parent="2" name="deal">
-      <Comment>交易表</Comment>
-      <Collation>utf8_general_ci</Collation>
-    </table>
+    <table id="233" parent="2" name="deal"/>
     <table id="234" parent="2" name="income">
       <Comment>收益表</Comment>
       <Collation>utf8_general_ci</Collation>
@@ -936,12 +933,13 @@
       <Comment>权限表</Comment>
       <Collation>utf8_general_ci</Collation>
     </table>
-    <table id="236" parent="2" name="record">
+    <table id="236" parent="2" name="profit"/>
+    <table id="237" parent="2" name="record">
       <Comment>消费记录表</Comment>
       <Collation>utf8_general_ci</Collation>
     </table>
-    <table id="237" parent="3" name="account"/>
-    <column id="238" parent="232" name="accountId">
+    <table id="238" parent="3" name="account"/>
+    <column id="239" parent="232" name="accountId">
       <Position>1</Position>
       <Comment>账户编号编号</Comment>
       <DataType>int(11)|0s</DataType>
@@ -949,125 +947,120 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="239" parent="232" name="accountName">
+    <column id="240" parent="232" name="accountName">
       <Position>2</Position>
       <Comment>用户账号</Comment>
       <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="240" parent="232" name="accountPassword">
+    <column id="241" parent="232" name="accountPassword">
       <Position>3</Position>
       <Comment>密码</Comment>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="241" parent="232" name="accountMoney">
+    <column id="242" parent="232" name="accountMoney">
       <Position>4</Position>
       <Comment>节点积分，该积分3000可以体现</Comment>
       <DataType>double(255,2 digit)|0s</DataType>
       <DefaultExpression>0.00</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="242" parent="232" name="accountCreateDate">
+    <column id="243" parent="232" name="accountCreateDate">
       <Position>5</Position>
       <Comment>账户创建时间</Comment>
       <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="243" parent="232" name="referrer">
+    <column id="244" parent="232" name="referrer">
       <Position>6</Position>
       <Comment>推荐人id</Comment>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="244" parent="232" name="accountLead">
+    <column id="245" parent="232" name="accountLead">
       <Position>7</Position>
       <Comment>用户上级id
 </Comment>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="245" parent="232" name="jur">
+    <column id="246" parent="232" name="jur">
       <Position>8</Position>
       <Comment>权限编号</Comment>
       <DataType>int(11)|0s</DataType>
       <DefaultExpression>3</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="246" parent="232" name="accountJNumber">
+    <column id="247" parent="232" name="accountJNumber">
       <Position>9</Position>
       <Comment>该用户在金字塔的坐标</Comment>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="247" parent="232" name="freezeMoney">
+    <column id="248" parent="232" name="freezeMoney">
       <Position>10</Position>
       <Comment>冻结积分,该积分10层解冻</Comment>
       <DataType>double|0s</DataType>
       <DefaultExpression>1000</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="248" parent="232" name="usableMoney">
+    <column id="249" parent="232" name="usableMoney">
       <Position>11</Position>
       <Comment>可用积分</Comment>
       <DataType>double|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="249" parent="232" name="userName">
+    <column id="250" parent="232" name="userName">
       <Position>12</Position>
       <Comment>用户姓名</Comment>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="250" parent="232" name="userPhone">
+    <column id="251" parent="232" name="userPhone">
       <Position>13</Position>
       <Comment>手机号</Comment>
       <DataType>mediumtext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="251" parent="232" name="site">
+    <column id="252" parent="232" name="site">
       <Position>14</Position>
       <Comment>收货地址</Comment>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="252" parent="232" name="PRIMARY">
+    <key id="253" parent="232" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>accountId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="253" parent="233" name="dealId">
+    <column id="254" parent="233" name="dealId">
       <Position>1</Position>
-      <Comment>交易编号</Comment>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="254" parent="233" name="dealIncome">
+    <column id="255" parent="233" name="dealIncome">
       <Position>2</Position>
-      <Comment>收入/支出</Comment>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>double|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="255" parent="233" name="dealDate">
+    <column id="256" parent="233" name="dealDate">
       <Position>3</Position>
-      <Comment>交易时间</Comment>
       <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="256" parent="233" name="accountId">
+    <column id="257" parent="233" name="accountId">
       <Position>4</Position>
-      <Comment>所属账户</Comment>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="257" parent="233" name="PRIMARY">
+    <key id="258" parent="233" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>dealId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="258" parent="234" name="incomeId">
+    <column id="259" parent="234" name="incomeId">
       <Position>1</Position>
       <Comment>收益编号</Comment>
       <DataType>int(11)|0s</DataType>
@@ -1075,30 +1068,30 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="259" parent="234" name="oldIncome">
+    <column id="260" parent="234" name="oldIncome">
       <Position>2</Position>
       <Comment>前日收益</Comment>
       <DataType>double|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="260" parent="234" name="income">
+    <column id="261" parent="234" name="income">
       <Position>3</Position>
       <Comment>昨日收入</Comment>
       <DataType>double|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="261" parent="234" name="accountId">
+    <column id="262" parent="234" name="accountId">
       <Position>4</Position>
       <Comment>所属账户编号</Comment>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="262" parent="234" name="PRIMARY">
+    <key id="263" parent="234" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>incomeId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="263" parent="235" name="jurId">
+    <column id="264" parent="235" name="jurId">
       <Position>1</Position>
       <Comment>权限编号</Comment>
       <DataType>int(11)|0s</DataType>
@@ -1106,65 +1099,91 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="264" parent="235" name="jurName">
+    <column id="265" parent="235" name="jurName">
       <Position>2</Position>
       <Comment>权限名</Comment>
       <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="265" parent="235" name="PRIMARY">
+    <key id="266" parent="235" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>jurId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="266" parent="236" name="recordId">
+    <column id="267" parent="236" name="accountId">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="268" parent="236" name="Yesterday">
+      <Position>2</Position>
+      <DataType>double(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="269" parent="236" name="YesterdayTime">
+      <Position>3</Position>
+      <DataType>mediumtext|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="270" parent="236" name="Today">
+      <Position>4</Position>
+      <DataType>double(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="271" parent="236" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>accountId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="272" parent="237" name="recordId">
       <Position>1</Position>
       <Comment>消费记录id</Comment>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="267" parent="236" name="accountId">
+    <column id="273" parent="237" name="accountId">
       <Position>2</Position>
       <Comment>所属账户</Comment>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="268" parent="236" name="expend">
+    <column id="274" parent="237" name="expend">
       <Position>3</Position>
       <Comment>支出</Comment>
       <DataType>double|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="269" parent="236" name="income">
+    <column id="275" parent="237" name="income">
       <Position>4</Position>
       <Comment>收入</Comment>
       <DataType>double|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="270" parent="236" name="PRIMARY">
+    <key id="276" parent="237" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>recordId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="271" parent="237" name="id">
+    <column id="277" parent="238" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="272" parent="237" name="name">
+    <column id="278" parent="238" name="name">
       <Position>2</Position>
       <DataType>varchar(40)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="273" parent="237" name="money">
+    <column id="279" parent="238" name="money">
       <Position>3</Position>
       <DataType>float|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="274" parent="237" name="PRIMARY">
+    <key id="280" parent="238" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

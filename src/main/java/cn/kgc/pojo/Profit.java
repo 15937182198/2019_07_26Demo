@@ -8,19 +8,10 @@ import java.util.Date;
  */
 public class Profit {
     private int accountId;
-    private int Yesterday;
+    private double Yesterday;
     private long YesterdayTime;
-    private int Today;
+    private double Today;
 
-    public Profit() {
-    }
-
-    public Profit(int accountId, int yesterday, long yesterdayTime, int today) {
-        this.accountId = accountId;
-        Yesterday = yesterday;
-        YesterdayTime = yesterdayTime;
-        Today = today;
-    }
 
     public int getAccountId() {
         return accountId;
@@ -30,11 +21,11 @@ public class Profit {
         this.accountId = accountId;
     }
 
-    public int getYesterday() {
+    public double getYesterday() {
         return Yesterday;
     }
 
-    public void setYesterday(int yesterday) {
+    public void setYesterday(double yesterday) {
         Yesterday = yesterday;
     }
 
@@ -46,11 +37,21 @@ public class Profit {
         YesterdayTime = yesterdayTime;
     }
 
-    public int getToday() {
+    public double getToday() {
         return Today;
     }
 
-    public void setToday(int today) {
+    public void setToday(double today) {
         Today = today;
+    }
+
+    @Override
+    public String toString() {
+        return "Profit{" +
+                "accountId=" + accountId +
+                ", Yesterday=" + Yesterday +
+                ", YesterdayTime=" + YesterdayTime +
+                ", Today=" + Today +
+                '}';
     }
 }
