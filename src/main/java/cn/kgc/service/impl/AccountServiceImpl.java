@@ -583,7 +583,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public double profit(int a ,Double b ,long date) {
+    public double profit(int a ,Double b ,Date date) {
         Profit profit1 = accountDao.querybyId(a);
         if (profit1==null){
             Profit profit = new Profit();
@@ -593,9 +593,9 @@ public class AccountServiceImpl implements AccountService {
             accountDao.insetProfit(profit);
             return 0;
         }
-        long l = profit1.getYesterdayTime();
-        long s =date;
-        if (s-l>=86400000){
+//        long l = profit1.getYesterdayTime();
+//        long s =date;
+        if (!profit1.getYesterdayTime().equals(date)){
             Profit profit = new Profit();
             profit.setAccountId(a);
             profit.setYesterday(b-profit1.getToday());

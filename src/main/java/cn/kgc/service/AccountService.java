@@ -171,7 +171,7 @@ public interface AccountService extends UserDetailsService {
     /**
      * 昨日收益
      */
-    double profit(int a, Double b, long date);
+    double profit(int a, Double b, Date date);
 
     PageInfo findShopByReferrer(Integer currPage, Integer pageSizes);
 

@@ -431,8 +431,9 @@ public class AccountController {
         if (sum==null){
             sum=0d;
         }
-        long l = System.currentTimeMillis();
-        double profit = accountService.profit(accountId, sum, l);
+//        long l = System.currentTimeMillis();
+        Date date = new Date();
+        double profit = accountService.profit(accountId, sum,date);
         return profit+"";
     }
 }

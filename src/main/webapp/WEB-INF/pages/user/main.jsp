@@ -26,8 +26,8 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
 
-                        <li><a href="#">产品详情</a></li>
-                        <li><a href="#">合作公司</a></li>
+                        <li><a href="#">博爱县汇满鑫电子科技有限公司</a></li>
+                        <li><a href="#top">产品详情</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
@@ -45,7 +45,7 @@
                                 <li><a href="${pageContext.request.contextPath}/Home/userjiaoyi">积分交易</a></li>
                                 <li><a href="${pageContext.request.contextPath}/Home/userRecord?accountId=${pageContext.session.getAttribute("account").accountId}">交易记录</a></li>
                                 <li><a href="javascript:alert('请联系管理员');">积分提现</a></li>
-                                <li><a href="#">昨日收益:<span id="sum"></span></a></li>
+                                <li><a href="#">昨日收益: <span id="sum"></span></a></li>
                                 <li><a href="#">节点积分：${pageContext.session.getAttribute("account").accountMoney}</a></li>
                                 <li><a href="#">可用积分：${pageContext.session.getAttribute("account").usableMoney}</a></li>
                                 <li><a href="#">冻结积分：${pageContext.session.getAttribute("account").freezeMoney}</a></li>

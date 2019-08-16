@@ -9,7 +9,7 @@ import java.util.Date;
 public class Profit {
     private int accountId;
     private Double Yesterday;
-    private long YesterdayTime;
+    private Date YesterdayTime;
     private Double Today;
 
 
@@ -29,11 +29,11 @@ public class Profit {
         Yesterday = yesterday;
     }
 
-    public long getYesterdayTime() {
+    public Date getYesterdayTime() {
         return YesterdayTime;
     }
 
-    public void setYesterdayTime(long yesterdayTime) {
+    public void setYesterdayTime(Date yesterdayTime) {
         YesterdayTime = yesterdayTime;
     }
 
@@ -43,15 +43,5 @@ public class Profit {
 
     public void setToday(Double today) {
         Today = today;
-    }
-
-    @Override
-    public String toString() {
-        return "Profit{" +
-                "accountId=" + accountId +
-                ", Yesterday=" + Yesterday +
-                ", YesterdayTime=" + YesterdayTime +
-                ", Today=" + Today +
-                '}';
     }
 }

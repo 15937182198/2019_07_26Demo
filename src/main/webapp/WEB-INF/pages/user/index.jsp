@@ -77,7 +77,7 @@
         <nav class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header" style="margin-left: 44%;">
-                    <a class="navbar-brand " href="#" style="font-size: 28px;"><strong>畅销爆款</strong></a>
+                    <a name="top" class="navbar-brand " href="#" style="font-size: 28px;"><strong>畅销爆款</strong></a>
                 </div>
             </div>
         </nav>
@@ -142,7 +142,7 @@
         <nav class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header" style="margin-left: 44%;">
-                    <a class="navbar-brand " href="#" style="font-size: 14px;"><strong></strong></a>
+                    <a class="navbar-brand " href="#" style="font-size: 12px;margin-left: -77px">版权所有：博爱县汇满鑫电子科技有限公司</a>
                 </div>
             </div>
         </nav>
