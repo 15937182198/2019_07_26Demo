@@ -36,7 +36,7 @@
 
 
             <!-- 操作日志 -->
-            <div class="layui-form news_list" style="padding-top: 78px;">
+            <div class="layui-form news_list">
                 <table class="layui-table">
                     <thead>
                     <tr>
@@ -44,13 +44,14 @@
                         <th>姓名</th>
                         <th>联系方式</th>
                         <th>节点积分</th>
-                        <th>冻结积分</th>
                         <th>可用积分</th>
+                        <th>冻结积分</th>
                         <th>创建时间</th>
                         <th>推荐人</th>
                         <th>收货地址</th>
                         <th>上级</th>
                         <th>下级</th>
+                        <th>是否满足十层</th>
                         <th>操作</th>
                     </tr>
                     </thead>
@@ -61,17 +62,23 @@
                             <td align="left">${account.accountName}</td>
                             <td>${account.userName}</td>
                             <td>${account.userPhone}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>${account.accountMoney}</td>
+                            <td>${account.usableMoney}</td>
+                            <td>${account.freezeMoney}</td>
                             <td>${account.accountCreateDate}</td>
                             <td>${account.referrer}</td>
                             <td>${account.site}</td>
                             <td>${account.accountLead}</td>
-                            <td>${account.junior1}&nbsp;${account.junior2}</td>
+                            <td>${account.junior1}|${account.junior2}</td>
+                            <c:if test="${account.boo==true}">
+                                <td>是</td>
+                            </c:if>
+                            <c:if test="${account.boo!=true}">
+                                <td>否</td>
+                            </c:if>
                             <td>
-                                <a href="${pageContext.request.contextPath}/loginController/userInforUpdate?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 修改密码</a>
-                                <a href="${pageContext.request.contextPath}/loginController/updateMoney?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 修改积分</a>
+                                <a href="${pageContext.request.contextPath}/loginController/userInforUpdate?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 修改信息</a>
+                                <a href="${pageContext.request.contextPath}/loginController/updateMoney?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 修改密码</a>
                                 <a href="${pageContext.request.contextPath}/loginController/record?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 交易记录</a>
                             </td>
                         </tr>
@@ -87,20 +94,20 @@
                                 <li><a href="javascript:pageBeanNumber(${pageInfo.pageNum-1})">上一页</a></li>
                                 <c:choose>
                                     <c:when test="${pageInfo.pages<=5}">
-                                    <c:forEach begin="1" end="${pageInfo.pages}" var="i">
-                                        <li><a href="javascript:pageBeanNumber(${i})">${i}</a></li>
-                                    </c:forEach>
+                                        <c:forEach begin="1" end="${pageInfo.pages}" var="i">
+                                            <li><a href="javascript:pageBeanNumber(${i})">${i}</a></li>
+                                        </c:forEach>
                                     </c:when>
 
                                     <c:otherwise>
-                                            <c:if test="${pageInfo.pageNum+4<pageInfo.pages}">
-                                                <c:set var="start" value="${pageInfo.pageNum}"/>
-                                                <c:set var="end" value="${pageInfo.pageNum+4}"/>
-                                            </c:if>
-                                            <c:if test="${pageInfo.pageNum+4>=pageInfo.pages}">
-                                                <c:set var="start" value="${pageInfo.pages-4}"/>
-                                                <c:set var="end" value="${pageInfo.pages}"/>
-                                            </c:if>
+                                        <c:if test="${pageInfo.pageNum+4<pageInfo.pages}">
+                                            <c:set var="start" value="${pageInfo.pageNum}"/>
+                                            <c:set var="end" value="${pageInfo.pageNum+4}"/>
+                                        </c:if>
+                                        <c:if test="${pageInfo.pageNum+4>=pageInfo.pages}">
+                                            <c:set var="start" value="${pageInfo.pages-4}"/>
+                                            <c:set var="end" value="${pageInfo.pages}"/>
+                                        </c:if>
                                         <c:forEach begin="${start}" end="${end}" var="i">
                                             <li><a href="javascript:pageBeanNumber(${i})">${i}</a></li>
                                         </c:forEach>

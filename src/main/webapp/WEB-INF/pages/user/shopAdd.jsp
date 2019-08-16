@@ -38,7 +38,7 @@
             <div class="col-xs-4">
                 <%--推荐人id--%>
                 <input type="hidden" value="${pageContext.session.getAttribute("account").accountId}" id="referrer">
-                <input type="text" class="form-control" id="inputEmail3" placeholder="数字或字母，只能为8~12位！" name="username">
+                <input type="text" class="form-control" id="inputEmail3" placeholder="数字或字母，只能为8~12位！" name="accountName">
                 <span id="uname"></span>
             </div>
         </div>
@@ -51,19 +51,19 @@
         <div class="form-group" style="margin-left: 15px;margin-top: 30px;">
             <label for="inputEmail3" class="col-sm-2 control-label">姓名：</label>
             <div class="col-xs-4">
-                <input type="text" class="form-control" id="inputEmail2" placeholder="" name="">
+                <input type="text" class="form-control" id="inputEmail2" placeholder="" name="userName">
             </div>
         </div>
         <div class="form-group" style="margin-left: 15px;margin-top: 30px;">
             <label for="inputEmail3" class="col-sm-2 control-label">联系方式：</label>
             <div class="col-xs-4">
-                <input type="text" class="form-control" id="inputEmail6" placeholder="" name="">
+                <input type="text" class="form-control" id="inputEmail6" placeholder="" name="userPhone">
             </div>
         </div>
         <div class="form-group" style="margin-left: 15px;margin-top: 30px;">
             <label for="inputEmail3" class="col-sm-2 control-label">收货地址：</label>
             <div class="col-xs-4">
-                <input type="text" class="form-control" id="inputEmail4" placeholder="" name="">
+                <input type="text" class="form-control" id="inputEmail4" placeholder="" name="site">
             </div>
         </div>
         <div class="form-group" style="margin-left: 15px;margin-top: 15px;">
@@ -74,7 +74,7 @@
         </div>
         <div class="form-group" style="margin-left: 15px;margin-top: 15px;">
             <div class="col-sm-offset-2 col-xs-4" style="text-align: center;margin-top: 15px;margin-bottom: 150px;">
-                <p style="color: red">您的积分必须在2000以上才可购买，如果不够请联系管理员</p>
+                <p style="color: red">您的积分必须在10000以上才可购买，如果不够请联系管理员</p>
                 <button type="submit" class="btn btn-default" style="background-color: #5bc0de;">确定</button>
             </div>
         </div>
@@ -83,8 +83,8 @@
 <script type="text/javascript">
     $(function(){
 
-        $("input[name='username']").blur(function () {
-            var username = $("input[name='username']").val();
+        $("input[name='accountName']").blur(function () {
+            var username = $("input[name='accountName']").val();
             var re = new RegExp(/^[a-zA-Z0-9]{4,8}$/);       // ^表示开始  $表示结束
             if (!re.test(username)){
                 $("#uname").html("用户名必须为数字或字母，只能为8~12位！");
@@ -109,10 +109,13 @@
         });
 
         $(".btn").click(function(){
-            var username=$("input[name='username']").val();
+            var accountName=$("input[name='accountName']").val();
+            var username=$("input[name='userName']").val();
             var password=$("input[name='password']").val();
+            var userPhone=$("input[name='userPhone']").val();
+            var site=$("input[name='site']").val();
             var re = new RegExp(/^[a-zA-Z0-9]{4,8}$/);       // ^表示开始  $表示结束
-            if (!re.test(username)){
+            if (!re.test(accountName)){
                 alert("用户名必须为数字或字母，只能为8~12位！");
                 return;
             }

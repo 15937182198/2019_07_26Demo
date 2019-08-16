@@ -8,6 +8,7 @@ import cn.kgc.pojo.NewAccount;
 import cn.kgc.pojo.PageInfo;
 import cn.kgc.service.AccountService;
 import cn.kgc.util.AccountLeadUtil;
+import cn.kgc.util.AccountMoneyUtil;
 import com.github.pagehelper.PageHelper;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -39,6 +40,9 @@ public class AccountServiceImpl implements AccountService {
     @Resource(name = "passwordEncoder")
     private PasswordEncoder passwordEncoder;
 
+    @Resource(name = "accountMoneyUtil")
+    private AccountMoneyUtil accountMoneyUtil;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Account account = accountDao.findAccountByName(username);
@@ -55,7 +59,9 @@ public class AccountServiceImpl implements AccountService {
             if(jurName.equals("ROLE_ROOT")){
                 jurName+=",ROLE_SSR,ROLE_SSO,ROLE_USER,ROLE_ADMIN";
             }
-
+            if (jurName.equals("ROLE_SHOP")){
+                jurName="ROLE_USER,ROLE_SSR,ROLE_SSO";
+            }
             //创建临时角色
             return new User(account.getAccountName(),account.getAccountPassword(), AuthorityUtils.commaSeparatedStringToAuthorityList(jurName));
         }
@@ -161,13 +167,70 @@ public class AccountServiceImpl implements AccountService {
 
     /**
      * 根据时间查询注册用户
-     * @param date 查询时间
      * @return 查询到的用户
      */
     @Override
-    public List<Account> findAccountByDate(String date) {
+    public PageInfo findAccountByDate(Integer page,Integer pageSize) {
+        int number=accountDao.findAccountByDate(new SimpleDateFormat("yyyy-MM-dd").format(new Date())).size();
+        PageHelper.startPage(page,pageSize);
+        List<Account> list=accountDao.findAccountByDate(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+        PageInfo pageInfo = new PageInfo();
+        if (number%pageSize!=0){
+            pageInfo.setPages(number/pageSize+1);
+        }else {
+            pageInfo.setPages(number/pageSize);
+        }
+        List<NewAccount> newList=new ArrayList<NewAccount>();
+        for (Account account : list) {
+            NewAccount newAccount=new NewAccount();
+            //设置用户姓名
+            newAccount.setUserName(account.getUserName());
+            //设置用户手机号
+            newAccount.setUserPhone(account.getUserPhone());
+            //设置用户收货地址
+            newAccount.setSite(account.getSite());
+            //设置用户id
+            newAccount.setAccountId(account.getAccountId());
+            //这只用户账号
+            newAccount.setAccountName(account.getAccountName());
+            //设置用户创建时间
+            newAccount.setAccountCreateDate(account.getAccountCreateDate());
+            //设置用户推荐人
+            newAccount.setReferrer(accountDao.findAccountById(account.getReferrer()).getAccountName());
+            //设置节点积分
+            newAccount.setAccountMoney(account.getAccountMoney());
+            //设置用户冻结积分
+            newAccount.setFreezeMoney(account.getFreezeMoney());
+            //设置用户可用积分
+            newAccount.setUsableMoney(account.getUsableMoney());
+            //设置用户上级
+            newAccount.setAccountLead(accountDao.findAccountById(account.getAccountLead()).getAccountName());
+            //设置用户下级
+            List<Account> subordinate = findSubordinate(account.getAccountJNumber());
+            if (subordinate.get(0)!=null){
+                newAccount.setJunior1(subordinate.get(0).getAccountName());
+            }
+            if (subordinate.get(1)!=null){
+                newAccount.setJunior2(subordinate.get(1).getAccountName());
+            }
+            //判断该用户有否满10层
+            boolean b = accountMoneyUtil.WhetherToThaw(account.getAccountId());
+            newAccount.setBoo(b);
+            newList.add(newAccount);
+        }
+
+        pageInfo.setAccountNum(number);
+        pageInfo.setPageSize(pageSize);
+        pageInfo.setPageNum(page);
+        pageInfo.setList(newList);
+        return pageInfo;
+    }
+
+    @Override
+    public List<Account> findAccountByDateAll(String date){
         return accountDao.findAccountByDate(date);
     }
+
 
     @Override
     public List<Account> findAccountByReferrer(Integer accountId) {
@@ -224,6 +287,9 @@ public class AccountServiceImpl implements AccountService {
             if (subordinate.get(1)!=null){
                 newAccount.setJunior2(subordinate.get(1).getAccountName());
             }
+            //判断该用户有否满10层
+            boolean b = accountMoneyUtil.WhetherToThaw(account.getAccountId());
+            newAccount.setBoo(b);
             newList.add(newAccount);
         }
 
@@ -284,6 +350,9 @@ public class AccountServiceImpl implements AccountService {
             if (subordinate.get(1)!=null){
                 newAccount.setJunior2(subordinate.get(1).getAccountName());
             }
+            //判断该用户有否满10层
+            boolean b = accountMoneyUtil.WhetherToThaw(account.getAccountId());
+            newAccount.setBoo(b);
             newList.add(newAccount);
         }
         pageInfo.setAccountNum(number);
@@ -415,6 +484,64 @@ public class AccountServiceImpl implements AccountService {
         return accountDao.findAccountShopByDate(format);
     }
 
+    @Override
+    public PageInfo findShopByDate(int page, int pageSize){
+        int number=accountDao.findAccountShopByDate(new SimpleDateFormat("yyyy-MM-dd").format(new Date())).size();
+        PageHelper.startPage(page,pageSize);
+        List<Account> list=accountDao.findAccountShopByDate(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+        PageInfo pageInfo = new PageInfo();
+        if (number%pageSize!=0){
+            pageInfo.setPages(number/pageSize+1);
+        }else {
+            pageInfo.setPages(number/pageSize);
+        }
+        List<NewAccount> newList=new ArrayList<NewAccount>();
+        for (Account account : list) {
+            NewAccount newAccount=new NewAccount();
+            //设置用户姓名
+            newAccount.setUserName(account.getUserName());
+            //设置用户手机号
+            newAccount.setUserPhone(account.getUserPhone());
+            //设置用户收货地址
+            newAccount.setSite(account.getSite());
+            //设置用户id
+            newAccount.setAccountId(account.getAccountId());
+            //这只用户账号
+            newAccount.setAccountName(account.getAccountName());
+            //设置用户创建时间
+            newAccount.setAccountCreateDate(account.getAccountCreateDate());
+            //设置用户推荐人
+            newAccount.setReferrer(accountDao.findAccountById(account.getReferrer()).getAccountName());
+            //设置节点积分
+            newAccount.setAccountMoney(account.getAccountMoney());
+            //设置用户冻结积分
+            newAccount.setFreezeMoney(account.getFreezeMoney());
+            //设置用户可用积分
+            newAccount.setUsableMoney(account.getUsableMoney());
+            //设置用户上级
+            newAccount.setAccountLead(accountDao.findAccountById(account.getAccountLead()).getAccountName());
+            //设置用户下级
+            List<Account> subordinate = findSubordinate(account.getAccountJNumber());
+            if (subordinate.get(0)!=null){
+                newAccount.setJunior1(subordinate.get(0).getAccountName());
+            }
+            if (subordinate.get(1)!=null){
+                newAccount.setJunior2(subordinate.get(1).getAccountName());
+            }
+            //判断该用户有否满10层
+            boolean b = accountMoneyUtil.WhetherToThaw(account.getAccountId());
+            newAccount.setBoo(b);
+            newList.add(newAccount);
+        }
+
+        pageInfo.setAccountNum(number);
+        pageInfo.setPageSize(pageSize);
+        pageInfo.setPageNum(page);
+        pageInfo.setList(newList);
+        return pageInfo;
+    }
+
+
     /**
      * 查询当前用户下级
      * @param accountId 需要查询的用户id
@@ -457,4 +584,114 @@ public class AccountServiceImpl implements AccountService {
         accountDao.updateAccount(account);
         return false;
     }
+    public PageInfo findShopByReferrer(Integer currPage, Integer pageSize) {
+        int number = accountDao.findShopByReferrer().size();
+        PageHelper.startPage(currPage, pageSize);
+        List<Account> list = accountDao.findShopByReferrer();
+        PageInfo pageInfo = new PageInfo();
+        if (number % pageSize != 0) {
+            pageInfo.setPages(number / pageSize + 1);
+        } else {
+            pageInfo.setPages(number / pageSize);
+        }
+        List<NewAccount> newList = new ArrayList<NewAccount>();
+        for (Account account : list) {
+            NewAccount newAccount = new NewAccount();
+            //设置用户姓名
+            newAccount.setUserName(account.getUserName());
+            //设置用户手机号
+            newAccount.setUserPhone(account.getUserPhone());
+            //设置用户收货地址
+            newAccount.setSite(account.getSite());
+            //设置用户id
+            newAccount.setAccountId(account.getAccountId());
+            //这只用户账号
+            newAccount.setAccountName(account.getAccountName());
+            //设置用户创建时间
+            newAccount.setAccountCreateDate(account.getAccountCreateDate());
+            //设置用户推荐人
+            newAccount.setReferrer(accountDao.findAccountById(account.getReferrer()).getAccountName());
+            //设置节点积分
+            newAccount.setAccountMoney(account.getAccountMoney());
+            //设置用户冻结积分
+            newAccount.setFreezeMoney(account.getFreezeMoney());
+            //设置用户可用积分
+            newAccount.setUsableMoney(account.getUsableMoney());
+            //设置用户上级
+            newAccount.setAccountLead(accountDao.findAccountById(account.getAccountLead()).getAccountName());
+            //设置用户下级
+            List<Account> subordinate = findSubordinate(account.getAccountJNumber());
+            if (subordinate.get(0) != null) {
+                newAccount.setJunior1(subordinate.get(0).getAccountName());
+            }
+            if (subordinate.get(1) != null) {
+                newAccount.setJunior2(subordinate.get(1).getAccountName());
+            }
+            //判断该用户有否满10层
+            boolean b = accountMoneyUtil.WhetherToThaw(account.getAccountId());
+            newAccount.setBoo(b);
+            newList.add(newAccount);
+        }
+        pageInfo.setAccountNum(number);
+        pageInfo.setPageSize(pageSize);
+        pageInfo.setPageNum(currPage);
+        pageInfo.setList(newList);
+        return pageInfo;
+    }
+
+    public PageInfo findAccountByReferrer(Integer currPage, Integer pageSize){
+        int number = accountDao.selectAccountByReferrer().size();
+        PageHelper.startPage(currPage, pageSize);
+        List<Account> list = accountDao.selectAccountByReferrer();
+        PageInfo pageInfo = new PageInfo();
+        if (number % pageSize != 0) {
+            pageInfo.setPages(number / pageSize + 1);
+        } else {
+            pageInfo.setPages(number / pageSize);
+        }
+        List<NewAccount> newList = new ArrayList<NewAccount>();
+        for (Account account : list) {
+            NewAccount newAccount = new NewAccount();
+            //设置用户姓名
+            newAccount.setUserName(account.getUserName());
+            //设置用户手机号
+            newAccount.setUserPhone(account.getUserPhone());
+            //设置用户收货地址
+            newAccount.setSite(account.getSite());
+            //设置用户id
+            newAccount.setAccountId(account.getAccountId());
+            //这只用户账号
+            newAccount.setAccountName(account.getAccountName());
+            //设置用户创建时间
+            newAccount.setAccountCreateDate(account.getAccountCreateDate());
+            //设置用户推荐人
+            newAccount.setReferrer(accountDao.findAccountById(account.getReferrer()).getAccountName());
+            //设置节点积分
+            newAccount.setAccountMoney(account.getAccountMoney());
+            //设置用户冻结积分
+            newAccount.setFreezeMoney(account.getFreezeMoney());
+            //设置用户可用积分
+            newAccount.setUsableMoney(account.getUsableMoney());
+            //设置用户上级
+            newAccount.setAccountLead(accountDao.findAccountById(account.getAccountLead()).getAccountName());
+            //设置用户下级
+            List<Account> subordinate = findSubordinate(account.getAccountJNumber());
+            if (subordinate.get(0) != null) {
+                newAccount.setJunior1(subordinate.get(0).getAccountName());
+            }
+            if (subordinate.get(1) != null) {
+                newAccount.setJunior2(subordinate.get(1).getAccountName());
+            }
+            //判断该用户有否满10层
+            boolean b = accountMoneyUtil.WhetherToThaw(account.getAccountId());
+            newAccount.setBoo(b);
+            newList.add(newAccount);
+        }
+        pageInfo.setAccountNum(number);
+        pageInfo.setPageSize(pageSize);
+        pageInfo.setPageNum(currPage);
+        pageInfo.setList(newList);
+        return pageInfo;
+    }
+
 }

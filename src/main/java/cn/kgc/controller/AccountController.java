@@ -61,6 +61,20 @@ public class AccountController {
             newAccount.setReferrer(accountService.findAccountById(account.getReferrer()).getAccountName());
         }
         newAccount.setAccountMoney(account.getAccountMoney());
+        newAccount.setUserName(account.getUserName());
+        newAccount.setUserPhone(account.getUserPhone());
+        newAccount.setFreezeMoney(account.getFreezeMoney());
+        newAccount.setUsableMoney(account.getUsableMoney());
+        newAccount.setSite(account.getSite());
+        newAccount.setAccountLead(accountService.findAccountById(account.getAccountLead()).getAccountName());
+        //设置用户下级
+        List<Account> subordinate = accountService.findSubordinate(account.getAccountJNumber());
+        if (subordinate.get(0)!=null){
+            newAccount.setJunior1(subordinate.get(0).getAccountName());
+        }
+        if (subordinate.get(1)!=null){
+            newAccount.setJunior2(subordinate.get(1).getAccountName());
+        }
         PageInfo pageInfo=new PageInfo();
         ArrayList<NewAccount> arrayList = new ArrayList<NewAccount>();
         arrayList.add(newAccount);
@@ -129,7 +143,7 @@ public class AccountController {
     @RequestMapping("/findAccountByDate")
     public @ResponseBody String findAccountByDate(){
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
-        return accountService.findAccountByDate(simpleDateFormat.format(new Date())).size()+"";
+        return accountService.findAccountByDateAll(simpleDateFormat.format(new Date())).size()+"";
     }
 
     /**

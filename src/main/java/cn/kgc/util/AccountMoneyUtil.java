@@ -17,14 +17,12 @@ public class AccountMoneyUtil {
 
     @Resource(name = "accountDao")
     private AccountDao accountDao;
+
     /**
      * 判断账户冻结积分是否解冻的方法
      */
-    public boolean WhetherToThaw(HttpServletRequest request){
-        //拿到session作用域中的值
-        Account account = (Account) request.getSession().getAttribute("account");
-        //根据session中的account对象的id查询该account对象，防止有数据错误
-        account = accountDao.findAccountById(account.getAccountId());
+    public boolean WhetherToThaw(Integer accountId){
+        Account account = accountDao.findAccountById(accountId);
         //根据金字塔接口该用户的坐标及规律判断该用户下是否有10层用户
         //第1层
         int accountJNumber1=account.getAccountJNumber()*2;

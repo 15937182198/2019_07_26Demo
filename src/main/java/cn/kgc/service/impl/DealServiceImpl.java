@@ -18,7 +18,19 @@ public class DealServiceImpl implements DealService {
     @Override
     public List<Deal> findDealByAccountId(Integer accountId) {
         dealDao.deleteDeal();
-        return dealDao.findDealByAccountId(accountId);
+        List<Deal> dealByAccountId = dealDao.findDealByAccountId(accountId);
+        for (Deal deal : dealByAccountId) {
+            String dealDate = deal.getDealDate();
+            char[] chars = dealDate.toCharArray();
+            StringBuffer stringBuffer=new StringBuffer();
+            for (int i=0;i<chars.length;i++){
+                if (i<chars.length-2){
+                    stringBuffer.append(chars[i]);
+                }
+            }
+            deal.setDealDate(stringBuffer.toString());
+        }
+        return  dealByAccountId;
     }
 
     @Override

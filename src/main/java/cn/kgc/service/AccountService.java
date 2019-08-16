@@ -50,10 +50,11 @@ public interface AccountService extends UserDetailsService {
 
     /**
      * 根据时间查询注册用户
-     * @param date 查询时间
      * @return 查询到的用户总数
      */
-    List<Account> findAccountByDate(String date);
+    PageInfo findAccountByDate(Integer currPage,Integer pageSizes);
+
+    List<Account> findAccountByDateAll(String date);
 
     /**
      * 根据账户id查询推荐人数
@@ -129,6 +130,7 @@ public interface AccountService extends UserDetailsService {
      */
     List<Account> findShopByDate(String format);
 
+    PageInfo findShopByDate(int page, int pageSize);
     /**
      * 查询当前用户下级
      * @param accountId 需要查询的用户id
@@ -165,4 +167,10 @@ public interface AccountService extends UserDetailsService {
      * @return 是否修改成功
      */
     boolean updateAccount(Integer accountId, String accountName, String userName, String site, String userPhone, double accountMoney, double usableMoney, double freezeMoney);
+
+    PageInfo findShopByReferrer(Integer currPage, Integer pageSizes);
+
+
+    PageInfo findAccountByReferrer(Integer currPage, Integer pageSizes);
+
 }

@@ -1,6 +1,7 @@
 package cn.kgc.pojo;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 public class PageInfo<T> implements Serializable {
@@ -193,6 +194,33 @@ public class PageInfo<T> implements Serializable {
     }
 
     public void setNavigateLastPage(int navigateLastPage) {
+
         this.navigateLastPage = navigateLastPage;
+    }
+
+
+    @Override
+    public String toString() {
+        return "PageInfo{" +
+                "accountNum=" + accountNum +
+                ", pageNum=" + pageNum +
+                ", pageSize=" + pageSize +
+                ", size=" + size +
+                ", startRow=" + startRow +
+                ", endRow=" + endRow +
+                ", total=" + total +
+                ", pages=" + pages +
+                ", list=" + list +
+                ", prePage=" + prePage +
+                ", nextPage=" + nextPage +
+                ", isFirstPage=" + isFirstPage +
+                ", isLastPage=" + isLastPage +
+                ", hasPreviousPage=" + hasPreviousPage +
+                ", hasNextPage=" + hasNextPage +
+                ", navigatePages=" + navigatePages +
+                ", navigatepageNums=" + Arrays.toString(navigatepageNums) +
+                ", navigateFirstPage=" + navigateFirstPage +
+                ", navigateLastPage=" + navigateLastPage +
+                '}';
     }
 }

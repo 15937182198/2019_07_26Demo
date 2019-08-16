@@ -35,7 +35,16 @@ public class NewAccount {
     //冻结积分
     private Double freezeMoney;
 
+    //是否满10层
+    private boolean boo;
 
+    public boolean isBoo() {
+        return boo;
+    }
+
+    public void setBoo(boolean boo) {
+        this.boo = boo;
+    }
 
     public Double getUsableMoney() {
         return usableMoney;

@@ -109,7 +109,7 @@
                 type:"POST",
                 data:{"accountName":username,
                     "param":param,
-                    "userName":username,
+                    "userName":userName,
                     "userPhone":userPhone,
                     "site":site,
                     "accountPassword":password,

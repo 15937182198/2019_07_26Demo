@@ -14,7 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -177,8 +179,11 @@ public class loginController {
      * @return
      */
     @RequestMapping("/user_table")
-    public ModelAndView user_table(){
+    public ModelAndView user_table( @RequestParam(required = false,defaultValue = "1",value = "currPage")Integer currPage,
+                                    @RequestParam(required = false,defaultValue = "5",value = "pageSizes")Integer pageSizes){
         ModelAndView modelAndView =new ModelAndView();
+        PageInfo accountByDate = accountService.findAccountByDate(currPage, pageSizes);
+        modelAndView.addObject(accountByDate);
         modelAndView.setViewName("/admin/user_table");
         return modelAndView;
     }
@@ -187,8 +192,11 @@ public class loginController {
      * @return
      */
     @RequestMapping("/shop_table")
-    public ModelAndView shop_table(){
+    public ModelAndView shop_table(@RequestParam(required = false,defaultValue = "1",value = "currPage")Integer currPage,
+                                   @RequestParam(required = false,defaultValue = "5",value = "pageSizes")Integer pageSizes){
         ModelAndView modelAndView =new ModelAndView();
+        PageInfo accountByDate = accountService.findShopByDate(currPage, pageSizes);
+        modelAndView.addObject(accountByDate);
         modelAndView.setViewName("/admin/shop_table");
         return modelAndView;
     }
@@ -197,8 +205,12 @@ public class loginController {
      * @return
      */
     @RequestMapping("/user_TJ")
-    public ModelAndView user_Tj(){
+    public ModelAndView user_Tj(@RequestParam(required = false,defaultValue = "1",value = "currPage")Integer currPage,
+                                @RequestParam(required = false,defaultValue = "5",value = "pageSizes")Integer pageSizes){
         ModelAndView modelAndView =new ModelAndView();
+        PageInfo pageInfo=accountService.findAccountByReferrer(currPage,pageSizes);
+        System.out.println(pageInfo);
+        modelAndView.addObject(pageInfo);
         modelAndView.setViewName("/admin/user_Tj");
         return modelAndView;
     }
@@ -207,8 +219,11 @@ public class loginController {
      * @return
      */
     @RequestMapping("/shop_TJ")
-    public ModelAndView shop_Tj(){
+    public ModelAndView shop_Tj(@RequestParam(required = false,defaultValue = "1",value = "currPage")Integer currPage,
+                                @RequestParam(required = false,defaultValue = "5",value = "pageSizes")Integer pageSizes){
         ModelAndView modelAndView =new ModelAndView();
+        PageInfo pageInfo=accountService.findShopByReferrer(currPage,pageSizes);
+        modelAndView.addObject(pageInfo);
         modelAndView.setViewName("/admin/shop_TJ");
         return modelAndView;
     }

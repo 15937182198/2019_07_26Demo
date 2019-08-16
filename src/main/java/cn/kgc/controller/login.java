@@ -58,10 +58,12 @@ public class login {
         }
         request.getSession().setAttribute("account",newAccount);
         //根据用户权限跳转不同页面
-        if (account.getJur()!=3){
-            return "redirect:/loginController/index";
-        }else {
+        if (account.getJur()==3){
             return "redirect:/Home/index";
+        }else if (account.getJur()==4){
+            return "redirect:/Home/index";
+        }else {
+            return "redirect:/loginController/index";
         }
 
     }

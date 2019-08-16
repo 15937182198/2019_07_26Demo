@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -43,6 +44,9 @@ public interface AccountDao {
      */
     @Select("select * from account where referrer=#{accountId}")
     List<Account> findAccountByReferrer(Integer accountId);
+
+
+
 
     /**
      * 根据用户id查询用户
@@ -145,4 +149,10 @@ public interface AccountDao {
 
     @Update("update account set accountName=#{accountName},userName=#{userName},userPhone=#{userPhone},site=#{site},accountMoney=#{accountMoney},usableMoney=#{usableMoney},freezeMoney=#{freezeMoney} where accountId=#{accountId}")
     void updateAccount(Account account);
+
+    @Select("SELECT * FROM account where accountId in (SELECT referrer FROM (select distinct referrer,count(1) from account where (jur=4 or jur=3)and referrer!=1  group by referrer HAVING count(1)>6) a where referrer =a.referrer) and jur=3")
+    List<Account> selectAccountByReferrer();
+
+    @Select("SELECT * FROM account where accountId in (SELECT referrer FROM (select distinct referrer,count(1) from account where (jur=4 or jur=3)and referrer!=1  group by referrer HAVING count(1)>6) a where referrer =a.referrer) and jur=4")
+    List<Account> findShopByReferrer();
 }

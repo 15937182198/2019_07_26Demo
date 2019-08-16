@@ -77,7 +77,12 @@
                             <td>${account.site}</td>
                             <td>${account.accountLead}</td>
                             <td>${account.junior1}|${account.junior2}</td>
-                            <td></td>
+                            <c:if test="${account.boo==true}">
+                                <td>是</td>
+                            </c:if>
+                            <c:if test="${account.boo!=true}">
+                                <td>否</td>
+                            </c:if>
                             <td>
                                 <a href="${pageContext.request.contextPath}/loginController/userInforUpdate?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 修改信息</a>
                                 <a href="${pageContext.request.contextPath}/loginController/updateMoney?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 修改密码</a>
