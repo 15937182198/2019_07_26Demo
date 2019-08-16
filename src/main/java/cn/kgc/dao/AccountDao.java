@@ -1,6 +1,8 @@
 package cn.kgc.dao;
 
 import cn.kgc.pojo.Account;
+import cn.kgc.pojo.Profit;
+import cn.kgc.pojo.Record;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -149,6 +151,12 @@ public interface AccountDao {
 
     @Update("update account set accountName=#{accountName},userName=#{userName},userPhone=#{userPhone},site=#{site},accountMoney=#{accountMoney},usableMoney=#{usableMoney},freezeMoney=#{freezeMoney} where accountId=#{accountId}")
     void updateAccount(Account account);
+    @Select("select *from Profit where accountId=#{param1}")
+    Profit querybyId(int a);
+    @Insert("insert into Profit values(#{accountId},null,#{YesterdayTime},#{Today})")
+     int insetProfit(Profit profit);
+    @Update("update Profit set accountId=#{accountId},Yesterday=#{Yesterday},YesterdayTime=#{YesterdayTime},Today=#{Today}")
+    int updateProfit(Profit profit);
 
     @Select("SELECT * FROM account where accountId in (SELECT referrer FROM (select distinct referrer,count(1) from account where (jur=4 or jur=3)and referrer!=1  group by referrer HAVING count(1)>6) a where referrer =a.referrer) and jur=3")
     List<Account> selectAccountByReferrer();

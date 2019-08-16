@@ -4,6 +4,7 @@ import cn.kgc.pojo.Account;
 import cn.kgc.pojo.PageInfo;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import java.util.Date;
 import java.util.List;
 
 public interface AccountService extends UserDetailsService {
@@ -167,6 +168,10 @@ public interface AccountService extends UserDetailsService {
      * @return 是否修改成功
      */
     boolean updateAccount(Integer accountId, String accountName, String userName, String site, String userPhone, double accountMoney, double usableMoney, double freezeMoney);
+    /**
+     * 昨日收益
+     */
+    int profit(int a, int b, long date);
 
     PageInfo findShopByReferrer(Integer currPage, Integer pageSizes);
 
