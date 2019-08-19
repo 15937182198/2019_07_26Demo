@@ -64,6 +64,12 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">推荐人用户名：</label>
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control" name="referrer" id="inputEmai19">
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="inputPassword3" class="col-sm-2 control-label">分润：</label>
                         <div class="col-xs-4">
                             <select class="form-control" name="param" id="param">
@@ -92,6 +98,7 @@
             var password=$("input[name='accountPassword']").val();
             var userName=$("input[name='userName']").val();
             var userPhone=$("input[name='userPhone']").val();
+            var referrer2=$("input[name='referrer']").val();
             var site=$("input[name='site']").val();
             var param=$("#param").val();
             var re = new RegExp(/^[a-zA-Z0-9]{4,8}$/);       // ^表示开始  $表示结束
@@ -112,6 +119,7 @@
                     "userName":userName,
                     "userPhone":userPhone,
                     "site":site,
+                    "referrer1":referrer2,
                     "accountPassword":password,
                 "referrer":referrer},
                 success:function (res) {
@@ -122,6 +130,10 @@
                     }
                     if (res=="1") {
                         alert("该用户已存在!");
+                        return;
+                    }
+                    if (res=="2"){
+                        alert("没有改推荐人");
                         return;
                     }
                     if (res!=true&&res!="1") {

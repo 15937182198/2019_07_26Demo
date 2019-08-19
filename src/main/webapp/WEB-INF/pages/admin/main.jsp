@@ -132,6 +132,30 @@
                     $("#count12").html(data);
                 }
             });
+            $.ajax({
+                url:"../account/sumAccountMoney",
+                "type"		:"post",
+                "dataType"	:"JSON",
+                "success"	:function (data) {
+                    $("#count14").html(data);
+                }
+            });
+            $.ajax({
+                url:"../account/sumShopMoney",
+                "type"		:"post",
+                "dataType"	:"JSON",
+                "success"	:function (data) {
+                    $("#count24").html(data);
+                }
+            });
+            $.ajax({
+                url:"../account/sumAccountMoneyAndShopMoney",
+                "type"		:"post",
+                "dataType"	:"JSON",
+                "success"	:function (data) {
+                    $("#count110").html(data);
+                }
+            });
         });
     </script>
 </head>

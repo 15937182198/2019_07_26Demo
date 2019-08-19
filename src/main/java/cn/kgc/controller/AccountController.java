@@ -92,7 +92,7 @@ public class AccountController {
      * @return 保存成功返回true，保存失败返回false
      */
     @RequestMapping("/saveAccount.admin")
-    public @ResponseBody String saveAccount(String  accountName,String accountPassword,Integer referrer,Integer param,String userName,String userPhone,String site){
+    public @ResponseBody String saveAccount(String  accountName,String accountPassword,Integer referrer,Integer param,String userName,String userPhone,String site,String referrer1){
         boolean b=false;
         //根据用户名查询用户
         Account accountByName = accountService.findAccountByName(accountName);
@@ -100,7 +100,15 @@ public class AccountController {
         if (accountByName!=null){
             return "1";
         }
-        b= accountService.saveAccount(accountName, accountPassword, referrer,userName,userPhone,site);
+        if (referrer1!=null){
+            Account accountByName2 = accountService.findAccountByName(referrer1);
+            if (accountByName2==null){
+                return "2";
+            }
+            accountByName2.setAccountMoney(180d);
+            accountService.updateAccountMoney(accountByName2);
+        }
+        b= accountService.saveAccount(accountName, accountPassword, referrer,userName,userPhone,site,referrer1);
         if (param==1){
             //查询新增用户
             Account accountByName1 = accountService.findAccountByName(accountName);
@@ -257,7 +265,7 @@ public class AccountController {
             return "2";
         }
         //保存该用户
-        boolean b = accountService.saveAccount(accountName, accountPassword,referrer,userName,userPhone,site);
+        boolean b = accountService.saveAccount(accountName, accountPassword,referrer,userName,userPhone,site,null);
         if (b){
             //给推荐人增加180积分,并保存
             accountById.setUsableMoney(accountById.getUsableMoney()-999);
@@ -302,7 +310,7 @@ public class AccountController {
      * @return 保存成功返回true，保存失败返回false
      */
     @RequestMapping("/saveShop.admin")
-    public @ResponseBody String saveShop(String  accountName,String accountPassword,Integer referrer,Integer param,String userName,String userPhone,String site){
+    public @ResponseBody String saveShop(String  accountName,String accountPassword,Integer referrer,Integer param,String userName,String userPhone,String site,String referrer1){
         boolean b=false;
         //根据用户名查询用户
         Account accountByName = accountService.findAccountByName(accountName);
@@ -310,7 +318,15 @@ public class AccountController {
         if (accountByName!=null){
             return "1";
         }
-        b= accountService.saveShop(accountName, accountPassword, referrer, userName, userPhone, site);
+        if (referrer1!=null){
+            Account accountByName1 = accountService.findAccountByName(referrer1);
+            if (accountByName1==null){
+                return "2";
+            }
+            accountByName1.setAccountMoney(accountByName1.getAccountMoney()+180);
+            accountService.updateAccountMoney(accountByName1);
+        }
+        b= accountService.saveShop(accountName, accountPassword, referrer, userName, userPhone, site,referrer1);
         if (param==1){
             Account accountByName1 = accountService.findAccountByName(accountName);
             List<Account> accounts =accountMoneyUtil.updateAccountLeadMoney(accountByName1.getAccountLead(),30);
@@ -340,7 +356,7 @@ public class AccountController {
             return "2";
         }
         //保存该用户
-        boolean b = accountService.saveShop(accountName, accountPassword, referrer,userName, userPhone, site);
+        boolean b = accountService.saveShop(accountName, accountPassword, referrer,userName, userPhone, site,null);
         if (b){
             //给推荐人增加380积分,并保存
             accountById.setUsableMoney(accountById.getUsableMoney()-10000);
@@ -529,12 +545,13 @@ public class AccountController {
 
     @RequestMapping("/sumAccountMoneyAndShopMoney")
     public @ResponseBody String sumAccountMoneyAndShopMoney(){
-        double d1=accountService.findShopAccountMoney();
-        double d2=accountService.findShopUsableMoney();
-        double d3=accountService.findShopFreezeMoney();
-        double d4=accountService.findAccountAccountMoney();
-        double d5=accountService.findAccountUsableMoney();
-        double d6=accountService.findAccountFreezeMoney();
+        Double d1=accountService.findShopAccountMoney();
+        Double d2=accountService.findShopUsableMoney();
+        Double d3=accountService.findShopFreezeMoney();
+        Double d4=accountService.findAccountAccountMoney();
+        Double d5=accountService.findAccountUsableMoney();
+        Double d6=accountService.findAccountFreezeMoney();
+
         return d1+d2+d3+d4+d5+d6+"";
     }
 }

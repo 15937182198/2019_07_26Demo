@@ -21,7 +21,7 @@ public interface AccountService extends UserDetailsService {
      * @param referrer 推荐人id
      * @return 是否保存成功
      */
-    boolean saveAccount(String accountName,String accountPassword, Integer referrer,String userName,String userPhone,String site);
+    boolean saveAccount(String accountName,String accountPassword, Integer referrer,String userName,String userPhone,String site,String referrer1);
 
     /**
      * 根据账户名查询该用户
@@ -116,7 +116,7 @@ public interface AccountService extends UserDetailsService {
      * @param referrer 推荐人
      * @return 是否添加成功
      */
-    boolean saveShop(String accountName, String accountPassword, Integer referrer,String userName,String userPhone,String site);
+    boolean saveShop(String accountName, String accountPassword, Integer referrer,String userName,String userPhone,String site,String referrer1);
 
     /**
      * 查询所有店铺

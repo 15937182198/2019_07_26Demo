@@ -92,7 +92,7 @@ public class AccountServiceImpl implements AccountService {
      * @return 是否保存成功
      */
     @Override
-    public boolean saveAccount(String accountName,String accountPassword, Integer referrer,String userName,String userPhone,String site) {
+    public boolean saveAccount(String accountName,String accountPassword, Integer referrer,String userName,String userPhone,String site,String referrer1) {
         Account account=new Account();
         //初次设置密码
         account.setAccountPassword(accountPassword);
@@ -114,6 +114,12 @@ public class AccountServiceImpl implements AccountService {
         account.setAccountCreateDate(new SimpleDateFormat("yyy-MM-dd").format(new Date()));
         //给用户设定推荐人
         account.setReferrer(referrer);
+        if (referrer1!=null){
+            Account accountByName = accountDao.findAccountByName(referrer1);
+            if (accountByName!=null){
+                account.setReferrer(accountByName.getAccountId());
+            }
+        }
         //给用户设定金字塔坐标
         List<Integer> list = accountLeadUtil.getAccountLead(referrer);
         account.setAccountJNumber(list.get(0));
@@ -429,7 +435,7 @@ public class AccountServiceImpl implements AccountService {
      * @return 保存成功返回true。失败返回false
      */
     @Override
-    public boolean saveShop(String accountName, String accountPassword, Integer referrer,String userName,String userPhone,String site) {
+    public boolean saveShop(String accountName, String accountPassword, Integer referrer,String userName,String userPhone,String site,String referrer1) {
         Account account=new Account();
         //设置用户名
         account.setAccountName(accountName);
@@ -447,6 +453,12 @@ public class AccountServiceImpl implements AccountService {
         account.setSite(site);
         //设置推荐人
         account.setReferrer(referrer);
+        if (referrer1!=null){
+            Account accountByName = accountDao.findAccountByName(referrer1);
+            if (accountByName!=null){
+                account.setReferrer(accountByName.getAccountId());
+            }
+        }
         //给用户设定金字塔坐标
         List<Integer> list = accountLeadUtil.getAccountLead(referrer);
         account.setAccountJNumber(list.get(0));

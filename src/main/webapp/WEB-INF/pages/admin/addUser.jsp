@@ -63,6 +63,14 @@
                             <input type="text" class="form-control" name="site" id="inputEmai16">
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">推荐人用户名：</label>
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control" name="referrer" id="inputEmai19">
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-2 control-label">分润：</label>
                         <div class="col-xs-4">
@@ -94,6 +102,7 @@
             var userName=$("input[name='userName']").val();
             var userPhone=$("input[name='userPhone']").val();
             var site=$("input[name='site']").val();
+            var referrer2=$("input[name='referrer']").val();
             var param=$("#param").val();
             var re = new RegExp(/^[a-zA-Z0-9]{4,8}$/);       // ^表示开始  $表示结束
             if (!re.test(username)){
@@ -104,6 +113,7 @@
                 alert("密码必须为数字或字母，只能为8~12位！");
                 return;
             }
+
             var referrer=$("#referrer").val();
             $.ajax({
                 url:"${pageContext.request.contextPath}/account/saveAccount.admin",
@@ -112,6 +122,7 @@
                     "accountPassword":password,
                     "userName":userName,
                     "userPhone":userPhone,
+                    "referrer1":referrer2,
                     "site":site,
                     "param":param,
                 "referrer":referrer},
@@ -123,6 +134,10 @@
                     }
                     if (res=="1") {
                         alert("该用户已存在!");
+                        return;
+                    }
+                    if (res=="2"){
+                        alert("没有改推荐人");
                         return;
                     }
                     if (res!=true&&res!="1") {
