@@ -34,6 +34,7 @@
             var count7 = $("#count7");
             var count8 = $("#count8");
             var count10 = $("#count10");
+
             $.ajax({
                 url:"../account/findAccountNumber",
                 "type"		:"post",
@@ -89,6 +90,48 @@
                     count7.html(data);
                 }
             });
+            $.ajax({
+                url:"../account/findShopFreezeMoney",
+                "type"		:"post",
+                "dataType"	:"JSON",
+                "success"	:function (data) {
+                    $("#count23").html(data);
+
+                }
+            });
+
+            $.ajax({
+                url:"../account/findShopUsableMoney",
+                "type"		:"post",
+                "dataType"	:"JSON",
+                "success"	:function (data) {
+                    $("#count22").html(data);
+                }
+            });
+            $.ajax({
+                url:"../account/findAccountFreezeMoney",
+                "type"		:"post",
+                "dataType"	:"JSON",
+                "success"	:function (data) {
+                    $("#count13").html(data);
+                }
+            });
+            $.ajax({
+                url:"../account/findAccountAccountMoney",
+                "type"		:"post",
+                "dataType"	:"JSON",
+                "success"	:function (data) {
+                    $("#count11").html(data);
+                }
+            });
+            $.ajax({
+                url:"../account/findAccountUsableMoney",
+                "type"		:"post",
+                "dataType"	:"JSON",
+                "success"	:function (data) {
+                    $("#count12").html(data);
+                }
+            });
         });
     </script>
 </head>
@@ -100,7 +143,7 @@
         <div class="layui-tab-content" style="min-height: 150px; ">
             <div class="layui-tab-item layui-show">
                 <section class="larry-wrapper">
-                    <!-- overview 用户-->
+                    <!-- overview 用户1-->
                     <div class="row state-overview">
                         <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
                             <section class="panel">
@@ -153,7 +196,7 @@
                             </section>
                         </div>
                     </div>
-                    <%--店铺--%>
+                    <%--店铺2--%>
                     <div class="row state-overview">
                         <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
                             <section class="panel">
@@ -207,6 +250,111 @@
                         </div>
 
                     </div>
+                    <%--用户总积分1--%>
+                    <div class="row state-overview">
+                        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+                            <section class="panel">
+                                <div class="symbol userblue layui-anim layui-anim-rotate">
+                                    <i class="iconpx-users"></i>
+                                </div>
+                                <div class="value">
+                                    <a href="#">
+                                        <p id="count11"></p>
+                                    </a>
+                                    <p>用户总节点积分</p>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+                            <section class="panel">
+                                <div class="symbol commred layui-anim layui-anim-rotate"> <i class="iconpx-user-add"></i>
+                                </div>
+                                <div class="value">
+                                    <a href="#">
+                                        <h1 id="count12"></h1>
+                                    </a>
+                                    <p>用户总可用积分</p>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+                            <section class="panel">
+                                <div class="symbol articlegreen layui-anim layui-anim-rotate">
+                                    <i class="iconpx-file-word-o"></i>
+                                </div>
+                                <div class="value">
+                                    <a href="#">
+                                        <h1 id="count13"></h1>
+                                    </a>
+                                    <p>用户总冻结积分</p>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+                            <section class="panel">
+                                <div class="symbol rsswet layui-anim layui-anim-rotate"> <i class="iconpx-check-circle"></i>
+                                </div>
+                                <div class="value">
+                                    <a href="#">
+                                        <p id="count14"></p>
+                                    </a>
+                                    <p>用户总积分</p>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <%--店铺总积分--%>
+                    <div class="row state-overview">
+                        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+                            <section class="panel">
+                                <div class="symbol userblue layui-anim layui-anim-rotate"> <i class="iconpx-users"></i>
+                                </div>
+                                <div class="value">
+                                    <a href="#">
+                                        <p id="count21"></p>
+                                    </a>
+                                    <p>店铺总节点积分</p>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+                            <section class="panel">
+                                <div class="symbol commred layui-anim layui-anim-rotate"> <i class="iconpx-user-add"></i>
+                                </div>
+                                <div class="value">
+                                    <a href="#">
+                                        <h1 id="count22"></h1>
+                                    </a>
+                                    <p>店铺总可用积分</p>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+                            <section class="panel">
+                                <div class="symbol articlegreen layui-anim layui-anim-rotate">
+                                    <i class="iconpx-file-word-o"></i>
+                                </div>
+                                <div class="value">
+                                    <a href="#">
+                                        <h1 id="count23"></h1>
+                                    </a>
+                                    <p>店铺总冻结积分</p>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+                            <section class="panel">
+                                <div class="symbol rsswet layui-anim layui-anim-rotate"> <i class="iconpx-check-circle"></i>
+                                </div>
+                                <div class="value">
+                                    <a href="#">
+                                        <p id="count24"></p>
+                                    </a>
+                                    <p>店铺总积分</p>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
                     <%--总收益--%>
                     <div class="row state-overview">
                         <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
@@ -218,6 +366,18 @@
                                         <p id="count10"></p>
                                     </a>
                                     <p>今日总收益</p>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+                            <section class="panel">
+                                <div class="symbol rsswet layui-anim layui-anim-rotate"> <i class="iconpx-check-circle"></i>
+                                </div>
+                                <div class="value">
+                                    <a href="#">
+                                        <p id="count110"></p>
+                                    </a>
+                                    <p>积分总数量</p>
                                 </div>
                             </section>
                         </div>
