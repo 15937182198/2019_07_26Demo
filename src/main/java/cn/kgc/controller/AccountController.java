@@ -436,4 +436,63 @@ public class AccountController {
         double profit = accountService.profit(accountId, sum,date);
         return profit+"";
     }
+
+
+    /**
+     * 查询店铺冻结积分
+     */
+    @RequestMapping("/findShopFreezeMoney")
+    public @ResponseBody String findShopFreezeMoney(){
+        double d=accountService.findShopFreezeMoney();
+        return d+"";
+    }
+
+    /**
+     * 查询店铺节点积分
+     */
+    @RequestMapping("/findShopAccountMoney")
+    public @ResponseBody String findShopAccountMoney(){
+        double d=accountService.findShopAccountMoney();
+        return d+"";
+    }
+
+    /**
+     * 查询店铺可用积分
+     */
+    @RequestMapping("/findShopUsableMoney")
+    public @ResponseBody String findShopUsableMoney(){
+        double d=accountService.findShopUsableMoney();
+        return d+"";
+    }
+
+
+
+    /**
+     * 查询用户冻结积分
+     */
+    @RequestMapping("/findAccountFreezeMoney")
+    public @ResponseBody String findAccountFreezeMoney(){
+        double d=accountService.findAccountFreezeMoney();
+        return d+"";
+    }
+
+    /**
+     * 查询用户节点积分
+     */
+    @RequestMapping("/findAccountAccountMoney")
+    public @ResponseBody String findAccountAccountMoney(){
+        double d=accountService.findAccountAccountMoney();
+        return d+"";
+    }
+
+    /**
+     * 查询用户可用积分
+     */
+    @RequestMapping("/findAccountUsableMoney")
+    public @ResponseBody String findAccountUsableMoney(){
+        double d=accountService.findAccountUsableMoney();
+        return d+"";
+    }
+
+
 }

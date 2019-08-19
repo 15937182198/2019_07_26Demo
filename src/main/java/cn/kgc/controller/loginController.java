@@ -209,7 +209,6 @@ public class loginController {
                                 @RequestParam(required = false,defaultValue = "5",value = "pageSizes")Integer pageSizes){
         ModelAndView modelAndView =new ModelAndView();
         PageInfo pageInfo=accountService.findAccountByReferrer(currPage,pageSizes);
-        System.out.println(pageInfo);
         modelAndView.addObject(pageInfo);
         modelAndView.setViewName("/admin/user_Tj");
         return modelAndView;

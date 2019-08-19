@@ -1118,17 +1118,17 @@
     </column>
     <column id="268" parent="236" name="Yesterday">
       <Position>2</Position>
-      <DataType>double(255)|0s</DataType>
+      <DataType>double|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="269" parent="236" name="YesterdayTime">
       <Position>3</Position>
-      <DataType>mediumtext|0s</DataType>
+      <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="270" parent="236" name="Today">
       <Position>4</Position>
-      <DataType>double(255)|0s</DataType>
+      <DataType>double|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <key id="271" parent="236" name="PRIMARY">

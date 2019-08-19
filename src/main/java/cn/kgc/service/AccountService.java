@@ -178,4 +178,17 @@ public interface AccountService extends UserDetailsService {
 
     PageInfo findAccountByReferrer(Integer currPage, Integer pageSizes);
 
+
+    Double findShopFreezeMoney();
+
+    Double findShopAccountMoney();
+
+    Double findShopUsableMoney();
+
+
+    Double findAccountFreezeMoney();
+
+    Double findAccountAccountMoney();
+
+    Double findAccountUsableMoney();
 }

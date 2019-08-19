@@ -167,4 +167,25 @@ public interface AccountDao {
 
     @Select("SELECT * FROM account where accountId in (SELECT referrer FROM (select distinct referrer,count(1) from account where (jur=4 or jur=3)and referrer!=1  group by referrer HAVING count(1)>6) a where referrer =a.referrer) and jur=4")
     List<Account> findShopByReferrer();
+
+    @Select("select sum(freezeMoney) from account where jur=4")
+    Double findShopFreezeMoney();
+
+    @Select("select sum(accountMoney) from account where jur=4")
+    Double findShopAccountMoney();
+
+    @Select("select sum(usableMoney) from account where jur=4")
+    Double findShopUsableMoney();
+
+
+
+
+    @Select("select sum(freezeMoney) from account where jur=3")
+    Double findAccountFreezeMoney();
+
+    @Select("select sum(accountMoney) from account where jur=3")
+    Double findAccountAccountMoney();
+
+    @Select("select sum(usableMoney) from account where jur=3")
+    Double findAccountUsableMoney();
 }

@@ -716,4 +716,33 @@ public class AccountServiceImpl implements AccountService {
         return pageInfo;
     }
 
+    @Override
+    public Double findShopFreezeMoney() {
+        return accountDao.findShopFreezeMoney();
+    }
+
+    @Override
+    public Double findShopAccountMoney() {
+        return accountDao.findShopAccountMoney();
+    }
+
+    @Override
+    public Double findShopUsableMoney() {
+        return accountDao.findShopUsableMoney();
+    }
+
+    @Override
+    public Double findAccountFreezeMoney() {
+        return accountDao.findAccountFreezeMoney();
+    }
+
+    @Override
+    public Double findAccountAccountMoney() {
+        return accountDao.findAccountAccountMoney();
+    }
+
+    @Override
+    public Double findAccountUsableMoney() {
+        return accountDao.findAccountUsableMoney();
+    }
 }
