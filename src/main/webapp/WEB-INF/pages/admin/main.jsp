@@ -34,6 +34,7 @@
             var count7 = $("#count7");
             var count8 = $("#count8");
             var count10 = $("#count10");
+
             $.ajax({
                 url:"../account/findAccountNumber",
                 "type"		:"post",
@@ -87,6 +88,48 @@
                 "dataType"	:"JSON",
                 "success"	:function (data) {
                     count7.html(data);
+                }
+            });
+            $.ajax({
+                url:"../account/findShopFreezeMoney",
+                "type"		:"post",
+                "dataType"	:"JSON",
+                "success"	:function (data) {
+                    $("#count23").html(data);
+
+                }
+            });
+
+            $.ajax({
+                url:"../account/findShopUsableMoney",
+                "type"		:"post",
+                "dataType"	:"JSON",
+                "success"	:function (data) {
+                    $("#count22").html(data);
+                }
+            });
+            $.ajax({
+                url:"../account/findAccountFreezeMoney",
+                "type"		:"post",
+                "dataType"	:"JSON",
+                "success"	:function (data) {
+                    $("#count13").html(data);
+                }
+            });
+            $.ajax({
+                url:"../account/findAccountAccountMoney",
+                "type"		:"post",
+                "dataType"	:"JSON",
+                "success"	:function (data) {
+                    $("#count11").html(data);
+                }
+            });
+            $.ajax({
+                url:"../account/findAccountUsableMoney",
+                "type"		:"post",
+                "dataType"	:"JSON",
+                "success"	:function (data) {
+                    $("#count12").html(data);
                 }
             });
         });
@@ -215,7 +258,7 @@
                                     <i class="iconpx-users"></i>
                                 </div>
                                 <div class="value">
-                                    <a href="${pageContext.request.contextPath}/account/ShopPageInfo">
+                                    <a href="#">
                                         <p id="count11"></p>
                                     </a>
                                     <p>用户总节点积分</p>
@@ -227,7 +270,7 @@
                                 <div class="symbol commred layui-anim layui-anim-rotate"> <i class="iconpx-user-add"></i>
                                 </div>
                                 <div class="value">
-                                    <a href="${pageContext.request.contextPath}/loginController/shop_table">
+                                    <a href="#">
                                         <h1 id="count12"></h1>
                                     </a>
                                     <p>用户总可用积分</p>
@@ -240,7 +283,7 @@
                                     <i class="iconpx-file-word-o"></i>
                                 </div>
                                 <div class="value">
-                                    <a href="${pageContext.request.contextPath}/loginController/shop_TJ">
+                                    <a href="#">
                                         <h1 id="count13"></h1>
                                     </a>
                                     <p>用户总冻结积分</p>
@@ -267,7 +310,7 @@
                                 <div class="symbol userblue layui-anim layui-anim-rotate"> <i class="iconpx-users"></i>
                                 </div>
                                 <div class="value">
-                                    <a href="${pageContext.request.contextPath}/account/ShopPageInfo">
+                                    <a href="#">
                                         <p id="count21"></p>
                                     </a>
                                     <p>店铺总节点积分</p>
@@ -279,7 +322,7 @@
                                 <div class="symbol commred layui-anim layui-anim-rotate"> <i class="iconpx-user-add"></i>
                                 </div>
                                 <div class="value">
-                                    <a href="${pageContext.request.contextPath}/loginController/shop_table">
+                                    <a href="#">
                                         <h1 id="count22"></h1>
                                     </a>
                                     <p>店铺总可用积分</p>
@@ -292,7 +335,7 @@
                                     <i class="iconpx-file-word-o"></i>
                                 </div>
                                 <div class="value">
-                                    <a href="${pageContext.request.contextPath}/loginController/shop_TJ">
+                                    <a href="#">
                                         <h1 id="count23"></h1>
                                     </a>
                                     <p>店铺总冻结积分</p>

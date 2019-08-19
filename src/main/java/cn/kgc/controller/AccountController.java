@@ -464,7 +464,22 @@ public class AccountController {
         double d=accountService.findShopUsableMoney();
         return d+"";
     }
-
+    /**
+     * 查询店铺总积分
+     */
+    @RequestMapping("/findShopSumUsableMoney")
+    public @ResponseBody String findShopSumUsableMoney(){
+        double d=accountService.findShopUsableMoney();
+        return d+"";
+    }
+    /**
+     * 查询用户总积分
+     */
+    @RequestMapping("/findUserSumUsableMoney")
+    public @ResponseBody String findUserSumUsableMoney(){
+        double d=accountService.findShopUsableMoney();
+        return d+"";
+    }
 
 
     /**
