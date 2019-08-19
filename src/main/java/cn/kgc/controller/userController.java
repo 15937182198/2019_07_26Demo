@@ -1,9 +1,6 @@
 package cn.kgc.controller;
 
-import cn.kgc.pojo.Account;
-import cn.kgc.pojo.Deal;
-import cn.kgc.pojo.NewDeal;
-import cn.kgc.pojo.PageInfo;
+import cn.kgc.pojo.*;
 import cn.kgc.service.AccountService;
 import cn.kgc.service.DealService;
 import com.github.pagehelper.PageHelper;
@@ -37,7 +34,11 @@ public class userController {
     @RequestMapping("/index")
     public ModelAndView login(HttpServletRequest request){
         ModelAndView modelAndView=new ModelAndView();
-            modelAndView.setViewName("/user/index");
+        List<picture> pictures = accountService.queryPicture();
+        List<picture> pictureTop = accountService.queryTopPicture();
+        modelAndView.addObject("pictures",pictures);
+        modelAndView.addObject("pictureTop",pictureTop);
+        modelAndView.setViewName("/user/index");
         return modelAndView;
     }
     /**

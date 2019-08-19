@@ -3,6 +3,7 @@ package cn.kgc.dao;
 import cn.kgc.pojo.Account;
 import cn.kgc.pojo.Profit;
 import cn.kgc.pojo.Record;
+import cn.kgc.pojo.picture;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -177,9 +178,6 @@ public interface AccountDao {
     @Select("select sum(usableMoney) from account where jur=4")
     Double findShopUsableMoney();
 
-
-
-
     @Select("select sum(freezeMoney) from account where jur=3")
     Double findAccountFreezeMoney();
 
@@ -188,4 +186,9 @@ public interface AccountDao {
 
     @Select("select sum(usableMoney) from account where jur=3")
     Double findAccountUsableMoney();
+
+    @Select("select *from picture where pictureId>=7")
+    List<picture> queryPicture();
+    @Select("select *from picture where pictureId<7")
+    List<picture> queryTopPicture();
 }

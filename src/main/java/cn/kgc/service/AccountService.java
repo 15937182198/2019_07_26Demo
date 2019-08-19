@@ -2,6 +2,7 @@ package cn.kgc.service;
 
 import cn.kgc.pojo.Account;
 import cn.kgc.pojo.PageInfo;
+import cn.kgc.pojo.picture;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.Date;
@@ -191,4 +192,7 @@ public interface AccountService extends UserDetailsService {
     Double findAccountAccountMoney();
 
     Double findAccountUsableMoney();
+    List<picture> queryPicture();
+    List<picture> queryTopPicture();
+
 }

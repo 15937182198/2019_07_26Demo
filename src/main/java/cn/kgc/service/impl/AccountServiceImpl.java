@@ -758,4 +758,13 @@ public class AccountServiceImpl implements AccountService {
     public Double findAccountUsableMoney() {
         return accountDao.findAccountUsableMoney();
     }
+
+    @Override
+    public List<picture> queryPicture() {
+        return accountDao.queryPicture();
+    }
+    @Override
+    public List<picture> queryTopPicture() {
+        return accountDao.queryTopPicture();
+    }
 }

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Dys
@@ -42,16 +43,15 @@
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <img src="${pageContext.request.contextPath}/img/16008002.jpg" alt="...">
+                <div class="item active"><a href="${pictureTop.get(0).pictureRoute}">
+                    <img src="${pictureTop.get(0).pictureRoute}" alt="..."></a>
                 </div>
-                <div class="item">
-                    <img src="${pageContext.request.contextPath}/img/166663.jpg" alt="...">
+                <div class="item"><a href="${pictureTop.get(1).pictureRoute}">
+                    <img src="${pictureTop.get(1).pictureRoute}" alt="..."></a>
 
                 </div>
-                <div class="item">
-                    <img src="${pageContext.request.contextPath}/img/16008004.jpg" alt="...">
-
+                <div class="item"><a href="${pictureTop.get(2).pictureRoute}">
+                    <img src="${pictureTop.get(2).pictureRoute}" alt="..."></a>
                 </div>
             </div>
 
@@ -82,20 +82,20 @@
             </div>
         </nav>
         <div class="row">
-            <div class="col-md-6">
-                <img src="${pageContext.request.contextPath}/img/160000.jpg" style="width:80%;"/>
+            <div class="col-md-6"><a href="${pictureTop.get(3).pictureRoute}">
+                <img src="${pictureTop.get(3).pictureRoute}" style="width:80%;"/></a>
             </div>
-            <div class="col-md-6" style="margin-top:212px;">
+            <div class="col-md-6" style="margin-top:118px;">
                 <div class="col-md-6">
-                    <div class="thumbnail">
-                        <img src="${pageContext.request.contextPath}/img/1700000.jpg" style="width: 67%;" class="img-responsive"/>
-                        <p>大豆肽<br/><span>大豆肽,小分子肽，大豆蛋白肽粉</span><br/><span>零售价：&yen;399.00 &nbsp;会员价：<font color="red">55.00</font></span></p>
+                    <div class="thumbnail"><a href="${pictureTop.get(4).pictureRoute}">
+                        <img src="${pictureTop.get(4).pictureRoute}" style="width: 260px;height: 260px;" class="img-responsive"/></a>
+                        <p>${pictureTop.get(4).pictureInfo}</p>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="thumbnail">
-                        <img src="${pageContext.request.contextPath}/img/19400.jpg" style="width: 60%;" class="img-responsive"/>
-                        <p>大豆肽<br/><span>大豆肽,小分子肽，大豆蛋白肽粉</span><br/><span>零售价：&yen;399.00 &nbsp;会员价：<font color="red">55.00</font></span></p>
+                    <div class="thumbnail"> <a href="${pictureTop.get(5).pictureRoute}" >
+                        <img src="${pictureTop.get(5).pictureRoute}" style="width: 260px;height: 260px;" class="img-responsive"/></a>
+                        <p>${pictureTop.get(5).pictureInfo}</p>
                     </div>
                 </div>
 
@@ -106,43 +106,27 @@
         <!--导航条结束-------------------------------------->
     </div><!-- 3end -->
 
-    <div class="row container"><!--0-4start-->
-        <span style="font-size:25px;">热门商品</span><img src="${pageContext.request.contextPath}/img/title2.jpg""/>
+    <div class="row container" style="margin-left: -30px;"><!--0-4start-->
+        <span style="font-size:25px;">热门商品</span><img src="../../../img/title2.jpg" style="width: 210px;height: 13px;"/>
     </div><!--0-4end-->
 
     <div class="row">
+        <c:forEach items="${pictures}" var="picture" varStatus="i">
         <div class="col-md-3">
             <div class="thumbnail">
-                <img src="${pageContext.request.contextPath}/img/19800.jpg" style="width: 53%;" class="img-responsive"/>
-                <p>大麦若叶青汁代餐粉，盒装，3克/条<br/>零售价：120.00，会员价：<font color="red">&yen;19.00</font></p>
+                <a href="${picture.pictureRoute}">
+                    <img src="${picture.pictureRoute}" style="width: 260px;height: 260px;" class="img-responsive"/></a>
+                <p>${picture.pictureInfo}</p>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <img src="${pageContext.request.contextPath}/img/19500.jpg" style="width: 50%;" class="img-responsive"/>
-                <p>道阿夫帝王至尊800ML洗发膏洗发水沐浴露<br/>零售价：118.00，会员价：<font color="red">&yen;15.000</font></p>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <img src="${pageContext.request.contextPath}/img/19600.jpg" style="width: 58%;" class="img-responsive"/>
-                <p>量子活力舒丝巾<br/>零售价：860.00，会员价：<font color="red">&yen;15.00</font></p>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <img src="${pageContext.request.contextPath}/img/19700.jpg" style="width: 65%;" class="img-responsive"/>
-                <p>舒克舒敏亮白牙膏/120g<br/>零售价：25.00，会员价：<font color="red">&yen;7.00</font></p>
-            </div>
-        </div>
-
+        </c:forEach>
     </div>
     <%--底部--%>
     <div>
         <nav class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header" style="margin-left: 44%;">
-                    <a class="navbar-brand " href="#" style="font-size: 12px;margin-left: -77px">版权所有：博爱县汇满鑫电子科技有限公司</a>
+                    <a class="navbar-brand " href="#" style="font-size: 12px;margin-left: -77px"></a>
                 </div>
             </div>
         </nav>

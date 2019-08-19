@@ -26,8 +26,8 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
 
-                        <li><a href="#">博爱县汇满鑫电子科技有限公司</a></li>
                         <li><a href="#top">产品详情</a></li>
+                        <%--<li><a href="#">产品详情</a></li>--%>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
