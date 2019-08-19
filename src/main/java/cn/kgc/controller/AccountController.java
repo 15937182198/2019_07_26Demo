@@ -511,5 +511,30 @@ public class AccountController {
         return d+"";
     }
 
+    @RequestMapping("/sumAccountMoney")
+    public @ResponseBody String sumAccountMoney(){
+        double d1=accountService.findAccountAccountMoney();
+        double d2=accountService.findAccountUsableMoney();
+        double d3=accountService.findAccountFreezeMoney();
+        return d1+d2+d3+"";
+    }
 
+    @RequestMapping("/sumShopMoney")
+    public @ResponseBody String sumShopMoney(){
+        double d1=accountService.findShopAccountMoney();
+        double d2=accountService.findShopUsableMoney();
+        double d3=accountService.findShopFreezeMoney();
+        return d1+d2+d3+"";
+    }
+
+    @RequestMapping("/sumAccountMoneyAndShopMoney")
+    public @ResponseBody String sumAccountMoneyAndShopMoney(){
+        double d1=accountService.findShopAccountMoney();
+        double d2=accountService.findShopUsableMoney();
+        double d3=accountService.findShopFreezeMoney();
+        double d4=accountService.findAccountAccountMoney();
+        double d5=accountService.findAccountUsableMoney();
+        double d6=accountService.findAccountFreezeMoney();
+        return d1+d2+d3+d4+d5+d6+"";
+    }
 }
