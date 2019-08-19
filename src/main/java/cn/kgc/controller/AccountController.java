@@ -263,6 +263,7 @@ public class AccountController {
             accountById.setUsableMoney(accountById.getUsableMoney()-999);
             accountById.setAccountMoney(accountById.getAccountMoney()+180);
             accountService.updateAccountMoney(accountById);
+            accountService.updateUsableMoney(accountById);
             //查询新增用户
             Account accountByName1 = accountService.findAccountByName(accountName);
             //给该用户上30层的所有上级增加相应积分
@@ -345,6 +346,7 @@ public class AccountController {
             accountById.setUsableMoney(accountById.getUsableMoney()-10000);
             accountById.setAccountMoney(accountById.getAccountMoney()+380);
             accountService.updateAccountMoney(accountById);
+            accountService.updateUsableMoney(accountById);
             //查询新增用户
             Account accountByName1 = accountService.findAccountByName(accountName);
             //给该用户上30层的所有上级增加相应积分    //店铺节点分数不清楚

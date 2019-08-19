@@ -584,6 +584,16 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public double profit(int a ,Double b ,Date date) {
+        System.out.println(date);
+        System.out.println(date);
+        System.out.println(date);
+        System.out.println(date);
+        System.out.println(date);
+        System.out.println(date);
+        System.out.println(date);
+        System.out.println(date);
+        System.out.println(date);
+
         Profit profit1 = accountDao.querybyId(a);
         if (profit1==null){
             Profit profit = new Profit();
@@ -595,7 +605,7 @@ public class AccountServiceImpl implements AccountService {
         }
 //        long l = profit1.getYesterdayTime();
 //        long s =date;
-        if (!profit1.getYesterdayTime().equals(date)){
+        if (!profit1.getYesterdayTime().equals(new SimpleDateFormat("yyyy-MM-dd").format(date))){
             Profit profit = new Profit();
             profit.setAccountId(a);
             profit.setYesterday(b-profit1.getToday());
