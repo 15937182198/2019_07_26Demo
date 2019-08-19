@@ -9,7 +9,7 @@ import java.util.Date;
 public class Profit {
     private int accountId;
     private Double Yesterday;
-    private Date YesterdayTime;
+    private String YesterdayTime;
     private Double Today;
 
 
@@ -29,11 +29,11 @@ public class Profit {
         Yesterday = yesterday;
     }
 
-    public Date getYesterdayTime() {
+    public String getYesterdayTime() {
         return YesterdayTime;
     }
 
-    public void setYesterdayTime(Date yesterdayTime) {
+    public void setYesterdayTime(String yesterdayTime) {
         YesterdayTime = yesterdayTime;
     }
 

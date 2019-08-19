@@ -155,10 +155,10 @@ public interface AccountDao {
     @Select("select *from Profit where accountId=#{param1}")
     Profit querybyId(int a);
 
-    @Insert("insert into Profit values(#{accountId},null,#{YesterdayTime},#{Today})")
+    @Insert("insert into Profit values(#{accountId},#{Yesterday},#{YesterdayTime},#{Today})")
      int insetProfit(Profit profit);
 
-    @Update("update Profit set accountId=#{accountId},Yesterday=#{Yesterday},YesterdayTime=#{YesterdayTime},Today=#{Today}")
+    @Update("update Profit set Yesterday=#{Yesterday},YesterdayTime=#{YesterdayTime},Today=#{Today} where accountId=#{accountId}")
     int updateProfit(Profit profit);
 
 

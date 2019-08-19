@@ -595,29 +595,20 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public double profit(int a ,Double b ,Date date) {
-        System.out.println(date);
-        System.out.println(date);
-        System.out.println(date);
-        System.out.println(date);
-        System.out.println(date);
-        System.out.println(date);
-        System.out.println(date);
-        System.out.println(date);
-        System.out.println(date);
-
+    public double profit(int a ,Double b ,String date) {
         Profit profit1 = accountDao.querybyId(a);
         if (profit1==null){
             Profit profit = new Profit();
             profit.setAccountId(a);
             profit.setToday(b);
+            profit.setYesterday(0.00);
             profit.setYesterdayTime(date);
             accountDao.insetProfit(profit);
-            return 0;
+            return 0.00;
         }
 //        long l = profit1.getYesterdayTime();
 //        long s =date;
-        if (!profit1.getYesterdayTime().equals(new SimpleDateFormat("yyyy-MM-dd").format(date))){
+        if (!profit1.getYesterdayTime().equals(date)){
             Profit profit = new Profit();
             profit.setAccountId(a);
             profit.setYesterday(b-profit1.getToday());

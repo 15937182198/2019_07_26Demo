@@ -74,7 +74,7 @@
         </div>
         <div class="form-group" style="margin-left: 15px;margin-top: 15px;">
             <div class="col-sm-offset-2 col-xs-4" style="text-align: center;margin-top: 15px;margin-bottom: 150px;">
-                <p style="color: red">您的积分必须在2000以上才可购买，如果不够请联系管理员</p>
+                <p style="color: red">您的积分必须在999以上才可购买，如果不够请联系管理员</p>
                 <button type="submit" class="btn btn-default" style="background-color: #5bc0de;">确定</button>
             </div>
         </div>
@@ -138,7 +138,7 @@
                     if (res=="1"){
                         alert("该用户名已存在!");
                     }else if (res=="2"){
-                        alert("您的积分不够2000请联系管理员");
+                        alert("您的积分不够999请联系管理员");
                     }else if (res == false){
                         alert("购买失败");
                         window.location.href="${pageContext.request.contextPath}/loginController/userAdd";

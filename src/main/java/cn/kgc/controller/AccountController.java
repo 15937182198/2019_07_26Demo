@@ -261,7 +261,7 @@ public class AccountController {
         }
         //查看推荐人积分是否在2000积分以上
         Account accountById = accountService.findAccountById(referrer);
-        if (accountById.getUsableMoney()<2000){
+        if (accountById.getUsableMoney()<999){
             return "2";
         }
         //保存该用户
@@ -451,8 +451,8 @@ public class AccountController {
         }
 //        long l = System.currentTimeMillis();
         Date date = new Date();
-        double profit = accountService.profit(accountId, sum,date);
-        return profit+"";
+        double profit = accountService.profit(accountId, sum,new SimpleDateFormat("yyyy-MM-dd").format(date));
+        return String.format("%.2f", profit);
     }
 
 
