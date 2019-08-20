@@ -114,7 +114,7 @@
         <c:forEach items="${pictures}" var="picture" varStatus="i">
         <div class="col-md-3">
             <div class="thumbnail">
-                <a href="${picture.pictureRoute}">
+                <a href="${picture.pictureRoute}" target="_blank">
                     <img src="${picture.pictureRoute}" style="width: 260px;height: 260px;" class="img-responsive"/></a>
                 <p>${picture.pictureInfo}</p>
             </div>
@@ -133,4 +133,11 @@
     </div>
 </div><!--0-end-->
 </body>
+<script>
+    $(document).ready(function(){
+        $("div.thumbnail").click(function(){
+            $("div.hide").toggle();
+        });
+    });
+</script>
 </html>
