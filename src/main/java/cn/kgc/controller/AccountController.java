@@ -100,7 +100,8 @@ public class AccountController {
         if (accountByName!=null){
             return "1";
         }
-        if (referrer1!=null){
+
+        if (referrer1!=null&&!referrer1.equals("")){
             Account accountByName2 = accountService.findAccountByName(referrer1);
             if (accountByName2==null){
                 return "2";

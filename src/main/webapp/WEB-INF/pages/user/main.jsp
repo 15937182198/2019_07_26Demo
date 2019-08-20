@@ -68,7 +68,6 @@
                 sum:${pageContext.session.getAttribute("account").accountMoney+pageContext.session.getAttribute("account").usableMoney+pageContext.session.getAttribute("account").freezeMoney}
             },
             success:function (date) {
-                alert(date);
                 $("#sum").html(date);
             }
         });
