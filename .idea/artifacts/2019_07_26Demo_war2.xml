@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="2019_07_26Demo:war2">
+    <output-path>$PROJECT_DIR$/../../新建文件夹</output-path>
+    <root id="archive" name="2019_07_26Demo_war.war">
+      <element id="artifact" artifact-name="2019_07_26Demo:war exploded" />
+    </root>
+  </artifact>
+</component>

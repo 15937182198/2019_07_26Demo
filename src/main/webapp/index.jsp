@@ -16,6 +16,6 @@
 <sec:authentication property="principal.username" scope="session" var="username"/>
 </body>
 <script>
-    window.location.href="/login/login";
+    window.location.href="${pageContext.request.contextPath}/login/login";
 </script>
 </html>

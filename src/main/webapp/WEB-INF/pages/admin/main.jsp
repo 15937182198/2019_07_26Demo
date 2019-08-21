@@ -36,7 +36,7 @@
             var count10 = $("#count10");
 
             $.ajax({
-                url:"../account/findAccountNumber",
+                url:"${pageContext.request.contextPath}/account/findAccountNumber",
                 "type"		:"post",
                 "dataType"	:"JSON",
                 "success"	:function (data) {
@@ -44,7 +44,7 @@
                 }
             });
             $.ajax({
-                url:"../account/findAccountByDate",
+                url:"${pageContext.request.contextPath}/account/findAccountByDate",
                 "type"		:"post",
                 "dataType"	:"JSON",
                 "success"	:function (data) {
@@ -52,7 +52,7 @@
                     number1=data*999;
                     count4.html(number1+"元");
                     $.ajax({
-                        url:"../account/findShopByDate",
+                        url:"${pageContext.request.contextPath}/account/findShopByDate",
                         "type"		:"post",
                         "dataType"	:"JSON",
                         "success"	:function (data) {
@@ -65,7 +65,7 @@
                 }
             });
             $.ajax({
-                url:"../account/findAccountByReferrer",
+                url:"${pageContext.request.contextPath}/account/findAccountByReferrer",
                 "type"		:"post",
                 "dataType"	:"JSON",
                 "success"	:function (data) {
@@ -74,7 +74,7 @@
             });
 
             $.ajax({
-                url:"../account/findShopNumber",
+                url:"${pageContext.request.contextPath}/account/findShopNumber",
                 "type"		:"post",
                 "dataType"	:"JSON",
                 "success"	:function (data) {
@@ -83,7 +83,7 @@
             });
 
             $.ajax({
-                url:"../account/findShopByReferrer",
+                url:"${pageContext.request.contextPath}/account/findShopByReferrer",
                 "type"		:"post",
                 "dataType"	:"JSON",
                 "success"	:function (data) {
@@ -91,7 +91,7 @@
                 }
             });
             $.ajax({
-                url:"../account/findShopFreezeMoney",
+                url:"${pageContext.request.contextPath}/account/findShopFreezeMoney",
                 "type"		:"post",
                 "dataType"	:"JSON",
                 "success"	:function (data) {
@@ -101,7 +101,7 @@
             });
 
             $.ajax({
-                url:"../account/findShopUsableMoney",
+                url:"${pageContext.request.contextPath}/account/findShopUsableMoney",
                 "type"		:"post",
                 "dataType"	:"JSON",
                 "success"	:function (data) {
@@ -109,7 +109,7 @@
                 }
             });
             $.ajax({
-                url:"../account/findAccountFreezeMoney",
+                url:"${pageContext.request.contextPath}/account/findAccountFreezeMoney",
                 "type"		:"post",
                 "dataType"	:"JSON",
                 "success"	:function (data) {
@@ -117,7 +117,7 @@
                 }
             });
             $.ajax({
-                url:"../account/findAccountAccountMoney",
+                url:"${pageContext.request.contextPath}/account/findAccountAccountMoney",
                 "type"		:"post",
                 "dataType"	:"JSON",
                 "success"	:function (data) {
@@ -125,7 +125,7 @@
                 }
             });
             $.ajax({
-                url:"../account/findAccountUsableMoney",
+                url:"${pageContext.request.contextPath}/account/findAccountUsableMoney",
                 "type"		:"post",
                 "dataType"	:"JSON",
                 "success"	:function (data) {
@@ -133,7 +133,7 @@
                 }
             });
             $.ajax({
-                url:"../account/sumAccountMoney",
+                url:"${pageContext.request.contextPath}/account/sumAccountMoney",
                 "type"		:"post",
                 "dataType"	:"JSON",
                 "success"	:function (data) {
@@ -141,7 +141,7 @@
                 }
             });
             $.ajax({
-                url:"../account/sumShopMoney",
+                url:"${pageContext.request.contextPath}/account/sumShopMoney",
                 "type"		:"post",
                 "dataType"	:"JSON",
                 "success"	:function (data) {
@@ -149,7 +149,7 @@
                 }
             });
             $.ajax({
-                url:"../account/sumAccountMoneyAndShopMoney",
+                url:"${pageContext.request.contextPath}/account/sumAccountMoneyAndShopMoney",
                 "type"		:"post",
                 "dataType"	:"JSON",
                 "success"	:function (data) {

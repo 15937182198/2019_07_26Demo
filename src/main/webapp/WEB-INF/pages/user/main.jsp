@@ -31,7 +31,7 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="/logout" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">退出</a>
+                            <a href="${pageContext.request.contextPath}/logout" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">退出</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">

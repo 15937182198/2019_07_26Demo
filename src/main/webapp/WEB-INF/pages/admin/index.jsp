@@ -38,7 +38,7 @@
                     账户名：${pageContext.session.getAttribute("username")}
                 </li>
                 <li class="layui-nav-item">
-                    <a href="/logout">
+                    <a href="${pageContext.request.contextPath}/logout">
                         <i class="iconfont icon-exit"></i>
                         退出</a>
                 </li>
