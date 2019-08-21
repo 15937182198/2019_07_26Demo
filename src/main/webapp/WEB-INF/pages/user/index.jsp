@@ -107,7 +107,7 @@
     </div><!-- 3end -->
 
     <div class="row container" style="margin-left: -30px;"><!--0-4start-->
-        <span style="font-size:25px;">热门商品</span><img src="../../../img/title2.jpg" style="width: 210px;height: 13px;"/>
+        <span style="font-size:25px;">热门商品</span><img src="${pageContext.request.contextPath}/img/title2.jpg" style="width: 210px;height: 13px;"/>
     </div><!--0-4end-->
 
     <div class="row">

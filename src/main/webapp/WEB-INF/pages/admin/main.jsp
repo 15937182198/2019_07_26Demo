@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css" media="all">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/personal.css" media="all">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminstyle.css" media="all">
-    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js"></script>
     <script>
         $(function () {
             var count1 = $("#count1");

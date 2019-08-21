@@ -88,7 +88,7 @@
     </div>
 </div>
 </body>
-<script src="../../../js/jquery-3.2.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js"></script>
 <script>
     <%--分页函数--%>
     function pageBeanNumber(nowPage) {

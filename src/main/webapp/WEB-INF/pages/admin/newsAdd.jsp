@@ -90,7 +90,7 @@
 </div>
 <script type="text/javascript" src="${pageContext.request.contextPath}/common/layui/layui.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/newsadd.js"></script>
-<script src="../../../js/jquery-3.2.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
     $(function(){
         $(".btn").click(function(){
