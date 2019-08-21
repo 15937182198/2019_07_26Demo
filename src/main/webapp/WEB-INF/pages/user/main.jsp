@@ -59,7 +59,7 @@
     <!--我的信息-->
 </div><!--0-end-->
 <script type="text/javascript">
-    window.onload=function(){
+    $(function(){
         $.ajax({
             url:"${pageContext.request.contextPath}/account/Profit",
             type:"POST",
@@ -71,5 +71,5 @@
                 $("#sum").html(date);
             }
         });
-    };
+    });
 </script>

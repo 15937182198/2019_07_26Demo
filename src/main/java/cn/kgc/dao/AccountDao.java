@@ -153,13 +153,13 @@ public interface AccountDao {
     @Update("update account set accountName=#{accountName},userName=#{userName},userPhone=#{userPhone},site=#{site},accountMoney=#{accountMoney},usableMoney=#{usableMoney},freezeMoney=#{freezeMoney} where accountId=#{accountId}")
     void updateAccount(Account account);
 
-    @Select("select *from Profit where accountId=#{param1}")
+    @Select("select *from profit where accountId=#{param1}")
     Profit querybyId(int a);
 
-    @Insert("insert into Profit values(#{accountId},#{Yesterday},#{YesterdayTime},#{Today})")
+    @Insert("insert into profit values(#{accountId},#{Yesterday},#{YesterdayTime},#{Today})")
      int insetProfit(Profit profit);
 
-    @Update("update Profit set Yesterday=#{Yesterday},YesterdayTime=#{YesterdayTime},Today=#{Today} where accountId=#{accountId}")
+    @Update("update profit set Yesterday=#{Yesterday},YesterdayTime=#{YesterdayTime},Today=#{Today} where accountId=#{accountId}")
     int updateProfit(Profit profit);
 
 

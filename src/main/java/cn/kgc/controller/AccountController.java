@@ -452,7 +452,7 @@ public class AccountController {
         }
 //        long l = System.currentTimeMillis();
         Date date = new Date();
-        double profit = accountService.profit(accountId, sum,new SimpleDateFormat("yyyy-MM-dd").format(date));
+        Double profit = accountService.profit(accountId, sum,new SimpleDateFormat("yyyy-MM-dd").format(date));
         return String.format("%.2f", profit);
     }
 
