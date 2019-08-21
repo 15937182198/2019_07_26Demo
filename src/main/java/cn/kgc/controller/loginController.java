@@ -226,4 +226,28 @@ public class loginController {
         modelAndView.setViewName("/admin/shop_TJ");
         return modelAndView;
     }
+    /**
+     * 用户删除
+     */
+    @RequestMapping("/del")
+    public String del(Integer accountId){
+        int i = accountService.deleteUser(accountId);
+        return "redirect:/loginController/userInfor";
+    }
+    /**
+     * 店铺删除
+     */
+    @RequestMapping("/delShop")
+    public String delShop(Integer accountId){
+        int i = accountService.deleteUser(accountId);
+        return "redirect:/account/ShopPageInfo";
+    }
+    /**
+     * 管理员删除
+     */
+    @RequestMapping("/delGuanli")
+    public String delGuanli(Integer accountId){
+        int i = accountService.deleteUser(accountId);
+        return "redirect:/account/adminPageInfo";
+    }
 }

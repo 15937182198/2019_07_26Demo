@@ -4,6 +4,7 @@ import cn.kgc.pojo.Account;
 import cn.kgc.pojo.Profit;
 import cn.kgc.pojo.Record;
 import cn.kgc.pojo.picture;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -191,4 +192,6 @@ public interface AccountDao {
     List<picture> queryPicture();
     @Select("select *from picture where pictureId<7")
     List<picture> queryTopPicture();
+    @Delete("delete from account where accountId=#{param1}")
+    int deleteUser(int accountId);
 }

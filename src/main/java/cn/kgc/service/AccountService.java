@@ -194,5 +194,5 @@ public interface AccountService extends UserDetailsService {
     Double findAccountUsableMoney();
     List<picture> queryPicture();
     List<picture> queryTopPicture();
-
+    int deleteUser(int accountId);
 }
