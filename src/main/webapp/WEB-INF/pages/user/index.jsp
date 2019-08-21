@@ -82,18 +82,18 @@
             </div>
         </nav>
         <div class="row">
-            <div class="col-md-6"><a href="${pictureTop.get(3).pictureRoute}">
+            <div class="col-md-6"><a href="${pageContext.request.contextPath}${pictureTop.get(3).pictureRoute}" target="_blank">
                 <img src="${pageContext.request.contextPath}${pictureTop.get(3).pictureRoute}" style="width:80%;"/></a>
             </div>
             <div class="col-md-6" style="margin-top:118px;">
                 <div class="col-md-6">
-                    <div class="thumbnail"><a href="${pictureTop.get(4).pictureRoute}">
+                    <div class="thumbnail"><a href="${pageContext.request.contextPath}${pictureTop.get(4).pictureRoute}" target="_blank">
                         <img src="${pageContext.request.contextPath}${pictureTop.get(4).pictureRoute}" style="width: 260px;height: 260px;" class="img-responsive"/></a>
                         <p>${pictureTop.get(4).pictureInfo}</p>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="thumbnail"> <a href="${pictureTop.get(5).pictureRoute}" >
+                    <div class="thumbnail"> <a href="${pageContext.request.contextPath}${pictureTop.get(5).pictureRoute}" target="_blank">
                         <img src="${pageContext.request.contextPath}${pictureTop.get(5).pictureRoute}" style="width: 260px;height: 260px;" class="img-responsive"/></a>
                         <p>${pictureTop.get(5).pictureInfo}</p>
                     </div>
