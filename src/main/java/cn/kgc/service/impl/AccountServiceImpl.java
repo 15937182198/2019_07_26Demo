@@ -7,9 +7,7 @@ import cn.kgc.service.AccountService;
 import cn.kgc.util.AccountLeadUtil;
 import cn.kgc.util.AccountMoneyUtil;
 import com.github.pagehelper.PageHelper;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -766,5 +764,10 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public List<picture> queryTopPicture() {
         return accountDao.queryTopPicture();
+    }
+
+    @Override
+    public int deleteUser(int accountId) {
+        return accountDao.deleteUser(accountId);
     }
 }

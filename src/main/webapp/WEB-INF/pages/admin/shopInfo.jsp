@@ -82,6 +82,7 @@
                                 <a href="${pageContext.request.contextPath}/loginController/userInforUpdate?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 修改信息</a>
                                 <a href="${pageContext.request.contextPath}/loginController/updateMoney?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 修改密码</a>
                                 <a href="${pageContext.request.contextPath}/loginController/record?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 交易记录</a>
+                                <a href="javascript:dele(${account.accountId});" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i>删除用户</a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -158,6 +159,13 @@
             window.location.href="${pageContext.request.contextPath}/account/findAccountByAccountName?accountName="+val;
         });
     });
+</script>
+<script>
+    function dele(del) {
+        if (confirm("是否删除?")){
+            location.href="${pageContext.request.contextPath}/loginController/delShop?accountId="+del;
+        }
+    }
 </script>
 </body>
 </html>

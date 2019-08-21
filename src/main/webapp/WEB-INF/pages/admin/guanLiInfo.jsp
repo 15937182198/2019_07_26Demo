@@ -60,6 +60,7 @@
                             <td>${account.accountCreateDate}</td>
                             <td>
                                 <a href="${pageContext.request.contextPath}/loginController/updateMoney?accountId=${account.accountId}" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 修改密码</a>
+                                <a href="javascript:dele(${account.accountId});" class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i>删除用户</a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -137,6 +138,13 @@
             window.location.href="${pageContext.request.contextPath}/account/findAccountByAccountName?accountName="+val;
         });
     });
+</script>
+<script>
+    function dele(del) {
+        if (confirm("是否删除?")){
+            location.href="${pageContext.request.contextPath}/loginController/delGuanli?accountId="+del;
+        }
+    }
 </script>
 </body>
 </html>
