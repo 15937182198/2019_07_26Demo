@@ -100,26 +100,42 @@ public class AccountController {
         if (accountByName!=null){
             return "1";
         }
-
+        //查看有没有推荐人
         if (referrer1!=null&&!referrer1.equals("")){
             Account accountByName2 = accountService.findAccountByName(referrer1);
             if (accountByName2==null){
                 return "2";
             }
-            accountByName2.setAccountMoney(180d);
-            accountService.updateAccountMoney(accountByName2);
-        }
-        b= accountService.saveAccount(accountName, accountPassword, referrer,userName,userPhone,site,referrer1);
-        if (param==1){
-            //查询新增用户
-            Account accountByName1 = accountService.findAccountByName(accountName);
-            //给该用户上30层的所有上级增加相应积分
-            List<Account> accounts =accountMoneyUtil.updateAccountLeadMoney(accountByName1.getAccountLead(),30);
-            for (Account account : accounts) {
-                accountService.updateAccountMoney(account);
+            //保存该用户
+            b = accountService.saveAccount(accountName, accountPassword,accountByName2.getAccountId(),userName,userPhone,site,referrer1);
+            if (b){
+                //给推荐人增加180积分,并保存
+                accountByName2.setAccountMoney(accountByName2.getAccountMoney()+180);
+                accountService.updateAccountMoney(accountByName2);
+                accountService.updateUsableMoney(accountByName2);
+                //查询新增用户
+                Account accountByName1 = accountService.findAccountByName(accountName);
+                //给该用户上30层的所有上级增加相应积分
+                List<Account> accounts =accountMoneyUtil.updateAccountLeadMoney(accountByName1.getAccountLead(),30);
+                for (Account account : accounts) {
+                    accountService.updateAccountMoney(account);
+                }
             }
+            return b+"";
+        }else {
+            b= accountService.saveAccount(accountName, accountPassword, referrer,userName,userPhone,site,referrer1);
+            if (param==1){
+                //查询新增用户
+                Account accountByName1 = accountService.findAccountByName(accountName);
+                //给该用户上30层的所有上级增加相应积分
+                List<Account> accounts =accountMoneyUtil.updateAccountLeadMoney(accountByName1.getAccountLead(),30);
+                for (Account account : accounts) {
+                    accountService.updateAccountMoney(account);
+                }
+            }
+            return b+"";
         }
-        return b+"";
+
     }
 
     /**
