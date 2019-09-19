@@ -106,18 +106,35 @@ public class AccountController {
             if (accountByName2==null){
                 return "2";
             }
-            //保存该用户
-            b = accountService.saveAccount(accountName, accountPassword,accountByName2.getAccountId(),userName,userPhone,site,referrer1);
-            if (param==1){
-                //给推荐人增加180积分,并保存
-                accountByName2.setAccountMoney(accountByName2.getAccountMoney()+180);
-                accountService.updateAccountMoney(accountByName2);
-                accountService.updateUsableMoney(accountByName2);
-                Account accountByName1 = accountService.findAccountByName(accountName);
-                //给该用户上30层的所有上级增加相应积分
-                List<Account> accounts =accountMoneyUtil.updateAccountLeadMoney(accountByName1.getAccountLead(),30);
-                for (Account account : accounts) {
-                    accountService.updateAccountMoney(account);
+            if (accountByName2.getJur()==3){
+                //保存该用户
+                b = accountService.saveAccount(accountName, accountPassword,accountByName2.getAccountId(),userName,userPhone,site,referrer1);
+                if (param==1){
+                    //给推荐人增加180积分,并保存
+                    accountByName2.setAccountMoney(accountByName2.getAccountMoney()+180);
+                    accountService.updateAccountMoney(accountByName2);
+                    accountService.updateUsableMoney(accountByName2);
+                    Account accountByName1 = accountService.findAccountByName(accountName);
+                    //给该用户上30层的所有上级增加相应积分
+                    List<Account> accounts =accountMoneyUtil.updateAccountLeadMoney(accountByName1.getAccountLead(),30);
+                    for (Account account : accounts) {
+                        accountService.updateAccountMoney(account);
+                    }
+                }
+
+            }else {
+                b = accountService.saveAccount(accountName, accountPassword,accountByName2.getAccountId(),userName,userPhone,site,referrer1);
+                if (param==1){
+                    //给推荐人增加180积分,并保存
+                    accountByName2.setAccountMoney(accountByName2.getAccountMoney()+380);
+                    accountService.updateAccountMoney(accountByName2);
+                    accountService.updateUsableMoney(accountByName2);
+                    Account accountByName1 = accountService.findAccountByName(accountName);
+                    //给该用户上30层的所有上级增加相应积分
+                    List<Account> accounts =accountMoneyUtil.updateAccountLeadMoney(accountByName1.getAccountLead(),30);
+                    for (Account account : accounts) {
+                        accountService.updateAccountMoney(account);
+                    }
                 }
             }
             return b+"";
@@ -344,7 +361,7 @@ public class AccountController {
             b = accountService.saveShop(accountName, accountPassword,accountByName2.getAccountId(),userName,userPhone,site,referrer1);
             if (param==1){
                 //给推荐人增加380积分,并保存
-                accountByName2.setAccountMoney(accountByName2.getAccountMoney()+380);
+                accountByName2.setAccountMoney(accountByName2.getAccountMoney()+1000);
                 accountService.updateAccountMoney(accountByName2);
                 accountService.updateUsableMoney(accountByName2);
                 Account accountByName1 = accountService.findAccountByName(accountName);
@@ -417,7 +434,7 @@ public class AccountController {
     }
      /* 查询一天用户注册的总数
      * @return 当日用户注册总数
-     * */
+     */
     @RequestMapping("/findShopByDate")
     public @ResponseBody String findShopByDate(){
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
