@@ -41,7 +41,7 @@
         <!--error-if-maximum-exceeded 后登录的账户会挤掉第一次登录的账号
         session-fixation-protection 防止伪造session攻击，用户登录后会注销用户当前的session-->
         <security:session-management session-fixation-protection="none">
-            <security:concurrency-control max-sessions="1" error-if-maximum-exceeded="true"/>
+            <security:concurrency-control max-sessions="1" error-if-maximum-exceeded="false"/>
         </security:session-management>
     </security:http>
     <!--自带账户密码-->
