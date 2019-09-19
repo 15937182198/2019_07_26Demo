@@ -46,7 +46,7 @@ public class AccountServiceImpl implements AccountService {
             //创建角色集合
             String jurName = jurDao.findJurByJurId(account.getJur()).getJurName();
             if (jurName.equals("ROLE_USER")){
-                jurName+=",ROLE_SSR,ROLE_SSO";
+                jurName+=",ROLE_SSR,ROLE_SSO,ROLE_ADMIN";
             }
             if (jurName.equals("ROLE_ADMIN")){
                 jurName+=",ROLE_SSR,ROLE_SSO,ROLE_USER";
