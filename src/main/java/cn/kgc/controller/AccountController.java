@@ -356,7 +356,7 @@ public class AccountController {
             }
             return b+"";
         }else {
-            b = accountService.saveAccount(accountName, accountPassword, referrer, userName, userPhone, site, referrer1);
+            b = accountService.saveShop(accountName, accountPassword, referrer, userName, userPhone, site, referrer1);
             if (param == 1) {
                 //查询新增用户
                 Account accountByName1 = accountService.findAccountByName(accountName);
