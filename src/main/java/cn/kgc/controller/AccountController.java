@@ -415,9 +415,9 @@ public class AccountController {
     public @ResponseBody String findShopNumber(){
         return  accountService.findShop().size()+"";
     }
-    /**
-     * 查询一天用户注册的总数
+     /* 查询一天用户注册的总数
      * @return 当日用户注册总数
+     * */
     @RequestMapping("/findShopByDate")
     public @ResponseBody String findShopByDate(){
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
